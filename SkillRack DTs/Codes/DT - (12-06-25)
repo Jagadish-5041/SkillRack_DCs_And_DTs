@@ -1,0 +1,25 @@
+Problem Statement :-
+
+But Mask Matching in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alphabet(alphabet_position , offset_character):
+    
+    return chr((alphabet_position + ord(offset_character)))
+
+N = int(input())
+
+alphabets_map = {chr(ASCII_value_of_upper_case_alphabet) : False for ASCII_value_of_upper_case_alphabet in range(65 , 91)}
+
+[alphabets_map.__setitem__(alphabet , True) for alphabet in input().strip()]
+
+for bit_position in range(0 , 26):
+    
+    if(((N & (1 << bit_position)) == 0) and (alphabets_map[get_alphabet(bit_position , 'A')])):
+        
+        print('NO')
+        
+        quit()
+
+print('YES')
