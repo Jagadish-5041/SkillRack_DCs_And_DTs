@@ -1,0 +1,80 @@
+Problem Statement :-
+
+Sort Movies - Multiple Conditions in DT (Daily Test) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+
+class Movie implements Comparable<Movie> {
+    
+    String movie_name;
+    
+    String hours;
+    
+    String minutes;
+    
+    int released_year;
+    
+    int total_seconds;
+    
+    Movie(String movie_name , String time_string , int released_year){
+        
+        this.movie_name = movie_name;
+        
+        String[] time_array = time_string.split(":");
+        
+        this.hours = time_array[0];
+        
+        this.minutes = time_array[1];
+        
+        this.released_year = released_year;
+        
+        this.total_seconds = ((Integer.parseInt(hours) * 3600) + (Integer.parseInt(minutes) * 60));
+    }
+    
+    public int compareTo(Movie movie_object_2){
+        
+        Movie movie_object_1 = this;
+        
+        if((movie_object_1.total_seconds == movie_object_2.total_seconds) && (movie_object_1.released_year == movie_object_2.released_year)){
+            return movie_object_1.movie_name.compareTo(movie_object_2.movie_name);
+        }else if(movie_object_1.released_year == movie_object_2.released_year){
+            return Integer.compare(movie_object_2.total_seconds , movie_object_1.total_seconds);
+        }else{
+            return Integer.compare(movie_object_2.released_year , movie_object_1.released_year);
+        }
+    }
+    
+    public String toString(){
+        
+        return String.format("%s %s:%s %d" , this.movie_name , this.hours , this.minutes , this.released_year);
+    }
+}
+
+public class Hello {
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int N = Integer.parseInt(sc.nextLine().trim());
+        
+        List<Movie> movies = new ArrayList<>();
+        
+        for(int ctr = 1; ctr <= N; ctr++){
+            
+            String currMovie[] = sc.nextLine().trim().split("\\s+");
+            
+            Movie movie = new Movie(currMovie[0] , currMovie[1] , Integer.parseInt(currMovie[2]));
+            
+            movies.add(movie);
+        }
+        
+        Collections.sort(movies);
+        
+        for(Movie movie : movies){
+            System.out.println(movie);
+        }
+    } // end of main function
+} // end of Hello class
