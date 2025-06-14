@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Function - vowelEncryption() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int is_vowel(char alphabet , char *vowels_string){
+    
+    int alphabet_index = (strchr(vowels_string , alphabet) - vowels_string);
+    
+    return ((0 <= alphabet_index) && (alphabet_index <= 9));
+}
+
+char* vowelEncryption(char *string){
+    
+    int N = strlen(string);
+    
+    char *encrypted_string = ((char *) malloc((N * sizeof(char))));
+    
+    char *vowels_string = "aeiouAEIOU";
+    
+    for(int index = 0 ; (index < N) ; ){
+        
+        if(is_vowel(string[index] , vowels_string)){
+            
+            int vowels_count = 0;
+            
+            while(is_vowel(string[index] , vowels_string)){
+                
+                vowels_count++;
+                
+                index++;
+            }
+            
+            sprintf(encrypted_string , "%s%d" , encrypted_string , vowels_count);
+        }else{
+            
+            sprintf(encrypted_string , "%s%c" , encrypted_string , string[index]);
+            
+            index++;
+        }
+    }
+    
+    return encrypted_string;
+}
