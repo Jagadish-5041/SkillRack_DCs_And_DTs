@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sort Dates  - Multiple Conditions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+months_numbers_map = {month_name : month_number for month_name , month_number in zip(['Jan' , 'Feb' , 'Mar' , 'Apr' , 'May' , 'Jun' , 'Jul' , 'Aug' , 'Sep' , 'Oct' , 'Nov' , 'Dec'] , range(0 , 12))}
+
+N = int(input())
+
+dates_list = []
+
+for i in range(0 , N):
+    
+    input_data_list = input().strip().split("-")
+    
+    day = int(input_data_list[0])
+    
+    month = input_data_list[1]
+    
+    year = int(input_data_list[2])
+    
+    dates_list.append((day , month , year))
+
+[print("{:02d}-{}-{:04d}".format(day , month , year)) for day , month , year in sorted(dates_list , key = lambda trio : (trio[0] , months_numbers_map[trio[1]] , trio[2]))]
