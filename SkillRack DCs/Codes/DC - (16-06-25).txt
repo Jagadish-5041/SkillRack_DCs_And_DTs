@@ -1,0 +1,42 @@
+Problem Statement :-
+
+C - Java - 029 in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+
+public class Hello {
+    
+    public static boolean is_odd(int N){
+        
+        return ((N & 1) == 1);
+    }
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        StringBuilder string_builder = new StringBuilder();
+        
+        int sum = 0;
+        
+        for(int rows_count = 1 ; ; rows_count++){
+            
+            try{
+                
+                String input_string = sc.nextLine();
+                
+                if(is_odd(rows_count)){
+                    string_builder.append((input_string + " "));
+                }else{
+                    sum += Integer.parseInt(input_string);
+                }
+            }catch(Exception e){
+                break;
+            }
+        }
+        
+        System.out.println(String.format("%s\n%s" , string_builder.toString() , sum));
+    }
+}
