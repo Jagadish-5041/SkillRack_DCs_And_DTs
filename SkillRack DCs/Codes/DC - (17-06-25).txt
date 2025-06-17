@@ -1,0 +1,113 @@
+Problem Statement :-
+
+Doctor Visiting Slots - Two Cities in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_leap_year(year):
+    
+    return ((((year % 100) != 0) and ((year % 4) == 0)) or ((year % 400) == 0))
+
+def add_K_days_to_given_date(day , month , year , K):
+    
+    days_in_months_list = [31 , ((29) if(is_leap_year(year)) else (28)) , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+    
+    day += K
+    
+    while(day > days_in_months_list[(month - 1)]):
+        
+        day -= days_in_months_list[(month - 1)]
+        
+        month += 1
+        
+        if(month > 12):
+            
+            month = 1
+            
+            year += 1
+            
+            days_in_months_list[1] = (29) if(is_leap_year(year)) else (28)
+    
+    return (day , month , year)
+
+def subtract_K_days_from_given_date(day , month , year , K):
+    
+    days_in_months_list = [31 , ((29) if(is_leap_year(year)) else (28)) , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+    
+    day -= K
+    
+    while(day <= 0):
+        
+        month -= 1
+        
+        if(month == 0):
+            
+            month = 12
+            
+            year -= 1
+            
+            days_in_months_list[1] = (29) if(is_leap_year(year)) else (28)
+        
+        day += days_in_months_list[(month - 1)]
+    
+    return (day , month , year)
+
+def get_days_count(day , month , year):
+    
+    days_in_months_list = [31 , ((29) if(is_leap_year(year)) else (28)) , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+    
+    days_count = 0
+    
+    days_prefix_sum_list = []
+    
+    for month_number in range(0 , 12):
+        
+        days_prefix_sum_list.append(days_count)
+        
+        days_count += days_in_months_list[month_number]
+    
+    return ((day) if(month == 1) else (days_prefix_sum_list[(month - 1)] + day))
+
+M , N = map(int , input().split())
+
+given_year = int(input())
+
+months_names_map = {month_number : month_name for month_number , month_name in zip(range(1 , 13) , ['Jan' , 'Feb' , 'Mar' , 'Apr' , 'May' , 'Jun' , 'Jul' , 'Aug' , 'Sep' , 'Oct' , 'Nov' , 'Dec'])}
+
+city_A_visiting_slots_list = []
+
+city_B_visiting_slots_list = []
+
+alternative_flag_value = 1
+
+day = 1
+
+month = 1
+
+year = given_year
+
+while(year == given_year):
+    
+    starting_date = "{:02d}-{}-{:04d}".format(day , months_names_map[month] , year)
+    
+    day , month , year = (add_K_days_to_given_date(day , month , year , (M - 1))) if(alternative_flag_value == 1) else (add_K_days_to_given_date(day , month , year , (N - 1)))
+    
+    day , month , year = (day , month , year) if(year == given_year) else (subtract_K_days_from_given_date(day , month , year , get_days_count(day , month , year)))
+    
+    ending_date = "{:02d}-{}-{:04d}".format(day , months_names_map[month] , year)
+    
+    visiting_slot_string = "{} {} {}".format(starting_date , "to" , ending_date)
+    
+    (city_A_visiting_slots_list.append(visiting_slot_string)) if(alternative_flag_value == 1) else (city_B_visiting_slots_list.append(visiting_slot_string))
+    
+    day , month , year = add_K_days_to_given_date(day , month , year , 1)
+    
+    alternative_flag_value = (alternative_flag_value ^ 1)
+
+print("City A:")
+
+[print(visiting_slot_string) for visiting_slot_string in city_A_visiting_slots_list]
+
+print("City B:")
+
+[print(visiting_slot_string) for visiting_slot_string in city_B_visiting_slots_list]
