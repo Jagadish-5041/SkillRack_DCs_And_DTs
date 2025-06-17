@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Power Banks & Mobiles in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+charges_sum = sum(list(map(int , input().split())))
+
+M = int(input())
+
+count = 0
+
+for phone_charge in sorted(list(map(int , input().split())) , reverse = True):
+    
+    if(charges_sum >= (100 - phone_charge)):
+        charges_sum -= (100 - phone_charge)
+        count += 1
+    else:
+        break
+
+print(count)
