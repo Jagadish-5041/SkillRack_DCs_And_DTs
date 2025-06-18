@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Find Missing Fibonacci Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+series_list = sorted(list(map(int , input().split())))
+
+for index in range(1 , (N - 1)):
+    
+    if((series_list[(index + 1)] - series_list[index]) != series_list[(index - 1)]):
+        
+        print((series_list[(index + 1)] - series_list[index]))
+        
+        quit()
+
+print(series_list[-1])
