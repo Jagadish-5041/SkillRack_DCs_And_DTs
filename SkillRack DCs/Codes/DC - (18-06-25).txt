@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Integers Sum - Flip Kth Bit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_bits_count(N):
+    
+    bits_count = 0
+    
+    while(N > 0):
+        
+        bits_count += 1
+        
+        N = (N >> 1)
+    
+    return bits_count
+
+def flip_K_th_bit(N , K):
+    
+    return (N ^ (1 << (K - 1)))
+
+N = int(input())
+
+numbers_list = list(map(int , input().split()))
+
+K = int(input())
+
+print(sum((flip_K_th_bit(number , K)) if(get_bits_count(number) >= K) else (number) for number in numbers_list))
