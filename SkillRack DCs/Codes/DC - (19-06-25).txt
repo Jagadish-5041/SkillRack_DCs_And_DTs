@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Find Time - Normal & Slow Clocks in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def get_total_seconds(hours , minutes , seconds):
+    
+    return (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes) + seconds)
+
+def convert_seconds_to_24_hours_time_format(total_seconds):
+    
+    hours = ((total_seconds // 3600) % 24)
+    
+    minutes = (((total_seconds % 3600) // 60) % 60)
+    
+    seconds = ((total_seconds - (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes))) % 60)
+    
+    return (hours , minutes , seconds)
+
+def convert_24_hours_time_format_to_12_hours_time_format(hours , minutes , seconds):
+    
+    return (((hours - 12) if(hours > 12) else (hours)) , minutes , seconds)
+
+def print_formatted_time(hours , minutes , seconds):
+    
+    print("{:02d}:{:02d}:{:02d}".format(hours , minutes , seconds))
+
+total_seconds = get_total_seconds(*map(int , input().strip().split(":")))
+
+K , X = map(int , input().split())
+
+seconds_1 = X
+
+seconds_2 = (X // K)
+
+print_formatted_time(*convert_24_hours_time_format_to_12_hours_time_format(*convert_seconds_to_24_hours_time_format((total_seconds + seconds_1))))
+
+print_formatted_time(*convert_24_hours_time_format_to_12_hours_time_format(*convert_seconds_to_24_hours_time_format((total_seconds + seconds_2))))
