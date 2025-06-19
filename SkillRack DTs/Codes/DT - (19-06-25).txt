@@ -1,0 +1,66 @@
+Problem Statement :-
+
+Function - getWordsStartingWithPrefix() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct BoundedArray{
+    
+    int SIZE;
+    
+    char **words;
+} boundedArray;
+
+boundedArray* getWordsStartingWithPrefix(char *string , char *prefix_string){
+    
+    int N = strlen(string);
+    
+    int M = strlen(prefix_string);
+    
+    char **words_array = ((char **) malloc((N * sizeof(char *))));
+    
+    for(int i = 0 ; (i < N) ; i++){
+        words_array[i] = ((char *) malloc((N * sizeof(char))));
+    }
+    
+    int words_array_index = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        if(strncmp(string_tokenizer , prefix_string , M) == 0){
+            
+            sprintf(words_array[words_array_index++] , "%s" , string_tokenizer);
+        }
+    }
+    
+    (words_array_index == 0) ? (sprintf(words_array[words_array_index++] , "-1")) : (printf(""));
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = words_array_index;
+    
+    (bounded_array_reference -> words) = words_array;
+    
+    return bounded_array_reference;
+}
+
+int main(){
+    
+    char str[10001], prefix[101];
+    
+    scanf("%[^\n]\n%s", str, prefix);
+    
+    boundedArray *bArr = getWordsStartingWithPrefix(str, prefix);
+    
+    printf("Words starting with prefix %s:\n", prefix);
+    
+    for(int index = 0 ; index < bArr->SIZE ; index++){
+        printf("%s\n" , bArr->words[index]);
+    }
+    
+    return 0;
+}
