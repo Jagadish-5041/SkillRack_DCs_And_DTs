@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Java - Python - 030 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_number(string):
+    
+    try:
+        
+        int(string)
+        
+        return True
+    
+    except:
+        
+        return False
+
+while(True):
+    
+    try:
+        
+        numbers_sum = 0
+        
+        for input_string in input().strip().split():
+            
+            if(is_number(input_string)):
+                numbers_sum += int(input_string)
+            else:
+                break
+        
+        print(numbers_sum)
+    
+    except:
+        
+        break
