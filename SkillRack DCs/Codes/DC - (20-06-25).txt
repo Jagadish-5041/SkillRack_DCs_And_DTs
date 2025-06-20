@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Sort Integers - Embedded Alphabets in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import re
+
+N = int(input())
+
+data_list = []
+
+for embedded_string in input().strip().split():
+    
+    number = int((''.join((re.findall(r'[\d+]' , embedded_string)))))
+    
+    alphabet = re.findall(r'[^\d+]' , embedded_string)[0]
+    
+    data_list.append((number , alphabet))
+
+[print(number , end = " ") for number , alphabet in sorted(data_list , key = lambda pair : (pair[1] , pair[0]))]
