@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Bianry Matching in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DT main
+
+int get_bits_count(int N){
+    
+    int bits_count = 0;
+    
+    while(N > 0){
+        
+        bits_count++;
+        
+        N = (N >> 1);
+    }
+    
+    return bits_count;
+}
+
+int jagadish_DT(){
+    
+    int X;
+    
+    int N;
+    
+    scanf("%d %d\n" , &X , &N);
+    
+    int count = 0;
+    
+    for(int number = -999 , i = 0 ; (i < N) ; i++){
+        
+        scanf("%d " , &number);
+        
+        count = (number == (X & ((1 << get_bits_count(number)) - 1))) ? (count + 1) : (count);
+    }
+    
+    printf("%d" , count);
+    
+    return 0;
+}
