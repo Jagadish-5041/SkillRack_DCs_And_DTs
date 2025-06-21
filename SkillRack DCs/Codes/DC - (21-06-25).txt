@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Print Integers - Except Range in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    
+    int N;
+    
+    int X;
+    
+    int Y;
+    
+    int val;
+    
+    scanf("%d %d %d\n" , &N , &X , &Y);
+    
+    for(int ctr = 1 ; (ctr <= N) ; ctr++){
+        
+        scanf("%d " , &val);
+        
+        for(int printVal = 1 ; (printVal <= val) ; printVal++){
+            
+            if((X <= printVal) && (printVal <= Y)){
+                continue;
+            }
+            
+            printf("%d " , printVal);
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
