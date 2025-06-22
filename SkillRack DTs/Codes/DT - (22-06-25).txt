@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Evaluate Boolean Expression in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_operand_value(operand_string):
+    
+    return ((True) if(operand_string == 'T') else (False))
+
+def get_operand_string(operand_value):
+    
+    return (('T') if(operand_value == True) else ('F'))
+
+def get_expression_answer(operand_1 , operand_2 , operator_string):
+    
+    return ((operand_1 & operand_2) if(operator_string == '&') else ((operand_1 | operand_2) if(operator_string == '|') else (operand_1 ^ operand_2)))
+
+operators_string = "&|^"
+
+operands_string = "TF"
+
+operators_stack = []
+
+operands_stack = []
+
+[(operators_stack.append(character)) if(character in operators_string) else (operands_stack.append(character)) for character in input().strip()]
+
+while(operators_stack):
+    
+    operand_1 = get_operand_value(operands_stack.pop(0))
+    
+    operand_2 = get_operand_value(operands_stack.pop(0))
+    
+    operator = operators_stack.pop(0)
+    
+    expression_answer = get_expression_answer(operand_1 , operand_2 , operator)
+    
+    operand_3 = get_operand_string(expression_answer)
+    
+    operands_stack.insert(0 , operand_3)
+
+print(operands_stack.pop(0))
