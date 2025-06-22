@@ -1,0 +1,52 @@
+Problem Statement :-
+
+Function - getBinaryRepresentation() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_reversed_binary_string(int N){
+    
+    char *reversed_binary_string = ((char *) malloc((65 * sizeof(char))));
+    
+    while(N > 0){
+        
+        int bit = (N % 2);
+        
+        sprintf(reversed_binary_string , "%s%d" , reversed_binary_string , bit);
+        
+        N = (N >> 1);
+    }
+    
+    return reversed_binary_string;
+}
+
+struct Node* getBinaryRepresentation(int N){
+    
+    char *reversed_binary_string = get_reversed_binary_string(N);
+    
+    struct Node *head_node = NULL;
+    
+    struct Node *tail_node = NULL;
+    
+    for(int i = (strlen(reversed_binary_string) - 1) ; (i >= 0) ; i--){
+        
+        int bit = (reversed_binary_string[i] - '0');
+        
+        struct Node *new_node = ((struct Node *) malloc(sizeof(struct Node)));
+        
+        (new_node -> val) = bit;
+        
+        if(head_node == NULL){
+            head_node = new_node;
+            tail_node = new_node;
+        }else{
+            (new_node -> prev) = tail_node;
+            (tail_node -> next) = new_node;
+            tail_node = new_node;
+        }
+    }
+    
+    return head_node;
+}
