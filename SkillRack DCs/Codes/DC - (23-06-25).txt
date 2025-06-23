@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Matrix - Integers And Characters Columns in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_number(string):
+    
+    try:
+        int(string)
+        return True
+    except:
+        return False
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+numbers_list = []
+
+strings_list = []
+
+for j in range(0 , C):
+    
+    current_column_values_list = [matrix[i][j] for i in range(0 , R)]
+    
+    (numbers_list.append(sum(int(value) for value in current_column_values_list))) if(is_number(current_column_values_list[0])) else (strings_list.append((''.join(value for value in current_column_values_list))[::-1]))
+
+print(*numbers_list , sep = " " , end = " ")
+
+print(*strings_list , sep = " " , end = " ")
