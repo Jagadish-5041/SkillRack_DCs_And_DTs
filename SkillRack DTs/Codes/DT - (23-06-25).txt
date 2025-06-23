@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Matrix - Count Empty Cells in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+rows_flag_list = [False for i in range(0 , R)]
+
+columns_flag_list = [False for j in range(0 , C)]
+
+empty_rows_count = R
+
+filled_rows_count = 0
+
+empty_columns_count = C
+
+filled_columns_count = 0
+
+Q = int(input())
+
+for query in range(0 , Q):
+    
+    row_index , column_index = map((lambda value : (value - 1)) , (map(int , input().split())))
+    
+    if(not rows_flag_list[row_index]):
+        empty_rows_count -= 1
+        filled_rows_count += 1
+        rows_flag_list[row_index] = True
+    
+    if(not columns_flag_list[column_index]):
+        empty_columns_count -= 1
+        filled_columns_count += 1
+        columns_flag_list[column_index] = True
+    
+    empty_cells_count = ((empty_rows_count * C) - (filled_columns_count * empty_rows_count))
+    
+    print(empty_cells_count)
