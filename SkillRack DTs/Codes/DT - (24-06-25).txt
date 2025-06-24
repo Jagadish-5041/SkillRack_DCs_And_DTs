@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Maximum Events - Year And Month in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+years_frequency_map = {}
+
+maximum_year_frequency = 0
+
+months_frequency_map = {}
+
+maximum_month_frequency = 0
+
+months_numbers_map = {month_name : month_number for month_name , month_number in zip(('Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(" ")) , range(1 , 13))}
+
+for i in range(0 , int(input())):
+    
+    day , month , year = input().strip().split("-")
+    
+    years_frequency_map[int(year)] = (years_frequency_map.get(int(year) , 0) + 1)
+    
+    maximum_year_frequency = max(maximum_year_frequency , years_frequency_map[int(year)])
+    
+    months_frequency_map[month] = (months_frequency_map.get(month , 0) + 1)
+    
+    maximum_month_frequency = max(maximum_month_frequency , months_frequency_map[month])
+
+print(*[year for year in sorted(years_frequency_map.keys()) if(years_frequency_map[year] == maximum_year_frequency)])
+
+print(*[month for month in sorted(months_frequency_map.keys() , key = lambda month_string : months_numbers_map[month_string]) if(months_frequency_map[month] == maximum_month_frequency)])
