@@ -1,0 +1,22 @@
+Problem Statement :-
+
+String Expansion - Multiple Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+numbers_list = []
+
+alphabets_list = []
+
+number = 0
+
+for character in (input().strip() + '#'):
+    
+    if(character.isdigit()):
+        number = ((number * 10) + int(character))
+    elif(character.isalpha()):
+        numbers_list.append(number)
+        number = 0
+        alphabets_list.append(character)
+
+(lambda N : [print(((''.join(alphabets_list[j] for j in range(i , N))) * numbers_list[i])) for i in range(0 , N)]) (len(numbers_list))
