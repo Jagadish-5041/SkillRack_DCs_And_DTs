@@ -16,7 +16,7 @@ for character in (input().strip() + '#'):
         number = ((number * 10) + int(character))
     elif(character.isalpha()):
         numbers_list.append(number)
-        number = 0
         alphabets_list.append(character)
+        number = 0
 
 (lambda N : [print(((''.join(alphabets_list[j] for j in range(i , N))) * numbers_list[i])) for i in range(0 , N)]) (len(numbers_list))
