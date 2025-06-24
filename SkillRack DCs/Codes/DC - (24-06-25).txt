@@ -10,7 +10,7 @@ alphabets_list = []
 
 number = 0
 
-for character in (input().strip() + '#'):
+for character in input().strip():
     
     if(character.isdigit()):
         number = ((number * 10) + int(character))
@@ -19,4 +19,6 @@ for character in (input().strip() + '#'):
         alphabets_list.append(character)
         number = 0
 
-(lambda N : [print(((''.join(alphabets_list[j] for j in range(i , N))) * numbers_list[i])) for i in range(0 , N)]) (len(numbers_list))
+N = len(numbers_list)
+
+[print(((''.join(alphabets_list[j] for j in range(i , N))) * numbers_list[i])) for i in range(0 , N)]
