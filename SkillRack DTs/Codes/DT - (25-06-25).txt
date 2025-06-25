@@ -1,0 +1,87 @@
+Problem Statement :-
+
+Function - encryptPAN() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int find_index(char *string , char character){
+    
+    return (strchr(string , character) - string);
+}
+
+int is_vowel(char alphabet){
+    
+    char *vowels_string = "aeiouAEIOU";
+    
+    int index = find_index(vowels_string , alphabet);
+    
+    return ((0 <= index) && (index <= 9));
+}
+
+int is_consonant(char alphabet){
+    
+    return (!is_vowel(alphabet));
+}
+
+char *get_lower_case_consonants_string(){
+    
+    char *lower_case_consonants_string = ((char *) malloc((27 * sizeof(char))));
+    
+    for(char alphabet = 'a' ; (alphabet <= 'z') ; alphabet++){
+        
+        if(is_consonant(alphabet)){
+            
+            sprintf(lower_case_consonants_string , "%s%c" , lower_case_consonants_string , alphabet);
+        }
+    }
+    
+    return lower_case_consonants_string;
+}
+
+char* encryptPAN(char *string){
+    
+    int N = strlen(string);
+    
+    char *encrypted_string = ((char *) malloc(((N * 2) * sizeof(char))));
+    
+    char *lower_case_consonants_string = get_lower_case_consonants_string();
+    
+    int M = strlen(lower_case_consonants_string);
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(isalpha(string[index])){
+            
+            if(is_vowel(string[index])){
+                continue;
+            }else if((isupper(string[index])) && (is_consonant(string[index]))){
+                sprintf(encrypted_string , "%s*%c" , encrypted_string , lower_case_consonants_string[(M - find_index(lower_case_consonants_string , tolower(string[index])) - 1)]);
+            }else if(is_consonant(string[index])){
+                sprintf(encrypted_string , "%s*%c" , encrypted_string , string[index]);
+            }
+        }else{
+            sprintf(encrypted_string , "%s%c" , encrypted_string , string[index]);
+        }
+    }
+    
+    return encrypted_string;
+}
+
+int main(){
+    
+    char str[101];
+    
+    scanf("%s", str);
+    
+    char *encryptedPAN = encryptPAN(str);
+    
+    printf("Original PAN: %s\n" , str);
+    
+    printf("Encrypted PAN: %s" , encryptedPAN);
+    
+    return 0;
+}
