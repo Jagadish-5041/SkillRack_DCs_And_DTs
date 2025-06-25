@@ -1,0 +1,97 @@
+Problem Statement :-
+
+Days Count - Previous & Next Months in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_leap_year(year):
+    
+    return ((((year % 100) != 0) and ((year % 4) == 0)) or ((year % 400) == 0))
+
+def get_days_in_months_list(year):
+    
+    return [31 , ((29) if(is_leap_year(year)) else (28)) , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+
+def get_total_days_count_in_given_month(day , month , year):
+    
+    return get_days_in_months_list(year)[(month - 1)]
+
+def get_current_days_count_in_given_month(day , month , year):
+    
+    return day
+
+def get_remaining_days_count_in_given_month(day , month , year):
+    
+    return (get_total_days_count_in_given_month(day , month , year) - get_current_days_count_in_given_month(day , month , year))
+
+def add_K_days_to_given_date(day , month , year , K):
+    
+    days_in_months_list = get_days_in_months_list(year)
+    
+    day += K
+    
+    while(day > days_in_months_list[(month - 1)]):
+        
+        day -= days_in_months_list[(month - 1)]
+        
+        month += 1
+        
+        if(month > 12):
+            
+            month = 1
+            
+            year += 1
+            
+            days_in_months_list[1] = (29) if(is_leap_year(year)) else (28)
+    
+    return (day , month , year)
+
+def subtract_K_days_from_given_date(day , month , year , K):
+    
+    days_in_months_list = get_days_in_months_list(year)
+    
+    day -= K
+    
+    while(day <= 0):
+        
+        month -= 1
+        
+        if(month <= 0):
+            
+            month = 12
+            
+            year -= 1
+            
+            days_in_months_list[1] = (29) if(is_leap_year(year)) else (28)
+        
+        day += days_in_months_list[(month - 1)]
+    
+    return (day , month , year)
+
+def formatted_print(day , month , year , months_numbers_map):
+    
+    print("{} {} - {} days".format(months_numbers_map[month] , year , get_total_days_count_in_given_month(day , month , year)))
+
+months_names_map = {month_name : month_number for month_name , month_number in zip(('Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(" ")) , range(1 , 13))}
+
+months_numbers_map = {month_number : month_name for month_number , month_name in zip(range(1 , 13) , ('January February March April May June July August September October November December'.split(" ")))}
+
+date_list = input().strip().split("-")
+
+day = int(date_list[0])
+
+month = months_names_map[date_list[1]]
+
+year = int(date_list[2])
+
+current_days_count_in_given_month = get_current_days_count_in_given_month(day , month , year)
+
+remaining_days_count_in_given_month = get_remaining_days_count_in_given_month(day , month , year)
+
+day_1 , month_1 , year_1 = subtract_K_days_from_given_date(day , month , year , current_days_count_in_given_month)
+
+day_2 , month_2 , year_2 = add_K_days_to_given_date(day , month , year , (remaining_days_count_in_given_month + 1))
+
+formatted_print(day_1 , month_1 , year_1 , months_numbers_map)
+
+formatted_print(day_2 , month_2 , year_2 , months_numbers_map)
