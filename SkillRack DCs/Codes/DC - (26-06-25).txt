@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Alphabets - Bit Masking in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    
+    char string[101];
+    
+    scanf("%s" , string);
+    
+    int bit_maksed_X = 0;
+    
+    for(int index = 0 ; (string[index] != '\0') ; index++){
+        bit_maksed_X = (bit_maksed_X | (1 << (string[index] - 'a')));
+    }
+    
+    printf("%d" , bit_maksed_X);
+    
+    return 0;
+}
