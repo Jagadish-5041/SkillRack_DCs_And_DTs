@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sort Integers By Middle Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def get_middle_digit(N):
+    
+    length_of_N = get_length_of_N(N)
+    
+    divisor_1 = (10 ** ((length_of_N // 2) + (length_of_N % 2)))
+    
+    divisor_2 = (10 ** (length_of_N // 2))
+    
+    return ((N % divisor_1) // divisor_2)
+
+N = int(input())
+
+print(*sorted(list(map(int , input().split())) , key = lambda number : (get_middle_digit(number) , number)))
