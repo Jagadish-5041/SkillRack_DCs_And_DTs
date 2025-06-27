@@ -1,0 +1,73 @@
+Problem Statement :-
+
+Function - getXthDiagonal() in DC (Daily Challeng) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct BoundedArray{
+    
+    int SIZE;
+    
+    int *arr;
+} boundedArray;
+
+int get_min(int A , int B){
+    
+    return ((A <= B) ? (A) : (B));
+}
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+boundedArray *getXthDiagonal(int R , int C , int matrix[R][C] , int X){
+    
+    int *diagonal_elements_array = ((int *) malloc((get_min(R , C) * sizeof(int))));
+    
+    int diagonal_elements_array_index = 0;
+    
+    for(int current_i = ((X <= R) ? (R - X) : (0)) , current_j = ((X <= R) ? (0) : (X - R)) ; ((is_within_bounds(current_i , R)) && (is_within_bounds(current_j , C))) ; current_i++ , current_j++){
+        diagonal_elements_array[diagonal_elements_array_index++] = matrix[current_i][current_j];
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = diagonal_elements_array_index;
+    
+    (bounded_array_reference -> arr) = diagonal_elements_array;
+    
+    return bounded_array_reference;
+}
+
+int main(){
+    
+    int R, C, X;
+    
+    scanf("%d %d", &R, &C);
+    
+    int matrix[R][C];
+    
+    for(int row = 0; row < R; row++){
+        
+        for(int col = 0; col < C; col++){
+            
+            scanf("%d", &matrix[row][col]);
+        }
+    }
+    
+    scanf("%d", &X);
+    
+    boundedArray *bArr = getXthDiagonal(R, C, matrix, X);
+    
+    printf("Diagonal %d: ", X);
+    
+    for(int index = 0; index < bArr->SIZE; index++){
+        printf("%d ", bArr->arr[index]);
+    }
+    
+    return 0;
+}
