@@ -1,0 +1,61 @@
+Problem Statement :-
+
+Special Substrings Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_sum_of_N_natural_numbers(N):
+    
+    return ((N * (N + 1)) // 2)
+
+def get_special_count_1(N , string):
+    
+    count = 0
+    
+    index_1 = 0
+    
+    while(is_within_bounds(index_1 , N)):
+        
+        index_2 = index_1
+        
+        substring_length = 0
+        
+        while((is_within_bounds(index_2 , N)) and (string[index_1] == string[index_2])):
+            
+            index_2 += 1
+            
+            substring_length += 1
+        
+        index_1 += substring_length
+        
+        count += get_sum_of_N_natural_numbers(substring_length)
+    
+    return count
+
+def get_special_count_2(N , string):
+    
+    count = 0
+    
+    for middle_pointer in range(1 , (N - 1)):
+        
+        left_pointer = (middle_pointer - 1)
+        
+        right_pointer = (middle_pointer + 1)
+        
+        left_and_right_target_character = string[left_pointer]
+        
+        while((is_within_bounds(left_pointer , N)) and (is_within_bounds(right_pointer , N)) and (string[middle_pointer] != left_and_right_target_character) and (string[left_pointer] == left_and_right_target_character) and (string[right_pointer] == left_and_right_target_character)):
+            
+            left_pointer -= 1
+            
+            right_pointer += 1
+            
+            count += 1
+    
+    return count
+
+(lambda string : print((get_special_count_1(len(string) , string) + get_special_count_2(len(string) , string)))) (input().strip())
