@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Replace Duplicates With Next Value in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('A')) if('A' <= alphabet <= 'Z') else (ord('a')))
+
+def get_alphabet_position(alphabet):
+    
+    return (ord(alphabet) - get_offset_value(alphabet))
+
+def get_next_alphabet(alphabet):
+    
+    return chr((((get_alphabet_position(alphabet) + 1) % 26) + get_offset_value(alphabet)))
+
+def get_next_digit(digit):
+    
+    return str(((int(digit) + 1) % 10))
+
+answer_list = []
+
+key_values_flag_map = {key : False for key in 'abcdefghijklmnopqrstuvwxyz0123456789'}
+
+for character in input().strip():
+    
+    if(character.isalpha()):
+        
+        if(not key_values_flag_map[character.lower()]):
+            
+            answer_list.append(character)
+            
+            key_values_flag_map[character.lower()] = True
+        else:
+            
+            next_alphabet = get_next_alphabet(character)
+            
+            while(key_values_flag_map[next_alphabet.lower()]):
+                
+                next_alphabet = get_next_alphabet(next_alphabet)
+            
+            answer_list.append(next_alphabet)
+            
+            key_values_flag_map[next_alphabet.lower()] = True
+    
+    else:
+        
+        digit = character
+        
+        if(not key_values_flag_map[digit]):
+            
+            answer_list.append(digit)
+            
+            key_values_flag_map[digit] = True
+        else:
+            
+            next_digit = get_next_digit(digit)
+            
+            while(key_values_flag_map[next_digit]):
+                
+                next_digit = get_next_digit(next_digit)
+            
+            answer_list.append(next_digit)
+            
+            key_values_flag_map[next_digit] = True
+
+print(*answer_list , sep = "")
