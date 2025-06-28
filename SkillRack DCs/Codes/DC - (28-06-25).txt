@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Function - insertLinkedList() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+struct Node *get_K_th_node(struct Node *head_node , int K){
+    
+    struct Node *K_th_node = NULL;
+    
+    struct Node *current_node = head_node;
+    
+    for(int node_count = 1 ; (node_count <= K) ; node_count++){
+        
+        K_th_node = current_node;
+        
+        current_node = (current_node -> next);
+    }
+    
+    return K_th_node;
+}
+
+struct Node *get_tail_node(struct Node *head_node){
+    
+    struct Node *tail_node = NULL;
+    
+    for(struct Node *current_node = head_node ; (current_node != NULL) ; current_node = (current_node -> next)){
+        tail_node = current_node;
+    }
+    
+    return tail_node;
+}
+
+struct Node *insertLinkedList(struct Node *head_node_1 , struct Node *head_node_2 , int K){
+    
+    struct Node *K_th_node_of_first_linked_list = get_K_th_node(head_node_1 , K);
+    
+    struct Node *temp_node = (K_th_node_of_first_linked_list -> next);
+    
+    struct Node *tail_node_of_second_linked_list = get_tail_node(head_node_2);
+    
+    (K_th_node_of_first_linked_list -> next) = head_node_2;
+    
+    (tail_node_of_second_linked_list -> next) = temp_node;
+    
+    return head_node_1;
+}
