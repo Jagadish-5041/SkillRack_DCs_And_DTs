@@ -1,0 +1,70 @@
+Problem Statement :-
+
+Function - customStringFormat() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char **get_words_array(char *string){
+    
+    int N = strlen(string);
+    
+    char **words_array = ((char **) malloc((N * sizeof(char *))));
+    
+    for(int i = 0 ; (i < N) ; i++){
+        words_array[i] = ((char *) malloc((N * sizeof(char))));
+    }
+    
+    int words_array_index = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        strcpy(words_array[words_array_index++] , string_tokenizer);
+    }
+    
+    return words_array;
+}
+
+int get_digit(char digit_character){
+    
+    return ((int) (digit_character - '0'));
+}
+
+void customStringFormat(char *string_1 , char *string_2){
+    
+    char **words_array = get_words_array(string_2);
+    
+    for(int N = strlen(string_1) , index = 0 ; (index < N) ; index++){
+        
+        if(string_1[index] == '{'){
+            
+            index++;
+            
+            int position_number = 0;
+            
+            while(isdigit(string_1[index])){
+                
+                position_number = ((position_number * 10) + get_digit(string_1[index]));
+                
+                index++;
+            }
+            
+            printf("%s" , words_array[(position_number - 1)]);
+        }else{
+            printf("%c" , string_1[index]);
+        }
+    }
+}
+
+int main(){
+    
+    char str1[10001] , str2[10001];
+    
+    scanf("%[^\n]\n%[^\n]" , str1, str2);
+    
+    customStringFormat(str1 , str2);
+    
+    return 0;
+}
