@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Fill Matrix - Horizontal Zig-Zag Direction in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+R , C = map(int , input().split())
+
+M = (R * C)
+
+flattened_matrix_list = [0 for i in range(0 , M)]
+
+flattened_matrix_list_index = (M - 1)
+
+for index in range(0 , N):
+    
+    flattened_matrix_list[flattened_matrix_list_index] = values_list[index]
+    
+    flattened_matrix_list_index = (M - 1) if(flattened_matrix_list_index == 0) else (flattened_matrix_list_index - 1)
+
+matrix = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+for index , row_index , row_number in zip(range((M - 1) , -1 , (C * -1)) , range((R - 1) , -1 , -1) , range(1 , (R + 1))):
+    
+    row_list = (flattened_matrix_list[(index - C + 1) : (index + 1)][::-1]) if((row_number % 2) == 0) else (flattened_matrix_list[(index - C + 1) : (index + 1)])
+    
+    matrix[row_index] = row_list
+
+[print(*row_list) for row_list in matrix]
