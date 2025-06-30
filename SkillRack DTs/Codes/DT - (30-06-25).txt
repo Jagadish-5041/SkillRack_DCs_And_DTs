@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Combinations - Square Brackets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+N = len(string)
+
+opening_square_bracket_index = string.index('[')
+
+closing_square_bracket_index = string.index(']')
+
+left_string = string[ : opening_square_bracket_index]
+
+right_string = string[(closing_square_bracket_index + 1) : ]
+
+strings_list = sorted([(left_string + alphabet + right_string) for alphabet in string[(opening_square_bracket_index + 1) : closing_square_bracket_index].split("|")])
+
+print(*strings_list)
