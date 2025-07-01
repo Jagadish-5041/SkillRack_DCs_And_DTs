@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Position Product in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+positions_list = list(map(int , input().split()))
+
+position_products_list = [(position * positions_list[(position - 1)]) if(position > 0) else (position * positions_list[position]) for position in positions_list]
+
+print(*position_products_list)
