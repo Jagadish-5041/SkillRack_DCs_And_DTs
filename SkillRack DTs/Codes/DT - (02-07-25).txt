@@ -1,0 +1,23 @@
+Problem Statement :-
+
+String Character Power in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+T = int(input())
+
+frequency_map = {character : 0 for character in string}
+
+powers_map = {character : [] for character in string}
+
+for character in string:
+    
+    frequency_map[character] += 1
+    
+    (powers_map[character].append((powers_map[character][-1] * 2))) if(powers_map[character]) else (powers_map[character].append(1))
+
+P = sum(sum(powers_map[character][0 : min(frequency_map[character] , T)]) for character in frequency_map.keys())
+
+print(P)
