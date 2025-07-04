@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Function - stringToBits() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int get_alphabet_position(char alphabet){
+    
+    return (((int) alphabet) - ((int) 'a'));
+}
+
+char *stringToBits(char *string){
+    
+    int N = strlen(string);
+    
+    char *new_string = ((char *) malloc((N * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sprintf(new_string , "%s%d" , new_string , ((get_alphabet_position(tolower(string[index])) + 1) % 2));
+    }
+    
+    return new_string;
+}
