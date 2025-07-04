@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sort Columns - Number Of 0s in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R_1 , C_1 = map(int , input().split())
+
+binary_matrix = [list(map(int , input().split())) for i in range(0 , R_1)]
+
+data_list = sorted([(j , sum(1 for i in range(0 , R_1) if(binary_matrix[i][j] == 0))) for j in range(0 , C_1)] , key = lambda pair : pair[1])
+
+transposed_binary_matrix = [sorted([binary_matrix[i][j] for i in range(0 , R_1)]) for j , zeroes_count_in_column in data_list]
+
+R_2 = C_1
+
+C_2 = R_1
+
+for j in range(0 , C_2):
+    
+    for i in range(0 , R_2):
+        
+        print(transposed_binary_matrix[i][j] , end = " ")
+    
+    print()
