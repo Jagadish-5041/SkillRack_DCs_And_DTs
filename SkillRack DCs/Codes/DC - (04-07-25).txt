@@ -1,0 +1,32 @@
+Problem Statement :-
+
+Function - splitEvenLengthWords() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_even(int N){
+    
+    return ((N & 1) == 0);
+}
+
+char *splitEvenLengthWords(char *string){
+    
+    int N = strlen(string);
+    
+    char *new_string = ((char *) malloc(((N * 2) * sizeof(char))));
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int M = strlen(string_tokenizer);
+        
+        if(is_even(M)){
+            (strlen(new_string) == 0) ? (sprintf(new_string , "%.*s %.*s" , (M / 2) , &string_tokenizer[0] , (M / 2) , &string_tokenizer[(M / 2)])) : (sprintf(new_string , "%s %.*s %.*s" , new_string , (M / 2) , &string_tokenizer[0] , (M / 2) , &string_tokenizer[(M / 2)]));
+        }else{
+            (strlen(new_string) == 0) ? (sprintf(new_string , "%s" , string_tokenizer)) : (sprintf(new_string , "%s %s" , new_string , string_tokenizer));
+        }
+    }
+    
+    return new_string;
+}
