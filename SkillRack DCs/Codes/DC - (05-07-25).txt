@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Flip Submatrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+X , Y , K = [(value - 1) if((index == 0) or (index == 1)) else (value) for index , value in enumerate(list(map(int , input().split())))]
+
+starting_i = X
+
+ending_i = (X + K - 1)
+
+starting_j = Y
+
+ending_j = (Y + K - 1)
+
+for i in range(starting_i , (starting_i + (K // 2) + (K % 2))):
+    
+    for j in  range(starting_j , (ending_j + 1)):
+        
+        matrix[i][j] , matrix[(ending_i - (i - starting_i))][j] = matrix[(ending_i - (i - starting_i))][j] , matrix[i][j]
+
+[print(*row_list) for row_list in matrix]
