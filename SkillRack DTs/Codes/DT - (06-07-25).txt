@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Split & Find Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+digits_string = input().strip()
+
+index = 0
+
+N = len(digits_string)
+
+identical_strings_sum = 0
+
+while(index < N):
+    
+    identical_digits_string = ''
+    
+    current_digit = digits_string[index]
+    
+    while((index < N) and (digits_string[index] == current_digit)):
+        
+        identical_digits_string += digits_string[index]
+        
+        index += 1
+    
+    identical_strings_sum += int(identical_digits_string)
+
+print(identical_strings_sum)
