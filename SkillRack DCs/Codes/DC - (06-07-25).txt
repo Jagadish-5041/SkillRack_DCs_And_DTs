@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Shift Subarrays in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+Q = int(input())
+
+for query in range(0 , Q):
+    
+    starting_index , ending_index , direction = [(int(value) - 1) if((index == 0) or (index == 1)) else (value) for index , value in enumerate(input().strip().split())]
+    
+    subarray_list = values_list[starting_index : (ending_index + 1)]
+    
+    values_list[starting_index : (ending_index + 1)] = (subarray_list[1 : ] + [subarray_list[0]]) if(direction == 'L') else ([subarray_list[-1]] + subarray_list[ : -1])
+    
+    print(*values_list)
