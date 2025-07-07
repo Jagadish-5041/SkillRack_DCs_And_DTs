@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Find Operator - Maximum Result in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+A , B = map(int , input().split())
+
+maximum_value = ((sys.maxsize * -1) - 1)
+
+maximum_value_operator = None
+
+for value , operator in [(X , Y) for X , Y in zip([(A * B) , (A - B) , (A + B) , (A // B)] , '*-+/')]:
+    
+    if(maximum_value < value):
+        
+        maximum_value = value
+        
+        maximum_value_operator = operator
+
+print(maximum_value_operator)
