@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Count Cells - Coordinates Value in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def concatenate_numbers(number_1 , number_2):
+    
+    return ((number_1 * (10 ** get_length_of_N(number_2))) + number_2)
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+count = 0
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(matrix[i][j] == concatenate_numbers((i + 1) , (j + 1))):
+            
+            count += 1
+
+print(count)
