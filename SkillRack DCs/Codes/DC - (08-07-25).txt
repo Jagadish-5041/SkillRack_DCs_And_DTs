@@ -1,0 +1,30 @@
+Problem Statement :-
+
+Function - swapChildren() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+void depth_first_search(struct Node *root_node , int target_value){
+    
+    if(root_node == NULL){
+        return ;
+    }
+    
+    depth_first_search((root_node -> left) , target_value);
+    
+    depth_first_search((root_node -> right) , target_value);
+    
+    if(((root_node -> data) == target_value) && ((root_node -> left) != NULL) && ((root_node -> right) != NULL)){
+        
+        struct Node *temp_node = (root_node -> left);
+        
+        (root_node -> left) = (root_node -> right);
+        
+        (root_node -> right) = temp_node;
+    }
+}
+
+void swapChildren(struct Node *root_node , int X){
+    
+    depth_first_search(root_node , X);
+}
