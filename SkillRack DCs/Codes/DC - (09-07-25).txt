@@ -1,0 +1,48 @@
+Problem Statement :-
+
+Ascending Descending Array in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_flags(N , values_list):
+    
+    equal_flag = True
+    
+    ascending_flag = True
+    
+    descending_flag = True
+    
+    for i in range(0 , (N - 1)):
+        
+        equal_flag = (False) if(not (values_list[i] == values_list[(i + 1)])) else (equal_flag)
+        
+        ascending_flag = (False) if(not (values_list[i] <= values_list[(i + 1)])) else (ascending_flag)
+        
+        descending_flag = (False) if(not (values_list[i] >= values_list[(i + 1)])) else (descending_flag)
+    
+    return (equal_flag , ascending_flag , descending_flag)
+
+N = int(input())
+
+values_list_1 = list(map(int , input().split()))
+
+M = int(input())
+
+values_list_2 = list(map(int , input().split()))
+
+equal_flag_1 , ascending_flag_1 , descending_flag_1 = get_flags(N , values_list_1)
+
+equal_flag_2 , ascending_flag_2 , descending_flag_2 = get_flags(M , values_list_2)
+
+A = None
+
+B = None
+
+if((equal_flag_1 == 1) and (equal_flag_2 == 1)):
+    A , B = (values_list_1 , values_list_2) if((values_list_1[0] == values_list_2[0]) or (min(values_list_1[0] , values_list_2[0]) == values_list_1[0])) else (values_list_2 , values_list_1)
+else:
+    A , B = (values_list_1 , values_list_2) if((ascending_flag_1) and (descending_flag_2)) else (values_list_2 , values_list_1)
+
+print(*A)
+
+print(*B)
