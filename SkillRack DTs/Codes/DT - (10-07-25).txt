@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Multilevel Increasing Series in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , T = map(int , input().split())
+
+series_list = ([0 for i in range(0 , (N - 1))] + [1])
+
+[series_list.append(sum(series_list[(N * -1) : ])) for i in range(0 , (T - N + 1))]
+
+print(*series_list[ : T])
