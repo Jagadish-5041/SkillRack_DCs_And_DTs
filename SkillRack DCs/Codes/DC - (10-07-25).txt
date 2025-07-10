@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Strings - Print Vertically in DC (Daily Challenge) in SkillRack in Python - Programming 
+
+Code :-
+
+def fill_column(N , string , j , R , C , matrix):
+    
+    for i in range(0 , N):
+        
+        matrix[i][j] = string[i]
+
+string_1 = input().strip()
+
+string_2 = input().strip()
+
+string_3 = input().strip()
+
+character_indices_list_map = {}
+
+[character_indices_list_map.setdefault(character , []).append(index) for index , character in enumerate(string_1)]
+
+R = len(max(string_2 , string_3 , key = len))
+
+C = len(string_1)
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+matrix[0] = list(string_1)
+
+fill_column(len(string_2) , string_2 , character_indices_list_map[string_2[0]][0] , R , C , matrix)
+
+fill_column(len(string_3) , string_3 , character_indices_list_map[string_3[0]][((1) if(string_2[0] == string_3[0]) else (0))] , R , C , matrix)
+
+[print(*row_list , sep = "") for row_list in matrix]
