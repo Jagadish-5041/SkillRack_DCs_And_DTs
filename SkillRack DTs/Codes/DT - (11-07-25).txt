@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Function - printSamePositionDigitsSum() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(labs(N))) + 1));
+}
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+void printSamePositionDigitsSum(int number_1 , int number_2){
+    
+    int N = get_length_of_N(number_1);
+    
+    int M = get_length_of_N(number_2);
+    
+    int size = max(N , M);
+    
+    int array[size];
+    
+    for(int index = (size - 1) ; ((number_1 > 0) || (number_2 > 0)) ; index-- , number_1 = (number_1 / 10) , number_2 = (number_2 / 10)){
+        array[index] = ((number_1 % 10) + (number_2 % 10));
+    }
+    
+    char *number_3 = ((char *) malloc((((size * 2) + 1) * sizeof(char))));
+    
+    for(int index = 0 ; (index < size) ; index++){
+        (index == 0) ? (sprintf(number_3 , "%d" , array[index])) : (sprintf(number_3 , "%s%d" , number_3 , array[index]));
+    }
+    
+    printf("%s" , number_3);
+}
