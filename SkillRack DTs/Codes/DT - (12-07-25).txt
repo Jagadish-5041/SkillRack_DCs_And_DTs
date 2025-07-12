@@ -1,0 +1,31 @@
+Problem Statement :-
+
+String Super Compression in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+alphabets_frequency_map = {chr((alphabet_position + ord('a'))) : 0 for alphabet_position in range(0 , 26)}
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+while(index < N):
+    
+    current_alphabet = string[index]
+    
+    current_number = 0
+    
+    index += 1
+    
+    while((index < N) and (string[index].isdigit())):
+        
+        current_number = ((current_number * 10) + int(string[index]))
+        
+        index += 1
+    
+    alphabets_frequency_map[current_alphabet] += current_number
+
+print((''.join((key + str(value)) for key , value in alphabets_frequency_map.items() if(value != 0))))
