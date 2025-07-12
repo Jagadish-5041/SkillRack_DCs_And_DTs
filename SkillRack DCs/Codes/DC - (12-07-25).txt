@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Shift Characters - Multiple Words in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def shift_K_characters(K , N , word_string):
+    
+    K = (K % N)
+    
+    new_word_string = (word_string[(N - K) : N] + word_string[0 : (N - K)])
+    
+    return new_word_string
+
+words_list = input().strip().split()
+
+K = int(input())
+
+new_words_list = [shift_K_characters(K , len(word_string) , word_string) for word_string in words_list]
+
+print(sum(1 for original_word_string , K_characters_shifted_word_string in zip(words_list , new_words_list) if(original_word_string == K_characters_shifted_word_string)))
+
+print(*new_words_list)
