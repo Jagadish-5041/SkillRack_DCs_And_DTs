@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Concat Adjacent - Divisible Or Not in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def get_concatenated_number(number_1 , number_2):
+    
+    return ((number_1 * (10 ** get_length_of_N(number_2))) + number_2)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+X = int(input())
+
+flag = True
+
+for index in range(0 , (N - 1)):
+    
+    A = values_list[index]
+    
+    B = values_list[(index + 1)]
+    
+    if((get_concatenated_number(A , B) % X) == 0):
+        flag = False
+        print(A , B)
+    elif((get_concatenated_number(B , A) % X) == 0):
+        flag = False
+        print(B , A)
+
+(print(-1)) if(flag) else ('')
