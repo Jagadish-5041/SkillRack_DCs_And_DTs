@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Function - countDigitsInWords() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+int get_alphabet_position(char alphabet){
+    
+    return (((int) alphabet) - ((int) 'a'));
+}
+
+int check(char *string , int frequency_array[]){
+    
+    int frequency_array_copy[26];
+    
+    memcpy(frequency_array_copy , frequency_array , sizeof(frequency_array_copy));
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; frequency_array_copy[get_alphabet_position(string[index])]-- , index++){
+        
+        if(frequency_array_copy[get_alphabet_position(string[index])] <= 0){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+int countDigitsInWords(char *string){
+    
+    int frequency_array[26] = {0};
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        if(isalpha(string[index])){
+            
+            frequency_array[get_alphabet_position(tolower(string[index]))]++;
+        }
+    }
+    
+    int count = 0;
+    
+    char array[10][6] = {"zero" , "one" , "two" , "three" , "four" , "five" , "six" , "seven" , "eight" , "nine"};
+    
+    for(int index = 0 ; (index < 10) ; index++){
+        
+        if(check(array[index] , frequency_array)){
+            
+            count++;
+        }
+    }
+    
+    return count;
+}
