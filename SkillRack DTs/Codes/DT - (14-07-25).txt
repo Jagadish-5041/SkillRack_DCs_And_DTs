@@ -1,0 +1,61 @@
+Problem Statement :-
+
+Biggest Plus Sign In Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+binary_matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+from_left_to_right_continuous_1_bits_count_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+from_right_to_left_continuous_1_bits_count_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    continuous_1_bits_count_from_left_to_right = 0
+    
+    continuous_1_bits_count_from_right_to_left = 0
+    
+    for from_left_to_right_j , from_right_to_left_j in zip(range(0 , C) , range((C - 1) , -1 , -1)):
+        
+        from_left_to_right_continuous_1_bits_count_matrix[i][from_left_to_right_j] = continuous_1_bits_count_from_left_to_right
+        
+        from_right_to_left_continuous_1_bits_count_matrix[i][from_right_to_left_j] = continuous_1_bits_count_from_right_to_left
+        
+        continuous_1_bits_count_from_left_to_right = (continuous_1_bits_count_from_left_to_right + 1) if(binary_matrix[i][from_left_to_right_j] == 1) else (0)
+        
+        continuous_1_bits_count_from_right_to_left = (continuous_1_bits_count_from_right_to_left + 1) if(binary_matrix[i][from_right_to_left_j] == 1) else (0)
+
+from_top_to_bottom_continuous_1_bits_count_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+from_bottom_to_top_continuous_1_bits_count_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+for j in range(0 , C):
+    
+    continuous_1_bits_count_from_top_to_bottom = 0
+    
+    continuous_1_bits_count_from_bottom_to_top = 0
+    
+    for from_top_to_bottom_i , from_bottom_to_top_i in zip(range(0 , R) , range((R - 1) , -1 , -1)):
+        
+        from_top_to_bottom_continuous_1_bits_count_matrix[from_top_to_bottom_i][j] = continuous_1_bits_count_from_top_to_bottom
+        
+        from_bottom_to_top_continuous_1_bits_count_matrix[from_bottom_to_top_i][j] = continuous_1_bits_count_from_bottom_to_top
+        
+        continuous_1_bits_count_from_top_to_bottom = (continuous_1_bits_count_from_top_to_bottom + 1) if(binary_matrix[from_top_to_bottom_i][j] == 1) else (0)
+        
+        continuous_1_bits_count_from_bottom_to_top = (continuous_1_bits_count_from_bottom_to_top + 1) if(binary_matrix[from_bottom_to_top_i][j] == 1) else (0)
+
+maximum_length = 0
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        current_length = min(from_top_to_bottom_continuous_1_bits_count_matrix[i][j] , from_bottom_to_top_continuous_1_bits_count_matrix[i][j] , from_left_to_right_continuous_1_bits_count_matrix[i][j] , from_right_to_left_continuous_1_bits_count_matrix[i][j])
+        
+        maximum_length = (max(maximum_length , (current_length + 1))) if((binary_matrix[i][j] == 1) and (current_length != 0)) else (maximum_length)
+
+print((-1) if(maximum_length == 0) else (maximum_length))
