@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Function - deleteAtMiddle() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int get_nodes_count(struct Node *head_node){
+    
+    int nodes_count = 0;
+    
+    struct Node *current_node = head_node;
+    
+    do{
+        
+        nodes_count++;
+        
+        current_node = (current_node -> next);
+    }while(current_node != head_node);
+    
+    return nodes_count;
+}
+
+struct Node* deleteAtMiddle(struct Node *head_node){
+    
+    int nodes_count = get_nodes_count(head_node);
+    
+    if(nodes_count == 1){
+        return NULL;
+    }
+    
+    struct Node *current_node = head_node;
+    
+    for(int node_index = 0 ; (node_index <= (nodes_count / 2)) ; current_node = (current_node -> next) , node_index++){
+        
+        if(node_index == (nodes_count / 2)){
+            
+            ((current_node -> prev) -> next) = (current_node -> next);
+            
+            ((current_node -> next) -> prev) = (current_node -> prev);
+        }
+    }
+    
+    return head_node;
+}
