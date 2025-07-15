@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Longest Line Length in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+Y_axis_based_groupings_dictionary = {}
+
+[((lambda X , Y : Y_axis_based_groupings_dictionary.setdefault(Y , []).append(X)) (*map(int , input().split()))) for i in range(0 , int(input()))]
+
+longest_line_length = 0
+
+for X_coordinates_list in Y_axis_based_groupings_dictionary.values():
+    
+    current_line_length = (max(X_coordinates_list) - min(X_coordinates_list)) if(len(X_coordinates_list) >= 2) else (0)
+    
+    longest_line_length = max(longest_line_length , current_line_length)
+
+print((-1) if(longest_line_length == 0) else (longest_line_length))
