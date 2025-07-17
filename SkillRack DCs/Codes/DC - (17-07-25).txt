@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Name Matching Score in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+score = 0
+
+list_1 = list(input().strip())
+
+N = len(list_1)
+
+list_2 = list(input().strip())
+
+M = len(list_2)
+
+for index in range(0 , min(N , M)):
+    
+    if(list_1[index] == list_2[index]):
+        
+        score += 2
+        
+        list_1[index] = None
+        
+        list_2[index] = None
+
+for character in (list_1 + list_2):
+    
+    if((character != None) and (character in list_1) and (character in list_2)):
+        
+        score += 1
+        
+        list_1[list_1.index(character)] = None
+        
+        list_2[list_2.index(character)] = None
+
+print(score)
