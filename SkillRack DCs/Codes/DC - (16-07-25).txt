@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Function - addSubtract() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int is_even(int N){
+    
+    return ((N & 1) == 0);
+}
+
+int addSubtract(char *string){
+    
+    int sum = 0;
+    
+    for(int numbers_count = 0 , N = strlen(string) , index = 0 ; (index < N) ; ){
+        
+        char *number_string = ((char *) calloc(N , sizeof(char)));
+        
+        if(string[index] == '('){
+            
+            index++;
+            
+            numbers_count++;
+            
+            while(string[index] != ')'){
+                
+                strncat(number_string , &string[index] , 1);
+                
+                index++;
+            }
+            
+            index++;
+        }
+        
+        sum = ((numbers_count == 1) || (numbers_count == 2) || (is_even(numbers_count))) ? (sum + atoi(number_string)) : (sum - atoi(number_string));
+    }
+    
+    return sum;
+}
+
+int main(){
+    
+    char str[1001];
+    
+    scanf("%s" , str);
+    
+    printf("%d" , addSubtract(str));
+    
+    return 0;
+}
