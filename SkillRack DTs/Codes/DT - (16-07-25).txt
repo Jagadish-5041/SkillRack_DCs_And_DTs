@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Text Editor & Scroll Bar in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+X , Y = map(int , input().split())
+
+words_list = input().strip().split()
+
+N = len(words_list)
+
+index = 0
+
+rows_count = 0
+
+while(index < N):
+    
+    characters_count = Y
+    
+    current_row_string = ''
+    
+    while((index < N) and (characters_count >= len(words_list[index]))):
+        
+        characters_count -= (len(words_list[index]) + 1)
+        
+        current_row_string += (words_list[index] + " ")
+        
+        index += 1
+    
+    rows_count = (rows_count + 1) if(current_row_string) else (current_rows_count)
+
+number_of_times_the_scroll_bar_to_be_moved_down = max((rows_count - X) , 0)
+
+print(number_of_times_the_scroll_bar_to_be_moved_down)
