@@ -14,7 +14,7 @@ M = len(string_2)
 
 indices_map = {}
 
-[indices_map.setdefault(character , []).append(index) for index , character in enumerate(string_1)]\
+[indices_map.setdefault(character , []).append(index) for index , character in enumerate(string_1)]
 
 indices_list = [indices_map[character][0] for character in string_2]
 
