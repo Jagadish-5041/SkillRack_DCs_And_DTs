@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Substring - First Occurrence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+string_1 = input().strip()
+
+N = len(string_1)
+
+string_2 = input().strip()
+
+M = len(string_2)
+
+indices_map = {}
+
+[indices_map.setdefault(character , []).append(index) for index , character in enumerate(string_1)]\
+
+indices_list = [indices_map[character][0] for character in string_2]
+
+print(string_1[min(indices_list) : (max(indices_list) + 1)])
