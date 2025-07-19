@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sort Integers - Factors Count in DT (Daily Test) in SkillRack in Python Programming
+
+Code :-
+
+def get_factors_count(N):
+    
+    factors_count = 1
+    
+    for number in range(2 , ((N // 2) + 1)):
+        
+        if((N % number) == 0):
+            
+            factors_count += 1
+    
+    return factors_count
+
+N = int(input())
+
+factors_count_map = {}
+
+[factors_count_map.setdefault(get_factors_count(number) , []).append(number) for number in list(map(int , input().split()))]
+
+[print(*sorted(factors_count_map[factors_count] , reverse = True)) for factors_count in sorted(factors_count_map.keys() , reverse = True)]
