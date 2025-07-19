@@ -1,0 +1,31 @@
+Problem statement :-
+
+Knight - Possible Moves in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+R = 8
+
+C = 8
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+H_i = -999
+
+H_j = -999
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(matrix[i][j] == 'H'):
+            
+            H_i = i
+            
+            H_j = j
+
+print(sum(1 for offset_i , offset_j in [(-2 , -1) , (-2 , 1) , (2 , -1) , (2 , 1) , (-1 , -2) , (-1 , 2) , (1 , -2) , (1 , 2)] if((is_within_bounds((H_i + offset_i) , R)) and (is_within_bounds((H_j + offset_j) , C)))))
