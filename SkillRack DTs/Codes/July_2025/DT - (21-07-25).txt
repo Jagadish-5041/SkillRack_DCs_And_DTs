@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Expand Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+powers_of_10 = 0
+
+expanded_numbers_list = []
+
+while(N > 0):
+    
+    digit = (N % 10)
+    
+    expanded_number = (digit * (10 ** powers_of_10))
+    
+    (expanded_numbers_list.insert(0 , expanded_number)) if(expanded_number != 0) else ('')
+    
+    N = (N // 10)
+    
+    powers_of_10 = (powers_of_10 + 1)
+
+print(*expanded_numbers_list , sep = "+")
