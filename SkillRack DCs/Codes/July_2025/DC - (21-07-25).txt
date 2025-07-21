@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Addition - Count Carries in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+X = int(input())
+
+Y = int(input())
+
+carry_value = 0
+
+count = 0
+
+while((X > 0) or (Y > 0)):
+    
+    digit_1 = (X % 10)
+    
+    digit_2 = (Y % 10)
+    
+    sum_value = (digit_1 + digit_2 + carry_value)
+    
+    value = (sum_value % 10)
+    
+    carry_value = (sum_value // 10)
+    
+    count = (count + 1) if(carry_value != 0) else (count)
+    
+    X = (X // 10)
+    
+    Y = (Y // 10)
+
+print(count)
