@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Matrix Rows Pattern Matching in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+string = input().strip()
+
+alphabets_and_rows_map = {}
+
+[alphabets_and_rows_map.setdefault(alphabet , []).append(matrix[row_index]) for alphabet , row_index in zip(string , range(0 , R))]
+
+key_alphabets_string = (''.join(alphabets_and_rows_map.keys()))
+
+for alphabet in key_alphabets_string:
+    
+    for values_list in zip(*alphabets_and_rows_map[alphabet]):
+        
+        if(len(set(values_list)) != 1):
+            
+            print('NO')
+            
+            quit()
+
+for alphabet_1 in key_alphabets_string:
+    
+    for row_list in alphabets_and_rows_map[alphabet_1]:
+        
+        for alphabet_2 in key_alphabets_string:
+            
+            if((alphabet_2 != alphabet_1) and (row_list in alphabets_and_rows_map[alphabet_2])):
+                
+                print('NO')
+                
+                quit()
+
+print('YES')
