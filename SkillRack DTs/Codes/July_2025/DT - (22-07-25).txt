@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Function - hexCodeToString() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char* hexCodeToString(char *hex_code_string){
+    
+    char *answer_string = ((char *) malloc((strlen(hex_code_string) * sizeof(char))));
+    
+    for(char *hexa_decimal_values_string = "0123456789abcdef" , *string_tokenizer = strtok(hex_code_string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int decimal_value = 0;
+        
+        for(int index = (strlen(string_tokenizer) - 1) , power_value = 0 ; (index >= 0) ; index-- , power_value++){
+            decimal_value += ((strchr(hexa_decimal_values_string , string_tokenizer[index]) - hexa_decimal_values_string) * ((int) pow(16 , power_value)));
+        }
+        
+        sprintf(answer_string , "%s%c" , answer_string , ((char) decimal_value));
+    }
+    
+    return answer_string;
+}
