@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Evaluate Parentheses Expression in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_expression_value(expression_string):
+    
+    answer_value = 0
+    
+    parentheses_pairs_count = 0
+    
+    index = 0
+    
+    N = len(expression_string)
+    
+    while(is_within_bounds(index , N)):
+        
+        if((is_within_bounds(index , N)) and (expression_string[index] == '(')):
+            
+            while((is_within_bounds(index , N)) and (expression_string[index] == '(')):
+                
+                parentheses_pairs_count += 1
+                
+                index += 1
+        
+        if((is_within_bounds(index , N)) and (expression_string[index].isdigit())):
+            
+            number = 0
+            
+            while((is_within_bounds(index , N)) and (expression_string[index].isdigit())):
+                
+                number = ((number * 10) + int(expression_string[index]))
+                
+                index += 1
+            
+            answer_value = (answer_value + (number * parentheses_pairs_count))
+        
+        if((is_within_bounds(index , N)) and (expression_string[index] == ')')):
+            
+            while((is_within_bounds(index , N)) and (expression_string[index] == ')')):
+                
+                parentheses_pairs_count -= 1
+                
+                index += 1
+    
+    return answer_value
+
+print(get_expression_value(input().strip()))
