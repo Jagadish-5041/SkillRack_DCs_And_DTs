@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Find Total Race Time in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_decimal_value(binary_string):
+    
+    return sum((int(bit) * (2 ** power_value)) for power_value , bit in zip(range((len(binary_string) - 1) , -1 , -1) , binary_string))
+
+def convert_hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def convert_seconds_to_24_hours_time_format(total_seconds):
+    
+    hours = ((total_seconds // 3600) % 24)
+    
+    minutes = (((total_seconds % 3600) // 60) % 60)
+    
+    seconds = (total_seconds - (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes)))
+    
+    return (hours , minutes , seconds)
+
+def custom_print(hours , minutes , seconds):
+    
+    print("{:02d}:{:02d}:{:02d}".format(hours , minutes , seconds))
+
+custom_print(*convert_seconds_to_24_hours_time_format(sum(get_decimal_value(input().strip()) for i in range(0 , int(input())))))
