@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Floating Point - Place Values in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_first_half(digits_string , answer_list):
+    
+    [answer_list.insert(0 , (int(digit_string) * (10 ** powers_of_10))) for digit_string , powers_of_10 in zip(digits_string[::-1] , range(0 , len(digits_string)))]
+
+def get_second_half(digits_string , answer_list):
+    
+    [answer_list.append(((0) if(digit_string == '0') else ("{}/{}".format(digit_string , (10 ** powers_of_10))))) for digit_string , powers_of_10 in zip(digits_string , range(1 , (len(digits_string) + 1)))]
+
+integer_part , decimal_part = input().strip().split(".")
+
+answer_list = []
+
+get_first_half(integer_part , answer_list)
+
+get_second_half(decimal_part , answer_list)
+
+print(*answer_list)
