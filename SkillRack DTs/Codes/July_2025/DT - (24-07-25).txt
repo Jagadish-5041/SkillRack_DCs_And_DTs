@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Capacitor Charged Cells in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def update_answer_matrix(current_i , current_j , R , C , answer_matrix , offset_coordinates_list):
+    
+    for offset_i , offset_j in offset_coordinates_list:
+        
+        if((is_within_bounds((current_i + offset_i) , R)) and (is_within_bounds((current_j + offset_j) , C))):
+            
+            answer_matrix[(current_i + offset_i)][(current_j + offset_j)] = 'C'
+
+R , C = map(int , input().split())
+
+binary_matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+answer_matrix = [['0' for j in range(0 , C)] for i in range(0 , R)]
+
+offset_coordinates_list = [(0 , 0) , (-1 , -1) , (-1 , 0) , (-1 , 1) , (1 , -1) , (1 , 0) , (1 , 1) , (0 , -1) , (0 , 1)]
+
+[update_answer_matrix(i , j , R , C , answer_matrix , offset_coordinates_list) for i in range(0 , R) for j in range(0 , C) if(binary_matrix[i][j] == 1)]
+
+[print(*row_list) for row_list in answer_matrix]
