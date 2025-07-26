@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Holes Sequence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_holes_count(N , digits_and_holes_map):
+    
+    holes_count = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        holes_count += digits_and_holes_map[digit]
+        
+        N = (N // 10)
+    
+    return holes_count
+
+def build_sequence_list(starting_range_value , ending_range_value , target_holes_count , digits_and_holes_map , sequence_list):
+    
+    for number in range(starting_range_value , (ending_range_value + 1)):
+        
+        if(get_holes_count(number , digits_and_holes_map) >= target_holes_count):
+            
+            sequence_list.append(number)
+
+def print_till_N_from_sequence_list(N , sequence_list):
+    
+    index = 0
+    
+    sequence_list_length = len(sequence_list)
+    
+    while((index < sequence_list_length) and (sequence_list[index] <= N)):
+        
+        print(sequence_list[index] , end = " ")
+        
+        index += 1
+
+digits_and_holes_map = {digit_value : hole_value for digit_value , hole_value in zip(range(0 , 10) , [1 , 0 , 0 , 0 , 1 , 0 , 1 , 0 , 2 , 1])}
+
+sequence_list = []
+
+[build_sequence_list(starting_range_value , ending_range_value , target_holes_count , digits_and_holes_map , sequence_list) for starting_range_value , ending_range_value , target_holes_count in [(1 , 9 , 1) , (10 , 99 , 2) , (100 , 999 , 3) , (1000 , 9999 , 4)]]
+
+print_till_N_from_sequence_list(int(input()) , sequence_list)
