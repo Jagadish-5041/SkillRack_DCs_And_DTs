@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Function - getMatrixEdge() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+boundedArray* getMatrixEdge(int R , int C , int matrix[R][C] , char edge){
+    
+    int *edge_values_array = ((edge == 'T') || (edge == 'B')) ? ((int *) malloc((C * sizeof(int)))) : ((int *) malloc((R * sizeof(int))));
+    
+    int edge_values_array_index = 0;
+    
+    if((edge == 'T') || (edge == 'B')){
+        
+        for(int left_to_right_column_index = 0 , right_to_left_column_index = (C - 1) ; ((left_to_right_column_index < C) && (right_to_left_column_index >= 0)) ; left_to_right_column_index++ , right_to_left_column_index--){
+            
+            edge_values_array[edge_values_array_index++] = (edge == 'T') ? (matrix[0][left_to_right_column_index]) : (matrix[(R - 1)][right_to_left_column_index]);
+        }
+    }else{
+        
+        for(int bottom_to_top_row_index = (R - 1) , top_to_bottom_row_index = 0 ; ((bottom_to_top_row_index >= 0) && (top_to_bottom_row_index < R)) ; bottom_to_top_row_index-- , top_to_bottom_row_index++){
+            
+            edge_values_array[edge_values_array_index++] = (edge == 'L') ? (matrix[bottom_to_top_row_index][0]) : (matrix[top_to_bottom_row_index][(C - 1)]);
+        }
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = edge_values_array_index;
+    
+    (bounded_array_reference -> arr) = edge_values_array;
+    
+    return bounded_array_reference;
+}
