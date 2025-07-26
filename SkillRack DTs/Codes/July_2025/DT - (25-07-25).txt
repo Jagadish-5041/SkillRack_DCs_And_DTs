@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Prime Numbers - Three Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(N , digits_list , current_combination_number , combinations_set , visited_flag_array):
+    
+    combinations_set.add(current_combination_number)
+    
+    for index in range(0 , N):
+        
+        if(not visited_flag_array[index]):
+            
+            visited_flag_array[index] = True
+            
+            current_combination_number = ((current_combination_number * 10) + digits_list[index])
+            
+            depth_first_search(N , digits_list , current_combination_number , combinations_set , visited_flag_array)
+            
+            visited_flag_array[index] = False
+            
+            current_combination_number = (current_combination_number // 10)
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+digits_list = list(map(int , input().split()))
+
+combinations_set = set()
+
+depth_first_search(len(digits_list) , digits_list , 0 , combinations_set , [False for i in range(0 , len(digits_list))])
+
+[print(number , end = " ") for number in sorted(list(combinations_set)) if(is_prime(number))]
