@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Split String - Double Quotes in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+while(index < N):
+    
+    if(string[index] == '"'):
+        
+        index += 1
+        
+        while((index < N) and (string[index] != '"')):
+            
+            print(string[index] , end = "")
+            
+            index += 1
+        
+        index += 1
+    
+    elif(string[index] == " "):
+        
+        print()
+        
+        index += 1
+    
+    else:
+        
+        print(string[index] , end = "")
+        
+        index += 1
