@@ -1,0 +1,36 @@
+Problem Statement :-
+
+String - Copy & Paste Shortcuts in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+printing_string = ""
+
+copied_string = ""
+
+while(index < N):
+    
+    current_string = ""
+    
+    while((index < N) and (string[index] != ' ')):
+        
+        current_string += string[index]
+        
+        index += 1
+    
+    index += 1
+    
+    if(current_string == "Ctrl+C"):
+        copied_string = printing_string.strip()
+    elif(current_string == "Ctrl+V"):
+        printing_string = (printing_string + ' ' + copied_string).strip()
+    else:
+        printing_string = (printing_string + ' ' + current_string).strip()
+
+print(printing_string)
