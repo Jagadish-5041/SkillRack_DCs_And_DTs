@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Largest Integer - Positive & Negative in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def is_negative(N):
+    
+    return (N < 0)
+
+def is_positive(N):
+    
+    return (N > 0)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+M = 100008
+
+negative_values_flag_list = [False for i in range(0 , M)]
+
+positive_values_flag_list = [False for i in range(0 , M)]
+
+for value in values_list:
+    
+    if(is_negative(value)):
+        negative_values_flag_list[abs(value)] = True
+    elif(is_positive(value)):
+        positive_values_flag_list[value] = True
+
+minimum_integer = (sys.maxsize * -1)
+
+largest_integer = minimum_integer
+
+for value in values_list:
+    
+    if((negative_values_flag_list[abs(value)]) and (positive_values_flag_list[abs(value)])):
+        
+        largest_integer = max(largest_integer , abs(value))
+
+print((-1) if(largest_integer == minimum_integer) else (largest_integer))
