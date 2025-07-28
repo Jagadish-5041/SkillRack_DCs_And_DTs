@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Find Time - Stop Watch in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+if(N & 1):
+    print(-1)
+    quit()
+
+times_list = list(map(int , input().split()))
+
+differences_sum = sum((times_list[i] - times_list[(i - 1)]) for i in range((N - 1) , -1 , -2))
+
+print(differences_sum)
