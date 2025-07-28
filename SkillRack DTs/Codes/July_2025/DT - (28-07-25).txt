@@ -1,0 +1,70 @@
+Problem Statement :-
+
+Reorder Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def get_digits_list(N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.append(digit)
+        
+        N = (N // 10)
+    
+    return digits_list
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def depth_first_search(recursion_depth , N , digits_list , current_number_combination , target_number , visited_flag_list):
+    
+    global minimum_number_greater_than_or_equal_to_A
+    
+    if(recursion_depth >= N):
+        minimum_number_greater_than_or_equal_to_A = (min(minimum_number_greater_than_or_equal_to_A , current_number_combination)) if(current_number_combination >= target_number) else (minimum_number_greater_than_or_equal_to_A)
+        return 
+    
+    if(recursion_depth >= N):
+        return 
+    
+    for index in range(0 , N):
+        
+        if((is_within_bounds((index - 1) , N)) and (digits_list[(index - 1)] == digits_list[index]) and (not visited_flag_list[(index - 1)])):
+            continue
+        
+        if((recursion_depth == 0) and (digits_list[index] == 0)):
+            continue
+        
+        if(not visited_flag_list[index]):
+            
+            recursion_depth = (recursion_depth + 1)
+            
+            visited_flag_list[index] = True
+            
+            current_number_combination = ((current_number_combination * 10) + digits_list[index])
+            
+            depth_first_search(recursion_depth , N , digits_list , current_number_combination , target_number , visited_flag_list)
+            
+            recursion_depth = (recursion_depth - 1)
+            
+            visited_flag_list[index] = False
+            
+            current_number_combination = (current_number_combination // 10)
+
+N , A = map(int , input().split())
+
+sorted_digits_list = sorted(get_digits_list(N))
+
+minimum_number_greater_than_or_equal_to_A = sys.maxsize
+
+depth_first_search(0 , len(sorted_digits_list) , sorted_digits_list , 0 , A , [False for i in range(0 , len(sorted_digits_list))])
+
+print(minimum_number_greater_than_or_equal_to_A)
