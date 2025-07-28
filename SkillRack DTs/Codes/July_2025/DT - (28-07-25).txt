@@ -32,9 +32,6 @@ def depth_first_search(recursion_depth , N , digits_list , current_number_combin
         minimum_number_greater_than_or_equal_to_A = (min(minimum_number_greater_than_or_equal_to_A , current_number_combination)) if(current_number_combination >= target_number) else (minimum_number_greater_than_or_equal_to_A)
         return 
     
-    if(recursion_depth >= N):
-        return 
-    
     for index in range(0 , N):
         
         if((is_within_bounds((index - 1) , N)) and (digits_list[(index - 1)] == digits_list[index]) and (not visited_flag_list[(index - 1)])):
