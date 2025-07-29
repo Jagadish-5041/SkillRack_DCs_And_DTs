@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Tilted Rectangle Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+hyphens_string = ('-' * N)
+
+asterisks_string = ('*' * N)
+
+top_and_bottom_rows_string = asterisks_string
+
+middle_rows_string = (asterisks_string[0] + hyphens_string[0 : (N - 2)] + asterisks_string[0])
+
+[print((hyphens_string[0 : (N - i)] + ((top_and_bottom_rows_string) if((i == 1) or (i == N)) else (middle_rows_string)))) for i in range(1 , (N + 1))]
