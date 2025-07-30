@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Function - formIntegerFromDigits() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int is_odd(int N){
+    
+    return ((N & 1) == 1);
+}
+
+long long int formIntegerFromDigits(char *string){
+    
+    long long int number = 0;
+    
+    int negative_digits_count = 0;
+    
+    for(char *string_tokenizer = strtok(string , ",") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , ",")){
+        
+        negative_digits_count = (string_tokenizer[0] == '-') ? (negative_digits_count + 1) : (negative_digits_count);
+        
+        number = ((number * 10) + abs(atoi(string_tokenizer)));
+    }
+    
+    return ((is_odd(negative_digits_count)) ? (number * -1) : (number));
+}
+
+int main(){
+    
+    char str[101];
+    
+    scanf("%s" , str);
+    
+    printf("%lld" , formIntegerFromDigits(str));
+    
+    return 0;
+}
