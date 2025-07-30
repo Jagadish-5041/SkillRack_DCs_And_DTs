@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Rising Sequence - Minimum Addition in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_absolute_difference(A , B):
+    
+    return abs((A - B))
+
+def get_minimum_addition(index , N , sequence_list , K):
+    
+    minimum_addition = 0
+    
+    while(is_within_bounds(index , N)):
+        
+        while((is_within_bounds(index , N)) and (is_within_bounds((index + 1) , N)) and (sequence_list[index] < sequence_list[(index + 1)])):
+            index += 1
+        
+        if(is_within_bounds((index + 1) , N)):
+            
+            count = ((get_absolute_difference(sequence_list[index] , sequence_list[(index + 1)]) // K) + 1)
+            
+            sequence_list[(index + 1)] += (count * K)
+            
+            minimum_addition += count
+        
+        index += 1
+    
+    return minimum_addition
+
+print(get_minimum_addition(0 , int(input()) , list(map(int , input().split())) , int(input())))
