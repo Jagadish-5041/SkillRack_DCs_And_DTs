@@ -4,8 +4,6 @@ Rising Sequence - Minimum Addition in DT (Daily Test) in SkillRack in Python - P
 
 Code :-
 
-import math
-
 def is_within_bounds(index , N):
     
     return (0 <= index < N)
