@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Reverse Flash Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+asterisks_string = ('*' * N)
+
+[print("{}{}".format(asterisks_string[0 : asterisks_count] , number)) for asterisks_count , number in zip(range(0 , (N - 1)) , range(1 , N))]
+
+print(*[number for number in range(N , (N * 2))][::-1] , sep = "")
+
+[print("{}{}".format(asterisks_string[0 : asterisks_count] , number)) for asterisks_count , number in zip(range(1 , N) , range((N * 2) , ((N * 2) + (N - 1))))]
