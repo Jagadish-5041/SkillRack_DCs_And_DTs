@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Count Of Integers - Multiples / Factors in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+print(sum(1 for index_1 , number_1 in enumerate(values_list) if(any(((index_1 != index_2) and (number_1 != number_2) and (((number_1 % number_2) == 0) or ((number_2 % number_1) == 0))) for index_2 , number_2 in enumerate(values_list)))))
