@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Laptops & WI-FI Hotspots in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+N = len(string)
+
+laptop_indices_list = []
+
+left_to_right_hotspots_count_list = [None for i in range(0 , N)]
+
+left_to_right_hotspots_count = 0
+
+right_to_left_hotspots_count_list = [None for i in range(0 , N)]
+
+right_to_left_hotspots_count = 0
+
+for left_to_right_index , right_to_left_index in zip(range(0 , N) , range((N - 1) , -1 , -1)):
+    
+    (laptop_indices_list.append(left_to_right_index)) if(string[left_to_right_index] == 'L') else ('')
+    
+    left_to_right_hotspots_count_list[left_to_right_index] = left_to_right_hotspots_count
+    
+    left_to_right_hotspots_count = (left_to_right_hotspots_count + 1) if(string[left_to_right_index] == '*') else ((0) if(string[left_to_right_index] == '#') else (left_to_right_hotspots_count))
+    
+    right_to_left_hotspots_count_list[right_to_left_index] = right_to_left_hotspots_count
+    
+    right_to_left_hotspots_count = (right_to_left_hotspots_count + 1) if(string[right_to_left_index] == '*') else ((0) if(string[right_to_left_index] == '#') else (right_to_left_hotspots_count))
+
+[print((left_to_right_hotspots_count_list[laptop_index] + right_to_left_hotspots_count_list[laptop_index]) , end = " ") for laptop_index in laptop_indices_list]
