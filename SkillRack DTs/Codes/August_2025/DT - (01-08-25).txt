@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Matrix - Check Row Values in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_cell_value_from_coordinates(row_index , column_index , R , C):
+    
+    return ((row_index * C) + column_index + 1)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+matrix_set = set(matrix[i][j] for i in range(0 , R) for j in range(0 , C))
+
+value_coordinates_map = {matrix[i][j] : (i , j) for i in range(0 , R) for j in range(0 , C)}
+
+cell_values_matrix = [[get_cell_value_from_coordinates(i , j , R , C) for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(cell_values_matrix[i][j] not in matrix_set):
+            
+            print('No')
+            
+            quit()
+
+for i in range(0 , R):
+    
+    if(not any((value_coordinates_map[cell_values_matrix[i][j]][0] == i) for j in range(0 , C))):
+        
+        print('No')
+        
+        quit()
+
+print('Yes')
