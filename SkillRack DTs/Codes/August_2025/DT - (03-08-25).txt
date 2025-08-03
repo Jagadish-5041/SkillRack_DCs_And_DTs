@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Function - alternateOddEven() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int is_odd(int N){
+    
+    return ((N & 1) == 1);
+}
+
+int is_even(int N){
+    
+    return ((N & 1) == 0);
+}
+
+int* alternateOddEven(int array[] , int N){
+    
+    int *odd_even_interlaced_array = ((int *) malloc((N * sizeof(int))));
+    
+    for(int odd_numbers_index = 0 , even_numbers_index = 1 , array_index = 0 ; (array_index < N) ; array_index++){
+        
+        if(is_odd(array[array_index])){
+            odd_even_interlaced_array[odd_numbers_index] = array[array_index];
+            odd_numbers_index += 2;
+        }else if(is_even(array[array_index])){
+            odd_even_interlaced_array[even_numbers_index] = array[array_index];
+            even_numbers_index += 2;
+        }
+    }
+    
+    return odd_even_interlaced_array;
+}
