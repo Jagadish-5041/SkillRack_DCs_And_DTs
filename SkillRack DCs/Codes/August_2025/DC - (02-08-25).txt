@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Function - getProductSign() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int is_odd(int N){
+    
+    return ((N & 1) == 1);
+}
+
+int getProductSign(int N , int array[]){
+    
+    int negative_numbers_count = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(array[index] == 0){
+            return 0;
+        }
+        
+        if(array[index] < 0){
+            negative_numbers_count++;
+        }
+    }
+    
+    return ((is_odd(negative_numbers_count)) ? (-1) : (1));
+}
