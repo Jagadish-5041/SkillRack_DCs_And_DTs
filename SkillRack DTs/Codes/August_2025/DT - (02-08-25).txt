@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Top-Left To Bottom-Right Diagonals Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_primary_diagonal(filling_character , current_i , current_j , R , C , matrix):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        matrix[current_i][current_j] = filling_character
+        
+        current_i += 1
+        
+        current_j += 1
+
+N = int(input())
+
+R = (N ** 2)
+
+C = (N ** 2)
+
+matrix = [['-' for j in range(0 , C)] for i in range(0 , R)]
+
+[fill_primary_diagonal('*' , i , 0 , R , C , matrix) for i in range(0 , R , N)]
+
+[fill_primary_diagonal('*' , 0 , j , R , C , matrix) for j in range(N , C , N)]
+
+[print(*row_list) for row_list in matrix]
