@@ -1,0 +1,52 @@
+Problem Statement :-
+
+Batsman Average - Shortest Sequence Of 100+ in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_2_decimal_places_format(floating_point_value):
+    
+    return ("{:.2f}".format(floating_point_value))
+
+N = int(input())
+
+scores_list = list(map(int , input().split()))
+
+shortest_sequence_length = sys.maxsize
+
+shortest_sequence_average = 0
+
+index = 0
+
+while(is_within_bounds(index , N)):
+    
+    if(scores_list[index] >= 100):
+        
+        current_sequence_length = 0
+        
+        current_sequence_scores_sum = 0
+        
+        while((is_within_bounds(index , N)) and (scores_list[index] >= 100)):
+            
+            current_sequence_length += 1
+            
+            current_sequence_scores_sum += scores_list[index]
+            
+            index += 1
+        
+        if(shortest_sequence_length >= current_sequence_length):
+            
+            shortest_sequence_length = current_sequence_length
+            
+            shortest_sequence_average = (current_sequence_scores_sum / current_sequence_length)
+    else:
+        
+        index += 1
+
+print(get_2_decimal_places_format(shortest_sequence_average))
