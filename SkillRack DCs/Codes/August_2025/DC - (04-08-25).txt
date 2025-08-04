@@ -1,0 +1,111 @@
+Problem Statement :-
+
+Four-Digit Integers Count in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+
+public class Hello {
+    
+    public static int get_digit(char digit_character){
+        
+        return (((int) digit_character) - ((int) '0'));
+    }
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        String digits_string = sc.nextLine();
+        
+        int N = digits_string.length();
+        
+        int R = N;
+        
+        int C = 10;
+        
+        int[][] left_to_right_frequency_matrix = new int[R][C];
+        
+        int[][] right_to_left_frequency_matrix = new int[R][C];
+        
+        for(int left_to_right_index = 0 , right_to_left_index = (R - 1) ; ((left_to_right_index < R) && (right_to_left_index >= 0)) ; left_to_right_index++ , right_to_left_index--){
+            
+            left_to_right_frequency_matrix[left_to_right_index][get_digit(digits_string.charAt(left_to_right_index))] += 1;
+            
+            right_to_left_frequency_matrix[right_to_left_index][get_digit(digits_string.charAt(right_to_left_index))] += 1;
+        }
+        
+        for(int i_1 = 1 , i_2 = (R - 2) ; ((i_1 < R) && (i_2 >= 0)) ; i_1++ , i_2--){
+            
+            for(int j = 0 ; (j < C) ; j++){
+                
+                left_to_right_frequency_matrix[i_1][j] += left_to_right_frequency_matrix[(i_1 - 1)][j];
+                
+                right_to_left_frequency_matrix[i_2][j] += right_to_left_frequency_matrix[(i_2 + 1)][j];
+            }
+        }
+        
+        Set<String> numbers_set = new HashSet<>();
+        
+        for(int index = 0 ; (index < N) ; index++){
+            
+            if(('0' <= digits_string.charAt(index)) && (digits_string.charAt(index) <= '8')){
+                
+                int digit_1 = get_digit(digits_string.charAt(index));
+                
+                int digit_2 = (digit_1 + 1);
+                
+                if((left_to_right_frequency_matrix[index][digit_1] >= 2) && (right_to_left_frequency_matrix[index][digit_2] >= 2)){
+                    numbers_set.add(String.format("%d%d%d%d" , digit_1 , digit_1 , digit_2 , digit_2));
+                }
+            }
+        }
+        
+        System.out.println(numbers_set.size());
+    }
+}
+
+Problem Statement :-
+
+Four-Digit Integers Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import copy
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+left_to_right_digits_frequency_map = {str(digit) : 0 for digit in range(0 , 10)}
+
+right_to_left_digits_frequency_map = {str(digit) : 0 for digit in range(0 , 10)}
+
+left_to_right_frequency_maps_list = [None for index in range(0 , N)]
+
+right_to_left_frequency_maps_list = [None for index in range(0 , N)]
+
+for left_to_right_index , right_to_left_index in zip(range(0 , N) , range((N - 1) , -1 , -1)):
+    
+    left_to_right_digits_frequency_map[digits_string[left_to_right_index]] += 1
+    
+    left_to_right_frequency_maps_list[left_to_right_index] = copy.deepcopy(left_to_right_digits_frequency_map)
+    
+    right_to_left_digits_frequency_map[digits_string[right_to_left_index]] += 1
+    
+    right_to_left_frequency_maps_list[right_to_left_index] = copy.deepcopy(right_to_left_digits_frequency_map)
+
+numbers_set = set()
+
+for index in range(0 , N):
+    
+    if('0' <= digits_string[index] <= '8'):
+    
+        digit_1 = digits_string[index]
+        
+        digit_2 = str((int(digit_1) + 1))
+        
+        (numbers_set.add((digit_1 + digit_1 + digit_2 + digit_2))) if((left_to_right_frequency_maps_list[index][digit_1] >= 2) and (right_to_left_frequency_maps_list[index][digit_2] >= 2)) else ('')
+
+print(len(numbers_set))
