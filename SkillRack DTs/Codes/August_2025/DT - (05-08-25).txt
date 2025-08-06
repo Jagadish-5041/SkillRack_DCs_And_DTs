@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Flip Coin - Head And Tail in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_alternate_position(current_position):
+    
+    return (('T') if(current_position == 'H') else ('H'))
+
+N = int(input())
+
+toss_counts_list = list(map(int , input().split()))
+
+initial_position = input().strip()
+
+current_position = initial_position
+
+positions_frequency = {'H' : 0 , 'T' : 0}
+
+for toss_count in toss_counts_list:
+    
+    current_position = (get_alternate_position(current_position)) if(is_odd(toss_count)) else (current_position)
+    
+    positions_frequency[current_position] += 1
+
+print(*positions_frequency.values())
