@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Find Time - Binary Clock in DC (Daily Challenge) in SkillRack in Python Programming
+
+Code :-
+
+R = 4
+
+C = 6
+
+binary_matrix = [list(map(int , input().strip().replace(" " , ""))) for i in range(0 , R)]
+
+digits_list = [sum((binary_matrix[i][j] * (2 ** power_value)) for i , power_value in zip(range((R - 1) , -1 , -1) , range(0 , R))) for j in range(0 , C)]
+
+print(digits_list[0] , digits_list[1] , ":" , digits_list[2] , digits_list[3] , ":" , digits_list[4] , digits_list[5] , sep = "")
