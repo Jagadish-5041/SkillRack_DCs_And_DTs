@@ -1,0 +1,59 @@
+Problem Statement :-
+
+Sort Integers - Outside Square Brackets in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+data_list = []
+
+numbers_list = []
+
+while(is_within_bounds(index , N)):
+    
+    if(string[index] == '['):
+        
+        nested_string = ''
+        
+        while((is_within_bounds(index , N)) and (string[index] != ']')):
+            
+            nested_string += string[index]
+            
+            index += 1
+        
+        nested_string += string[index]
+        
+        index += 1
+        
+        data_list.append(nested_string)
+    
+    elif(string[index].isdigit()):
+        
+        number = 0
+        
+        while((is_within_bounds(index , N)) and (string[index].isdigit())):
+            
+            number = ((number * 10) + int(string[index]))
+            
+            index += 1
+        
+        data_list.append(number)
+        
+        numbers_list.append(number)
+    
+    else:
+        
+        index += 1
+
+[data_list.__setitem__(index , number) for index , number in zip([data_index for data_index , data in enumerate(data_list) if(isinstance(data , int))] , sorted(numbers_list))]
+
+print(*data_list)
