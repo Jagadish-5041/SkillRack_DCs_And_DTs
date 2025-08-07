@@ -1,0 +1,16 @@
+Problem Statement :-
+
+Function - asciiToString() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+char* asciiToString(int N , int *ASCII_values_array){
+    
+    char *string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sprintf(string , "%s%c" , string , ((char) ASCII_values_array[index]));
+    }
+    
+    return string;
+}
