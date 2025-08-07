@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Reverse Groups - Alphabets & Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+while(is_within_bounds(index , N)):
+    
+    alphabets_string = ''
+    
+    while((is_within_bounds(index , N)) and (string[index].isalpha())):
+        
+        alphabets_string += string[index]
+        
+        index += 1
+    
+    (print(alphabets_string[::-1] , end = "")) if(alphabets_string) else ('')
+    
+    digits_string = ''
+    
+    while((is_within_bounds(index , N)) and (string[index].isdigit())):
+        
+        digits_string += string[index]
+        
+        index += 1
+    
+    (print(digits_string[::-1] , end = "")) if(digits_string) else ('')
