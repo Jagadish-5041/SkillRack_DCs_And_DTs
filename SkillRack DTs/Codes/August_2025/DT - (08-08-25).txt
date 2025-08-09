@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Word - Split & Merge in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def split_and_merge(N , string):
+    
+    middle_pointer_1 = (N // 2)
+    
+    middle_pointer_2 = math.ceil((N // 2))
+    
+    left_half = (string[0 : middle_pointer_2] + string[middle_pointer_1]) if(is_odd(N)) else (string[0 : middle_pointer_2])
+    
+    right_half = (string[middle_pointer_1] + string[(N - middle_pointer_2) : N]) if(is_odd(N)) else (string[(N - middle_pointer_2) : N])
+    
+    return (right_half + left_half[::-1])
+
+words_list = input().strip().split()
+
+K = int(input())
+
+words_list[(K - 1)] = split_and_merge(len(words_list[(K - 1)]) , words_list[(K - 1)])
+
+print(*words_list)
