@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Rotating Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_cell_value(row_index , column_index , R , C):
+    
+    return (((row_index * C) + column_index) + 1)
+
+def get_rotated_matrix_1(starting_i , ending_i , i_step , starting_j , ending_j , j_step , R , C , matrix):
+    
+    return [[matrix[i][j] for j in range(starting_j , (ending_j + j_step) , j_step)] for i in range(starting_i , (ending_i + i_step) , i_step)]
+
+def get_rotated_matrix_2(starting_i , ending_i , i_step , starting_j , ending_j , j_step , R , C , matrix):
+    
+    return [[matrix[i][j] for i in range(starting_i , (ending_i + i_step) , i_step)] for j in range(starting_j , (ending_j + j_step) , j_step)]
+
+def get_row_sum(row_index , starting_j , ending_j , j_step , R , C , matrix):
+    
+    return sum(matrix[row_index][column_index] for column_index in range(starting_j , (ending_j + j_step) , j_step))
+
+def get_column_sum(column_index , starting_i , ending_i , i_step , R , C , matrix):
+    
+    return sum(matrix[row_index][column_index] for row_index in range(starting_i , (ending_i + i_step) , i_step))
+
+N , K = map(int , input().split())
+
+R = N
+
+C = N
+
+matrix = [[get_cell_value(i , j , R , C) for j in range(0 , C)] for i in range(0 , R)]
+
+K = (K % 4)
+
+rotated_matrix = (get_rotated_matrix_1(0 , (R - 1) , 1 , 0 , (C - 1) , 1 , R , C , matrix)) if(K == 0) else ((get_rotated_matrix_2((R - 1) , 0 , -1 , 0 , (C - 1) , 1 , R , C , matrix)) if(K == 1) else ((get_rotated_matrix_1((R - 1) , 0 , -1 , (C - 1) , 0 , -1 , R , C , matrix)) if(K == 2) else ((get_rotated_matrix_2(0 , (R - 1) , 1 , (C - 1) , 0 , -1 , R , C , matrix)) if(K == 3) else (''))))
+
+four_sums_map = {'A' : get_row_sum(0 , 0 , (C - 1) , 1 , R , C , rotated_matrix) , 'B' : get_column_sum((C - 1) , 0 , (R - 1) , 1 , R , C , rotated_matrix) , 'C' : get_row_sum((R - 1) , (C - 1) , 0 , -1 , R , C , rotated_matrix) , 'D' : get_column_sum(0 , (R - 1) , 0 , -1 , R , C , rotated_matrix)}
+
+maximum_sum_value = max(four_sums_map.values())
+
+for player_name , current_sum_value in four_sums_map.items():
+    
+    if(current_sum_value == maximum_sum_value):
+        
+        print(player_name , current_sum_value)
+        
+        break
