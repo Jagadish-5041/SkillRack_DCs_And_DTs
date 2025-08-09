@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Triplets - Same Difference in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+triplets_list = [(values_list[i] , values_list[j] , values_list[k]) for i in range(0 , N) for j in range((i + 1) , N) for k in range((j + 1) , N) if((values_list[j] - values_list[i]) == (values_list[k] - values_list[j]))]
+
+([print(*triplet_list) for triplet_list in triplets_list]) if(triplets_list) else (print(-1))
