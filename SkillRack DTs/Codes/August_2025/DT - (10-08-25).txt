@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Function - stringToInteger() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int stringToInteger(char *string){
+    
+    int number = 0;
+    
+    int N = strlen(string);
+    
+    char *current_string = ((char *) (malloc((6 * sizeof(char)))));
+    
+    char number_words_array[10][6] = {"zero" , "one" , "two" , "three" , "four" , "five" , "six" , "seven" , "eight" , "nine"};
+    
+    int M = 10;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        strncat(current_string , (&string[index]) , 1);
+        
+        for(int digit_index = 0 ; (digit_index < M) ; digit_index++){
+            
+            if(strcmp(current_string , number_words_array[digit_index]) == 0){
+                
+                number = ((number * 10) + digit_index);
+                
+                current_string = ((char *) malloc((6 * sizeof(char))));
+                
+                break;
+            }
+        }
+    }
+    
+    return number;
+}
