@@ -1,0 +1,18 @@
+Problem Statement :-
+
+Function - getAbbreviation() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *getAbbreviation(char *string){
+    
+    char *abbreviation_string = ((char *) malloc(((strlen(string) + 1) * sizeof(char))));
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        sprintf(abbreviation_string , "%s%c" , abbreviation_string , toupper(string_tokenizer[0]));
+    }
+    
+    return abbreviation_string;
+}
