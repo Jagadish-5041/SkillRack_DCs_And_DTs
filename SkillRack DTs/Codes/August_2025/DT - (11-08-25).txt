@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Swap Digits - Integer in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_array_from_number(N):
+    
+    digits_array = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_array.insert(0 , digit)
+        
+        N = (N // 10)
+    
+    return digits_array
+
+def get_number_from_digits_array(digits_array):
+    
+    return sum((digit * (10 ** power_of_10)) for digit , power_of_10 in zip(digits_array , range((len(digits_array) - 1) , -1 , -1)))
+
+original_number = int(input())
+
+digits_array = get_digits_array_from_number(original_number)
+
+for swaps_count in range(0 , int(input())):
+    
+    index_1 , index_2 = map((lambda value : (value - 1)) , map(int , input().split()))
+    
+    digits_array[index_1] , digits_array[index_2] = digits_array[index_2] , digits_array[index_1]
+
+new_number = get_number_from_digits_array(digits_array)
+
+print(('YES') if(new_number == original_number) else ((new_number * 2)))
