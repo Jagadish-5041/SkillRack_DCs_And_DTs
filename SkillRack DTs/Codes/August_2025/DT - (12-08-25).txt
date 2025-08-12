@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Find Positions Of Substrings in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+substring_indices_list = []
+
+while(True):
+    
+    try:
+        substring_indices_list.append(string.find(input().strip()))
+    except:
+        break
+
+pairs_list = sorted([(index , value) for index , value in enumerate(substring_indices_list)] , key = lambda pair : pair[1])
+
+for substring_index in substring_indices_list:
+    
+    for index , pair_list in enumerate(pairs_list):
+        
+        if(substring_index == pair_list[1]):
+            
+            print((index + 1))
+            
+            break
