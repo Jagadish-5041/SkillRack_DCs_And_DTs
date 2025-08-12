@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Integers - Divide And Add Remainders in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+elements_list = list(map(int , input().split()))
+
+K = int(input())
+
+K_elements_list = elements_list[0 : K]
+
+remaining_elements_list = elements_list[K : N]
+
+for value_1 in K_elements_list:
+    
+    for index_2 , value_2 in enumerate(remaining_elements_list):
+        
+        remaining_elements_list[index_2] += (value_2 % value_1)
+
+print(*(K_elements_list + remaining_elements_list))
