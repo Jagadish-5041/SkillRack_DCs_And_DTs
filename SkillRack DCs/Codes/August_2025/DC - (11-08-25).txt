@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Find The Ball - Three Cups in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , P = map(int , input().split())
+
+positions_map = {position : 0 for position in range(1 , 4)}
+
+positions_map[P] = 1
+
+for swaps_count in range(0 , N):
+    
+    position_1 , position_2 = map(int , input().split())
+    
+    positions_map[position_1] , positions_map[position_2] = positions_map[position_2] , positions_map[position_1]
+
+for position , value in positions_map.items():
+    
+    if(value == 1):
+        
+        print(position)
