@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Split Balanced Parentheses in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+current_balanced_parentheses_string = ''
+
+opening_parentheses_count = 0
+
+closing_parentheses_count = 0
+
+for character in input().strip():
+    
+    current_balanced_parentheses_string = (current_balanced_parentheses_string + character)
+    
+    opening_parentheses_count = (opening_parentheses_count + 1) if(character == '(') else (opening_parentheses_count)
+    
+    closing_parentheses_count = (closing_parentheses_count + 1) if(character == ')') else (closing_parentheses_count)
+    
+    if(opening_parentheses_count == closing_parentheses_count):
+        
+        print(current_balanced_parentheses_string)
+        
+        current_balanced_parentheses_string = ""
+        
+        opening_parentheses_count = 0
+        
+        closing_parentheses_count = 0
