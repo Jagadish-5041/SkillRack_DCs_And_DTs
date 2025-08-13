@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Binary Fibonacci Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def print_strings_within_given_range(start_value , stop_value , step_value , pattern_list):
+    
+    [print(pattern_list[index]) for index in range(start_value , (stop_value + step_value) , step_value)]
+
+N = int(input())
+
+binary_fibonacci_pattern_list = ['0' , '1']
+
+[binary_fibonacci_pattern_list.append((binary_fibonacci_pattern_list[-2] + binary_fibonacci_pattern_list[-1])) for i in range(2 , N)]
+
+print_strings_within_given_range(0 , (N - 1) , 1 , binary_fibonacci_pattern_list)
+
+print_strings_within_given_range((N - 2) , 0 , -1 , binary_fibonacci_pattern_list)
