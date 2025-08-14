@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Matrix - Sort Odd Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+odd_numbers_list = sorted([matrix[i][j] for i in range(0 , R) for j in range(0 , C) if(is_odd(matrix[i][j]))])
+
+odd_numbers_list_index = 0
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(is_odd(matrix[i][j])):
+            
+            matrix[i][j] = odd_numbers_list[odd_numbers_list_index]
+            
+            odd_numbers_list_index += 1
+
+[print(*row_list) for row_list in matrix]
