@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Function - evaluateBitwise() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int get_bit_from_alphabet(char alphabet){
+    
+    return ((alphabet == 'a') ? (0) : (1));
+}
+
+char get_alphabet_from_bit(int bit){
+    
+    return ((bit == 0) ? ('a') : ('b'));
+}
+
+int evaluate(int bit_1 , int bit_2 , char bitwise_operator){
+    
+    return ((bitwise_operator == '&') ? (bit_1 & bit_2) : ((bitwise_operator == '|') ? (bit_1 | bit_2) : ((bitwise_operator == '^') ? (bit_1 ^ bit_2) : (-999))));
+}
+
+char* evaluateBitwise(char string_1[] , char string_2[] , char bitwise_operator){
+    
+    int N = strlen(string_1);
+    
+    char *answer_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sprintf(answer_string , "%s%c" , answer_string , get_alphabet_from_bit(evaluate(get_bit_from_alphabet(string_1[index]) , get_bit_from_alphabet(string_2[index]) , bitwise_operator)));
+    }
+    
+    return answer_string;
+}
