@@ -1,0 +1,27 @@
+Problem Statement :-
+
+String To Grids in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().split())
+
+R = (N * X)
+
+C = (N * X)
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+string = input().strip()
+
+string_index = 0
+
+for i in range((X // 2) , R , X):
+    
+    for j in range((X // 2) , C , X):
+        
+        matrix[i][j] = string[string_index]
+        
+        string_index += 1
+
+[print(*row_list) for row_list in matrix]
