@@ -1,0 +1,30 @@
+Problem Statement :-
+
+Prime Pair - Middle Composite in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+def traverse_and_find_prime_in_given_direction(N , offset_value):
+    
+    while((N >= 2) and (not is_prime(N))):
+        
+        N += offset_value
+    
+    return ((N) if(N >= 2) else (-999))
+
+N = int(input())
+
+(print(-1)) if(is_prime(N)) else ((lambda X , Y : ((print(-1)) if((X == -999) or ((X + ((Y - X) // 2)) != N)) else (print(X , Y)))) (traverse_and_find_prime_in_given_direction((N - 1) , -1) , traverse_and_find_prime_in_given_direction((N + 1) , 1)))
