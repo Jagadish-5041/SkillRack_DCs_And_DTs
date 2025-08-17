@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Largest Value - Digit To Binary in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+number_string = input().strip()
+
+maximum_number = int(number_string)
+
+for index in range(0 , len(number_string)):
+    
+    current_number = int((number_string[ : index] + bin(int(number_string[index]))[2 : ] + number_string[(index + 1) : ]).strip())
+    
+    maximum_number = max(maximum_number , current_number)
+
+print(maximum_number)
