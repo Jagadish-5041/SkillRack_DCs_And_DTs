@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Inverted Right Angle Triangles Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_N_th_odd_number(N):
+    
+    return (((2 * N) - 1) if(N > 0) else (0))
+
+def get_N_th_even_number(N):
+    
+    return ((2 * N) if(N > 0) else (0))
+
+N = int(input())
+
+total_asterisks_string = ('*' * ((N * 2) - 1))
+
+total_hyphens_string = ('-' * ((N * 2) - 2))
+
+pattern_list = [("-".join(total_asterisks_string))]
+
+for i in range(2 , (N + 1)):
+    
+    hyphens_string_1 = total_hyphens_string[ : get_N_th_even_number((i - 1))]
+    
+    hyphens_string_2 = total_hyphens_string[ : get_N_th_odd_number((N - i))]
+    
+    pattern_string = (hyphens_string_1 + (("*{}*{}*".format(hyphens_string_2 , hyphens_string_2)) if(hyphens_string_2) else ('*')))
+    
+    pattern_list.append(pattern_string)
+
+print(*pattern_list , sep = "\n")
