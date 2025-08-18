@@ -1,0 +1,13 @@
+Problem Statement :-
+
+String - Toggle/Delete Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+characters_list = list(input().strip())
+
+bits_string = input().strip()
+
+[characters_list.__setitem__(index , (((None) if(not characters_list[index].isalpha()) else (characters_list[index].swapcase())) if(bits_string[index] == '1') else (characters_list[index]))) for index in range(0 , len(characters_list))]
+
+[print(character , end = "") for character in characters_list if(character is not None)]
