@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Sandwich String Or Not in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+unique_characters_list = list(set(string))
+
+if(len(unique_characters_list) != 2):
+    print('NO')
+    quit()
+
+character_1 = string[0]
+
+character_2 = (unique_characters_list[1]) if(unique_characters_list[0] == character_1) else (unique_characters_list[0])
+
+left_pointer = 0
+
+right_pointer = (len(string) - 1)
+
+while((left_pointer < right_pointer) and (string[left_pointer] == character_1) and (string[right_pointer] == character_1)):
+    
+    left_pointer += 1
+    
+    right_pointer -= 1
+
+print(('YES') if(set(string[left_pointer : (right_pointer + 1)]) == set([character_2])) else ('NO'))
