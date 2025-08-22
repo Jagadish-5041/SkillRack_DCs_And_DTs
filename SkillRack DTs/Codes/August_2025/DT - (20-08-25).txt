@@ -1,0 +1,30 @@
+Problem Statement :-
+
+Function - findLargestKBits() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int get_max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int findLargestKBits(char *bits_string , int K){
+    
+    char *current_K_sized_bits_string = ((char *) malloc(((K + 1) * sizeof(char))));
+    
+    int maximum_number = 0;
+    
+    for(int N = strlen(bits_string) , index = 0 ; (index <= (N - K)) ; index++){
+        
+        sprintf(current_K_sized_bits_string , "%.*s\n" , K , &bits_string[index]);
+        
+        int current_number = strtoll(current_K_sized_bits_string , NULL , 2);
+        
+        maximum_number = get_max(maximum_number , current_number);
+    }
+    
+    return maximum_number;
+}
