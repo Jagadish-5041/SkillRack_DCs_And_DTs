@@ -1,0 +1,13 @@
+Problem Statement :-
+
+ReCreate Array Values in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+void recreateArr(int *array , int starting_range_value , int ending_range_value){
+    
+    for(int N = (ending_range_value - starting_range_value + 1) , index = 0 ; (index < N) ; index++){
+        
+        array[index] = (starting_range_value + array[index] - 1);
+    }
+}
