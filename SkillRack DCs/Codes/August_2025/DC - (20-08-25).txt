@@ -1,0 +1,65 @@
+Problem Statement :-
+
+Row And Column Intersection in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+count_matrix_1 = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+count_matrix_2 = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+count_matrix_3 = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+count_matrix_4 = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    count_1 = 0
+    
+    count_2 = 0
+    
+    for j_1 , j_2 in zip(range(0 , C) , range((C - 1) , -1 , -1)):
+        
+        count_matrix_1[i][j_1] = count_1
+        
+        count_1 = (count_1 + 1) if(matrix[i][j_1] == 0) else (0)
+        
+        count_matrix_2[i][j_2] = count_2
+        
+        count_2 = (count_2 + 1) if(matrix[i][j_2] == 0) else (0)
+
+for j in range(0 , C):
+    
+    count_3 = 0
+    
+    count_4 = 0
+    
+    for i_1 , i_2 in zip(range(0 , R) , range((R - 1) , -1 , -1)):
+        
+        count_matrix_3[i_1][j] = count_3
+        
+        count_3 = (count_3 + 1) if(matrix[i_1][j] == 1) else (0)
+        
+        count_matrix_4[i_2][j] = count_4
+        
+        count_4 = (count_4 + 1) if(matrix[i_2][j] == 1) else (0)
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if((i == j) and((count_matrix_1[i][j] + count_matrix_2[i][j]) == (C - 1)) and ((count_matrix_3[i][j] + count_matrix_4[i][j]) == (R - 1))):
+            
+            print((i + 1))
+            
+            quit()
+
+print(-1)
