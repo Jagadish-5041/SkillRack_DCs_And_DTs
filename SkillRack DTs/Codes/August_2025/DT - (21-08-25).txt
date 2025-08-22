@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Matrix - Characters Between Diagonals in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_pattern_matrix(current_i , current_j , R , C , characters_matrix , pattern_matrix):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        pattern_matrix[current_i][current_j] = characters_matrix[current_i][current_j]
+        
+        current_i += 1
+        
+        current_j += 1
+
+R , C = map(int , input().strip().split())
+
+characters_matrix = [input().strip().split() for i in range(0 , R)]
+
+pattern_matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+minimum_value = min(R , C)
+
+if(R == C):
+    fill_pattern_matrix(0 , 0 , R , C , characters_matrix , pattern_matrix)
+elif(R > C):
+    [fill_pattern_matrix(i , 0 , R , C , characters_matrix , pattern_matrix) for i in range(0 , (R - minimum_value + 1))]
+elif(R < C):
+    [fill_pattern_matrix(0 , j , R , C , characters_matrix , pattern_matrix) for j in range(0 , (C - minimum_value + 1))]
+
+[print(*row_list) for row_list in pattern_matrix]
