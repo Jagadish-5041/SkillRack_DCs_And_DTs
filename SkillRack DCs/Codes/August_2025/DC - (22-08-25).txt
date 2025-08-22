@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Matrix - Triangles Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_within_given_range(choice , N , matrix):
+    
+    return ((sum(matrix[i][j] for i in range(0 , N) for j in range(0 , (N - i)))) if(choice == 1) else (sum(matrix[i][j] for i in range(0 , N) for j in range((N - i - 1) , N))))
+
+N = int(input())
+
+matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+print(get_sum_within_given_range(1 , N , matrix) , get_sum_within_given_range(2 , N , matrix) , sep = "\n")
