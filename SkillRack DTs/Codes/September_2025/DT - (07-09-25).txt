@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Bar Graph Pattern - Custom Width in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+lengths_list = list(map(int , input().split()))
+
+width = int(input())
+
+R = max(lengths_list)
+
+C = (N * width)
+
+graph_matrix = [['-' for j in range(0 , C)] for i in range(0 , R)]
+
+for length , j in zip(lengths_list , range(0 , (C - width + 1) , width)):
+    
+    for column_index in range(j , (j + width)):
+        
+        for row_index in range((R - length) , R):
+            
+            graph_matrix[row_index][column_index] = '*'
+
+[print(*row_list , sep = "") for row_list in graph_matrix]
