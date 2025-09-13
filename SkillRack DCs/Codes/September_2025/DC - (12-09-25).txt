@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Matrix - Characters Between Parentheses in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+flattened_matrix_string = ("".join(character for i in range(0 , R) for character in input().strip().split()))
+
+N = (R * C)
+
+index = ((flattened_matrix_string.index('(') + 1) % N)
+
+while((index < N) and (flattened_matrix_string[index] != ')')):
+    
+    print(flattened_matrix_string[index] , end = "")
+    
+    index = ((index + 1) % N)
