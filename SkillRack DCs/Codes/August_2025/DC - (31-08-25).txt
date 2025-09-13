@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Matrix - Integers & Operators in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+[(matrix[i].__setitem__(j , (int(matrix[(i - 1)][j]) + int(matrix[(i + 1)][j])))) if(matrix[i][j] == '+') else ((matrix[i].__setitem__(j , (abs((int(matrix[(i - 1)][j]) - int(matrix[(i + 1)][j])))))) if(matrix[i][j] == '-') else ('')) for i in range(0 , R) for j in range(0 , C)]
+
+[print(*row_list) for row_list in matrix]
