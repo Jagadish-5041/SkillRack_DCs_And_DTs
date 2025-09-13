@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Integer To Bytes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+N = int(input())
+
+numbers_list = list(map(int , input().split()))
+
+binary_string = ("".join(get_binary_string(number) for number in numbers_list))
+
+K = 8
+
+new_numbers_list = []
+
+[new_numbers_list.insert(0 , int(binary_string[max((index - K + 1) , 0) : (index + 1)] , 2)) for index in range((len(binary_string) - 1) , -1 , (K * -1))]
+
+print(*new_numbers_list)
