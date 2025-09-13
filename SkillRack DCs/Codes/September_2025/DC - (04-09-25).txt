@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Number Of Changes - ABCD Submatrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+K = 2
+
+count = 0
+
+for i in range(0 , (R - K + 1) , K):
+    
+    for j in range(0 , (C - K + 1) , K):
+        
+        count += sum(1 for character_1 , character_2 in zip((''.join(matrix[k][l] for k in range(i , (i + K)) for l in range(j , (j + K)))) , 'ABCD') if(character_1 != character_2))
+
+print(count)
