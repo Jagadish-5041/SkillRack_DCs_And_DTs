@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Maximum Integer - Maximum Depth in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+string = input().strip()
+
+current_depth = 0
+
+maximum_depth = 0
+
+depths_map = {}
+
+current_number_string = ""
+
+for character in string:
+    
+    if(character.isdigit()):
+        current_number_string += character
+    else:
+        if(current_number_string):
+            depths_map.setdefault(current_depth , []).append(int(current_number_string))
+            current_number_string = ""
+        
+        if(character == '('):
+            current_depth += 1
+            maximum_depth = max(maximum_depth , current_depth)
+        elif(character == ')'):
+            current_depth -= 1
+
+if(current_number_string):
+    depths_map.setdefault(current_depth , []).append(int(current_number_string))
+    current_number_string = ""
+
+while((maximum_depth not in depths_map) and (maximum_depth > 0)):
+    
+    maximum_depth -= 1
+
+print(max(depths_map[maximum_depth]))
