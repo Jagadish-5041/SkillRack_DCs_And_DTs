@@ -1,0 +1,77 @@
+Problem Statement :-
+
+Reducing Triangular Wave Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_N_natural_numbers(N):
+    
+    return ((N * (N + 1)) // 2)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def fill_hash(filling_count , offset_i , offset_j , R , C , pattern_matrix):
+    
+    global current_i
+    
+    global current_j
+    
+    for count in range(0 , filling_count):
+        
+        pattern_matrix[current_i][current_j] = '#'
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+    
+    current_i -= offset_i
+    
+    current_j -= offset_j
+
+N = int(input())
+
+R = N
+
+C = (N + get_sum_of_N_natural_numbers((N - 2)))
+
+pattern_matrix = [[(('*') if((j < i) and (j < N)) else (' ')) for j in range(0 , C)] for i in range(0 , R)]
+
+current_i = 0
+
+current_j = 0
+
+hash_symbol_filling_counts_list = ([N] + list(range((N - 2) , 0 , -1)))
+
+[(fill_hash(count , 1 , 1 , R , C , pattern_matrix)) if(index == 0) else (fill_hash((count + 1) , ((1) if(is_even(index)) else (-1)) , 1 , R , C , pattern_matrix)) for index , count in enumerate(hash_symbol_filling_counts_list)]
+
+recent_hash_symbol_index_from_left_to_right_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+recent_hash_symbol_index_from_right_to_left_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    recent_hash_symbol_index_from_left_to_right = 0
+    
+    for j in range(0 , C):
+        
+        recent_hash_symbol_index_from_left_to_right_matrix[i][j] = recent_hash_symbol_index_from_left_to_right
+        
+        recent_hash_symbol_index_from_left_to_right = (j) if(pattern_matrix[i][j] == '#') else (recent_hash_symbol_index_from_left_to_right)
+    
+    recent_hash_symbol_index_from_right_to_left = 0
+    
+    for j in range((C - 1) , -1 , -1):
+        
+        recent_hash_symbol_index_from_right_to_left_matrix[i][j] = recent_hash_symbol_index_from_right_to_left
+        
+        recent_hash_symbol_index_from_right_to_left = (j) if(pattern_matrix[i][j] == '#') else (recent_hash_symbol_index_from_right_to_left)
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        pattern_matrix[i][j] = ('*') if((pattern_matrix[i][j] != '#') and (recent_hash_symbol_index_from_left_to_right_matrix[i][j] < recent_hash_symbol_index_from_right_to_left_matrix[i][j])) else (pattern_matrix[i][j])
+
+[print(*row_list) for row_list in pattern_matrix]
