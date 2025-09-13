@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Submatrix Increment Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+M , N = map(int , input().split())
+
+R = (M * N)
+
+C = (M * N)
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+sub_matrix_starting_value = 1
+
+for i in range(0 , (R - M + 1) , M):
+    
+    for j in range(0 , (C - M + 1) , M):
+        
+        cell_value = sub_matrix_starting_value
+        
+        for k in range(i , (i + M)):
+            
+            for l in range(j , (j + M)):
+                
+                matrix[k][l] = cell_value
+                
+                cell_value += 1
+        
+        sub_matrix_starting_value += 1
+
+[print(*row_list) for row_list in matrix]
