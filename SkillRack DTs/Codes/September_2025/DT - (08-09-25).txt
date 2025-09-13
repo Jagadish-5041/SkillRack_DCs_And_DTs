@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Count Common Set Bits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+(lambda N : print(sum(1 for bits_list in zip(*[get_binary_string(number)[::-1] for number in list(map(int , input().split()))]) if((bits_list[0] == '1') and (len(set(bits_list)) == 1))))) (int(input()))
