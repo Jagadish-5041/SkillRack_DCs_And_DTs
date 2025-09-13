@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Matrix - Remove Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+column_wise_minimum_lengths_list = [min(get_length_of_N(matrix[i][j]) for i in range(0 , R)) for j in range(0 , C)]
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        while(get_length_of_N(matrix[i][j]) != column_wise_minimum_lengths_list[j]):
+            
+            matrix[i][j] //= 10
+
+[print(*row_list) for row_list in matrix]
+
+print(sum(matrix[i][j] for i in range(0 , R) for j in range(0 , C)))
