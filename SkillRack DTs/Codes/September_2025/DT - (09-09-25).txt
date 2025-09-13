@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Function - getMSBBitMask() in DT (Daily Test) in SkillRack in C - Program
+
+Code :-
+
+#include <string.h>
+
+int get_set_bit_position_from_MSB(int number){
+    
+    int bit_position_from_LSB = 0;
+    
+    int set_bit_position_from_LSB = -999;
+    
+    while(number > 0){
+        
+        set_bit_position_from_LSB = ((number % 2) == 1) ? (bit_position_from_LSB) : (set_bit_position_from_LSB);
+        
+        bit_position_from_LSB++;
+        
+        number /= 2;
+    }
+    
+    int set_bit_position_from_MSB = (set_bit_position_from_LSB != -999) ? (32 - set_bit_position_from_LSB - 1) : (-999);
+    
+    return set_bit_position_from_MSB;
+}
+
+int getMSBBitMask(int N , int array[]){
+    
+    int M = 32;
+    
+    char *bits_string = ((char *) malloc((M * sizeof(char))));
+    
+    memset(bits_string , '0' , M);
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        int set_bit_position_from_MSB = get_set_bit_position_from_MSB(array[index]);
+        
+        (set_bit_position_from_MSB != -999) ? (bits_string[set_bit_position_from_MSB] = '1') : (printf(""));
+    }
+    
+    return strtol(bits_string , NULL , 2);
+}
