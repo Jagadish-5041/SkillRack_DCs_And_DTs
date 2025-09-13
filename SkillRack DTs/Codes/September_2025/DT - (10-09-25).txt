@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Seven Segment Display To Binary in DT (Daily Test) in SkillRack in Python - Programming 
+
+Code :-
+
+(lambda binary_strings_map : print(int(("".join(binary_strings_map[digit_string] for digit_string in input().strip())) , 2))) ({'0' : "1111110" , '1' : "0110000" , '2' : "1101101" , '3' : "1111001" , '4' : "0110011" , '5' : "1011011" , '6' : "1011111" , '7' : "1110000" , '8' : "1111111" , '9' : "1111011"})
