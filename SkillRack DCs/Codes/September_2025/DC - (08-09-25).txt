@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Function - stringToDecimal() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int is_odd(int N){
+    
+    return ((N & 1) == 1);
+}
+
+int get_ASCII_value(char character){
+    
+    return ((int) character);
+}
+
+long long int stringToDecimal(char *string){
+    
+    int N = strlen(string);
+    
+    char binary_string[N];
+    
+    for(int index = 0 ; (index < N) ; index++){
+        binary_string[index] = (is_odd(get_ASCII_value(string[index]))) ? ('1') : ('0');
+    }
+    
+    return strtoll(binary_string , NULL , 2);
+}
