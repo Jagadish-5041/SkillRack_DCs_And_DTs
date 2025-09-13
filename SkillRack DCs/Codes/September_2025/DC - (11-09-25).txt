@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Flowchart Logic 048 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+X , Y = map(int , input().split())
+
+while((X > 0) or (Y > 0)):
+    
+    if(X > 0):
+        print(X , end = " ")
+        Y -= 1
+    
+    if(Y > 0):
+        print(Y , end = " ")
+        X -= 1
+    
+    X -= 1
+    
+    Y -= 1
