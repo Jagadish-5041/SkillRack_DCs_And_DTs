@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Function - moveLowerUpperCase() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+char *moveLowerUpperCase(char *string){
+    
+    int N = strlen(string);
+    
+    char *left_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    char *middle_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    char *right_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        (islower(string[index])) ? (strncat(left_string , &string[index] , 1)) : ((isupper(string[index])) ? (strncat(right_string , &string[index] , 1)) : (strncat(middle_string , &string[index] , 1)));
+    }
+    
+    char *new_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    sprintf(new_string , "%s%s%s" , left_string , middle_string , right_string);
+    
+    return new_string;
+}
