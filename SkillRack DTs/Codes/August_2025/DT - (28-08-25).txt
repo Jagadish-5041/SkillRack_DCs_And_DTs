@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Find Missing Digit - Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+data_list = input().strip().split()
+
+total_sum = int(input())
+
+remaining_numbers_sum = sum(int(string) for string in data_list if('*' not in string))
+
+missing_number = (total_sum - remaining_numbers_sum)
+
+[data_list.__setitem__(index , missing_number) for index , string in enumerate(data_list) if('*' in string)]
+
+print(*data_list)
