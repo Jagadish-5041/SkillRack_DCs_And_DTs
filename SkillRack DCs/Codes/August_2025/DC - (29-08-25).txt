@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Largest K-digit Integer in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+K = int(input())
+
+print((-1) if(K > N) else (max(int(digits_string[index : (index + K)]) for index in range(0 , (N - K + 1)))))
