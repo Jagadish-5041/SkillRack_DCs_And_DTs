@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Integers Sum - Missing Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def form_missing_digits_number(N):
+    
+    digits_flag_map = {digit : True for digit in range(9 , -1 , -1)}
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_flag_map[digit] = False
+        
+        N = (N // 10)
+    
+    missing_digits_number = 0
+    
+    for digit in digits_flag_map.keys():
+        
+        if(digits_flag_map[digit]):
+            
+            missing_digits_number = ((missing_digits_number * 10) + digit)
+    
+    return missing_digits_number
+
+(lambda N : print(sum(form_missing_digits_number(X) for X in list(map(int , input().split()))))) (int(input()))
