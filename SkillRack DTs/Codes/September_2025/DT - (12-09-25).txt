@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Integers - Print Factors in DT (Daily Test) in SkillRack in Python - Programming 
+
+Code :-
+
+def print_factors(N):
+    
+    factors_set = set({N})
+    
+    for number in range(1 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            factors_set.add(number)
+            
+            factors_set.add((N // number))
+    
+    print(*sorted(factors_set))
+
+N , K = map(int , input().split())
+
+numbers_list = list(map(int , input().split()))
+
+for index_1 in range(0 , (N - K + 1) , K):
+    
+    X = 0
+    
+    for index_2 in range(index_1 , (index_1 + K)):
+        
+        unit_digit = (numbers_list[index_2] % 10)
+        
+        X = ((X * 10) + unit_digit)
+    
+    print_factors(X)
