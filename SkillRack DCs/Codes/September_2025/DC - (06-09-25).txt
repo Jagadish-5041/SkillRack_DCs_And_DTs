@@ -1,0 +1,81 @@
+Problem Statement :-
+
+Define Class Address in DC (Daily Challenge) in SkillRack in Java - Programming 
+
+Code :-
+
+class Address {
+    
+    int door_number;
+    
+    String street_name;
+    
+    String city_name;
+    
+    String state_name;
+    
+    int pincode;
+    
+    Address(){
+        
+        setDoorNumber(100);
+        
+        setStreetName("ABC Street");
+        
+        setCity("XYZ City");
+        
+        setState("MNO State");
+        
+        setPincode(666666);
+    }
+    
+    public void setDoorNumber(int door_number){
+        
+        this.door_number = door_number;
+    }
+    
+    public int getDoorNumber(){
+        
+        return this.door_number;
+    }
+    
+    public void setStreetName(String street_name){
+        
+        this.street_name = street_name;
+    }
+    
+    public String getStreetName(){
+        
+        return this.street_name;
+    }
+    
+    public void setCity(String city_name){
+        
+        this.city_name = city_name;
+    }
+    
+    public String getCity(){
+        
+        return this.city_name;
+    }
+    
+    public void setState(String state_name){
+        
+        this.state_name = state_name;
+    }
+    
+    public String getState(){
+        
+        return this.state_name;
+    }
+    
+    public void setPincode(int pincode){
+        
+        this.pincode = pincode;
+    }
+    
+    public int getPincode(){
+        
+        return this.pincode;
+    }
+}
