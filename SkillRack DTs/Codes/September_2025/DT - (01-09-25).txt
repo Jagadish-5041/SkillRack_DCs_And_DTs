@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Simplify Polinomial Expression in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def add_unary_operator(N):
+    
+    return (('+' + str(N)) if(N >= 0) else (str(N)))
+
+expression_string = input().strip()
+
+N = len(expression_string)
+
+index = 0
+
+exponents_list = []
+
+while(is_within_bounds(index , N)):
+    
+    if(expression_string[index] == 'x'):
+        
+        exponent_string = (expression_string[index] + '^')
+        
+        index += 2
+        
+        exponent_string = (exponent_string + expression_string[index]) if((expression_string[index] == '+') or (expression_string[index] == '-')) else (exponent_string)
+        
+        while((is_within_bounds(index , N)) and (expression_string[index].isdigit())):
+            
+            exponent_string += expression_string[index]
+            
+            index += 1
+        
+        exponents_list.append(exponent_string)
+    else:
+        index += 1
+
+for exponent_string in set(exponents_list):
+    
+    if(exponent_string in expression_string):
+        
+        expression_string = expression_string.replace(exponent_string , ",")
+    
+coefficients_list = expression_string.strip(",").split(",")
+
+exponents_map = {exponent_string : [] for exponent_string in sorted(exponents_list , key = lambda power_value : (int(power_value[(power_value.index('^') + 1) : ]) * -1))}
+
+[exponents_map[exponent_string].append(int(coefficient_string)) for coefficient_string , exponent_string in zip(coefficients_list , exponents_list)]
+
+simplified_expression_string = "".join((lambda coefficients_sum : (add_unary_operator(coefficients_sum) + exponent_string) if(coefficients_sum != 0) else ("")) (sum(coefficients_list_for_current_exponent)) for exponent_string , coefficients_list_for_current_exponent in exponents_map.items())
+
+print((simplified_expression_string) if(simplified_expression_string) else (0))
