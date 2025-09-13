@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sort Registration Number in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(*sorted([input().strip() for register_number in range(0 , int(input()))] , key = lambda value : ((int(value[0 : 2]) * -1) , (value[2 : 4]) , (value[4 : 7]))) , sep = "\n")
