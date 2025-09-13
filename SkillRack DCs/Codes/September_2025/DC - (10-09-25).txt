@@ -1,0 +1,59 @@
+Problem Statement :-
+
+Function - findVowelsBitMask() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_vowel(char character){
+    
+    char *vowels_string = "aeiouAEIOU";
+    
+    int index = (strchr(vowels_string , character) - vowels_string);
+    
+    return ((0 <= index) && (index <= 9));
+}
+
+int get_index_from_alphabet(char alphabet){
+    
+    switch(alphabet){
+        
+        case 'a':
+            return 4;
+        
+        case 'e':
+            return 3;
+        
+        case 'i':
+            return 2;
+        
+        case 'o':
+            return 1;
+        
+        case 'u':
+            return 0;
+        
+        default:
+            return -999;
+    }
+}
+
+int findVowelsBitMask(char string[]){
+    
+    int M = 5;
+    
+    char *bits_string = ((char *) malloc((M * sizeof(char))));
+    
+    memset(bits_string , '0' , M);
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        if(is_vowel(string[index])){
+            
+            bits_string[get_index_from_alphabet(tolower(string[index]))] = '1';
+        }
+    }
+    
+    return strtol(bits_string , NULL , 2);
+}
