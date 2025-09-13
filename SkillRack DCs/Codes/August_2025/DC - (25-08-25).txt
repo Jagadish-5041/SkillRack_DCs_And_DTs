@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Multiplicative Persistence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((int(math.log10(N)) + 1) if(N > 0) else (0))
+
+def get_multiplicative_persistence(N):
+    
+    count = 0
+    
+    while(get_length_of_N(N) > 1):
+        
+        count += 1
+        
+        product = 1
+        
+        while(N > 0):
+            
+            product *= (N % 10)
+            
+            N //= 10
+        
+        N = product
+    
+    return count
+
+print(get_multiplicative_persistence(int(input())))
