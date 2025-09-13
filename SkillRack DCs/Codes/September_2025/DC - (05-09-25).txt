@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Generate Version Numbers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_alphabet_index(alphabet , offset_value):
+    
+    return (ord(alphabet) - offset_value)
+
+def get_alphabet(alphabet_index , offset_value):
+    
+    return chr((alphabet_index + offset_value))
+
+A , B = input().strip().split()
+
+offset_value = get_offset_value(A)
+
+X , Y = map(int , input().split())
+
+alphabets_list = [get_alphabet(alphabet_index , offset_value) for alphabet_index in range(get_alphabet_index(A  , offset_value) , (get_alphabet_index(B , offset_value) + 1))]
+
+numbers_list = list(range(X , (Y + 1)))
+
+part_1_list = [(alphabet + str(number)) for alphabet in alphabets_list for number in numbers_list]
+
+part_2_list = alphabets_list
+
+part_3_list = numbers_list
+
+versions_list = [("{}.{}.{}".format(part_1_string , part_2_string , part_3_string)) for part_1_string in part_1_list for part_2_string in part_2_list for part_3_string in part_3_list]
+
+print(*versions_list , sep = "\n")
