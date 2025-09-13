@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Toggle Case - Consecutive Alphabets in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+string = input().strip()
+
+N = len(string)
+
+index = 0
+
+new_string = ""
+
+while(is_within_bounds(index , N)):
+    
+    first_character = string[index]
+    
+    current_string = ""
+    
+    while((is_within_bounds(index , N)) and ((first_character.islower() == string[index].islower()) or (first_character.isupper() == string[index].isupper()))):
+        
+        current_string += string[index]
+        
+        index += 1
+    
+    new_string = (new_string + ((current_string.upper()) if(first_character.islower()) else (current_string.lower()))) if(len(current_string) >= 2) else (new_string + current_string)
+
+print(new_string)
