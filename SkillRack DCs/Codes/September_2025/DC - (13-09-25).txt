@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Bottom-Left To Top-Right Diagonals Pattern in DC (Daily Challenge) in SkillRack in Python - Programming 
+
+Code :-
+
+def fill_diagonal(current_i , current_j , R , C , matrix , N):
+    
+    for count in range(0 , N):
+        
+        matrix[current_i][current_j] = '*'
+        
+        current_i -= 1
+        
+        current_j += 1
+
+N = int(input())
+
+R = (N * N)
+
+C = (N * N)
+
+matrix = [['-' for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , (R - N + 1) , N):
+    
+    for j in range(0 , (C - N + 1) , N):
+        
+        fill_diagonal((i + N - 1) , j , R , C , matrix , N)
+
+[print(*row_list) for row_list in matrix]
