@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Alphabet Weight Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alphabet_index(alphabet):
+    
+    return (ord(alphabet) - ord('a'))
+
+weights_list = [0 , 1]
+
+[weights_list.append((weights_list[(alphabet_index - 2)] + weights_list[(alphabet_index - 1)])) for alphabet_index in range(2 , 26)]
+
+print(sum(weights_list[get_alphabet_index(alphabet.lower())] for alphabet in input().strip()))
