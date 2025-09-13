@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Function - removeUpperRepeatLower() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+char* removeUpperRepeatLower(char *string){
+    
+    int N = strlen(string);
+    
+    char *new_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    char last_lower_case_alphabet = '#';
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        ((isupper(string[index])) && (last_lower_case_alphabet != '#')) ? (strncat(new_string , &last_lower_case_alphabet , 1)) : (printf(""));
+        
+        (islower(string[index])) ? (strncat(new_string , &string[index] , 1)) : (printf(""));
+        
+        last_lower_case_alphabet = (islower(string[index])) ? (string[index]) : (last_lower_case_alphabet);
+    }
+    
+    (strlen(new_string) == 0) ? (sprintf(new_string , "-1")) : (printf(""));
+    
+    return new_string;
+}
