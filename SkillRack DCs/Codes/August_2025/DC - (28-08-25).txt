@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Stretched String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_minimum_frequency(string):
+    
+    index = 0
+    
+    N = len(string)
+    
+    minimum_frequency = N
+    
+    while(is_within_bounds(index , N)):
+        
+        current_character = string[index]
+        
+        current_character_frequency = 0
+        
+        while((is_within_bounds(index , N)) and (string[index] == current_character)):
+            
+            current_character_frequency += 1
+            
+            index += 1
+        
+        minimum_frequency = min(minimum_frequency , current_character_frequency)
+    
+    return minimum_frequency
+
+def form_new_string(string , frequency):
+    
+    return ("".join((character * frequency) for character in string))
+
+A = input().strip()
+
+B = input().strip()
+
+print(('Yes') if(form_new_string(A , get_minimum_frequency(B)) == B) else ('No'))
