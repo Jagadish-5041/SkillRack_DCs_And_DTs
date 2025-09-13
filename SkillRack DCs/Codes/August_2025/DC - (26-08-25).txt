@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Close Jars With Lids in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+frequency_map = {}
+
+[frequency_map.__setitem__(number , (frequency_map.get(number , 0) + 1)) for number in list(map(int , input().split()))]
+
+count = 0
+
+for odd_number in [number for number in frequency_map.keys() if(is_odd(number))]:
+    
+    even_number = (odd_number + 1)
+    
+    count = (count + min(frequency_map[odd_number] , frequency_map[even_number])) if(even_number in frequency_map) else (count)
+
+print(count)
