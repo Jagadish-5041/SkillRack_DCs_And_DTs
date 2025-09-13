@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Pattern Count - Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+K = 3
+
+pattern_matrix = [[1 , 0 , 1] , [0 , 1 , 0] , [1 , 0 , 1]]
+
+count = 0
+
+for i in range(0 , (R - K + 1)):
+    
+    for j in range(0 , (C - K + 1)):
+        
+        check_flag = True
+        
+        for i_1 , i_2 in zip(range(i , (i + K)) , range(0 , K)):
+            
+            for j_1 , j_2 in zip(range(j , (j + K)) , range(0 , K)):
+                
+                if(matrix[i_1][j_1] != pattern_matrix[i_2][j_2]):
+                    
+                    check_flag = False
+                    
+                    break
+            
+            if(not check_flag):
+                break
+        
+        count = (count + 1) if(check_flag) else (count)
+
+print(count)
