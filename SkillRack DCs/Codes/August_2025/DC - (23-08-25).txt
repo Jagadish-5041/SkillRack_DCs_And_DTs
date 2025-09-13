@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Two Triangles Interlaced Pattern in DC (Daily Challenge) in SkillRack in Python Programming
+
+Code :-
+
+X , Y = map(int , input().split())
+
+minimum_value = min(X , Y)
+
+maximum_value = max(X , Y)
+
+R = maximum_value
+
+C = ((maximum_value * 2) - 1)
+
+matrix = [[" " for j in range(0 , C)] for i in range(0 , maximum_value)]
+
+for i in range(Y , 0 , -1):
+    
+    current_row_string = (('-' * (maximum_value - i)) + ("# " * i)).strip()
+    
+    for j in range(0 , len(current_row_string)):
+        matrix[((maximum_value - Y) + (i - 1))][j] = current_row_string[j]
+
+for i in range(0 , X):
+    
+    current_row_string = (('-' * (maximum_value - X + i)) + ("* " * (X - i))).strip()
+    
+    flag_1 = False
+    
+    flag_2 = False
+    
+    for j in range(0 , len(current_row_string)):
+        
+        if((current_row_string[j] == '*') or (current_row_string[j] == '-')):
+            flag_1 = True
+        
+        if((flag_1) and (matrix[i][j] != '#')):
+            
+            if((flag_2) and (current_row_string[j] == '-')):
+                continue
+            else:
+                matrix[i][j] = current_row_string[j]
+        
+        if(matrix[i][j] == '#'):
+            flag_2 = True
+
+[print(("".join(row_list)).strip()) for row_list in matrix]
