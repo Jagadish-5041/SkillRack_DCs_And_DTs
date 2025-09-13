@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Generate Passwords for Employees in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+C = int(input())
+
+D = int(input())
+
+current_passwords_list = list(range(1 , (N + 1)))
+
+for day in range(0 , D):
+    
+    current_passwords_list = [(current_password + C + day) for current_password in current_passwords_list]
+    
+    print(*current_passwords_list)
