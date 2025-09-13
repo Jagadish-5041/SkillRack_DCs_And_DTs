@@ -1,0 +1,32 @@
+Problem Statement :-
+
+Find Matrix Size in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+data_list = []
+
+while(True):
+    
+    try:
+        data_list.append(list(map(int , input().split())))
+    except:
+        break
+
+data_list_index = 0
+
+N = len(data_list)
+
+while(data_list_index < N):
+    
+    current_R = 0
+    
+    current_C = len(data_list[data_list_index])
+    
+    while((data_list_index < N) and (len(data_list[data_list_index]) == current_C)):
+        
+        data_list_index += 1
+        
+        current_R += 1
+    
+    print(current_R , current_C)
