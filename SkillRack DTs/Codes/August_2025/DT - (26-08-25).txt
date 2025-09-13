@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Expand Groups - Alphabets & Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda string : [print((alphabet * digit) , end = "") for alphabet , digit in zip([character for character in string if(not character.isdigit())] , [int(character) for character in string if(character.isdigit())])]) (input().strip())
