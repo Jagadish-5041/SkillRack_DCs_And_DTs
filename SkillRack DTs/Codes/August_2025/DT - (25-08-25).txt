@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Jumping Stones Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+J = int(input())
+
+instructions_list = list(map(int , input().split()))
+
+pattern_list_index = 0
+
+for step in instructions_list:
+    
+    offset_index = (1) if((pattern_list_index + 1) <= step) else (-1)
+    
+    while(((pattern_list_index + 1) < step) or ((pattern_list_index + 1) > step)):
+        
+        pattern_list = (['-'] * N)
+        
+        pattern_list[pattern_list_index] = '*'
+        
+        pattern_list_index += offset_index
+        
+        print(*pattern_list)
+
+pattern_list = (['-'] * N)
+
+pattern_list[pattern_list_index] = '*'
+
+print(*pattern_list)
