@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Kth Border Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def fill_layer(filling_character , starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    [matrix[starting_i].__setitem__(current_j , filling_character) for current_j in range(starting_j , (ending_j + 1))]
+    
+    [matrix[current_i].__setitem__(ending_j , filling_character) for current_i in range((starting_i + 1) , (ending_i + 1))]
+    
+    [matrix[ending_i].__setitem__(current_j , filling_character) for current_j in range((ending_j - 1) , (starting_j - 1) , -1)]
+    
+    [matrix[current_i].__setitem__(starting_j , filling_character) for current_i in range((ending_i - 1) , starting_i , -1)]
+
+N , K = map(int , input().split())
+
+R = N
+
+C = N
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+fill_layer('#' , (K - 1) , (R - K) , (K - 1) , (C - K) , R , C , matrix)
+
+[print(*row_list) for row_list in matrix]
