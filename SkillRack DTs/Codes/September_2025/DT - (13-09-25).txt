@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Pairs With Same Digits in DT (Daily Test) in SkillRack in Python - Programming 
+
+Code :-
+
+def is_same(A , B):
+    
+    return (sorted(set(str(A))) == sorted(set(str(B))))
+
+N = int(input())
+
+numbers_list = list(map(int , input().split()))
+
+flag = True
+
+for index_1 in range(0 , N):
+    
+    for index_2 in range((index_1 + 1) , N):
+        
+        if(is_same(numbers_list[index_1] , numbers_list[index_2])):
+            
+            flag = False
+            
+            print(numbers_list[index_1] , numbers_list[index_2])
+
+(print(-1)) if(flag) else ('')
