@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sort Question Numbers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(*sorted([input().strip() for i in range(0 , int(input()))] , key = lambda data_string : (list(map(int , data_string.split('.'))))) , sep = "\n")
