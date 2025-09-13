@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Integer - Last Set Bit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_last_set_bit_position(N):
+    
+    if(N == 0):
+        return 0
+    
+    position = 1
+    
+    while((N & 1) == 0):
+        
+        N >>= 1
+        
+        position += 1
+    
+    return position
+
+N = int(input())
+
+print(sum((2 ** (get_last_set_bit_position(X) - 1)) for X in list(map(int , input().split()))))
