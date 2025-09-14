@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Arrange String Values - Middle Alphabet in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+alphabets_strings_map = {}
+
+N = None
+
+for i in range(0 , int(input())):
+    
+    string = input().strip()
+    
+    N = len(string)
+    
+    alphabets_strings_map[string[(len(string) // 2)].lower()] = string
+
+M = ((N - 1) // 2)
+
+[(print(alphabets_strings_map[alphabet.lower()])) if(alphabet.lower() in alphabets_strings_map) else (print((('*' * M) + alphabet + ('*' * M)))) for alphabet in S]
