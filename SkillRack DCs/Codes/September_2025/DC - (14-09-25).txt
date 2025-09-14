@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Toggle Bit - Minimum Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_left_most_set_bit_toggled_N(N):
+    
+    bits_list = list(bin(N)[2 : ])
+    
+    bits_list[bits_list.index('1')] = '0'
+    
+    return int(("".join(bits_list)) , 2)
+
+(lambda N : print(sum(get_left_most_set_bit_toggled_N(number) for number in list(map(int , input().split()))))) (int(input()))
