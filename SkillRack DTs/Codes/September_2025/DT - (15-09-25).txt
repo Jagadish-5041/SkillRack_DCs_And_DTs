@@ -1,0 +1,51 @@
+Problem Statement :-
+
+Form Matrix - Row & Column Positions in DT (Daily Test) in SkillRack in Python - Programming 
+
+Code :-
+
+data_map = {}
+
+R = 0
+
+C = 0
+
+for data_string in input().strip().split():
+    
+    index = 0
+    
+    N = len(data_string)
+    
+    row_position = 0
+    
+    while((index < N) and (data_string[index].isdigit())):
+        
+        row_position = ((row_position * 10) + int(data_string[index]))
+        
+        index += 1
+    
+    string = ""
+    
+    while((index < N) and (data_string[index].isalpha())):
+        
+        string += data_string[index]
+        
+        index += 1
+    
+    column_position = 0
+    
+    while((index < N) and (data_string[index].isdigit())):
+        
+        column_position = ((column_position * 10) + int(data_string[index]))
+        
+        index += 1
+    
+    R = max(R , row_position)
+    
+    C = max(C , column_position)
+    
+    data_map[((row_position - 1) , (column_position - 1))] = string
+
+matrix = [[data_map[(i , j)] for j in range(0 , C)] for i in range(0 , R)]
+
+[print(*row_list) for row_list in matrix]
