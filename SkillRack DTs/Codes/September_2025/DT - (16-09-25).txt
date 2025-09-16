@@ -1,0 +1,25 @@
+Problem Statement :-
+
+String - Binary Toggle Case in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def custom_toggle(starting_index , ending_index , characters_list , bits_string):
+    
+    [characters_list.__setitem__(index_1 , ((characters_list[index_1].upper()) if(bits_string[index_2] == '1') else (characters_list[index_1].lower()))) for index_1 , index_2 in zip(range(starting_index , (ending_index + 1)) , range(0 , len(bits_string)))]
+    
+    print(*characters_list , sep = "")
+
+string = input().strip()
+
+N = len(string)
+
+X = int(input())
+
+bits_string = bin(X)[2 : ]
+
+M = len(bits_string)
+
+custom_toggle(0 , (M - 1) , list(string) , bits_string)
+
+custom_toggle((N - M) , (N - 1) , list(string) , bits_string)
