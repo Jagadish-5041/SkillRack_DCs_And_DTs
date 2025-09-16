@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Complete The Row - Pascal's Triangle in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def generate_row_list_for_pascal_s_triangle(N):
+    
+    value = 1
+    
+    row_list = [value]
+    
+    for column_number in range(1 , N):
+        
+        value = ((value * (N - column_number)) // column_number)
+        
+        row_list.append(value)
+    
+    return row_list
+
+(lambda N : print(*generate_row_list_for_pascal_s_triangle((list(map(int , input().split()))[1] + 1)))) (int(input()))
