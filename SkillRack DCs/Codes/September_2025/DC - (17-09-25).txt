@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Longest Array - Maximum Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+maximum_length = 0
+
+maximum_sum = 0
+
+for elements_list in [list(map(int , input().split())) for i in range(0 , int(input()))]:
+    
+    current_length = len(elements_list)
+    
+    current_sum = sum(elements_list)
+    
+    if(maximum_length < current_length):
+        maximum_length = current_length
+        maximum_sum = current_sum
+    elif(maximum_length == current_length):
+        maximum_sum = max(maximum_sum , current_sum)
+
+print(maximum_sum)
