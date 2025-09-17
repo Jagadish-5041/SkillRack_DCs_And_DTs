@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Function - getDateFromString() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+struct Date *getDateFromString(char *date_string){
+    
+    struct Date *date_structure = ((struct Date *) malloc(sizeof(struct Date)));
+    
+    for(char *string_tokenizer = strtok(date_string , "-") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , "-")){
+        
+        int N = strlen(string_tokenizer);
+        
+        if(N == 2){
+            (date_structure -> day) = atoi(string_tokenizer);
+        }else if(N == 3){
+            strcpy((date_structure -> month) , string_tokenizer);
+        }else if(N == 4){
+            (date_structure -> year) = atoi(string_tokenizer);
+        }
+    }
+    
+    return date_structure;
+}
