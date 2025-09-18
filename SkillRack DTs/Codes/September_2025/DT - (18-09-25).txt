@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Vertical Triangular Wave Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+K = int(input())
+
+asterisk_strings_list = ([('*' * asterisks_count) for asterisks_count in range(0 , K)] + [('*' * asterisks_count) for asterisks_count in range((K - 2) , 0 , -1)])
+
+[print(asterisks_string , character , sep = "") for asterisks_string , character in zip((asterisk_strings_list * N) , S)]
