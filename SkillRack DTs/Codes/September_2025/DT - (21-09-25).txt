@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Two Boys - N Stones in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+weights_list = list(map(int , input().split()))
+
+index_1 = 0
+
+index_2 = 0
+
+flag = True
+
+while((flag) or (index_1 != index_2)):
+    
+    flag = False
+    
+    print(weights_list[index_1] , weights_list[index_2])
+    
+    index_1 = ((index_1 + 1) % N)
+    
+    index_2 = ((index_2 + 2) % N)
+
+print(weights_list[index_1] , weights_list[index_2])
