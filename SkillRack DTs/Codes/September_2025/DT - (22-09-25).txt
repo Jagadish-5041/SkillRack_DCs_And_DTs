@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Longest Sequence Consecutive Zeroes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_longest_consecutive_zero_bits_count(N):
+    
+    longest_consecutive_zero_bits_count = 0
+    
+    current_consecutive_zero_bits_count = 0
+    
+    while(N > 0):
+        
+        bit = (N % 2)
+        
+        if(bit == 0):
+            current_consecutive_zero_bits_count += 1
+        else:
+            longest_consecutive_zero_bits_count = max(longest_consecutive_zero_bits_count , current_consecutive_zero_bits_count)
+            current_consecutive_zero_bits_count = 0
+        
+        N //= 2
+    
+    longest_consecutive_zero_bits_count = (max(longest_consecutive_zero_bits_count , current_consecutive_zero_bits_count)) if(current_consecutive_zero_bits_count != 0) else (longest_consecutive_zero_bits_count)
+    
+    return longest_consecutive_zero_bits_count
+
+N = int(input())
+
+maximum_consecutive_zero_bits_count = 0
+
+consecutive_zero_bits_count_map = {}
+
+for number in list(map(int , input().split())):
+    
+    current_consecutive_zero_bits_count = get_longest_consecutive_zero_bits_count(number)
+    
+    maximum_consecutive_zero_bits_count = max(maximum_consecutive_zero_bits_count , current_consecutive_zero_bits_count)
+    
+    consecutive_zero_bits_count_map.setdefault(current_consecutive_zero_bits_count , []).insert(0 , number)
+
+print(*consecutive_zero_bits_count_map[maximum_consecutive_zero_bits_count])
