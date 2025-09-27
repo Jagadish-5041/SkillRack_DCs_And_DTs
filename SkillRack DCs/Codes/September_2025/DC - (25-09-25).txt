@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Swap Numbers On Clock in DC (Daily Challenge) in SkillRack in Python - Programming 
+
+Code :-
+
+clock_matrix = [['*' , 11 , 12 , 1 , '*'] , [10 , '*' , '*' , '*' , 2] , [9 , '*' , '*' , '*' , 3] , [8 , '*' , '*' , '*' , 4] , ['*' , 7 , 6 , 5 , '*']]
+
+R = len(clock_matrix)
+
+C = len(clock_matrix[0])
+
+numbers_positions_map = {}
+
+[numbers_positions_map.__setitem__(clock_matrix[i][j] , (i , j)) for i in range(0 , R) for j in range(0 , C) if(isinstance(clock_matrix[i][j] , int))]
+
+for i in range(0 , int(input())):
+    
+    X , Y = map(int , input().split())
+    
+    i_1 , j_1 = numbers_positions_map[X]
+    
+    i_2 , j_2 = numbers_positions_map[Y]
+    
+    clock_matrix[i_1][j_1] , clock_matrix[i_2][j_2] = clock_matrix[i_2][j_2] , clock_matrix[i_1][j_1]
+    
+    numbers_positions_map[X] = (i_2 , j_2)
+    
+    numbers_positions_map[Y] = (i_1 , j_1)
+
+[print(*row_list) for row_list in clock_matrix]
