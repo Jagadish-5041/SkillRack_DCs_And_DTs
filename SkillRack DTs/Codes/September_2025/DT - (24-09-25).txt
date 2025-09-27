@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Unique Sum - Integers With Alphabets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import re
+
+N = int(input())
+
+alphabet_and_numbers_map = {}
+
+for string in input().strip().split():
+    
+    number = int(("".join((re.findall(r'[\d+]' , string)))))
+    
+    alphabet = re.findall(r'[^\d+]' , string)[0]
+    
+    alphabet_and_numbers_map.setdefault(alphabet , set()).add(number)
+
+print(sum(sum(values_set) for values_set in alphabet_and_numbers_map.values()))
