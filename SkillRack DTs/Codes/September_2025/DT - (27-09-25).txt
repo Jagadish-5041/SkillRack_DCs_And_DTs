@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Time Required - Mobile Keypad in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def check_eight_directions(target_value , current_i , current_j , R , C , matrix):
+    
+    for neighbour_i , neighbour_j in [((current_i - 1) , (current_j - 1)) , ((current_i - 1) , current_j) , ((current_i - 1) , (current_j + 1)) , (current_i , (current_j + 1)) , ((current_i + 1) , (current_j + 1)) , ((current_i + 1) , current_j) , ((current_i + 1) , (current_j - 1)) , (current_i , (current_j - 1))]:
+        
+        if((is_within_bounds(neighbour_i , R)) and (is_within_bounds(neighbour_j , C)) and (matrix[neighbour_i][neighbour_j] == target_value)):
+            
+            return True
+    
+    return False
+
+matrix = [['1' , '2' , '3'] , ['4' , '5' , '6'] , ['7' , '8' , '9']]
+
+R = 3
+
+C = 3
+
+positions_map = {}
+
+[positions_map.__setitem__(matrix[i][j] , (i , j)) for i in range(0 , R) for j in range(0 , C)]
+
+digits_string = input().strip()
+
+print(sum(((0) if(digits_string[index] == digits_string[(index + 1)]) else ((1) if(check_eight_directions(digits_string[(index + 1)] , positions_map[digits_string[index]][0] , positions_map[digits_string[index]][1] , R , C , matrix)) else (2))) for index in range(0 , (len(digits_string) - 1))))
