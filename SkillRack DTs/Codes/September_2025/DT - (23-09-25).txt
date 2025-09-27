@@ -1,0 +1,23 @@
+Problem Statement :-
+
+N Integers To Binary in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_K_th_bit(N , K):
+    
+    return ((N >> (K - 1)) & 1)
+
+N = int(input())
+
+K = 0
+
+powers_of_2 = 0
+
+for index , number in enumerate(list(map(int , input().split()))):
+    
+    K += (get_K_th_bit(number , (index + 1)) * (2 ** powers_of_2))
+    
+    powers_of_2 += 1
+
+print(K)
