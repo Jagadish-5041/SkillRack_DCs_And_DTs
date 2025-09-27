@@ -1,0 +1,114 @@
+Problem Statement :-
+
+Function - concatAndConvertToHex() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+void reverse_string(char *string){
+    
+    for(int left_pointer = 0 , right_pointer = (strlen(string) - 1) ; (left_pointer <= right_pointer) ; left_pointer++ , right_pointer--){
+        
+        char temp = string[left_pointer];
+        
+        string[left_pointer] = string[right_pointer];
+        
+        string[right_pointer] = temp;
+    }
+}
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((40 * sizeof(char))));
+    
+    while(N > 0){
+        
+        char bit = ((N % 2) + '0');
+        
+        strncat(binary_string , &bit , 1);
+        
+        N /= 2;
+    }
+    
+    reverse_string(binary_string);
+    
+    return binary_string;
+}
+
+void add_padding(char *binary_string){
+    
+    int N = strlen(binary_string);
+    
+    if((N % 4) == 0){
+        return ;
+    }
+    
+    int zeroes_to_be_added_count = (4 - (N % 4));
+    
+    char *zeroes_binary_string = ((char *) malloc(((zeroes_to_be_added_count * 2) * sizeof(char))));
+    
+    memset(zeroes_binary_string , '0' , sizeof(zeroes_binary_string));
+    
+    char *temp_binary_string = ((char *) malloc(((N + (zeroes_to_be_added_count * 2)) * sizeof(char))));
+    
+    sprintf(temp_binary_string , "%.*s%s" , zeroes_to_be_added_count , zeroes_binary_string , binary_string);
+    
+    strcpy(binary_string , temp_binary_string);
+    
+    free(zeroes_binary_string);
+    
+    free(temp_binary_string);
+}
+
+char get_hexadecimal_value(int value){
+    
+    return ((char []) {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , 'A' , 'B' , 'C' , 'D' , 'E' , 'F'})[value];
+}
+
+int get_prepended_zero_bits_count(int N , char *binary_string){
+    
+    int count = 0;
+    
+    for(int index = 0 ; ((index < N) && (binary_string[index] == '0')) ; index++){
+        count++;
+    }
+    
+    return count;
+}
+
+void concatAndConvertToHex(int N , int array[]){
+    
+    char *total_binary_string = ((char *) malloc((((N * 2) * 40) * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        strcat(total_binary_string , get_binary_string(array[index]));
+    }
+    
+    add_padding(total_binary_string);
+    
+    int M = strlen(total_binary_string);
+    
+    char *hexadecimal_string = ((char *) malloc(((M * 4) * sizeof(char))));
+    
+    for(int index = (M - 4) ; (index >= 0) ; index -= 4){
+        
+        char *four_bits_binary_string = ((char *) malloc((10 * sizeof(char))));
+        
+        sprintf(four_bits_binary_string , "%.*s" , 4 , &total_binary_string[index]);
+        
+        char hexadecimal_value = get_hexadecimal_value(strtol(four_bits_binary_string , NULL , 2));
+        
+        strncat(hexadecimal_string , &hexadecimal_value , 1);
+        
+        free(four_bits_binary_string);
+    }
+    
+    reverse_string(hexadecimal_string);
+    
+    printf("%s" , &hexadecimal_string[get_prepended_zero_bits_count(strlen(hexadecimal_string) , hexadecimal_string)]);
+    
+    free(total_binary_string);
+    
+    free(hexadecimal_string);
+}
