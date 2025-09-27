@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Powers Of 2 - Binary Representation in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+powers_of_2 = 0
+
+answer_list = []
+
+while(N > 0):
+    
+    bit = (N % 2)
+    
+    (answer_list.insert(0 , (bit * (2 ** powers_of_2)))) if(bit == 1) else ('')
+    
+    N //= 2
+    
+    powers_of_2 += 1
+
+print(*answer_list , sep = "+")
