@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Horizontally Concatenated Triangles in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def triangle_building_function(S , flag):
+    
+    global total_pattern_strings_list
+    
+    pattern_strings_list = []
+    
+    asterisks_count = 0
+    
+    while(S):
+        
+        row_string = (('*' * asterisks_count) + S) if(flag) else (('*' * (asterisks_count * 2)) + S)
+        
+        pattern_strings_list.insert(0 , row_string)
+        
+        asterisks_count += 1
+        
+        S = S[ : (len(S) - 2)]
+    
+    for index_1 , index_2 in zip(range((len(total_pattern_strings_list) -1) , -1 , -1) , range((len(pattern_strings_list) - 1) , -1 , -1)):
+        
+        total_pattern_strings_list[index_1] += pattern_strings_list[index_2]
+
+S = input().strip()
+
+N = len(S)
+
+total_pattern_strings_list = ["" for i in range(0 , ((N + 1) // 2))]
+
+triangle_building_function(S , True)
+
+while(S):
+    
+    S = S[ : (len(S) - 2)]
+    
+    triangle_building_function(S , False)
+
+[print(row_string) for row_string in total_pattern_strings_list]
