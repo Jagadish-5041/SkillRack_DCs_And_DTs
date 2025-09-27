@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Toggle Bits - Two Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_toggled_bit(bit):
+    
+    return (bit ^ 1)
+
+def get_decimal_value(binary_string):
+    
+    return int(binary_string , 2)
+
+X , Y = map(int , input().split())
+
+bits_list_1 = list(get_binary_string(X))
+
+bits_list_2 = list(get_binary_string(Y))
+
+for index_1 , index_2 in zip(range((len(bits_list_1) - 1) , -1 , -1) , range((len(bits_list_2) - 1) , -1 , -1)):
+    
+    if(bits_list_2[index_2] == '1'):
+        
+        bits_list_1[index_1] = str(get_toggled_bit(int(bits_list_1[index_1])))
+
+print(get_decimal_value(("".join(bits_list_1))))
