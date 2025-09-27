@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Flowchart Logic 056 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+M , N = map(int , input().split())
+
+ctr = 1
+
+while((M > 0) or (N > 0)):
+    
+    if((ctr % 2) != 0):
+        print((N % 10) , end = "")
+        N //= 10
+    else:
+        print((M % 10) , end = "")
+        M //= 10
+    
+    ctr += 1
