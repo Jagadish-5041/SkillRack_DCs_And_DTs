@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Fold String - Up Or Down in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+character , position = [(value.lower()) if(index == 0) else (int(value)) for index , value in enumerate(input().strip().split())]
+
+A = S[ : (position - 1)]
+
+N = len(A)
+
+B = S[(position - 1) : ]
+
+M = len(B)
+
+upper = (('*' * (N - M)) + B[::-1]) if(character == 'u') else (('*' * (M - N)) + A)
+
+lower = (('*' * (M - N)) + A) if(character == 'u') else (('*' * (N - M)) + B[::-1])
+
+print(upper , lower , sep = "\n")
