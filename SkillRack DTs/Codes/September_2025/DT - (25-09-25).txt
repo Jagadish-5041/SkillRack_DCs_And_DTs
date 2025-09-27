@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Two Right-Angle Triangles Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = (N + (3 * (N - 1)))
+
+pattern_matrix = [['' for j in range(0 , C)] for i in range(0 , R)]
+
+[pattern_matrix[i].__setitem__(j , '-') for i , count in zip(range(0 , R) , range(0 , ((N * 2) + 1) , 2)) for j in range(0 , ((N + (N - 1)) + count))]
+
+[pattern_matrix[(R - 1)].__setitem__(j , '*') for j in range(0 , C , 2)]
+
+[pattern_matrix[i].__setitem__(j , '*') for i , j in zip(range((R - 1) , -1 , -1) , range(0 , ((N * 2) + 1) , 2))]
+
+[pattern_matrix[i].__setitem__(j , '*') for i , j in zip(range((R - 1) , -1 , -1) , range((C - 1) , -1 , -2))]
+
+[pattern_matrix[i].__setitem__(((N * 2) - 2) , '*') for i in range(0 , R)]
+
+[print(*row_list , sep = "") for row_list in pattern_matrix]
