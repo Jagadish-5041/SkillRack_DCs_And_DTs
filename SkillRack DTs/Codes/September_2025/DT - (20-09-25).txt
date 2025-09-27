@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Largest Digit To Bianry in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_data(N):
+    
+    digits_list = []
+    
+    maximum_digit = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.insert(0 , digit)
+        
+        maximum_digit = max(maximum_digit , digit)
+        
+        N //= 10
+    
+    return (digits_list , maximum_digit)
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+N = int(input())
+
+sum_value = 0
+
+for number in list(map(int , input().split())):
+    
+    data_list , maximum_digit = get_data(number)
+    
+    maximum_digit_index = data_list.index(maximum_digit)
+    
+    data_list[maximum_digit_index] = int(bin(data_list[maximum_digit_index])[2 : ])
+    
+    new_number = 0
+    
+    for X in data_list:
+        
+        length_of_X = get_length_of_N(X)
+        
+        new_number = ((new_number * (10 ** length_of_X)) + X)
+    
+    sum_value += new_number
+
+print(sum_value)
