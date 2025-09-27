@@ -1,0 +1,15 @@
+Problem Statement :-
+
+All Possible Concatenation in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+B = input().strip()
+
+R_A = A[::-1]
+
+R_B = B[::-1]
+
+print(*sorted([(A + B) , (A + R_B) , (R_A + B) , (R_A + R_B) , (B + A) , (B + R_A) , (R_B + A) , (R_B + R_A)]) , sep = "\n")
