@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Print Frequency - Right To Left in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+frequency_map = {}
+
+[frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in S]
+
+for character in S:
+    
+    print(character , frequency_map[character] , sep = "" , end = " ")
+    
+    frequency_map[character] -= 1
