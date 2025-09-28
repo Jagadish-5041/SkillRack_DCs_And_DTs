@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Function - findDigitsBitMask() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int findDigitsBitMask(long long int N){
+    
+    int X = 0;
+    
+    while(N > 0){
+        
+        int digit = (N % 10);
+        
+        X = (X | (1 << digit));
+        
+        N = (N / 10);
+    }
+    
+    return X;
+}
