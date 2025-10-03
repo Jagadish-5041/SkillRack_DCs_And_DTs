@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Maximum Sum - Remove Same Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def remove_given_digit(target_digit , N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        current_digit = (N % 10)
+        
+        (digits_list.insert(0 , current_digit)) if(current_digit != target_digit) else ('')
+        
+        N //= 10
+    
+    new_N = 0
+    
+    for digit in digits_list:
+        
+        new_N = ((new_N * 10) + digit)
+    
+    return new_N
+
+def modify_and_get_sum_of_new_numbers_list(target_digit , N , numbers_list):
+    
+    return sum(remove_given_digit(target_digit , numbers_list[index]) for index in range(0 , N))
+
+N = int(input())
+
+numbers_list = list(map(int , input().split()))
+
+print(max(modify_and_get_sum_of_new_numbers_list(digit , N , numbers_list) for digit in list(map(int , set(("".join(str(number) for number in numbers_list)))))))
