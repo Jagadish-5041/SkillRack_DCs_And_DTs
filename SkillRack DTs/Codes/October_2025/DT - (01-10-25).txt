@@ -1,0 +1,78 @@
+Problem Statement :-
+
+Function - solveExpression() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+int find_index(char target_character , char *string , int N){
+    
+    int target_character_index = (strchr(string , target_character) - string);
+    
+    return ((is_within_bounds(target_character_index , N)) ? (target_character_index) : (-999));
+}
+
+int addition(int A , int B){
+    
+    return (A + B);
+}
+
+int subtraction(int A , int B){
+    
+    return (A - B);
+}
+
+int multiplication(int A , int B){
+    
+    return (A * B);
+}
+
+int division(int A , int B){
+    
+    return (A / B);
+}
+
+int solve_addition_expression(char *A , char *B , char *C){
+    
+    return ((A[0] == 'X') ? (subtraction(atol(C) , atol(B))) : ((B[0] == 'X') ? (subtraction(atol(C) , atol(A))) : (addition(atol(A) , atol(B)))));
+}
+
+int solve_multiplication_expression(char *A , char *B , char *C){
+    
+    return ((A[0] == 'X') ? (division(atol(C) , atol(B))) : ((B[0] == 'X') ? (division(atol(C) , atol(A))) : (multiplication(atol(A) , atol(B)))));
+}
+
+int solveExpression(char *expression_string){
+    
+    int N = strlen(expression_string);
+    
+    int index_1 = find_index('+' , expression_string , N);
+    
+    int index_2 = find_index('*' , expression_string , N);
+    
+    int operator_index = (index_1 != -999) ? (index_1) : (index_2);
+    
+    char operator = (index_1 != -999) ? ('+') : ('*');
+    
+    int equal_to_index = find_index('=' , expression_string , N);
+    
+    char *operand_1 = ((char *) malloc((N * sizeof(char))));
+    
+    sprintf(operand_1 , "%.*s" , operator_index , &expression_string[0]);
+    
+    char *operand_2 = ((char *) malloc((N * sizeof(char))));
+    
+    sprintf(operand_2 , "%.*s" , (equal_to_index - operator_index - 1) , &expression_string[(operator_index + 1)]);
+    
+    char *operand_3 = ((char *) malloc((N * sizeof(char))));
+    
+    sprintf(operand_3 , "%.*s" , (N - equal_to_index - 1) , &expression_string[(equal_to_index + 1)]);
+    
+    return ((operator == '+') ? (solve_addition_expression(operand_1 , operand_2 , operand_3)) : (solve_multiplication_expression(operand_1 , operand_2 , operand_3)));
+}
