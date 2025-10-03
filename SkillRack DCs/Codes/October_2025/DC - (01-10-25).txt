@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Split Odometer - K Seconds in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_list = [int(digit_string) for digit_string in input().strip()]
+
+indices_list = [index for index in range(2 , len(digits_list) , 3)]
+
+K = int(input())
+
+for second in range(0 , K):
+    
+    for index in indices_list:
+        
+        digits_list[index] = ((digits_list[index] + 1) % 10)
+        
+        if(digits_list[index] == 0):
+            
+            digits_list[(index - 1)] = ((digits_list[(index - 1)] + 1) % 10)
+            
+            if(digits_list[(index - 1)] == 0):
+                
+                digits_list[(index - 2)] = ((digits_list[(index - 2)] + 1) % 10)
+    
+    print(*digits_list , sep = "")
