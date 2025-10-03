@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Total Marks - Students & Questions in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+Q = int(input())
+
+marks_list = list(map(int , input().split()))
+
+total_marks_list = [0 for i in range(0 , N)]
+
+total_marks_list_index = 0
+
+left_or_right_flag = 1
+
+for mark in marks_list:
+    
+    left_or_right_flag = (2) if((left_or_right_flag == 1) and (total_marks_list_index == (N - 1))) else ((1) if((left_or_right_flag == 2) and (total_marks_list_index == 0)) else (left_or_right_flag))
+    
+    total_marks_list[total_marks_list_index] += mark
+    
+    total_marks_list_index = (total_marks_list_index + 1) if(left_or_right_flag == 1) else (total_marks_list_index - 1)
+
+print(*total_marks_list)
