@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Flowchart Logic 058 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+while(N > 0):
+    
+    D = (N % 10)
+    
+    flag = True
+    
+    while((D > 0) and ((flag) or ((N % 2) != 0))):
+        
+        flag = False
+        
+        print(D , end = "")
+        
+        D -= 1
+    
+    N //= 10
