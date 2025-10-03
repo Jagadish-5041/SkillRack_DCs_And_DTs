@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Sum - Repeat Each Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def repeat_digit(count , digit):
+    
+    number = 0
+    
+    for i in range(0 , count):
+        
+        number = ((number * 10) + digit)
+    
+    return ((-999) if(number == 0) else (number))
+
+def modify_and_get_number(index , values_list):
+    
+    values_list[index] = repeat_digit(values_list[index] , values_list[index])
+    
+    number = 0
+    
+    for value in values_list:
+        
+        if(value != -999):
+            
+            number = ((number * (10 ** get_length_of_N(value))) + value)
+    
+    return number
+
+digits_list = [int(digit_string) for digit_string in input().strip()]
+
+print(sum(modify_and_get_number(index , digits_list.copy()) for index in range(0 , len(digits_list))))
