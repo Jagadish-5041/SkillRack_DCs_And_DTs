@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Digits To Asterisks Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+digits_list = [int(digit_string) for digit_string in input().strip()]
+
+R = max(digits_list)
+
+C = sum(digits_list)
+
+matrix = [['-' for j in range(0 , C)] for i in range(0 , R)]
+
+column_index = 0
+
+for digit in digits_list:
+    
+    i = (R - digit)
+    
+    [matrix[i].__setitem__(j , '*') for j in range(column_index , (column_index + digit))]
+    
+    column_index += digit
+
+[print(*row_list , sep = "") for row_list in matrix]
