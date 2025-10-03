@@ -1,0 +1,56 @@
+Problem Statement :-
+
+Define Class Professor in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+class Professor {
+    
+    String name;
+    
+    String department;
+    
+    int salary;
+    
+    Professor(String name){
+        
+        this.name = name;
+        
+        this.department = "N/A";
+        
+        this.salary = 10000;
+    }
+    
+    Professor(String name , String department){
+        
+        this.name = name;
+        
+        this.department = department;
+        
+        this.salary = 15000;
+    }
+    
+    Professor(String name , String department , int salary){
+        
+        this.name = name;
+        
+        this.department = department;
+        
+        this.salary = salary;
+    }
+    
+    String getName(){
+        
+        return this.name;
+    }
+    
+    String getDept(){
+        
+        return this.department;
+    }
+    
+    int getSalary(){
+        
+        return this.salary;
+    }
+}
