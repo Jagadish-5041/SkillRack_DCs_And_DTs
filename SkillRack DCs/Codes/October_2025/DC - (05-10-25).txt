@@ -1,0 +1,46 @@
+Problem Statement :-
+
+Shortest Distance - King And Queen in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def traverse_and_find_nearest_queen_s_position(current_i , current_j , offset_i , offset_j , R , C , matrix):
+    
+    count = 0
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        if(matrix[current_i][current_j] == 'Q'):
+            return count
+        
+        count += 1
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+    
+    return -999
+
+N = int(input())
+
+matrix = [input().strip().split() for i in range(0 , N)]
+
+closest_queen_steps_count = (N * N)
+
+for current_i in range(0 , N):
+    
+    for current_j in range(0 , N):
+        
+        if(matrix[current_i][current_j] == 'K'):
+            
+            for offset_i , offset_j in [(-1 , -1) , (-1 , 0) , (-1 , 1) , (0 , 1) , (1 , 1) , (1 , 0) , (1 , -1) , (0 , -1)]:
+                
+                current_steps_count = traverse_and_find_nearest_queen_s_position(current_i , current_j , offset_i , offset_j , N , N , matrix)
+                
+                closest_queen_steps_count = (min(closest_queen_steps_count , current_steps_count)) if(current_steps_count != -999) else (closest_queen_steps_count)
+
+print((-1) if(closest_queen_steps_count == (N * N)) else (closest_queen_steps_count))
