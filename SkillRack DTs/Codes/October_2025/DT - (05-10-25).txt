@@ -1,0 +1,61 @@
+Problem Statement :-
+
+Function - splitAndConcat() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char* splitAndConcat(char *string){
+    
+    int N = strlen(string);
+    
+    char *A = ((char *) malloc((N * sizeof(char))));
+    
+    char *B = ((char *) malloc((N * sizeof(char))));
+    
+    int flag = 1;
+    
+    char *answer_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int M = strlen(string_tokenizer);
+        
+        char *left_half = ((char *) malloc((M * sizeof(char))));
+        
+        char *right_half = ((char *) malloc((M * sizeof(char))));
+        
+        sprintf(left_half , "%.*s" , (M / 2) , &string_tokenizer[0]);
+        
+        sprintf(right_half , "%.*s" , (M / 2) , &string_tokenizer[(M / 2)]);
+        
+        if(flag){
+            
+            flag = 0;
+            
+            sprintf(answer_string , "%s " , left_half);
+            
+            strcpy(A , right_half);
+        }else{
+            
+            strcpy(B , left_half);
+            
+            strcat(answer_string , A);
+            
+            strcat(answer_string , B);
+            
+            strcat(answer_string , " ");
+            
+            strcpy(A , right_half);
+        }
+    }
+    
+    strcat(answer_string , A);
+    
+    free(A);
+    
+    free(B);
+    
+    return answer_string;
+}
