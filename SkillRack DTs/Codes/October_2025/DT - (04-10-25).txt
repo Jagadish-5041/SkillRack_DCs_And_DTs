@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Expand Each Integer - Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_X_th_digit_from_right(N , X):
+    
+    return ((N // (10 ** (X - 1))) % 10)
+
+R_1 , C_1 = map(int , input().split())
+
+matrix_1 = [list(map(int , input().split())) for i in range(0 , R_1)]
+
+R_2 = (R_1 * 2)
+
+C_2 = (C_1 * 2)
+
+matrix_2 = [[None for j in range(0 , C_2)] for i in range(0 , R_2)]
+
+for i_1 , i_2 in zip(range(0 , R_1) , range(0 , R_2 , 2)):
+    
+    for j_1 , j_2 in zip(range(0 , C_1) , range(0 , C_2 , 2)):
+        
+        for (offset_i , offset_j) , digit_position in zip([(0 , 0) , (0 , 1) , (1 , 0) , (1 , 1)] , range(4 , 0 , -1)):
+            
+            matrix_2[(i_2 + offset_i)][(j_2 + offset_j)] = get_X_th_digit_from_right(matrix_1[i_1][j_1] , digit_position)
+
+[print(*row_list) for row_list in matrix_2]
