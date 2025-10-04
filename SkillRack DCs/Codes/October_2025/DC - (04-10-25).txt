@@ -1,0 +1,48 @@
+Problem Statement :-
+
+Function - getIntegerValue() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+#include <string.h>
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+int getIntegerValue(int N){
+    
+    int length_of_N = get_length_of_N(N);
+    
+    char *digits_string = ((char *) malloc((length_of_N * sizeof(char))));
+    
+    sprintf(digits_string , "%d" , N);
+    
+    int new_N = 0;
+    
+    for(int M = strlen(digits_string) , index = 0 ; (index < M) ; ){
+        
+        if((digits_string[index] == '0') || (digits_string[index] == '1')){
+            
+            char *bits_string = ((char *) malloc((length_of_N * sizeof(char))));
+            
+            while((index < M) && ((digits_string[index] == '0') || (digits_string[index] == '1'))){
+                strncat(bits_string , &digits_string[index++] , 1);
+            }
+            
+            int value = strtol(bits_string , NULL , 2);
+            
+            new_N = ((new_N * ((int) pow(10 , get_length_of_N(value)))) + value);
+            
+            free(bits_string);
+        }else{
+            new_N = ((new_N * 10) + ((int) (digits_string[index++] - '0')));
+        }
+    }
+    
+    free(digits_string);
+    
+    return new_N;
+}
