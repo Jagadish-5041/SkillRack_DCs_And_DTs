@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Sort Integers By Bit Score in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_bit_score(number_string):
+    
+    return sum(((lambda digit : (digit * int(get_binary_string(digit)))) (int(digit_string))) for digit_string in number_string)
+
+N = int(input())
+
+sorted_data_list = sorted([(int(number_string) , get_bit_score(number_string)) for number_string in input().strip().split()] , key = lambda pair : (pair[1] , pair[0]))
+
+[print(pair[0] , end = " ") for pair in sorted_data_list]
