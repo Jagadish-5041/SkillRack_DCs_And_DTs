@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Alternate Characters Matching in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check(N , A , M , B):
+    
+    for X , Y in zip(A[0 : N : 2] , B[1 : M : 2]):
+        
+        if(X != Y):
+            
+            return False
+    
+    return True
+
+string_1 = input().strip().lower()
+
+N = len(string_1)
+
+string_2 = input().strip().lower()
+
+M = len(string_2)
+
+print(("YES") if((check(N , string_1 , M , string_2)) or (check(M , string_2 , N , string_1))) else ("NO"))
