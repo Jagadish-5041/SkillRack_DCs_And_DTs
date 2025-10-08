@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Print Sum - Integers From Ranges in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list_within_given_range(starting_digit , ending_digit):
+    
+    return (([digit for digit in range(0 , 10) if(starting_digit <= digit <= ending_digit)]) if(starting_digit <= ending_digit) else ([digit for digit in range(9 , -1 , -1) if(ending_digit <= digit <= starting_digit)]))
+
+def form_number_from_digits_list(digits_list):
+    
+    number = 0
+    
+    for digit in digits_list:
+        
+        number = ((number * 10) + digit)
+    
+    return number
+
+(lambda N : print(sum(form_number_from_digits_list(get_digits_list_within_given_range(*map(int , range_string.split("-")))) for range_string in input().strip().split()))) (int(input()))
