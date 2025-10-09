@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Flowchart Logic 059 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_concatenated_number(A , B):
+    
+    C = A
+    
+    while(B > 0):
+        
+        unit_digit = (B % 10)
+        
+        C = ((C * 10) + unit_digit)
+        
+        B //= 10
+    
+    return C
+
+(lambda A , B : print((get_concatenated_number(B , A) + get_concatenated_number(A , B)))) (*map(int , input().split()))
