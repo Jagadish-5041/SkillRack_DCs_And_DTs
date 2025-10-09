@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Print Submatrix Border Elements in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def print_submatrix_border_in_clockwise_direction(starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    [print(matrix[starting_i][current_j] , end = " ") for current_j in range(starting_j , (ending_j + 1))]
+    
+    [print(matrix[current_i][ending_j] , end = " ") for current_i in range((starting_i + 1) , (ending_i + 1))]
+    
+    [print(matrix[ending_i][current_j] , end = " ") for current_j in range((ending_j - 1) , (starting_j - 1) , -1)]
+    
+    [print(matrix[current_i][starting_j] , end = " ") for current_i in range((ending_i - 1) , starting_i , -1)]
+    
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+X , Y = map(int , input().split())
+
+print_submatrix_border_in_clockwise_direction((X - 1) , ((X - 1) + (R - X + 1) - 1) , (Y - 1) , ((Y - 1) + (C - Y + 1) - 1) , R , C , matrix)
