@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Bitwise XOR - Every Two Adjacent Values in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_new_list(current_list):
+    
+    return [(current_list[index] ^ current_list[(index + 1)]) for index in range(0 , (len(current_list) - 1))]
+
+N = int(input())
+
+current_list = list(map(int , input().split()))
+
+while(len(current_list) > 1):
+    
+    current_list = get_new_list(current_list)
+    
+    print(*current_list)
