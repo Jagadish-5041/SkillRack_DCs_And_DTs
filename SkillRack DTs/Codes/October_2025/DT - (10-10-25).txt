@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sort Subarrays By First Integer in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+K = int(input())
+
+sorted_subarrays_list = sorted([values_list[index : (index + K)] for index in range(0 , N , K)] , key = lambda data_list : data_list[0])
+
+[print(*data_list , sep = " " , end = " ") for data_list in sorted_subarrays_list]
