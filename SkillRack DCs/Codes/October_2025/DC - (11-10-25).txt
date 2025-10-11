@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Rearrange String Values - First Letter in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_data(direction_flag_value , strings_list):
+    
+    frequency_map = {}
+    
+    maximum_frequency = 0
+    
+    for string in strings_list:
+        
+        key = (string[0]) if(direction_flag_value == 1) else (string[-1])
+        
+        frequency_map[key] = (frequency_map.get(key , 0) + 1)
+        
+        maximum_frequency = max(maximum_frequency , frequency_map[key])
+    
+    return (frequency_map , maximum_frequency)
+
+def find_key_character(target_value , frequency_map):
+    
+    for key , value in frequency_map.items():
+        
+        if(value == target_value):
+            
+            return key
+
+N = int(input())
+
+strings_list = [input().strip() for i in range(0 , N)]
+
+frequency_map_1 , maximum_frequency_1 = get_data(1 , strings_list)
+
+frequency_map_2 , maximum_frequency_2 = get_data(2 , strings_list)
+
+key_character = ((find_key_character(maximum_frequency_1 , frequency_map_1)) if(maximum_frequency_1 > maximum_frequency_2) else (find_key_character(maximum_frequency_2 , frequency_map_2)))
+
+[print((string_value) if(string_value[0] == key_character) else (string_value[::-1])) for string_value in strings_list]
