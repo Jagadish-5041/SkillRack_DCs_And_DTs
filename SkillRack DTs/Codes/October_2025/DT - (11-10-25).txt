@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Function - updateTime() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int convert_hours_to_seconds(int hours){
+    
+    return (hours * 3600);
+}
+
+int convert_minutes_to_seconds(int minutes){
+    
+    return (minutes * 60);
+}
+
+int convert_seconds_to_24_hours_time_format_and_update_time_structure(int total_seconds , struct Time *time_structure){
+    
+    int hours = ((total_seconds / 3600) % 24);
+    
+    int minutes = (((total_seconds % 3600) / 60) % 60);
+    
+    int seconds = ((total_seconds - convert_hours_to_seconds(hours) - convert_minutes_to_seconds(minutes)) % 60);
+    
+    (time_structure -> hours) = hours;
+    
+    (time_structure -> minutes) = minutes;
+    
+    (time_structure -> seconds) = seconds;
+}
+
+void updateTime(struct Time *time_structure , char *string){
+    
+    int total_seconds = (convert_hours_to_seconds((time_structure -> hours)) + convert_minutes_to_seconds((time_structure -> minutes)) + (time_structure -> seconds));
+    
+    int X;
+    
+    char unit_of_time;
+    
+    sscanf(string , "%d%c" , &X , &unit_of_time);
+    
+    int seconds_to_be_added = (tolower(unit_of_time) == 'h') ? (convert_hours_to_seconds(X)) : ((tolower(unit_of_time) == 'm') ? (convert_minutes_to_seconds(X)) : (X));
+    
+    convert_seconds_to_24_hours_time_format_and_update_time_structure((total_seconds + seconds_to_be_added) , time_structure);
+}
