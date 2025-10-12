@@ -1,0 +1,59 @@
+Problem Statement :-
+
+Split Digits & Find Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_values_list(N , S):
+    
+    values_list = []
+    
+    index = 0
+    
+    while(is_within_bounds(index , N)):
+        
+        value_string = ""
+        
+        index += 1
+        
+        while((is_within_bounds(index , N)) and (S[index] != ')')):
+            
+            value_string += S[index]
+            
+            index += 1
+        
+        index += 1
+        
+        values_list.append(int(value_string))
+    
+    return values_list
+
+def get_sum(N , A , values_list):
+    
+    sum_value = 0
+    
+    index = 0
+    
+    for value in values_list:
+        
+        absolute_value = abs(value)
+        
+        sum_value += (int((A[index : (index + absolute_value)])) * ((-1) if(value < 1) else (1)))
+        
+        index += absolute_value
+    
+    return sum_value
+
+A = input().strip()
+
+N = len(A)
+
+B = input().strip()
+
+M = len(B)
+
+print(get_sum(N , A , get_values_list(M , B)))
