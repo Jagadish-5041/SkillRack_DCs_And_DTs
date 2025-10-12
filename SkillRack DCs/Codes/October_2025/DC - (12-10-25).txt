@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Increment/Decrement - Find Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_value_from_string(N , string):
+    
+    index = (N - 1)
+    
+    operator_string = ""
+    
+    while((is_within_bounds(index , N)) and ((string[index] == '+') or (string[index] == '-'))):
+        
+        operator_string += string[index]
+        
+        index -= 1
+    
+    number = int(string[ : (index + 1)])
+    
+    return (((number + 1) if(operator_string[0] == '+') else (number - 1)) if(operator_string) else (number))
+
+N = int(input())
+
+print(sum(get_value_from_string(len(string) , string) for string in input().strip().split()))
