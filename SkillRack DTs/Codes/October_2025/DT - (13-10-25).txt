@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Integers - Every Two Sorted Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+sorted_values_list = sorted(values_list)
+
+value_index_map = {value : values_list.index(value) for value in sorted_values_list}
+
+for index in range(0 , (N - 1)):
+    
+    A = value_index_map[sorted_values_list[index]]
+    
+    B = value_index_map[sorted_values_list[(index + 1)]]
+    
+    current_list = values_list[min(A , B) : (max(A , B) + 1)]
+    
+    print(*((current_list) if(A <= B) else (current_list[::-1])))
