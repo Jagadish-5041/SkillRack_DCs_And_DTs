@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Function - findSeriesSum() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_binary_string(int N , char *string){
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if((string[index] != '0') && (string[index] != '1')){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+int findSeriesSum(char *data_string){
+    
+    int series_sum = 0;
+    
+    for(char *string_tokenizer = strtok(data_string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        series_sum += ((is_binary_string(strlen(string_tokenizer) , string_tokenizer)) ? (strtol(string_tokenizer , NULL , 2)) : (atoi(string_tokenizer)));
+    }
+    
+    return series_sum;
+}
