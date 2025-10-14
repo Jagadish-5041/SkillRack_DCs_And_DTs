@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Check Range In String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda X , Y : print(("YES") if(("".join(str(value) for value in range(X , (Y + 1)))) == input().strip()) else ("NO"))) (*map(int , input().split()))
