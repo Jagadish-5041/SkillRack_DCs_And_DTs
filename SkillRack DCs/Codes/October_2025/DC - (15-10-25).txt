@@ -1,0 +1,45 @@
+Problem Statement :-
+
+L Or Inverted L - Flip Diagonally in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+input_lists = []
+
+R = 0
+
+C = 0
+
+while(True):
+
+    try:
+        
+        input_list = input().strip().split()
+        
+        input_lists.append(input_list)
+        
+        N = len(input_list)
+        
+        R = max(R , N)
+        
+        C = max(C , N)
+    
+    except:
+        
+        break
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+flag = (len(input_lists[0]) == C)
+    
+for i in range(0 , len(input_lists)):
+    
+    for j in range(0 , len(input_lists[i])):
+        
+        new_i = (C - j - 1) if(flag) else (j)
+        
+        new_j = (R - i - 1) if(flag) else (i)
+        
+        matrix[new_i][new_j] = input_lists[i][j]
+
+[print(*row_list) for row_list in matrix]
