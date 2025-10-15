@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Diamond Values in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((0) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+K = 3
+
+for i in range(0 , (R - K + 1) , K):
+    
+    for j in range(0 , (C - K + 1) , K):
+        
+        matrix[i][j] = ('*' * get_length_of_N(matrix[i][j]))
+        
+        matrix[i][(j + 2)] = ('*' * get_length_of_N(matrix[i][(j + 2)]))
+        
+        matrix[(i + 1)][(j + 1)] = ('*' * get_length_of_N(matrix[(i + 1)][(j + 1)]))
+        
+        matrix[(i + 2)][j] = ('*' * get_length_of_N(matrix[(i + 2)][j]))
+        
+        matrix[(i + 2)][(j + 2)] = ('*' * get_length_of_N(matrix[(i + 2)][(j + 2)]))
+
+[print(*row_list) for row_list in matrix]
