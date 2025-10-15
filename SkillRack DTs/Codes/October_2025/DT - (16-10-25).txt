@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Next D Alphabets Circularly - String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+index = 0
+
+N = len(S)
+
+while(is_within_bounds(index , N)):
+    
+    if(S[index].isdigit()):
+        
+        alphabet_index = index
+        
+        target_count = int(S[index])
+        
+        while((is_within_bounds(alphabet_index , N)) and (not S[alphabet_index].isalpha())):
+            
+            alphabet_index = ((alphabet_index + 1) % N)
+        
+        temp_S = ""
+        
+        count = 0
+        
+        while((is_within_bounds(alphabet_index , N)) and (count < target_count)):
+            
+            temp_S = (temp_S + S[alphabet_index]) if(S[alphabet_index].isalpha()) else (temp_S)
+            
+            count = (count + 1) if(S[alphabet_index].isalpha()) else (count)
+            
+            alphabet_index = ((alphabet_index + 1) % N)
+        
+        print(temp_S)
+        
+    index += 1
