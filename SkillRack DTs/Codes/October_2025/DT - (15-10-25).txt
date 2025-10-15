@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Find Sum - Expanded Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_original_integer(number_string):
+    
+    original_number = 0
+    
+    index = 0
+    
+    N = len(number_string)
+    
+    while(is_within_bounds(index , N)):
+        
+        current_digit = int(number_string[index])
+        
+        original_number = ((original_number * 10) + current_digit)
+        
+        index += current_digit
+    
+    return original_number
+
+(lambda N : print(sum(get_original_integer(input().strip()) for count in range(0 , N)))) (int(input()))
