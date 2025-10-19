@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Print String - All Eight Directions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def traverse_and_fill(current_i , current_j , offset_i , offset_j , R , C , matrix , S):
+    
+    for character in S:
+        
+        matrix[current_i][current_j] = character
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+
+S = input().strip()
+
+N = len(S)
+
+R = ((N * 2) - 1)
+
+C = ((N * 2) - 1)
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+[traverse_and_fill((N - 1) , (N - 1) , offset_i , offset_j , R , C , matrix , S) for offset_i , offset_j in [(-1 , -1) , (-1 , 0) , (-1 , 1) , (0 , -1) , (0 , 1) , (1 , -1) , (1 , 0) , (1 , 1)]]
+
+[print(*row_list) for row_list in matrix]
