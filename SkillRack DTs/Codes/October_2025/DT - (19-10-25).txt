@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Irregular Plus Shape Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def traverse_and_fill(current_i , current_j , offset_i , offset_j , matrix , string):
+    
+    for character in string:
+        
+        matrix[current_i][current_j] = character
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+
+S_1 = input().strip()
+
+S_2 = input().strip()
+
+S_3 = input().strip()
+
+S_4 = input().strip()
+
+R = (len(S_1) + len(S_3) - 1)
+
+C = (len(S_2) + len(S_4) - 1)
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+starting_i = (len(S_1) - 1)
+
+starting_j = (len(S_4) - 1)
+
+traverse_and_fill(starting_i , starting_j , -1 , 0 , matrix , S_1)
+
+traverse_and_fill(starting_i , starting_j , 0 , 1 , matrix , S_2)
+
+traverse_and_fill(starting_i , starting_j , 1 , 0 , matrix , S_3)
+
+traverse_and_fill(starting_i , starting_j , 0 , -1 , matrix , S_4)
+
+[print(*row_list , sep = "") for row_list in matrix]
