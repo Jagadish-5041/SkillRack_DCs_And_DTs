@@ -1,0 +1,78 @@
+Problem Statement :-
+
+Merge Three Arrays - Ascending Order in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_int_input():
+    
+    return int(input())
+
+def get_list_input():
+    
+    return list(map(int , input().split()))
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def custom_print(A_i , A_N , A , B_i , B_N , B , C_i , C_N , C):
+    
+    while((is_within_bounds(A_i , A_N)) and (is_within_bounds(B_i , B_N)) and (is_within_bounds(C_i , C_N))):
+        
+        if((A[A_i] <= B[B_i]) and (A[A_i] <= C[C_i])):
+            print('a' , A_i , sep = "" , end = " ")
+            A_i += 1
+        elif((B[B_i] <= A[A_i]) and (B[B_i] <= C[C_i])):
+            print('b' , B_i , sep = "" , end = " ")
+            B_i += 1
+        elif((C[C_i] <= A[A_i]) and (C[C_i] <= B[B_i])):
+            print('c' , C_i , sep = "" , end = " ")
+            C_i += 1
+    
+    while((is_within_bounds(A_i , A_N)) and (is_within_bounds(B_i , B_N))):
+        
+        if(A[A_i] <= B[B_i]):
+            print('a' , A_i , sep = "" , end = " ")
+            A_i += 1
+        elif(B[B_i] <= A[A_i]):
+            print('b' , B_i , sep = "" , end = " ")
+            B_i += 1
+    
+    while((is_within_bounds(A_i , A_N)) and (is_within_bounds(C_i , C_N))):
+        
+        if(A[A_i] <= C[C_i]):
+            print('a' , A_i , sep = "" , end = " ")
+            A_i += 1
+        elif(C[C_i] <= A[A_i]):
+            print('c' , C_i , sep = "" , end = " ")
+            C_i += 1
+    
+    while((is_within_bounds(B_i , B_N)) and (is_within_bounds(C_i , C_N))):
+        
+        if(B[B_i] <= C[C_i]):
+            print('b' , B_i , sep = "" , end = " ")
+            B_i += 1
+        elif(C[C_i] <= B[B_i]):
+            print('c' , C_i , sep = "" , end = " ")
+            C_i += 1
+    
+    while(is_within_bounds(A_i , A_N)):
+        
+        print('a' , A_i , sep = "" , end = " ")
+        
+        A_i += 1
+    
+    while(is_within_bounds(B_i , B_N)):
+        
+        print('b' , B_i , sep = "" , end = " ")
+        
+        B_i += 1
+    
+    while(is_within_bounds(C_i , C_N)):
+        
+        print('c' , C_i , sep = "" , end = " ")
+        
+        C_i += 1
+
+custom_print(0 , get_int_input() , get_list_input() , 0 , get_int_input() , get_list_input() , 0 , get_int_input() , get_list_input())
