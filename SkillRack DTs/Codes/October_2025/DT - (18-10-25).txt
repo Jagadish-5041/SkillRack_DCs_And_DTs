@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Function - alphabetsToIntegers() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int get_alphabet_index(char alphabet){
+    
+    return (((int) alphabet) - ((int) 'a'));
+}
+
+boundedArray *alphabetsToIntegers(char *string){
+    
+    int *array = ((int *) malloc((strlen(string) * sizeof(int))));
+    
+    int array_index = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int minus_flag = (string_tokenizer[0] == '-');
+        
+        int number = 0;
+        
+        for(int index = ((minus_flag) ? (1) : (0)) , N = strlen(string_tokenizer) ; (index < N) ; index++){
+            number = ((number * 10) + get_alphabet_index(string_tokenizer[index]));
+        }
+        
+        array[array_index++] = (minus_flag) ? (number * -1) : (number);
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = array_index;
+    
+    (bounded_array_reference -> arr) = array;
+    
+    return bounded_array_reference;
+}
