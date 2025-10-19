@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Same Bits - Odd Positions in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+X , Y = map(int , input().split())
+
+bits_string = ""
+
+bit_position_from_LSB = 1
+
+while((X > 0) and (Y > 0)):
+    
+    bit_1 = (X % 2)
+    
+    bit_2 = (Y % 2)
+    
+    bits_string = (str(bit_1) + bits_string) if((is_odd(bit_position_from_LSB)) and (bit_1 == bit_2)) else (bits_string)
+    
+    X //= 2
+    
+    Y //= 2
+    
+    bit_position_from_LSB += 1
+
+C = (int(bits_string , 2)) if(bits_string) else (-1)
+
+print(C)
