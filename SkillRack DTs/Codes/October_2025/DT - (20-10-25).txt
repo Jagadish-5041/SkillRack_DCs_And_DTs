@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Frequency Bit Masking in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_data(string):
+    
+    frequency_map = {}
+    
+    maximum_frequency = 0
+    
+    for character in string:
+        
+        frequency_map[character] = (frequency_map.get(character , 0) + 1)
+        
+        maximum_frequency = max(maximum_frequency , frequency_map[character])
+    
+    return (frequency_map , maximum_frequency)
+
+def get_alphabet_index(alphabet):
+    
+    return (ord(alphabet) - ord('a'))
+
+def get_number_and_update_frequency_map(frequency_map , target_frequency):
+    
+    bits_list = ['0' for i in range(0 , 26)]
+    
+    for key in frequency_map:
+        
+        if(frequency_map[key] == target_frequency):
+            
+            frequency_map[key] -= 1
+            
+            bits_list[(26 - get_alphabet_index(key) - 1)] = '1'
+    
+    return int(("".join(bits_list)) , 2)
+
+(lambda frequency_map , maximum_frequency : print(*[get_number_and_update_frequency_map(frequency_map , frequency) for frequency in range(maximum_frequency , 0 , -1)][::-1] , sep = "\n")) (*get_data(input().strip()))
