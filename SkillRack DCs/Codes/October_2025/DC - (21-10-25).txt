@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Flowchart Logic 052 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N_1 , N_2 , N_3 = map(int , input().split())
+
+ctr = N_2
+
+while((ctr >= N_1) or (N_2 <= N_3)):
+    
+    print(max(ctr , 1) , min(N_2 , N_3))
+    
+    ctr -= 1
+    
+    N_2 += 1
