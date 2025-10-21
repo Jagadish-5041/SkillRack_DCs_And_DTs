@@ -1,0 +1,28 @@
+Problem Statement :-
+
+K-Digit Integers - Xth Smallest in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+import heapq
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+K , X = map(int , input().split())
+
+min_heap_list = []
+
+heapq.heapify(min_heap_list)
+
+[heapq.heappush(min_heap_list , value) for value in values_list if(get_length_of_N(value) == K)]
+
+[heapq.heappop(min_heap_list) for i in range(1 , X) if(min_heap_list)]
+
+print((heapq.heappop(min_heap_list)) if(min_heap_list) else (-1))
