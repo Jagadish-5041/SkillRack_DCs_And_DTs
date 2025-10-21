@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Sort Integers - Lask K Bits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_last_K_bits_value(N , K):
+    
+    return (N & ((1 << K) - 1))
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+K = int(input())
+
+print(*sorted(values_list , key = lambda value : (get_last_K_bits_value(value , K) , value)))
