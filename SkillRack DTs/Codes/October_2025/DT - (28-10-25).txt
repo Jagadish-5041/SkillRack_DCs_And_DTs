@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Reverse Subarrays - Square Brackets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+numbers_list = []
+
+while(is_within_bounds(index , N)):
+    
+    if(S[index] == '['):
+        
+        index += 1
+        
+        T_S = ""
+        
+        while((is_within_bounds(index , N)) and (S[index] != ']')):
+            
+            T_S += S[index]
+            
+            index += 1
+        
+        index += 1
+        
+        numbers_list += list(map(int , T_S.split()))[::-1]
+    
+    elif(S[index].isdigit()):
+        
+        T_S = ""
+        
+        while((is_within_bounds(index , N)) and (S[index].isdigit())):
+            
+            T_S += S[index]
+            
+            index += 1
+        
+        numbers_list.append(int(T_S))
+    
+    else:
+        
+        index += 1
+
+print(*numbers_list)
+
+print(sum(numbers_list))
