@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Toggle - Digits And Words in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+digits_list = list("0123456789")
+
+words_list = ["zero" , "one" , "two" , "three" , "four" , "five" , "six" , "seven" , "eight" , "nine"]
+
+digits_to_words_map = {digit : word for digit , word in zip(digits_list , words_list)}
+
+words_to_digits_map = {word : digit for word , digit in zip(words_list , digits_list)}
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+while(is_within_bounds(index , N)):
+    
+    if(S[index].isdigit()):
+        
+        print(digits_to_words_map[S[index]] , end = "")
+        
+        index += 1
+        
+    else:
+        
+        T_S = ""
+        
+        while((is_within_bounds(index , N)) and (not S[index].isdigit())):
+            
+            T_S += S[index]
+            
+            if(T_S in words_to_digits_map):
+                
+                print(words_to_digits_map[T_S] , end = "")
+                
+                T_S = ""
+            
+            index += 1
