@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Split String Based On First Character in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+index = 0
+
+N = len(S)
+
+first_character = S[0]
+
+words_list = []
+
+while(is_within_bounds(index , N)):
+    
+    T_S = S[index]
+    
+    index += 1
+    
+    while((is_within_bounds(index , N)) and (S[index] != first_character)):
+        
+        T_S += S[index]
+        
+        index += 1
+    
+    words_list.append(T_S)
+
+print(*sorted(words_list))
