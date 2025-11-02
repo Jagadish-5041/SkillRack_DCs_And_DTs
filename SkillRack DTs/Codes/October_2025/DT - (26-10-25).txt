@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Function - splitEqualBinary() in DT (Daily Test) in SkillRack in C - Programming
+
+int get_bits_count(int N){
+    
+    int bits_count = 0;
+    
+    while(N > 0){
+        
+        bits_count++;
+        
+        N /= 2;
+    }
+    
+    return bits_count;
+}
+
+int get_last_K_bits(int N , int K){
+    
+    return (N & ((1 << K) - 1));
+}
+
+int splitEqualBinary(int N){
+    
+    int bits_count = get_bits_count(N);
+    
+    int K = (bits_count / 2);
+    
+    int left_half_N = (N >> K);
+    
+    int right_half_N = get_last_K_bits(N , K);
+    
+    return ((left_half_N == right_half_N) ? (left_half_N + right_half_N) : (N));
+}
