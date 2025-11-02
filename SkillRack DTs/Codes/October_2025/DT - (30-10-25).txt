@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Bit Transfer - MSB To LSB in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_N_from_binary_string(binary_string):
+    
+    return int(binary_string , 2)
+
+N = int(input())
+
+binary_strings_list = [get_binary_string(value) for value in list(map(int , input().split()))]
+
+for current_index in range(0 , N):
+    
+    previous_index = ((current_index - 1) % N)
+    
+    binary_strings_list[previous_index] += binary_strings_list[current_index][0]
+    
+    binary_strings_list[current_index] = binary_strings_list[current_index][1 : ]
+
+[print(get_N_from_binary_string(binary_string) , end = " ") for binary_string in binary_strings_list]
