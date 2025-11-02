@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Rearrange Mixed Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+characters_list = []
+
+integers_list = []
+
+words_list = []
+
+[(characters_list.append(data_string)) if((not data_string.isdigit()) and (len(data_string) == 1)) else (integers_list.append(int(data_string)) if(((data_string[0] == '0') and (len(data_string) == 1)) or ((data_string[0] != '0') and (data_string.isdigit()))) else (words_list.append(data_string))) for i in range(0 , R) for data_string in input().strip().split()]
+
+indices_list = [(i , j) for i in range(0 , R) for j in range(0 , C)]
+
+[matrix[i].__setitem__(j , data_value) for (i , j) , data_value in zip(indices_list , (characters_list + integers_list + words_list))]
+
+[print(*row_list) for row_list in matrix]
