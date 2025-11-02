@@ -1,6 +1,6 @@
 Problem Statement :-
 
-Book - Numbering Subsections in DC (Daily Challenge) in SkillRack in Python - Programming
+Array Increment/Decrement Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
 
 Code :-
 
