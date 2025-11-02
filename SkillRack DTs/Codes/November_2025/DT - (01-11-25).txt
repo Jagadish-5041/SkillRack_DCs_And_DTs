@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Unique Products Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : print(len(set((name , weight , price) for name , weight , price in zip(input().strip().split() , list(map(int , input().split())) , list(map(int , input().split()))))))) (int(input()))
