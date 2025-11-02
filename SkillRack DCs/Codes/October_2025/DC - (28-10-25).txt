@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Flowchart Logic 057 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+X , Y = map(int , input().split())
+
+string = "abcde"
+
+ctr = 1
+
+while(ctr <= X):
+    
+    index = 0
+    
+    while(index < Y):
+        
+        print(ctr , string[(index % 5)] , sep = ".")
+        
+        index += 1
+    
+    ctr += 1
