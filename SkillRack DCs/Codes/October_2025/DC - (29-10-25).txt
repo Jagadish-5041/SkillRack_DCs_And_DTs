@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Remove Edges - Except Parallel Edges in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+adjacency_matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+for node_1 in range(0 , N):
+    
+    for node_2 in range(0 , N):
+        
+        adjacency_matrix[node_1][node_2] = (adjacency_matrix[node_1][node_2]) if((adjacency_matrix[node_1][node_2] != 0) and (adjacency_matrix[node_2][node_1] != 0)) else (0)
+
+[print(*row_list) for row_list in adjacency_matrix]
