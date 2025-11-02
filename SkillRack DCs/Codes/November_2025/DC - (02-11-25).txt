@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Book - Numbering Subsections in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list_original = list(map(int , input().split()))
+
+values_list_copy = values_list_original.copy()
+
+offset_values_list = [-1 for i in range(0 , N)]
+
+T = int(input())
+
+for count in range(0 , T):
+    
+    index = (count % N)
+    
+    values_list_copy[index] += offset_values_list[index]
+    
+    offset_values_list[index] = (1) if(values_list_copy[index] == 0) else ((-1) if(values_list_copy[index] == values_list_original[index]) else (offset_values_list[index]))
+    
+    print(*values_list_copy)
