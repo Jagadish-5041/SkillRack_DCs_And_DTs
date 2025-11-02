@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Matrix - Replace 1s With Alphabets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_next_alphabet(alphabet):
+    
+    return chr(((((ord(alphabet) - get_offset_value(alphabet)) + 1) % 26) + get_offset_value(alphabet)))
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+current_alphabet = input().strip()
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(matrix[i][j] == 1):
+            
+            matrix[i][j] = current_alphabet
+            
+            current_alphabet = get_next_alphabet(current_alphabet)
+
+[print(*row_list) for row_list in matrix]
