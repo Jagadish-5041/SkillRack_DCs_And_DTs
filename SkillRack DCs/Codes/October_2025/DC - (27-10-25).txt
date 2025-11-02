@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Online Game - Maximum Slots in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def circular_time_difference(seconds_1 , seconds_2):
+    
+    return ((seconds_2 - seconds_1) % hours_to_seconds(24))
+
+def seconds_to_minutes(seconds):
+    
+    return (seconds // 60)
+
+time_1 , time_2 = input().strip().split()
+
+hours_1 , minutes_1 = map(int , time_1.split(":"))
+
+hours_2 , minutes_2 = map(int , time_2.split(":"))
+
+while((minutes_1 % 15) != 0):
+    
+    minutes_1 += 1
+    
+    if(minutes_1 >= 60):
+        
+        minutes_1 = 0
+        
+        hours_1 = ((hours_1 + 1) % 24)
+
+while((minutes_2 % 15) != 0):
+    
+    minutes_2 -= 1
+
+seconds_1 = (hours_to_seconds(hours_1) + minutes_to_seconds(minutes_1))
+
+seconds_2 = (hours_to_seconds(hours_2) + minutes_to_seconds(minutes_2))
+
+target_seconds = circular_time_difference(seconds_1 , seconds_2)
+
+target_minutes = seconds_to_minutes(target_seconds)
+
+count = (target_minutes // 15)
+
+print(count)
