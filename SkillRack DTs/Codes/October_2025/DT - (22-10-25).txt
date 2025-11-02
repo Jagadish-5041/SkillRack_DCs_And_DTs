@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Circular Order - Skip Odd & Even in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+registration_numbers_list = list(map(int , input().split()))
+
+Q = int(input())
+
+scores_list = list(map(int , input().split()))
+
+indices_list = ([index for index in range(0 , N)] + [index for index in range(0 , N) if(not is_odd(registration_numbers_list[index]))] + [index for index in range(0 , N) if(not is_even(registration_numbers_list[index]))])
+
+indices_list_index = 0
+
+indices_list_length = len(indices_list)
+
+answer_list = [0 for index in range(0 , N)]
+
+for question_number in range(0 , Q):
+    
+    answer_list[indices_list[indices_list_index]] += scores_list[question_number]
+    
+    indices_list_index = ((indices_list_index + 1) % indices_list_length)
+
+print(*answer_list)
