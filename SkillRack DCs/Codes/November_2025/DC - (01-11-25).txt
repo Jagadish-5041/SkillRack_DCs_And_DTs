@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Super Binary String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+binary_string = input().strip()
+
+one_bits_count = 0
+
+zero_bits_count = 0
+
+for index in range(0 , len(binary_string)):
+    
+    one_bits_count = (one_bits_count + 1) if(binary_string[index] == '1') else (one_bits_count)
+    
+    zero_bits_count = (zero_bits_count + 1) if(binary_string[index] == '0') else (zero_bits_count)
+    
+    if(not (one_bits_count >= zero_bits_count)):
+        print('No')
+        quit()
+
+print(('Yes') if(one_bits_count == zero_bits_count) else ('No'))
