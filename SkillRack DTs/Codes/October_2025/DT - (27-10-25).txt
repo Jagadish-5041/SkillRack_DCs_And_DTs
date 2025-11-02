@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Matrix - Rearrange Alphabets & Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C , K = map(int , input().split())
+
+alphabets_list = []
+
+integers_list = []
+
+[(alphabets_list.append(value)) if((len(value) == 1) and (value.isalpha())) else (integers_list.append(int(value))) for i in range(0 , R) for value in input().strip().split()]
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+alphabets_list_index = 0
+
+for i in range((R - K) , R):
+    
+    for j in range((C - K) , C):
+        
+        matrix[i][j] = alphabets_list[alphabets_list_index]
+        
+        alphabets_list_index += 1
+
+integers_list_index = 0
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(not (((R - K) <= i < R) and ((C - K) <= j < C))):
+            
+            matrix[i][j] = integers_list[integers_list_index]
+            
+            integers_list_index += 1
+
+[print(*row_list) for row_list in matrix]
