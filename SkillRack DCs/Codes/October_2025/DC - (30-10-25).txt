@@ -1,0 +1,65 @@
+Problem Statement :-
+
+Function - calculateTotalTime() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+long long int hours_to_seconds(int hours){
+    
+    return (hours * 60LL * 60LL);
+}
+
+long long int minutes_to_seconds(int minutes){
+    
+    return (minutes * 60LL);
+}
+
+long long int get_seconds_for_time_data(char *data_string){
+    
+    int value;
+    
+    char unit_of_time;
+    
+    sscanf(data_string , "%d%c" , &value , &unit_of_time);
+    
+    if(unit_of_time == 'd'){
+        return hours_to_seconds((value * 24));
+    }else if(unit_of_time == 'h'){
+        return hours_to_seconds(value);
+    }else if(unit_of_time == 'm'){
+        return minutes_to_seconds(value);
+    }else if(unit_of_time == 's'){
+        return value;
+    }
+}
+
+struct Time* calculateTotalTime(char *string){
+    
+    long long int total_seconds = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        total_seconds += get_seconds_for_time_data(string_tokenizer);
+    }
+    
+    int days = (total_seconds / hours_to_seconds(24));
+    
+    int hours = ((total_seconds % hours_to_seconds(24)) / hours_to_seconds(1));
+    
+    int minutes = ((total_seconds % hours_to_seconds(1)) / minutes_to_seconds(1));
+    
+    int seconds = (total_seconds % minutes_to_seconds(1));
+    
+    struct Time *time_structure = ((struct Time *) malloc(sizeof(struct Time)));
+    
+    (time_structure -> days) = days;
+    
+    (time_structure -> hours) = hours;
+    
+    (time_structure -> minutes) = minutes;
+    
+    (time_structure -> seconds) = seconds;
+    
+    return time_structure;
+}
