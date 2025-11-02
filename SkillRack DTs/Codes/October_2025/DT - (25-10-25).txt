@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Combine Integers - Last K Bits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_last_K_bits(N , K):
+    
+    return (N & ((1 << K) - 1))
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+K = int(input())
+
+index = 0
+
+new_values_list = []
+
+while(is_within_bounds(index , N)):
+    
+    last_K_bits_value = get_last_K_bits(values_list[index] , K)
+    
+    combined_value = 0
+    
+    while((is_within_bounds(index , N)) and (get_last_K_bits(values_list[index] , K) == last_K_bits_value)):
+        
+        combined_value += values_list[index]
+        
+        index += 1
+    
+    new_values_list.append(combined_value)
+
+print(*new_values_list)
