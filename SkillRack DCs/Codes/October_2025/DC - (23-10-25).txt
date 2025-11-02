@@ -1,0 +1,28 @@
+Problem Statement :-
+
+N Vehicles - Number Of Passengers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import heapq
+
+def depth_first_search(current_index , N , values_list , current_sum , sorted_sums_list):
+    
+    if(current_index >= N):
+        (heapq.heappush(sorted_sums_list , current_sum)) if(current_sum != 0) else ('')
+        return 
+    
+    # Pick
+    
+    depth_first_search((current_index + 1) , N , values_list , (current_sum + values_list[current_index]) , sorted_sums_list)
+    
+    # Not-Pick
+    
+    depth_first_search((current_index + 1) , N , values_list , current_sum , sorted_sums_list)
+
+sorted_sums_list = []
+
+depth_first_search(0 , int(input()) , list(map(int , input().split())) , 0 , sorted_sums_list)
+
+while(sorted_sums_list):
+    print(heapq.heappop(sorted_sums_list) , end = " ")
