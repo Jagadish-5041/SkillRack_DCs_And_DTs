@@ -1,0 +1,60 @@
+Problem Statement :-
+
+Expand And Sort - Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+import heapq
+
+def get_data(N):
+    
+    digits_list = []
+    
+    maximum_digit = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.insert(0 , digit)
+        
+        maximum_digit = max(maximum_digit , digit)
+        
+        N = (N // 10)
+    
+    return (digits_list , maximum_digit)
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def get_new_N(N):
+    
+    values_list , maximum_digit = get_data(N)
+    
+    for index in range(0 , len(values_list)):
+        
+        if(values_list[index] == maximum_digit):
+            
+            values_list[index] = int((str(values_list[index]) * int(values_list[index])))
+            
+            break
+    
+    new_N = 0
+    
+    for value in values_list:
+        
+        new_N = ((new_N * (10 ** get_length_of_N(value))) + value)
+    
+    return new_N
+
+N = int(input())
+
+values_list = []
+
+[heapq.heappush(values_list , get_new_N(value)) for value in list(map(int , input().split()))]
+
+while(values_list):
+    
+    print(heapq.heappop(values_list) , end = " ")
