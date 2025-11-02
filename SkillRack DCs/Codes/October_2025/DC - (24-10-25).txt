@@ -1,0 +1,54 @@
+Problem Statement :-
+
+Define Class Palace - Visit Status in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+class Palace {
+    
+    TreeSet<Integer> ages_tree_set;
+    
+    Map<Integer , Integer> age_wise_males_count_map;
+    
+    Map<Integer , Integer> age_wise_females_count_map;
+    
+    Map<Integer , List<String>> age_wise_names_list_map;
+    
+    Palace(){
+        
+        this.ages_tree_set = new TreeSet<>();
+        
+        this.age_wise_males_count_map = new HashMap<>();
+        
+        this.age_wise_females_count_map = new HashMap<>();
+        
+        this.age_wise_names_list_map = new HashMap<>();
+    }
+    
+    public void visit(String name , char gender , int age){
+        
+        this.ages_tree_set.add(age);
+        
+        if(gender == 'M'){
+            this.age_wise_males_count_map.put(age , (this.age_wise_males_count_map.getOrDefault(age , 0) + 1));
+        }else{
+            this.age_wise_females_count_map.put(age , (this.age_wise_females_count_map.getOrDefault(age , 0) + 1));
+        }
+        
+        this.age_wise_names_list_map.computeIfAbsent(age , (k -> (new ArrayList<>()))).add(name);
+    }
+    
+    public void printVisitStatus(){
+        
+        for(int age : this.ages_tree_set){
+            
+            System.out.println(String.format("%d %d %d" , age , this.age_wise_males_count_map.getOrDefault(age , 0) , this.age_wise_females_count_map.getOrDefault(age , 0)));
+            
+            for(String name : this.age_wise_names_list_map.get(age)){
+                System.out.print(name + " ");
+            }
+            
+            System.out.println();
+        }
+    }
+}
