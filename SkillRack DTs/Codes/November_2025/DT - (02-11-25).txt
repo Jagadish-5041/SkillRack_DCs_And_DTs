@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Book - Numbering Subsections in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+matrix = [[int(input().strip("-")) for j in range(0 , int(input().strip("-")))] for i in range(0 , N)]
+
+[print((i + 1) , (j + 1) , (k + 1) , sep = ".") for i in range(0 , N) for j in range(0 , len(matrix[i])) for k in range(0 , matrix[i][j])]
