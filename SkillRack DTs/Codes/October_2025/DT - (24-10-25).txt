@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Increasing Word Matrix Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_next_alphabet(alphabet):
+    
+    return chr(((((ord(alphabet) - ord('a')) + 1) % 26) + ord('a')))
+
+N = int(input())
+
+alphabets_string = "abcdefghijklmnopqrstuvwxyz"
+
+matrix = [[None for j in range(0 , N)] for i in range(0 , N)]
+
+[matrix[i].__setitem__(0 , alphabets_string[0 : (i + 1)]) for i in range(0 , N)]
+
+[matrix[i].__setitem__(j , (matrix[i][(j - 1)] + get_next_alphabet(matrix[i][(j - 1)][-1]))) for i in range(0 , N) for j in range(1 , N)]
+
+[print(*row_list) for row_list in matrix]
