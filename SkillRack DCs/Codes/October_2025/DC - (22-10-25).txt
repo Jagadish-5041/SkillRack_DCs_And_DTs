@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Expand String - K Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+X , Y , K = map(int , input().split())
+
+alphabets_list = [chr(((alphabet_position - 1) + ord('a'))) for alphabet_position in range(X , (Y + 1))]
+
+N = (Y - X + 1)
+
+minimum_count = ((K // N) + ((0) if((K % N) == 0) else (1)))
+
+string = ("".join((alphabet * minimum_count) for alphabet in alphabets_list))
+
+print(string)
