@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Maximum Sum Subarray - Common Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = input().strip().split()
+
+maximum_length = 0
+
+maximum_sum = 0
+
+for first_pointer in range(0 , N):
+    
+    common_digits_set = set(values_list[first_pointer])
+    
+    current_sum = int(values_list[first_pointer])
+    
+    current_length = 1
+    
+    for second_pointer in range((first_pointer + 1) , N):
+        
+        common_digits_set &= set(values_list[second_pointer])
+        
+        if(not common_digits_set):
+            break
+        
+        current_sum += int(values_list[second_pointer])
+        
+        current_length += 1
+    
+    if(maximum_length < current_length):
+        maximum_length = current_length
+        maximum_sum = current_sum
+    elif(maximum_length == current_length):
+        maximum_sum = max(maximum_sum , current_sum)
+
+print(maximum_sum)
