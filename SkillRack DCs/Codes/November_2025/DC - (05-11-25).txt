@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Flowchart Logic 060 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , D_1 , D_2 = map(int , input().split())
+
+while(N > 0):
+    
+    if(not (D_1 <= (N % 10) <= D_2)):
+        
+        print('NO')
+        
+        quit()
+    
+    N = (N // 10)
+
+print('YES')
