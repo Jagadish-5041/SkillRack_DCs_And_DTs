@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Sort Matrix & Print Positions in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_position(index , R , C):
+    
+    return (((index // C) + 1) , ((index % C) + 1))
+
+R , C = map(int , input().strip().split())
+
+values_list = [value for i in range(0 , R) for value in list(map(int , input().split()))]
+
+positions_map = {value : get_position(index , R , C) for index , value in enumerate(values_list)}
+
+[(print(*positions_map[value] , sep = "-")) if(((index + 1) % C) == 0) else (print(*positions_map[value] , sep = "-" , end = " ")) for index , value in enumerate(sorted(values_list))]
