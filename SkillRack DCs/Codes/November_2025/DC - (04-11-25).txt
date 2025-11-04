@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Boxes And Balls in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : print(("YES") if(all((box_size > ball_size) for box_size , ball_size in zip(sorted(list(map(int , input().split()))) , sorted(list(map(int , input().split())))))) else ("NO"))) (int(input()))
