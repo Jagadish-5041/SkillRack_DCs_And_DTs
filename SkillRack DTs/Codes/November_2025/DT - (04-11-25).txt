@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Bishop Pairs - Attack in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_same_diagonal(row_index_1 , column_index_1 , row_index_2 , column_index_2):
+    
+    difference = abs((row_index_1 - row_index_2))
+    
+    minimum_column_index = min(column_index_1 , column_index_2)
+    
+    maximum_column_index = max(column_index_1 , column_index_2)
+    
+    return (((minimum_column_index - difference) == maximum_column_index) or ((minimum_column_index + difference) == maximum_column_index))
+
+N = int(input())
+
+bits_matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+bishop_coordinates_list = [(i , j) for i in range(0 , N) for j in range(0 , N) if(bits_matrix[i][j] == 1)]
+
+M = len(bishop_coordinates_list)
+
+pairs_count = (sum(1 for index_1 in range(0 , M) for index_2 in range(0 , M) if((index_1 != index_2) and (is_same_diagonal(bishop_coordinates_list[index_1][0] , bishop_coordinates_list[index_1][1] , bishop_coordinates_list[index_2][0] , bishop_coordinates_list[index_2][1])))) // 2)
+
+print(pairs_count)
