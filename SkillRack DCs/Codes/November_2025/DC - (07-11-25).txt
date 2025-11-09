@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Expand Matrix - Vertically/Horizontally in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+M , N = map(int , input().split())
+
+characters_matrix = [list(input().strip().split()) for i in range(0 , M)]
+
+K = int(input())
+
+characters_string = ("".join(characters_matrix[i][j] for i in range(0 , M) for j in range(0 , N))) if(K > 0) else ("".join(characters_matrix[i][j] for j in range(0 , N) for i in range(0 , M)))
+
+R = (M) if(K > 0) else ((M * abs(K)))
+
+C = ((N * abs(K))) if(K > 0) else (N)
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+characters_string_index = 0
+
+if(K > 0):
+    
+    for i in range(0 , R):
+        
+        for j in range(0 , (C - abs(K) + 1) , abs(K)):
+            
+            for k in range(j , (j + abs(K))):
+                
+                matrix[i][k] = characters_string[characters_string_index]
+            
+            characters_string_index += 1
+
+else:
+    
+    for j in range(0 , C):
+        
+        for i in range(0 , (R - abs(K) + 1) , abs(K)):
+            
+            for k in range(i , (i + abs(K))):
+                
+                matrix[k][j] = characters_string[characters_string_index]
+            
+            characters_string_index += 1
+
+[print(*row_list) for row_list in matrix]
