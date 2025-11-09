@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Function - isCaseBalancedString() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int get_offset_value(char alphabet){
+    
+    return ((islower(alphabet)) ? ((int) 'a') : ((int) 'A'));
+}
+
+int get_alphabet_position(char alphabet){
+    
+    return (((int) alphabet) - get_offset_value(alphabet) + 1);
+}
+
+int is_first_half(char alphabet){
+    
+    int alphabet_position = get_alphabet_position(alphabet);
+    
+    return ((1 <= alphabet_position) && (alphabet_position <= 13));
+}
+
+int is_second_half(char alphabet){
+    
+    int alphabet_position = get_alphabet_position(alphabet);
+    
+    return ((14 <= alphabet_position) && (alphabet_position <= 26));
+}
+
+int isCaseBalancedString(char *string){
+    
+    int flag_1 = 1;
+    
+    int flag_2 = 1;
+    
+    int flag_3 = 1;
+    
+    int flag_4 = 1;
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        flag_1 = ((islower(string[index])) && (!is_first_half(string[index]))) ? (0) : (flag_1);
+        
+        flag_2 = ((isupper(string[index])) && (!is_second_half(string[index]))) ? (0) : (flag_2);
+        
+        flag_3 = ((isupper(string[index])) && (!is_first_half(string[index]))) ? (0) : (flag_3);
+        
+        flag_4 = ((islower(string[index])) && (!is_second_half(string[index]))) ? (0) : (flag_4);
+    }
+    
+    return ((((flag_1) && (flag_2)) || ((flag_3) && (flag_4))) ? (1) : (0));
+}
