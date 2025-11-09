@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Find Bar Range - Bar Graph in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+R = int(input())
+
+graph_matrix = [list(input().strip()) for i in range(0 , R)]
+
+C = len(graph_matrix[0])
+
+for j in range(0 , C):
+    
+    i = (R - 1)
+    
+    while((is_within_bounds(i , R)) and (graph_matrix[i][j] != '#')):
+        
+        i -= 1
+    
+    print((R - i) , end = " ")
+    
+    while((is_within_bounds(i , R)) and (graph_matrix[i][j] == '#')):
+        
+        i -= 1
+    
+    print((R - (i + 1)))
