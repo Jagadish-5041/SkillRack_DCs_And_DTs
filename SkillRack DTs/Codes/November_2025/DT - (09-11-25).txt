@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Three Digits - Balanced Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def fill_matrix(character , starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    for i in range(starting_i , (ending_i + 1)):
+        
+        for j in range(starting_j , (ending_j + 1)):
+            
+            matrix[i][j] = character
+
+data_list = [input().strip() , input().strip() , input().strip()]
+
+R = 9
+
+C = len(data_list[0])
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+for j in range(0 , C):
+    
+    count_1 = int(data_list[0][j])
+    
+    count_2 = int(data_list[1][j])
+    
+    count_3 = int(data_list[2][j])
+    
+    fill_matrix('*' , 0 , (count_1 - 1) , j , j , R , C , matrix)
+    
+    fill_matrix('-' , count_1 , (count_1 + count_2 - 1) , j , j , R , C , matrix)
+    
+    fill_matrix('*' , (count_1 + count_2) , (count_1 + count_2 + count_3 - 1) , j , j , R , C , matrix)
+
+[print(*row_list , sep = "") for row_list in matrix]
