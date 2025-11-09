@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Function - getSumOrString() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *getSumOrString(char *string){
+    
+    char *answer_string = ((char *) malloc(((strlen(string) + 1) * sizeof(char))));
+    
+    int flag = ((isdigit(string[0])) || ((string[0] == '-') && (isdigit(string[1])))) ? (1) : (0);
+    
+    int sum_value = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        if(flag){
+            sum_value += atol(string_tokenizer);
+        }else{
+            strcat(answer_string , string_tokenizer);
+        }
+    }
+    
+    (flag) ? (sprintf(answer_string , "%d" , sum_value)) : (printf(""));
+    
+    return answer_string;
+}
