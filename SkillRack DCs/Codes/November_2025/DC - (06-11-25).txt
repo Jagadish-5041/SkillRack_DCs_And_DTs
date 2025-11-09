@@ -1,0 +1,16 @@
+Problem Statement :-
+
+Function - generateRegNum() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+char *generateRegNum(int year , char section , int N , int D){
+    
+    char *answer_string = ((char *) malloc((((4 + 1 + D) * (2 * N)) + 1)));
+    
+    for(int number = 1 ; (number <= N) ; number++){
+        sprintf(answer_string , "%s%d%c%0*d " , answer_string , year , section , D , number);
+    }
+    
+    return answer_string;
+}
