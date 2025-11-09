@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Print Substrings Recursively - Next Occurrence in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def depth_first_search(current_character , current_index , N , S):
+    
+    T_S = S[current_index]
+    
+    current_index += 1
+    
+    while((is_within_bounds(current_index , N)) and (S[current_index] != current_character)):
+        
+        T_S += S[current_index]
+        
+        current_index += 1
+    
+    T_S = (T_S + S[current_index]) if(is_within_bounds(current_index , N)) else (T_S)
+    
+    current_index += 1
+    
+    if((len(T_S) <= 1) or (T_S[0] != T_S[-1])):
+        return
+    
+    print(T_S)
+    
+    depth_first_search(T_S[1] , (current_index - len(T_S) + 1) , N , S)
+
+(lambda S : depth_first_search(S[0] , 0 , len(S) , S)) (input().strip())
