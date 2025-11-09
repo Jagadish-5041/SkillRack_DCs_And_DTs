@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Compare Two Items in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+class Item {
+    
+    String name;
+    
+    int weight;
+    
+    int price;
+    
+    Item(String name , int weight , int price){
+        
+        this.name = name;
+        
+        this.weight = weight;
+        
+        this.price = price;
+    }
+    
+    public boolean equals(Item item_object_2){
+        
+        Item item_object_1 = this;
+        
+        return ((item_object_1.name.equalsIgnoreCase(item_object_2.name)) && ((item_object_1.weight == item_object_2.weight) || (item_object_1.price == item_object_2.price)));
+    }
+    
+    public String toString(){
+        
+        return String.format("%s %d %d" , this.name , this.weight , this.price);
+    }
+}
