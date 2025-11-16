@@ -1,0 +1,65 @@
+Problem Statement :-
+
+Next Largest Integer - Surrounding Cells in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def depth_first_search(current_minimum_value , current_minimum_value_i , current_minimum_value_j , R , C , matrix , visited_flag_matrix):
+    
+    print(current_minimum_value , end = " ")
+    
+    visited_flag_matrix[current_minimum_value_i][current_minimum_value_j] = True
+    
+    next_minimum_value = sys.maxsize
+    
+    next_minimum_value_i = -999
+    
+    next_minimum_value_j = -999
+    
+    for offset_i , offset_j in [(-1 , -1) , (-1 , 0) , (-1 , 1) , (1 , -1) , (1 , 0) , (1 , 1) , (0 , -1) , (0 , 1)]:
+        
+        next_i = (current_minimum_value_i + offset_i)
+        
+        next_j = (current_minimum_value_j + offset_j)
+        
+        if((is_within_bounds(next_i , R)) and (is_within_bounds(next_j , C)) and (not visited_flag_matrix[next_i][next_j]) and (current_minimum_value < matrix[next_i][next_j]) and (next_minimum_value > matrix[next_i][next_j])):
+            
+            next_minimum_value = matrix[next_i][next_j]
+            
+            next_minimum_value_i = next_i
+            
+            next_minimum_value_j = next_j
+    
+    (depth_first_search(next_minimum_value , next_minimum_value_i , next_minimum_value_j , R , C , matrix , visited_flag_matrix)) if((next_minimum_value_i != -999) and (next_minimum_value_j != -999)) else ("")
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+visited_flag_matrix = [[False for j in range(0 , C)] for i in range(0 , R)]
+
+minimum_value = sys.maxsize
+
+minimum_value_i = -999
+
+minimum_value_j = -999
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(minimum_value > matrix[i][j]):
+            
+            minimum_value = matrix[i][j]
+            
+            minimum_value_i = i
+            
+            minimum_value_j = j
+
+depth_first_search(minimum_value , minimum_value_i , minimum_value_j , R , C , matrix , visited_flag_matrix)
