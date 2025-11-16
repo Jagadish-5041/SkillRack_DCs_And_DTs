@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Stretched Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def check(target_value , starting_i , ending_i , starting_j , ending_j , matrix):
+    
+    for i in range(starting_i , (ending_i + 1)):
+        
+        for j in range(starting_j , (ending_j + 1)):
+            
+            if(matrix[i][j] != target_value):
+                
+                return False
+    
+    return True
+
+N = int(input())
+
+matrix_1 = [list(map(int , input().split())) for i in range(0 , N)]
+
+M = int(input())
+
+matrix_2 = [list(map(int , input().split())) for i in range(0 , M)]
+
+K = (M // N)
+
+for i_1 , i_2 in zip(range(0 , N) , range(0 , (M - K + 1) , K)):
+    
+    for j_1 , j_2 in zip(range(0 , N) , range(0 , (M - K + 1) , K)):
+        
+        if(not check(matrix_1[i_1][j_1] , i_2 , (i_2 + K - 1) , j_2 , (j_2 + K - 1) , matrix_2)):
+            
+            print("No")
+            
+            quit()
+
+print("Yes")
