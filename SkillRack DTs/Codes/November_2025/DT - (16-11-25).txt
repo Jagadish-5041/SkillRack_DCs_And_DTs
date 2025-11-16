@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Longest Substring - Two Positions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_longest_common_substring_length(index_1 , index_2 , N , S):
+    
+    longest_common_substring = ""
+    
+    while((is_within_bounds(index_1 , N)) and (is_within_bounds(index_2 , N)) and (S[index_1] == S[index_2])):
+        
+        longest_common_substring += S[index_1]
+        
+        index_1 += 1
+        
+        index_2 += 1
+    
+    return len(longest_common_substring)
+
+S = input().strip()
+
+N = len(S)
+
+Q = int(input())
+
+[((lambda index_1 , index_2 : print(get_longest_common_substring_length(index_1 , index_2 , N , S))) (*map((lambda value : (value - 1)) , (map(int , input().split()))))) for query in range(0 , Q)]
