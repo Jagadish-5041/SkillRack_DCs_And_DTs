@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Invert Sign & Evaluate Polynomial Expression in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_operator(character):
+    
+    return ((character == '+') or (character == '-'))
+
+def get_alternate_operator(operator):
+    
+    return (('-') if(operator == '+') else ('+'))
+
+def get_parsed_expression_value(expression_string , X):
+    
+    X_index = expression_string.index('x')
+    
+    coefficient_value = int(expression_string[ : X_index])
+    
+    power_value = int(expression_string[(X_index + 2) : ])
+    
+    return (coefficient_value * (X ** power_value))
+
+expression_string = input().strip()
+
+expression_string = ('+' + expression_string) if(not is_operator(expression_string[0])) else (expression_string)
+
+N = len(expression_string)
+
+X = int(input())
+
+index = 0
+
+new_expressions_list = []
+
+while(is_within_bounds(index , N)):
+    
+    current_expression = get_alternate_operator(expression_string[index])
+    
+    index = (index + 1)
+    
+    while((is_within_bounds(index , N)) and (not is_operator(expression_string[index]))):
+        
+        current_expression += expression_string[index]
+        
+        index += 1
+    
+    new_expressions_list.append(current_expression)
+
+print(*new_expressions_list , sep = "")
+
+print(sum(get_parsed_expression_value(expression_string , X) for expression_string in new_expressions_list))
