@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Binary Submatrices To Integers in DC (Daily Challenge) in SkillRack in Python = Programming
+
+Code :-
+
+R , C = map(int , input().split())
+ 
+binary_matrix = [input().strip().split() for i in range(0 , R)]
+ 
+K = int(input())
+ 
+for i in range(0 , (R - K + 1) , K):
+    
+    for j in range(0 , (C - K + 1) , K):
+        
+        binary_string = ""
+        
+        for k in range(i , (i + K)):
+            
+            for l in range(j , (j + K)):
+                
+                binary_string += binary_matrix[k][l]
+        
+        print(int(binary_string , 2) , end = " ")
+    
+    print()
