@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Set Odd/Even Bits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def get_new_N(N):
+    
+    is_odd_N_flag = is_odd(N)
+    
+    is_even_N_flag = is_even(N)
+    
+    new_N = 0
+    
+    bit_position = 1
+    
+    while(N > 0):
+        
+        bit = (N % 2)
+        
+        new_bit = (1) if(((is_odd_N_flag) and (is_odd(bit_position))) or ((is_even_N_flag) and (is_even(bit_position)))) else (bit)
+        
+        new_N = (new_N + (new_bit * (2 ** (bit_position - 1))))
+        
+        bit_position = (bit_position + 1)
+        
+        N = (N // 2)
+    
+    return new_N
+
+print(get_new_N(int(input())))
