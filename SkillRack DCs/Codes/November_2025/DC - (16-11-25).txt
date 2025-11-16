@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Matrix - Print Between Two Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def print_within_given_range(starting_index , ending_index , N , values_list):
+    
+    loop_flag = True
+    
+    current_index = starting_index
+    
+    while(loop_flag):
+        
+        loop_flag = (False) if(current_index == ending_index) else (loop_flag)
+        
+        print(values_list[current_index] , end = " ")
+        
+        current_index = ((current_index + 1) % N)
+
+R , C = map(int , input().split())
+
+values_list = [value for i in range(0 , R) for value in list(map(int , input().split()))]
+
+N = (R * C)
+
+X , Y = map(int , input().split())
+
+X_index = -999
+
+Y_index = -999
+
+for index , value in enumerate(values_list):
+    
+    X_index = (index) if(value == X) else (X_index)
+    
+    Y_index = (index) if(value == Y) else (Y_index)
+
+print_within_given_range(X_index , Y_index , N , values_list)
