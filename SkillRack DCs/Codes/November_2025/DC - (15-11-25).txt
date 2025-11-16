@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Function - evaluateOrder() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+int check_expression(int A , char operator , int B){
+    
+    return ((operator == '<') ? (A < B) : (A > B));
+}
+
+int evaluateOrder(char *string){
+    
+    int N = strlen(string);
+    
+    int *numbers_array = ((int *) malloc((N * sizeof(int))));
+    
+    int numbers_array_index = 0;
+    
+    char *operators_string = ((char *) malloc((N * sizeof(char))));
+    
+    for(int index = 0 ; is_within_bounds(index , N) ; ){
+        
+        int number = 0;
+        
+        while((is_within_bounds(index , N)) && (isdigit(string[index]))){
+            number = ((number * 10) + ((int) (string[index++] - '0')));
+        }
+        
+        numbers_array[numbers_array_index++] = number;
+        
+        (is_within_bounds(index , N)) ? (strncat(operators_string , &string[index++] , 1)) : (printf(""));
+    }
+    
+    int flag = 1;
+    
+    for(int index = 0 ; (index < (numbers_array_index - 1)) ; index++){
+        flag = (flag & check_expression(numbers_array[index] , operators_string[index] , numbers_array[(index + 1)]));
+    }
+    
+    free(numbers_array);
+    
+    free(operators_string);
+    
+    return flag;
+}
