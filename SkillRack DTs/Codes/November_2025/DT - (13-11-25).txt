@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Concatenated String Values - Sort in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alphabets_index_map(N , string):
+    
+    return {string[index] : index for index in range(0 , N)}
+
+A = input().strip()
+
+B = input().strip()
+
+N = len(A)
+
+alphabets_index_map_1 = get_alphabets_index_map(N , A)
+
+alphabets_index_map_2 = get_alphabets_index_map(N , B)
+
+print(*sorted([(A[ : alphabets_index_map_1[character]] + B[alphabets_index_map_2[character] : ]) for character in A]) , sep = "\n")
