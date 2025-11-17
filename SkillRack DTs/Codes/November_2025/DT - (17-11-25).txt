@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Irregular X-Shape Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_matrix(current_i , current_j , offset_i , offset_j , R , C , matrix , current_index , N , string):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C)) and (is_within_bounds(current_index , N))):
+        
+        matrix[current_i][current_j] = string[current_index]
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+        
+        current_index += 1
+
+A = input().strip()
+
+A_N = len(A)
+
+B = input().strip()
+
+B_N = len(B)
+
+C = input().strip()
+
+C_N = len(C)
+
+D = input().strip()
+
+D_N = len(D)
+
+M = (max(A_N , B_N) + max(C_N , D_N))
+
+N = (max(A_N , C_N) + max(B_N , D_N))
+
+row_mid = (max(A_N , B_N) - 1)
+
+col_mid = (max(A_N , C_N) - 1)
+
+matrix = [['*' for j in range(0 , N)] for i in range(0 , M)]
+
+fill_matrix((max(A_N , B_N) - 1) , (max(A_N , C_N) - 1) , -1 , -1 , M , N , matrix , 0 , A_N , A)
+
+fill_matrix((max(A_N , B_N) - 1) , max(A_N , C_N) , -1 , 1 , M , N , matrix , 0 , B_N , B)
+
+fill_matrix(max(A_N , B_N) , (max(A_N , C_N) - 1) , 1 , -1 , M , N , matrix , 0 , C_N , C)
+
+fill_matrix(max(A_N , B_N) , max(A_N , C_N) , 1 , 1 , M , N , matrix , 0 , D_N , D)
+
+[print(*row_list , sep = "") for row_list in matrix]
