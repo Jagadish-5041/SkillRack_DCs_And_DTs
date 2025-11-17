@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Sort Balanced Substrings By Nesting Level in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+data_list = []
+
+current_string = ""
+
+open_parentheses_count = 0
+
+closed_parentheses_count = 0
+
+current_nested_level = 0
+
+maximum_nested_level = 0
+
+for index , character in enumerate(input().strip()):
+    
+    current_string = (current_string + character)
+    
+    open_parentheses_count = (open_parentheses_count + 1) if(character == '(') else (open_parentheses_count)
+    
+    closed_parentheses_count = (closed_parentheses_count + 1) if(character == ')') else (closed_parentheses_count)
+    
+    current_nested_level = (current_nested_level + 1) if(character == '(') else (current_nested_level - 1)
+    
+    maximum_nested_level = max(maximum_nested_level , current_nested_level)
+    
+    if(open_parentheses_count == closed_parentheses_count):
+        
+        data_list.append((current_string , maximum_nested_level , index))
+        
+        current_string = ""
+        
+        open_parentheses_count = 0
+        
+        closed_parentheses_count = 0
+        
+        current_nested_level = 0
+        
+        maximum_nested_level = 0
+
+[print(data_tuple[0] , end = " ") for data_tuple in sorted(data_list , key = lambda trio : (trio[1] , trio[2]))]
