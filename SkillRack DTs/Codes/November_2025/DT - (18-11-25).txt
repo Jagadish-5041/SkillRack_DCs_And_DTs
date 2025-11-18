@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Function - countSpecialIntegers() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int get_max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int get_min(int A , int B){
+    
+    return ((A <= B) ? (A) : (B));
+}
+
+int get_GCD(int A , int B){
+    
+    return ((B == 0) ? (A) : (get_GCD(B , (A % B))));
+}
+
+int get_LCM(int A , int B){
+    
+    return ((int) ((1LL * A * B) / get_GCD(get_max(A , B) , get_min(A , B))));
+}
+
+int is_divisible(int A , int B){
+    
+    return ((A % B) == 0);
+}
+
+int check(int N , int X , int Y){
+    
+    int flag_1 = 0;
+    
+    int flag_2 = 0;
+    
+    while(N > 0){
+        
+        int digit = (N % 10);
+        
+        flag_1 = (digit == X) ? (1) : (flag_1);
+        
+        flag_2 = (digit == Y) ? (1) : (flag_2);
+        
+        if((flag_1) && (flag_2)){
+            return 1;
+        }
+        
+        N = (N / 10);
+    }
+    
+    return 0;
+}
+
+int countSpecialIntegers(int L , int R , int A , int B){
+    
+    int count = 0;
+    
+    for(int LCM = get_LCM(A , B) , number = L ; (number <= R) ; number++){
+        
+        if((is_divisible(number , LCM)) && (check(number , A , B))){
+            
+            count++;
+        }
+    }
+    
+    return count;
+}
