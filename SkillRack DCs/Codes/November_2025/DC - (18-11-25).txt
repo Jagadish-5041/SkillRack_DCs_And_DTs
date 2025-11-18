@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Rearrange Unit Digits - Find Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def move_first_digit(index_1 , index_2 , values_list):
+    
+    values_list[index_2] = (values_list[index_2] + values_list[index_1][0])
+    
+    values_list[index_1] = values_list[index_1][1 : ]
+
+N = int(input())
+
+values_list = input().strip().split()
+
+[move_first_digit(index , ((index - 1) % N) , values_list) for index in range(0 , N)]
+
+print(sum(int(value) for value in values_list))
