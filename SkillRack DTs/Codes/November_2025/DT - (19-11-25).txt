@@ -1,0 +1,30 @@
+Problem Statement :-
+
+N String Values - Change Alignment in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+matrix_1 = []
+
+while(True):
+    
+    try:
+        matrix_1.append(list(input().strip()))
+    except:
+        break
+
+R_1 = len(matrix_1)
+
+C_1 = len(matrix_1[0])
+
+R_2 = C_1
+
+C_2 = R_1
+
+matrix_2 = [[None for j in range(0 , C_2)] for i in range(0 , R_2)]
+
+[matrix_2[j].__setitem__(i , matrix_1[i][j]) for i in range(0 , R_1) for j in range(0 , C_1)]
+
+[print(*row_list , sep = "") for row_list in matrix_2]
