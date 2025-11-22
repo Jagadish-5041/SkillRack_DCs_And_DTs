@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Minimum Days - Buy Food On Island in DT (Daily Test) in SkillRack in Python - Programming
+
+code :-
+
+def can_survive(can_buy_X_food_units , needed_Y_food_units , T_days , total_needed_food_units_count , maximum_food_units_count):
+    
+    maximum_food_which_can_be_bought_for_6_days = (6 * can_buy_X_food_units)
+    
+    minimum_food_which_is_needed_for_7_days = (7 * needed_Y_food_units)
+    
+    return ((False) if((maximum_food_units_count < total_needed_food_units_count) or (maximum_food_which_can_be_bought_for_6_days < minimum_food_which_is_needed_for_7_days)) else (True))
+
+can_buy_X_food_units , needed_Y_food_units , T_days = map(int , input().split())
+
+total_needed_food_units_count = (needed_Y_food_units * T_days)
+
+total_sundays_count = (T_days // 7)
+
+maximum_food_units_count = ((T_days - total_sundays_count) * can_buy_X_food_units)
+
+(print(-1)) if(not can_survive(can_buy_X_food_units , needed_Y_food_units , T_days , total_needed_food_units_count , maximum_food_units_count)) else (print(((total_needed_food_units_count // can_buy_X_food_units) + ((1) if((total_needed_food_units_count % can_buy_X_food_units) != 0) else (0)))))
