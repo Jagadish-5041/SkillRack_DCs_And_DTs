@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Function - getBinaryAsDecimalSum() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((10 * sizeof(char))));
+    
+    while(N > 0){
+        
+        int bit = (N % 2);
+        
+        sprintf(binary_string , "%s%d" , binary_string , bit);
+        
+        N = (N / 2);
+    }
+    
+    for(int left_pointer = 0 , right_pointer = (strlen(binary_string) - 1) ; (left_pointer <= right_pointer) ; left_pointer++ , right_pointer--){
+        
+        char temp = binary_string[left_pointer];
+        
+        binary_string[left_pointer] = binary_string[right_pointer];
+        
+        binary_string[right_pointer] = temp;
+    }
+    
+    return binary_string;
+}
+
+int getBinaryAsDecimalSum(int N , int *array){
+    
+    int sum = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sum += atol(get_binary_string(array[index]));
+    }
+    
+    return sum;
+}
