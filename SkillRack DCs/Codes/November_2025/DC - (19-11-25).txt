@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Rearrange Unit Digits - Find Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+binary_string = ""
+
+while(is_within_bounds(index , N)):
+    
+    current_character = S[index].lower()
+    
+    current_binary_string = ""
+    
+    while((is_within_bounds(index , N)) and (S[index].lower() == current_character)):
+        
+        current_binary_string += "1"
+        
+        index += 1
+    
+    binary_string += ((current_binary_string) if(len(current_binary_string) > 1) else ("0"))
+
+print(int(binary_string , 2))
