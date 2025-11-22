@@ -1,0 +1,67 @@
+Problem Statement :-
+
+Function - removeAlphabetsEvaluateExp() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+char *get_cleaned_expression_string(int N , char *polluted_expression_string){
+    
+    char *expression_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(!isalpha(polluted_expression_string[index])){
+            
+            strncat(expression_string , &polluted_expression_string[index] , 1);
+        }
+    }
+    
+    return expression_string;
+}
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+int evaluate(int A , char operator , int B){
+    
+    return ((operator == '+') ? (A + B) : ((operator == '-') ? (A - B) : ((operator == '*') ? (A * B) : (A / B))));
+}
+
+int removeAlphabetsEvaluateExp(char *polluted_expression_string){
+    
+    char *clean_expression_string = get_cleaned_expression_string(strlen(polluted_expression_string) , polluted_expression_string);
+    
+    int N = strlen(clean_expression_string);
+    
+    int *numbers_array = ((int *) malloc((N * sizeof(int))));
+    
+    int numbers_array_index = 0;
+    
+    char *operators_string = ((char *) malloc((N * sizeof(char))));
+    
+    for(int index = 0 ; is_within_bounds(index , N) ; ){
+        
+        int number = 0;
+        
+        while((is_within_bounds(index , N)) && (isdigit(clean_expression_string[index]))){
+            number = ((number * 10) + ((int) (clean_expression_string[index++] - '0')));
+        }
+        
+        numbers_array[numbers_array_index++] = number;
+        
+        while((is_within_bounds(index , N)) && (!isdigit(clean_expression_string[index]))){
+            strncat(operators_string , &clean_expression_string[index++] , 1);
+        }
+    }
+    
+    for(int index = 0 ; (index < (numbers_array_index - 1)) ; index++){
+        numbers_array[(index + 1)] = evaluate(numbers_array[index] , operators_string[index] , numbers_array[(index + 1)]);
+    }
+    
+    return numbers_array[(numbers_array_index - 1)];
+}
