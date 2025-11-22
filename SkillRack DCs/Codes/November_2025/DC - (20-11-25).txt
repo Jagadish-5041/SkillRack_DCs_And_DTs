@@ -1,0 +1,76 @@
+Problem Statement :-
+
+String To Line Chart Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in 'aeiouAEIOU')
+
+def fill_matrix_and_get_new_matrix(current_i , current_j , direction_flag , offset_i , offset_j , M , matrix , N , S):
+    
+    starting_i = M
+    
+    ending_i = 0
+    
+    starting_j = M
+    
+    ending_j = 0
+    
+    row_wise_maximum_indices_list = [0 for i in range(0 , M)]
+    
+    for character in S:
+        
+        starting_i = min(starting_i , current_i)
+        
+        ending_i = max(ending_i , current_i)
+        
+        starting_j = min(starting_j , current_j)
+        
+        ending_j = max(ending_j , current_j)
+        
+        row_wise_maximum_indices_list[current_i] = max(row_wise_maximum_indices_list[current_i] , ending_j)
+        
+        matrix[current_i][current_j] = character
+        
+        if((direction_flag == 1) and (is_vowel(character))):
+            direction_flag = 2
+            offset_i = 1
+            offset_j = 1
+        elif((direction_flag == 2) and (is_vowel(character))):
+            direction_flag = 1
+            offset_i = -1
+            offset_j = 1
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+    
+    new_matrix = [[matrix[i][j] for j in range(0 , N)] for i in range(starting_i , (ending_i + 1))]
+    
+    R = len(new_matrix)
+    
+    C = len(new_matrix[0])
+    
+    row_wise_maximum_indices_list = row_wise_maximum_indices_list[starting_i : (ending_i + 1)]
+    
+    for i in range(0 , R):
+        
+        for j in range(0 , (row_wise_maximum_indices_list[i] + 1)):
+            
+            if(not new_matrix[i][j].isalpha()):
+                
+                new_matrix[i][j] = '-'
+    
+    return new_matrix
+
+S = input().strip()
+
+N = len(S)
+
+M = ((N * 4) + 1)
+
+matrix = [["" for j in range(0 , N)] for i in range(0 , M)]
+
+[print(*row_list , sep = "") for row_list in fill_matrix_and_get_new_matrix(N , 0 , 1 , -1 , 1 , M , matrix , N , S)]
