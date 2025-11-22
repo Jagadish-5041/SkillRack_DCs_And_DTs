@@ -1,0 +1,59 @@
+Problem Statement :-
+
+Character Matrices - Horizontal Direction in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_matrix(starting_i , ending_i , starting_j , ending_j , matrix , character_to_be_filled):
+    
+    for i in range(starting_i , (ending_i + 1)):
+        
+        for j in range(starting_j , (ending_j + 1)):
+            
+            matrix[i][j] = character_to_be_filled
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+alphabets_list = []
+
+numbers_list = []
+
+while(is_within_bounds(index , N)):
+    
+    alphabets_list.append(S[index])
+    
+    index += 1
+    
+    number = 0
+    
+    while((is_within_bounds(index , N)) and (S[index].isdigit())):
+        
+        number = ((number * 10) + int(S[index]))
+        
+        index += 1
+    
+    numbers_list.append(number)
+
+R = max(numbers_list)
+
+C = sum(numbers_list)
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+block_index = 0
+
+for alphabet , block_size in zip(alphabets_list , numbers_list):
+    
+    fill_matrix(0 , (block_size - 1) , block_index , (block_index + block_size - 1) , matrix , alphabet)
+    
+    block_index += block_size
+
+[print(*row_list , sep = " ") for row_list in matrix]
