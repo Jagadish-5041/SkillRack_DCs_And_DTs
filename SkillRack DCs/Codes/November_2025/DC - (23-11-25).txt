@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Maximum Odd Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+if(all(is_even(number) for number in values_list)):
+    print(-1)
+    quit()
+
+odd_numbers_list = sorted([number for number in values_list if(is_odd(number))] , reverse = True)
+
+even_numbers_list = sorted([number for number in values_list if(is_even(number))] , reverse = True)
+
+sum_value_1 = (sum(even_numbers_list) + sum(odd_numbers_list))
+
+sum_value_2 = (sum(even_numbers_list) + sum(odd_numbers_list[:-1]))
+
+sum_value_3 = (sum(even_numbers_list[:-1]) + sum(odd_numbers_list))
+
+sum_value_4 = (sum(even_numbers_list[:-1]) + sum(odd_numbers_list[:-1]))
+
+print(max(sum_value for sum_value in [sum_value_1 , sum_value_2 , sum_value_3 , sum_value_4] if(is_odd(sum_value))))
