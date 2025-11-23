@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Minimum Sum - Last K Bits To 0 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def set_last_K_bits_to_0(N , K):
+    
+    return (N & (~((1 << K) - 1)))
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+K = int(input())
+
+total_sum = sum(values_list)
+
+print(min((total_sum - value + set_last_K_bits_to_0(value , K)) for value in values_list))
