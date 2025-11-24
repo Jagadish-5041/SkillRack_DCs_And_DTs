@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Minimum Size Pendrive - N Videos in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+N = int(input())
+
+total_MBs = sum(list(map(int , input().split())))
+
+pendrive_size = (2 ** (math.ceil(math.log2(total_MBs))))
+
+print(pendrive_size)
