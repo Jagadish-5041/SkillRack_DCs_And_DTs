@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Replace Asterisks - Palindromic Array in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(N , values_list):
+    
+    for index in range(0 , ((N // 2) + (N % 2))):
+        
+        if(values_list[index] != values_list[(N - index - 1)]):
+            
+            return False
+    
+    return True
+
+N = int(input())
+
+values_list = input().strip().split()
+
+for left_index in range(0 , ((N // 2) + (N % 2))):
+    
+    right_index = (N - left_index - 1)
+    
+    A = values_list[left_index]
+    
+    B = values_list[right_index]
+    
+    if((A == '*') and (B == '*')):
+        values_list[left_index] = 1
+        values_list[right_index] = 1
+    elif(A == '*'):
+        values_list[left_index] = values_list[right_index]
+    elif(B == '*'):
+        values_list[right_index] = values_list[left_index]
+
+values_list = [(int(value)) if(isinstance(value , str)) else (value) for value in values_list]
+
+(print(-1)) if(not is_palindrome(N , values_list)) else (print(*values_list))
