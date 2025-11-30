@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Subtraction - Count Borrows in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def pad_zeroes(count , string):
+    
+    return (('0' * count) + string)
+
+def get_borrows_count(A , B):
+    
+    A_N = len(A)
+    
+    B_N = len(B)
+    
+    maximum_length = max(A_N , B_N)
+    
+    A = pad_zeroes((maximum_length - A_N) , A)
+    
+    B = pad_zeroes((maximum_length - B_N) , B)
+    
+    borrow_flag_value = 0
+    
+    borrows_count = 0
+    
+    for index in range((maximum_length - 1) , -1 , -1):
+        
+        digit_1 = int(A[index])
+        
+        digit_2 = int(B[index])
+        
+        condition_flag = ((digit_1 - borrow_flag_value) < digit_2)
+        
+        borrows_count = (borrows_count + 1) if(condition_flag) else (borrows_count)
+        
+        borrow_flag_value = (1) if(condition_flag) else (0)
+    
+    return borrows_count
+
+print(get_borrows_count(input().strip() , input().strip()))
