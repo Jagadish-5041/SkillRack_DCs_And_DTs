@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Function - countOrderedChairs() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+int get_alphabet_position(char alphabet){
+    
+    return (((int) alphabet) - ((int) 'a') + 1);
+}
+
+int countOrderedChairs(char *string){
+    
+    int count = 0;
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        if(get_alphabet_position(string[index]) == (index + 1)){
+            
+            count++;
+        }
+    }
+    
+    return count;
+}
