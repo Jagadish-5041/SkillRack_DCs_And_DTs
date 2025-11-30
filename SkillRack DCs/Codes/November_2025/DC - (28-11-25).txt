@@ -1,0 +1,22 @@
+Problem Statement :-
+
+Append/Prepend - Remove First/Last in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+characters_list = []
+
+for query_string in input().strip().split():
+    
+    if(query_string[0] == '+'):
+        characters_list.append(query_string[1])
+    elif(query_string[1] == '+'):
+        characters_list.insert(0 , query_string[0])
+    elif((query_string[0] == '-') and (query_string[1] in characters_list)):
+        characters_list.pop((len(characters_list) - characters_list[::-1].index(query_string[1]) - 1))
+    elif((query_string[1] == '-') and (query_string[0] in characters_list)):
+        characters_list.pop(characters_list.index(query_string[0]))
+
+(print(*characters_list , sep = "")) if(characters_list) else (print(-1))
