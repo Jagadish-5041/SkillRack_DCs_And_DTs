@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Expand String Based On Frequency in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+compressed_string = input().strip()
+
+N = len(compressed_string)
+
+index = 0
+
+previous_frequency_map = {}
+
+while(is_within_bounds(index , N)):
+    
+    string = ""
+    
+    while((is_within_bounds(index , N)) and (not compressed_string[index].isdigit())):
+        
+        string += compressed_string[index]
+        
+        index += 1
+    
+    frequency = 0
+    
+    while((is_within_bounds(index , N)) and (compressed_string[index].isdigit())):
+        
+        frequency = ((frequency * 10) + int(compressed_string[index]))
+        
+        index += 1
+    
+    print((string * (frequency - previous_frequency_map.get(string , 0))) , end = "")
+    
+    previous_frequency_map[string] = frequency
