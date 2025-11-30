@@ -1,0 +1,65 @@
+Problem Statement :-
+
+Function - getTotalDuration() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int convert_days_to_seconds(int days){
+    
+    return ((days * 24) * 3600);
+}
+
+int convert_hours_to_seconds(int hours){
+    
+    return (hours * 3600);
+}
+
+int convert_minutes_to_seconds(int minutes){
+    
+    return (minutes * 60);
+}
+
+struct Duration *convert_seconds_to_custom_duration(int total_seconds){
+    
+    int days = ((total_seconds / convert_hours_to_seconds(24)) % 24);
+    
+    int hours = (((total_seconds - convert_days_to_seconds(days)) / 3600) % 3600);
+    
+    int minutes = ((((total_seconds - convert_days_to_seconds(days) - convert_hours_to_seconds(hours))) / 60) % 60);
+    
+    int seconds = ((total_seconds - convert_days_to_seconds(days) - convert_hours_to_seconds(hours) - convert_minutes_to_seconds(minutes)) % 60);
+    
+    struct Duration *duration_structure = ((struct Duration *) malloc(sizeof(struct Duration)));
+    
+    (duration_structure -> days) = days;
+    
+    (duration_structure -> hours) = hours;
+    
+    (duration_structure -> minutes) = minutes;
+    
+    (duration_structure -> seconds) = seconds;
+    
+    return duration_structure;
+}
+
+struct Duration *getTotalDuration(char *durations_string){
+    
+    int total_seconds = 0;
+    
+    for(char *string_tokenizer = strtok(durations_string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int hours;
+        
+        int minutes;
+        
+        int seconds;
+        
+        sscanf(string_tokenizer , "%d:%d:%d" , &hours , &minutes , &seconds);
+        
+        total_seconds += (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes) + seconds);
+    }
+    
+    return convert_seconds_to_custom_duration(total_seconds);
+}
