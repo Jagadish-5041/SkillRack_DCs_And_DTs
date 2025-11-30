@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Vertically Balanced Matrix Or Not in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+total_sum = sum(sum(matrix[i]) for i in range(0 , R))
+
+running_column_sum = 0
+
+for j in range(0 , C):
+    
+    current_column_sum = sum(matrix[i][j] for i in range(0 , R))
+    
+    running_column_sum += current_column_sum
+    
+    left_half_sum = running_column_sum
+    
+    right_half_sum = (total_sum - left_half_sum)
+    
+    if(left_half_sum == right_half_sum):
+        print("YES")
+        quit()
+
+print("NO")
