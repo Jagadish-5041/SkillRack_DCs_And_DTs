@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Function - concatOrAdd() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+int is_valid_to_add(int N , char *string){
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if((!isdigit(string[index])) && (string[index] != '.')){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+int is_float(int N , char *string){
+    
+    int index = (strchr(string , '.') - string);
+    
+    return ((0 <= index) && (index < N));
+}
+
+char *concatOrAdd(char *string_1 , char *string_2){
+    
+    int N = strlen(string_1);
+    
+    int M = strlen(string_2);
+    
+    char *answer_string = ((char *) malloc(((N + M + 1) * sizeof(char))));
+    
+    ((!is_valid_to_add(N , string_1)) && (!is_valid_to_add(M , string_2))) ? (sprintf(answer_string , "%s%s" , string_1 , string_2)) : (((is_float(N , string_1) && (is_float(M , string_2)))) ? (sprintf(answer_string , "%.2f" , (atof(string_1) + atof(string_2)))) : (sprintf(answer_string , "%d" , (atol(string_1) + atol(string_2)))));
+    
+    return answer_string;
+}
