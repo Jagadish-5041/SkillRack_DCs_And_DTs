@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Minimum Changes - Lucky Array in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_minimum_changes_count(N , values_list):
+    
+    first_condition_changes_count = 0
+    
+    second_condition_changes_count = 0
+    
+    third_condition_changes_count = 0
+    
+    for value_1 , value_2 in zip(values_list[0 : (N // 2)] , values_list[(N // 2) : N]):
+        
+        first_condition_changes_count = (first_condition_changes_count + 1) if(not (value_1 > value_2)) else (first_condition_changes_count)
+        
+        second_condition_changes_count = (second_condition_changes_count + 1) if(not (value_1 < value_2)) else (second_condition_changes_count)
+        
+        third_condition_changes_count = (third_condition_changes_count + 1) if(not (value_1 == value_2)) else (third_condition_changes_count)
+    
+    return min(first_condition_changes_count , second_condition_changes_count , third_condition_changes_count)
+
+print(get_minimum_changes_count(int(input()) , list(map(int , input().split()))))
