@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Combine Two Grids Of Asterisks in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+matrix = [input().strip().split() for i in range(0 , N)]
+
+hash_i = -999
+
+hash_j = -999
+
+for i in range(0 , N):
+    
+    for j in range(0 , N):
+        
+        if(matrix[i][j] == '#'):
+            
+            hash_i = i
+            
+            hash_j = j
+
+hyphens_row_list = (['-'] * N)
+
+hyphens_column_list = (['-'] * (N - hash_j - 1))
+
+[matrix.insert(0 , hyphens_row_list) for count in range(0 , (N - hash_i - 1))]
+
+[matrix.__setitem__(i , (hyphens_column_list + matrix[i])) for i in range(0 , len(matrix))]
+
+new_hash_i = (hash_i + (N - hash_i - 1))
+
+new_hash_j = (hash_j + (N - hash_j - 1))
+
+[matrix[i].__setitem__(j , '*') for i in range(0 , (new_hash_i + 1)) for j in range(0 , (new_hash_j + 1))]
+
+[print(*row_list) for row_list in matrix]
