@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Find Missing Digits - Sort Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list(N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.insert(0 , digit)
+        
+        N = (N // 10)
+    
+    return digits_list
+
+def get_N_from_digits_list(digits_list):
+    
+    N = 0
+    
+    for digit in digits_list:
+        
+        N = ((N * 10) + digit)
+    
+    return N
+
+def get_new_number(number):
+    
+    digits_list = get_digits_list(number)
+    
+    new_digits_list = []
+    
+    for index in range(0 , (len(digits_list) - 1)):
+        
+        digit_1 = digits_list[index]
+        
+        digit_2 = digits_list[(index + 1)]
+        
+        ([new_digits_list.append(digit) for digit in range(digit_1 , digit_2)]) if(digit_1 < digit_2) else ([new_digits_list.append(digit) for digit in range(digit_1 , digit_2 , -1)])
+    
+    new_digits_list.append(digits_list[-1])
+    
+    return get_N_from_digits_list(new_digits_list)
+
+(lambda N : print(*sorted([get_new_number(number) for number in list(map(int , input().split()))]))) (int(input()))
