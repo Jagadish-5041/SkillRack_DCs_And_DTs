@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sort Tickets - Slot Number & Ticket Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : [print(*pair) for pair in sorted([list(map(int , input().split())) for i in range(0 , N)] , key = lambda pair : (pair[1] , pair[0]))]) (int(input()))
