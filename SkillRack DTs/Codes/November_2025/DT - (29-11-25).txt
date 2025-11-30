@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Alternate Conversion - Octal And Hexadecimal in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+binary_string = get_binary_string(int(input()))
+
+N = len(binary_string)
+
+index = (N - 1)
+
+base_flag = 1
+
+answer_string = ""
+
+while(is_within_bounds(index , N)):
+    
+    if(base_flag == 1):
+        answer_string = (format(int(binary_string[max(0 , (index - 3 + 1)) : (index + 1)] , 2) , 'o') + answer_string)
+        index -= 3
+    else:
+        answer_string = (format(int(binary_string[max(0 , (index - 4 + 1)) : (index + 1)] , 2) , 'x').upper() + answer_string)
+        index -= 4
+    
+    base_flag = (base_flag ^ 1)
+
+print(answer_string)
