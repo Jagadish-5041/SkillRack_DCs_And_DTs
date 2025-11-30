@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Function - getPositionDigitsSum() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+boundedArray *getPositionDigitsSum(int N , int *array){
+    
+    int M = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        M = max(M , get_length_of_N(array[index]));
+    }
+    
+    int *answer_array = ((int *) malloc((M * sizeof(int))));
+    
+    for(int divisor_1 = 10 , divisor_2 = 1 , digits_position_from_right_to_left = (M - 1) ; (digits_position_from_right_to_left >= 0) ; divisor_1 = (divisor_1 * 10) , divisor_2 = (divisor_2 * 10) , digits_position_from_right_to_left = (digits_position_from_right_to_left - 1)){
+        
+        for(int index = 0 ; (index < N) ; index++){
+            
+            answer_array[digits_position_from_right_to_left] += ((array[index] % divisor_1) / divisor_2);
+        }
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = M;
+    
+    (bounded_array_reference -> arr) = answer_array;
+    
+    return bounded_array_reference;
+}
