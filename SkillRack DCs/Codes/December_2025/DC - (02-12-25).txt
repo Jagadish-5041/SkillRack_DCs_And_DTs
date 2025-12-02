@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Difference - Same/Different Positions in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_indices_map(values_list):
+    
+    return {value : index for index , value in enumerate(values_list)}
+
+N = int(input())
+
+A = list(map(int , input().split()))
+
+B = sorted(A)
+
+A_indices_map = get_indices_map(A)
+
+B_indices_map = get_indices_map(B)
+
+X = 0
+
+Y = 0
+
+for integer in A:
+    
+    X = (X + integer) if(A_indices_map[integer] == B_indices_map[integer]) else (X)
+    
+    Y = (Y + integer) if(A_indices_map[integer] != B_indices_map[integer]) else (Y)
+
+print(abs((X - Y)))
