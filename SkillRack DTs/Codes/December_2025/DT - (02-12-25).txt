@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Form List Of Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+A = list(map(int , input().split()))
+
+B = [None for i in range(0 , N)]
+
+B_index = (N // 2)
+
+offset_value = 1
+
+multiplier = (1) if(is_odd(N)) else (-1)
+
+for A_index in range(0 , N):
+    
+    B[B_index] = A[A_index]
+    
+    B_index = (B_index + (offset_value * multiplier))
+    
+    offset_value = (offset_value + 1)
+    
+    multiplier = (-1) if(multiplier == 1) else (1)
+
+print(*B)
