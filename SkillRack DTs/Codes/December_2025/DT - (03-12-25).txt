@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Recursive Split - String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(words_list):
+    
+    if(all((len(word_string) == 1) for word_string in words_list)):
+        return 
+    
+    new_words_list = []
+    
+    for word_string in words_list:
+        
+        N = len(word_string)
+        
+        if(N > 1):
+            
+            left_half_word_string = word_string[0 : (N // 2)]
+            
+            right_half_word_string = word_string[(N // 2) : N]
+            
+            new_words_list.append(left_half_word_string)
+            
+            new_words_list.append(right_half_word_string)
+        
+        else:
+            
+            new_words_list.append(word_string)
+    
+    print(*new_words_list)
+    
+    depth_first_search(new_words_list)
+
+depth_first_search([input().strip()])
