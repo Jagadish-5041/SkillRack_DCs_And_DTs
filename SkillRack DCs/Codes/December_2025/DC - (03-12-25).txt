@@ -1,0 +1,65 @@
+Problem Statement :-
+
+Function - groupIntegersAndFormMatrix() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int get_alphabet_index(char alphabet){
+    
+    return (((int) alphabet) - ((int) 'a'));
+}
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+boundedArray* groupIntegersAndFormMatrix(char *string){
+    
+    int R = 0;
+    
+    int C = 0;
+    
+    int **matrix = ((int **) malloc((26 * sizeof(int *))));
+    
+    for(int i = 0 ; (i < 26) ; i++){
+        matrix[i] = ((int *) malloc((1008 * sizeof(int))));
+    }
+    
+    int *row_wise_column_indices_array = ((int *) malloc((26 * sizeof(int))));
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int number;
+        
+        char alphabet;
+        
+        sscanf(string_tokenizer , "%d%c" , &number , &alphabet);
+        
+        int row_index = get_alphabet_index(alphabet);
+        
+        int column_index = row_wise_column_indices_array[row_index];
+        
+        matrix[row_index][column_index] = number;
+        
+        R = max(R , (row_index + 1));
+        
+        C = max(C , (row_wise_column_indices_array[row_index] + 1));
+        
+        row_wise_column_indices_array[row_index]++;
+    }
+    
+    free(row_wise_column_indices_array);
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> R) = R;
+    
+    (bounded_array_reference -> C) = C;
+    
+    (bounded_array_reference -> matrix) = matrix;
+    
+    return bounded_array_reference;
+}
