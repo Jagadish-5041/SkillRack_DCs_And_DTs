@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Edges With Same Alphabet - Triangle in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def fill_matrix(count , character , current_i , current_j , offset_i , offset_j , matrix):
+    
+    for i in range(1 , (count + 1)):
+        
+        matrix[current_i][current_j] = character
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+
+N = int(input())
+
+matrix = [[('*') if(i < (N - 1)) else ("") for j in range(0 , (N + i))] for i in range(0 , N)]
+
+fill_matrix((N - 1) , 'a' , 0 , (N - 1) , 1 , 1 , matrix)
+
+fill_matrix((N - 1) , 'b' , (N - 1) , (len(matrix[(N - 1)]) - 1) , 0 , -1 , matrix)
+
+fill_matrix((N - 1) , 'c' , 1 , (N - 2) , 1 , -1 , matrix)
+
+[print(*matrix[i] , sep = "") for i in range(0 , (N - 1))]
+
+[print(value , end = " ") for value in matrix[-1] if(value)]
