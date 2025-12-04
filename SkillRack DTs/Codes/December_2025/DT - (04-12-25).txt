@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Binary Reverse Pairs in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+binary_strings_list = [get_binary_string(value) for value in values_list]
+
+pairs_list = [(values_list[index_1] , values_list[index_2]) for index_1 in range(0 , N) for index_2 in range((index_1 + 1) , N) if(binary_strings_list[index_1] == binary_strings_list[index_2][::-1])]
+
+([print(*pair) for pair in pairs_list]) if(pairs_list) else (print(-1))
