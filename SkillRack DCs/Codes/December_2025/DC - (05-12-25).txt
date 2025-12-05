@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Function - findMissingBit() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int findMissingBit(char *binary_string , int X){
+    
+    for(int index = (strlen(binary_string) - 1) ; (X > 0) ; index = (index - 1) , X = (X / 2)){
+        
+        if((X % 2) != ((int) (binary_string[index] - '0'))){
+            
+            return (X % 2);
+        }
+    }
+    
+    return -999;
+}
