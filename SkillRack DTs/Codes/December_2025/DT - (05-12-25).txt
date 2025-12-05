@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Function - getStringFromRows() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *getStringFromRows(int R , int C , char *matrix , int X , int Y){
+    
+    int rows_count = (X <= Y) ? ((Y - X) + 1) : ((R - X + 1) + Y);
+    
+    int N = (rows_count * C);
+    
+    char *answer_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    for(int row_index = (X - 1) , count = 1 ; (count <= rows_count) ; count = (count + 1) , row_index = ((row_index + 1) % R)){
+        
+        for(int column_index = 0 ; (column_index < C) ; column_index++){
+            
+            strncat(answer_string , &matrix[((row_index * C) + column_index)] , 1);
+        }
+    }
+    
+    return answer_string;
+}
