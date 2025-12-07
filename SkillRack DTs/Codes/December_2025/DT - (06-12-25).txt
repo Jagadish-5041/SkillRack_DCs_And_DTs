@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Find Length - Smallest Subarrays in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+A = list(map(int , input().split()))
+
+B = list(map(int , input().split()))
+
+indices_list = [[j for j in range(i , N) if(A[j] >= A[i])] for i in range(0 , N)]
+
+[(print(((-1) if(len(indices_list[index]) < B[index]) else (indices_list[index][(B[index] - 1)] - indices_list[index][0] + 1)) , end = " ")) for index in range(0 , N)]
