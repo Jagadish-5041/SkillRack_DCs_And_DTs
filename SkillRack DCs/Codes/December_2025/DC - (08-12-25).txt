@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Toggle Count - Upper/Lower Case in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check(A , B):
+    
+    return (((A.islower()) and (B.isupper())) or ((A.isupper()) and (B.islower())))
+
+S = input().strip()
+
+previous_character = S[0]
+
+toggles_count = 0
+
+for index in range(1 , len(S)):
+    
+    current_character = S[index]
+    
+    toggles_count = (toggles_count + 1) if(check(previous_character , current_character)) else (toggles_count)
+    
+    previous_character = current_character
+
+print(toggles_count)
