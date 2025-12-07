@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Find Molecular Mass in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+atomic_mass_map = {element_symbol : mass_value for element_symbol , mass_value in zip(["H" , "He" , "C" , "N" , "O" , "Mg" , "S" , "Ca" , "Cu"] , [1 , 4 , 12 , 14 , 16 , 24 , 32 , 40 , 63])}
+
+molecular_mass = 0
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+while(is_within_bounds(index , N)):
+    
+    element_symbol = S[index]
+    
+    index += 1
+    
+    while((is_within_bounds(index , N)) and (S[index].islower())):
+        
+        element_symbol += S[index]
+        
+        index += 1
+    
+    count = 0
+    
+    while((is_within_bounds(index , N)) and (S[index].isdigit())):
+        
+        count = ((count * 10) + int(S[index]))
+        
+        index += 1
+    
+    molecular_mass += (atomic_mass_map[element_symbol] * ((count) if(count) else (1)))
+
+print(molecular_mass)
