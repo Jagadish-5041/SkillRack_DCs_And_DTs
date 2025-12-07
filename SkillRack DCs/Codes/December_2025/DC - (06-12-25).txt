@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Laptops & Nearest Charging Points in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+left_to_right_asterisk_index = -999
+
+right_to_left_asterisk_index = -999
+
+left_to_right_closest_asterisk_index_list = [None for i in range(0 , N)]
+
+right_to_left_closest_asterisk_index_list = [None for i in range(0 , N)]
+
+for left_to_right_index , right_to_left_index in zip(range(0 , N) , range((N - 1) , -1 , -1)):
+    
+    left_to_right_asterisk_index = (left_to_right_index) if(S[left_to_right_index] == '*') else ((-999) if(S[left_to_right_index] == '#') else (left_to_right_asterisk_index))
+    
+    right_to_left_asterisk_index = (right_to_left_index) if(S[right_to_left_index] == '*') else ((-999) if(S[right_to_left_index] == '#') else (right_to_left_asterisk_index))
+    
+    left_to_right_closest_asterisk_index_list[left_to_right_index] = left_to_right_asterisk_index
+    
+    right_to_left_closest_asterisk_index_list[right_to_left_index] = right_to_left_asterisk_index
+
+[((lambda closest_asterisk_index : print(closest_asterisk_index , end = " ")) ((-1) if((left_to_right_closest_asterisk_index_list[index] == -999) and (right_to_left_closest_asterisk_index_list[index] == -999)) else ((abs((index - right_to_left_closest_asterisk_index_list[index]))) if(left_to_right_closest_asterisk_index_list[index] == -999) else ((abs((index - left_to_right_closest_asterisk_index_list[index]))) if(right_to_left_closest_asterisk_index_list[index] == -999) else (min(abs((index - left_to_right_closest_asterisk_index_list[index])) , abs((index - right_to_left_closest_asterisk_index_list[index])))))))) for index in range(0 , N) if(S[index] == 'L')]
