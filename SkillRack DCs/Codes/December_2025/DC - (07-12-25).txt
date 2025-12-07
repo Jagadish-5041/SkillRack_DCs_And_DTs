@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Middle Print Till Repeat in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+index = (N // 2)
+
+offset_value = 1
+
+print(S[index] , end = "")
+
+characters_set = set([S[index]])
+
+for i in range(0 , (N // 2)):
+    
+    print(S[(index - offset_value)] , end = "")
+    
+    if(S[(index - offset_value)] in characters_set):
+        quit()
+    
+    characters_set.add(S[(index - offset_value)])
+    
+    print(S[(index + offset_value)] , end = "")
+    
+    if(S[(index + offset_value)] in characters_set):
+        quit()
+    
+    characters_set.add(S[(index + offset_value)])
+    
+    offset_value += 1
