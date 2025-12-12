@@ -1,0 +1,46 @@
+Problem Statement :-
+
+Function - concatBinary() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_binary_string(int number){
+    
+    char *binary_string = ((char *) malloc((64 * sizeof(char))));
+    
+    while(number > 0){
+        
+        char bit = ((char) ((number % 2) + '0'));
+        
+        strncat(binary_string , &bit , 1);
+        
+        number = (number / 2);
+    }
+    
+    for(int N = strlen(binary_string) , index = 0 ; (index < (N / 2)) ; index++){
+        
+        char temp = binary_string[index];
+        
+        binary_string[index] = binary_string[(N - index - 1)];
+        
+        binary_string[(N - index - 1)] = temp;
+    }
+    
+    return binary_string;
+}
+
+int get_integer_from_binary_string(char *binary_string){
+    
+    return strtoll(binary_string , NULL , 2);
+}
+
+int concatBinary(int A , int B){
+    
+    char *binary_string = ((char *) malloc((256 * sizeof(char))));
+    
+    sprintf(binary_string , "%s%d" , get_binary_string(A) , B);
+    
+    return get_integer_from_binary_string(binary_string);
+}
