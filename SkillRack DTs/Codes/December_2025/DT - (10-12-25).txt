@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Split String Into Words - Length in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+S = input().strip()
+
+index = 0
+
+words_list = []
+
+for size in list(map(int , input().split())):
+    
+    words_list.append(S[index : (index + size)])
+    
+    index += size
+
+print(*sorted(words_list , key = lambda word_string : len(word_string)) , sep = "")
