@@ -1,0 +1,56 @@
+Problem Statement :-
+
+Function - encryptMessage() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int get_alphabet_index(char alphabet){
+    
+    return ((int) (alphabet - 'a'));
+}
+
+int get_alphabet(int alphabet_index){
+    
+    return ((char) (alphabet_index + ((int) 'a')));
+}
+
+char *fill_key_string(char *string){
+    
+    char *new_string = ((char *) malloc((26 * sizeof(char))));
+    
+    int flag_array[26] = {0};
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        strncat(new_string , &string[index] , 1);
+        
+        flag_array[get_alphabet_index(string[index])] = 1;
+    }
+    
+    for(int alphabet_index = 0 ; (alphabet_index <= 25) ; alphabet_index++){
+        
+        if(!flag_array[alphabet_index]){
+            
+            char alphabet = get_alphabet(alphabet_index);
+            
+            strncat(new_string , &alphabet , 1);
+        }
+    }
+    
+    return new_string;
+}
+
+char *encryptMessage(char *message_string , char *key_string){
+    
+    char *encrypted_message_string = ((char *) malloc((strlen(message_string) * sizeof(char))));
+    
+    key_string = fill_key_string(key_string);
+    
+    for(int N = strlen(message_string) , index = 0 ; (index < N) ; index++){
+        strncat(encrypted_message_string , &key_string[get_alphabet_index(message_string[index])] , 1);
+    }
+    
+    return encrypted_message_string;
+}
