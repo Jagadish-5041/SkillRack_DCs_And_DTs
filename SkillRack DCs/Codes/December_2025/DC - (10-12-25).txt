@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Two Arrays - Compare Size And Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_frequency_map(values_list):
+    
+    digits_frequency_map = {digit : 0 for digit in range(0 , 10)}
+    
+    for value in values_list:
+        
+        while(value > 0):
+            
+            digit = (value % 10)
+            
+            digits_frequency_map[digit] = (digits_frequency_map[digit] + 1)
+            
+            value = (value // 10)
+    
+    return digits_frequency_map
+
+(lambda A , B : (print("YES\n" , sum(A) , " " , sum(B) , sep = "")) if((len(A) == len(B)) and (get_digits_frequency_map(A) == get_digits_frequency_map(B))) else (print("NO"))) (list(map(int , input().split())) , list(map(int , input().split())))
