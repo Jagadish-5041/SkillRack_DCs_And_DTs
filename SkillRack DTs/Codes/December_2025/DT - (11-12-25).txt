@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Reduce Matrix - Powers Of Two in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_new_matrix(N , matrix):
+    
+    return [[(matrix[i][j] + matrix[i][(j + 1)] + matrix[(i + 1)][j] + matrix[(i + 1)][(j + 1)]) for j in range(0 , N , 2)] for i in range(0 , N , 2)]
+
+def print_matrix(matrix):
+    
+    [print(*row_list) for row_list in matrix]
+
+N = int(input())
+
+matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+while(N > 1):
+    
+    matrix = get_new_matrix(N , matrix)
+    
+    print_matrix(matrix)
+    
+    N = (N // 2)
