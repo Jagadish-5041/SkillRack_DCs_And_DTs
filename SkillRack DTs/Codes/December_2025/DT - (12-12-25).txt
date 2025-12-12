@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Maximum Value - Add Or Product in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_maximum_among_sum_of_digits_and_product_of_digits(N):
+    
+    sum_of_digits = 0
+    
+    product_of_digits = 1
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        sum_of_digits = (sum_of_digits + digit)
+        
+        product_of_digits = (product_of_digits * digit)
+        
+        N = (N // 10)
+    
+    return max(sum_of_digits , product_of_digits)
+
+(lambda N : [print(get_maximum_among_sum_of_digits_and_product_of_digits(number) , end = " ") for number in list(map(int , input().split()))]) (int(input()))
