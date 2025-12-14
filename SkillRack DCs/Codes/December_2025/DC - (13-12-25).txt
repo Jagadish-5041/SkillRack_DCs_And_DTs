@@ -1,0 +1,46 @@
+Problem Statement :-
+
+Function - multiplyOrRepeat() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *multiplyOrRepeat(char *string){
+    
+    int N = strlen(string);
+    
+    char *answer_string = ((char *) malloc((N * sizeof(char))));
+    
+    int asterisk_index = (strchr(string , '*') - string);
+    
+    char *left_string = ((char *) malloc((N * sizeof(char))));
+    
+    strncat(left_string , &string[0] , asterisk_index);
+    
+    char *right_string = ((char *) malloc((N * sizeof(char))));
+    
+    strncat(right_string , &string[(asterisk_index + 1)] , (N - asterisk_index - 1));
+    
+    if((!isdigit(left_string[0])) || (!isdigit(right_string[0]))){
+        
+        int repeat_count = (!isdigit(left_string[0])) ? (atol(right_string)) : (atol(left_string));
+        
+        char *repeat_string = (isdigit(left_string[0])) ? (right_string) : (left_string);
+        
+        answer_string = ((char *) malloc((((repeat_count + 1) * strlen(repeat_string)) * sizeof(char))));
+        
+        for(int count = 1 ; (count <= repeat_count) ; count++){
+            strcat(answer_string , repeat_string);
+        }
+    }else{
+        
+        int X = atol(left_string);
+        
+        int Y = atol(right_string);
+        
+        sprintf(answer_string , "%d" , (X * Y));
+    }
+    
+    return answer_string;
+}
