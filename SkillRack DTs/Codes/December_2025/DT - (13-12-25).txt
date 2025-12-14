@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Function - validateDate() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_leap_year(int year){
+    
+    return ((((year % 100) != 0) && ((year % 4) == 0)) || ((year % 400) == 0));
+}
+
+int validateDate(char *date_string){
+    
+    int date;
+    
+    int month;
+    
+    int year;
+    
+    sscanf(date_string , "%d-%d-%d" , &date , &month , &year);
+    
+    int days_in_months_array[] = {-999 , 31 , ((is_leap_year(year)) ? (29) : (28)) , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31};
+    
+    return (((1 <= month)  && (month <= 12)) && ((1 <= date) && (date <= days_in_months_array[month])));
+}
