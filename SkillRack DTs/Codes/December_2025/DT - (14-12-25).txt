@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Matrix Layers - Fill From Each Corner in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def fill_matrix(top_left_value , top_right_value , bottom_right_value , bottom_left_value , starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    matrix[starting_i][starting_j] = top_left_value
+    
+    matrix[starting_i][ending_j] = top_right_value
+    
+    matrix[ending_i][ending_j] = bottom_right_value
+    
+    matrix[ending_i][starting_j] = bottom_left_value
+    
+    [matrix[starting_i].__setitem__(current_j , cell_value) for current_j , cell_value in zip(range(starting_j , ending_j) , range(top_left_value , (top_left_value + C)))]
+    
+    [matrix[current_i].__setitem__(ending_j , cell_value) for current_i , cell_value in zip(range(starting_i , ending_i) , range(top_right_value , (top_right_value + C)))]
+    
+    [matrix[ending_i].__setitem__(current_j , cell_value) for current_j , cell_value in zip(range(ending_j , starting_j , -1) , range(bottom_right_value , (bottom_right_value + C)))]
+    
+    [matrix[current_i].__setitem__(starting_j , cell_value) for current_i , cell_value in zip(range(ending_i , starting_i , -1) , range(bottom_left_value , (bottom_left_value + C)))]
+
+A , B , C , D = map(int , input().split())
+
+N = int(input())
+
+total_layers = ((N // 2) + (N % 2))
+
+matrix = [['*' for j in range(0 , N)] for i in range(0 , N)]
+
+starting_i = 0
+
+ending_i = (N - 1)
+
+starting_j = 0
+
+ending_j = (N - 1)
+
+for layer in range(1 , (total_layers + 1)):
+    
+    fill_matrix(A , B , C , D , starting_i , ending_i , starting_j , ending_j , N , N , matrix)
+    
+    starting_i += 1
+    
+    ending_i -= 1
+    
+    starting_j += 1
+    
+    ending_j -= 1
+
+[print(*row_list) for row_list in matrix]
