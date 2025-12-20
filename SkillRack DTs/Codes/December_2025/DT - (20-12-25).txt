@@ -1,0 +1,15 @@
+Problem Statement :-
+
+First N Terms - Powers Of 7 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_special_powers_of_7(N):
+    
+    return ((lambda binary_string : sum((int(bit) * (7 ** power)) for bit , power in zip(binary_string[::-1] , range(0 , len(binary_string))))) (get_binary_string(N)))
+
+(lambda N : [print(get_special_powers_of_7(count) , end = " ") for count in range(1 , (N + 1))]) (int(input()))
