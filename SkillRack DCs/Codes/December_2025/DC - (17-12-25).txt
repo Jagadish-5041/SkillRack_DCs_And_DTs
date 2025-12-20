@@ -1,6 +1,6 @@
 Problem Statement :-
 
-Function - reduceCharacterFrequency() in DC (Daily Challenge) in SkillRack in Python - Programming
+Function - reduceCharacterFrequency() in DC (Daily Challenge) in SkillRack in C - Programming
 
 Code :-
 
