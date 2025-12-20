@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Compressed String To Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_expanded_string_from_compressed_string(index , N , compressed_string):
+    
+    expanded_string = ""
+    
+    while(is_within_bounds(index , N)):
+        
+        repeat_string = ""
+        
+        while((is_within_bounds(index , N)) and (not compressed_string[index].isdigit())):
+            
+            repeat_string = (repeat_string + compressed_string[index])
+            
+            index = (index + 1)
+        
+        repeat_count = 0
+        
+        while((is_within_bounds(index , N)) and (compressed_string[index].isdigit())):
+            
+            repeat_count = ((repeat_count * 10) + int(compressed_string[index]))
+            
+            index = (index + 1)
+        
+        expanded_string = (expanded_string + (repeat_string * repeat_count))
+    
+    return expanded_string
+
+def fill_matrix(strings_list , K , R , C , matrix):
+    
+    for i in range(0 , R , K):
+        
+        for j in range(0 , C , K):
+            
+            string = strings_list[(((i // K) * (C // K)) + (j // K))]
+            
+            string_index = 0
+            
+            for k in range(i , (i + K)):
+                
+                for l in range(j , (j + K)):
+                    
+                    matrix[k][l] = string[string_index]
+                    
+                    string_index += 1
+
+R_1 , C_1 = map(int , input().split())
+
+matrix_1 = [input().strip().split() for i in range(0 , R_1)]
+
+K = 3
+
+R_2 = (R_1 * 3)
+
+C_2 = (C_1 * 3)
+
+matrix_2 = [[None for j in range(0 , C_2)] for i in range(0 , R_2)]
+
+fill_matrix([get_expanded_string_from_compressed_string(0 , len(matrix_1[i][j]) , matrix_1[i][j]) for i in range(0 , R_1) for j in range(0 , C_1)] , K , R_2 , C_2 , matrix_2)
+
+[print(*row_list) for row_list in matrix_2]
