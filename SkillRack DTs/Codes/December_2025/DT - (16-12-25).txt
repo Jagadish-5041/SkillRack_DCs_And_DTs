@@ -1,0 +1,17 @@
+Problem Statement :=
+
+Find Length - All Horizontal Lines in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_euclidean_distance(X_1 , Y_1 , X_2 , Y_2):
+    
+    return int((((((X_2 - X_1) ** 2) + ((Y_2 - Y_1) ** 2)) ** 0.5)))
+
+N = int(input())
+
+coordinates_list = [list(map(int , input().split())) for i in range(0 , N)]
+
+sorted_lengths_list = sorted([get_euclidean_distance(coordinates_list[index_1][0] , coordinates_list[index_2][1] , coordinates_list[index_2][0] , coordinates_list[index_2][1]) for index_1 in range(0 , N) for index_2 in range((index_1 + 1) , N) if(coordinates_list[index_1][1] == coordinates_list[index_2][1])])
+
+(print(*sorted_lengths_list)) if(sorted_lengths_list) else (print(-1))
