@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Family - Count Descendants in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(family_name_string , family_map):
+    
+    global descendants_count
+    
+    descendants_count = (descendants_count + 1)
+    
+    [depth_first_search(name_string , family_map) for name_string in family_map.get(family_name_string , [])]
+
+descendants_count = 0
+
+family_map = {}
+
+[((lambda first_name , last_name : family_map.setdefault(last_name , []).append(first_name)) (*input().strip().split())) for count in range(0 , int(input()))]
+
+depth_first_search(input().strip() , family_map)
+
+print(descendants_count)
