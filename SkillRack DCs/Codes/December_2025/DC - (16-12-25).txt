@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Integer & Character Matrices - String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_string = ""
+
+alphabets_string = ""
+
+for character in input().strip():
+    
+    digits_string = (digits_string + character) if(character.isdigit()) else (digits_string)
+    
+    alphabets_string = (alphabets_string + character) if(character.isalpha()) else (alphabets_string)
+
+N = int(input())
+
+A = (len(digits_string) // (N * N))
+
+B = (len(alphabets_string) // (N * N))
+
+matrix_1 = [[None for j in range(0 , N)] for i in range(0 , N)]
+
+[((lambda row_index , column_index : matrix_1[row_index].__setitem__(column_index , digits_string[index : (index + A)])) ((cell_index // N) , (cell_index % N))) for index , cell_index in zip(range(0 , len(digits_string) , A) , range(0 , (N * N)))]
+
+[print(*row_list) for row_list in matrix_1]
+
+matrix_2 = [[None for j in range(0 , N)] for i in range(0 , N)]
+
+[((lambda row_index , column_index : matrix_2[row_index].__setitem__(column_index , character)) ((cell_index // N) , (cell_index % N))) for character , cell_index in zip(alphabets_string , range(0 , (N * N)))]
+
+[print(*row_list) for row_list in matrix_2]
