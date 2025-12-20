@@ -1,0 +1,60 @@
+Problem Statement :-
+
+Function - compressBinary() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((64 * sizeof(char))));
+    
+    while(N > 0){
+        
+        char bit = ((char) ((N % 2) + '0'));
+        
+        strncat(binary_string , &bit , 1);
+        
+        N = (N / 2);
+    }
+    
+    for(int left_index = 0 , right_index = (strlen(binary_string) - 1) ; (left_index < right_index) ; left_index++ , right_index--){
+        
+        char temp = binary_string[left_index];
+        
+        binary_string[left_index] = binary_string[right_index];
+        
+        binary_string[right_index] = temp;
+    }
+    
+    return binary_string;
+}
+
+int get_length_of_N(long long int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+long long int compressBinary(int N){
+    
+    long long int total_sum_value = 0;
+    
+    char *binary_string = get_binary_string(N);
+    
+    for(int N = strlen(binary_string) , index_1 = 0 ; (index_1 < N) ; ){
+        
+        long long int current_sum_value = 0;
+        
+        char target_character = binary_string[index_1];
+        
+        for(int index_2 = index_1 ; ((index_2 < N) && (binary_string[index_2] == target_character)) ; index_2++ , index_1++){
+            current_sum_value += ((int) (binary_string[index_2] - '0'));
+        }
+        
+        total_sum_value = ((total_sum_value * ((long long int) pow(10 , get_length_of_N(current_sum_value)))) + current_sum_value);
+    }
+    
+    return total_sum_value;
+}
