@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Function - reduceCharacterFrequency() in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+#include <string.h>
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int get_ASCII_value(char character){
+    
+    return ((int) character);
+}
+
+char *reduceCharacterFrequency(char *string , int K){
+    
+    int N = strlen(string);
+    
+    int maximum_ASCII_value = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        maximum_ASCII_value = max(maximum_ASCII_value , get_ASCII_value(string[index]));
+    }
+    
+    int *frequency_array = ((int *) calloc((maximum_ASCII_value + 1) , sizeof(int)));
+    
+    int *flag_array = ((int *) calloc(N , sizeof(int)));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        frequency_array[get_ASCII_value(string[index])]++;
+        
+        flag_array[index] = (frequency_array[get_ASCII_value(string[index])] > K) ? (0) : (1);
+    }
+    
+    char *answer_string = ((char *) malloc((N * sizeof(char))));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(flag_array[index]){
+            
+            strncat(answer_string , &string[index] , 1);
+        }
+    }
+    
+    free(frequency_array);
+    
+    free(flag_array);
+    
+    return answer_string;
+}
