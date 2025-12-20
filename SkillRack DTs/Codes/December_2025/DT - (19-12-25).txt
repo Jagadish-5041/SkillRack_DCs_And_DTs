@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Floor Sweeper - Maximum Area in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+L = int(input())
+
+row_wise_dirty_areas_count_list = [sum(1 for j in range(0 , C) if(matrix[i][j] == '*')) for i in range(0 , R)]
+
+previous_row_block_dirty_areas_count = 0
+
+maximum_horizontal_block_dirty_areas_count = 0
+
+for row_block_index in range(0 , (R - L + 1)):
+    
+    current_row_block_dirty_areas_count = (sum(row_wise_dirty_areas_count_list[index] for index in range(0 , L))) if(row_block_index == 0) else (previous_row_block_dirty_areas_count - row_wise_dirty_areas_count_list[(row_block_index - 1)] + row_wise_dirty_areas_count_list[(row_block_index + L - 1)])
+    
+    maximum_horizontal_block_dirty_areas_count = max(maximum_horizontal_block_dirty_areas_count , current_row_block_dirty_areas_count)
+    
+    previous_row_block_dirty_areas_count = current_row_block_dirty_areas_count
+
+column_wise_dirty_areas_count_list = [sum(1 for i in range(0 , R) if(matrix[i][j] == '*')) for j in range(0 , C)]
+
+previous_column_block_dirty_areas_count = 0
+
+maximum_vertical_block_dirty_areas_count = 0
+
+for column_block_index in range(0 , (C - L + 1)):
+    
+    current_column_block_dirty_areas_count = (sum(column_wise_dirty_areas_count_list[index] for index in range(0 , L))) if(column_block_index == 0) else (previous_column_block_dirty_areas_count - column_wise_dirty_areas_count_list[(column_block_index - 1)] + column_wise_dirty_areas_count_list[(column_block_index + L - 1)])
+    
+    maximum_vertical_block_dirty_areas_count = max(maximum_vertical_block_dirty_areas_count , current_column_block_dirty_areas_count)
+    
+    previous_column_block_dirty_areas_count = current_column_block_dirty_areas_count
+
+maximum_dirty_areas_count = max(maximum_horizontal_block_dirty_areas_count , maximum_vertical_block_dirty_areas_count)
+
+print(maximum_dirty_areas_count)
