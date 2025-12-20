@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Messenger App - Print Messages in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+names_and_messages_map = {}
+
+for index in range(0 , int(input())):
+    
+    S = input().strip()
+    
+    colon_index = S.index(':')
+    
+    name = S[ : colon_index]
+    
+    message = S[(colon_index + 1) : ]
+    
+    names_and_messages_map[name] = (message , index)
+
+[print(data_tuple[0]) for data_tuple in sorted([((key + ":" + value[0]) , value[1]) for key , value in names_and_messages_map.items()] , key = lambda pair : (pair[1] * -1))]
