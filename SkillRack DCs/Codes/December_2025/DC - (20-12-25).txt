@@ -1,6 +1,6 @@
 Problem Statement :-
 
-Increasing And Decreasing Window Series in DT (Daily Challenge) in SkillRack in Python - Programming
+Increasing And Decreasing Window Series in DC (Daily Challenge) in SkillRack in Python - Programming
 
 Code :-
 
