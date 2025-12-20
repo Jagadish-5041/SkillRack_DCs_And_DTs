@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Text Editor - Shift & Caps Lock in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+capslock_flag = False
+
+answer_list = []
+
+for string in input().strip().split():
+    
+    if(string == "CAPSLOCK"):
+        capslock_flag = (not capslock_flag)
+    elif(string.startswith("SHIFT+")):
+        [answer_list.append(((character.lower()) if(capslock_flag) else (character.upper()))) for character in string[6 : ]]
+    else:
+        answer_list.append(((string.upper()) if(capslock_flag) else (string.lower())))
+
+print(("".join(answer_list)))
