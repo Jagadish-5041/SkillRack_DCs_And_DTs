@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Increasing And Decreasing Window Series in DT (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , K = map(int , input().split())
+
+series_list = []
+
+series_value = 1
+
+increase_or_decrease_flag = 1
+
+while(len(series_list) < K):
+    
+    current_series_list = []
+    
+    for count in range(1 , (N + 1)):
+        
+        current_series_list.append(series_value)
+        
+        series_value += 1
+    
+    series_list = (series_list + ((current_series_list) if(increase_or_decrease_flag == 1) else (current_series_list[::-1])))
+    
+    increase_or_decrease_flag = (increase_or_decrease_flag ^ 1)
+
+print(series_list[(K - 1)])
