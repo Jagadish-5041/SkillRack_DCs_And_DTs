@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Replace - Repeated Alphabets Sequence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_next_alphabet(alphabet):
+    
+    return chr((((ord(alphabet) - ord('a') + 1) % 26) + ord('a')))
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+new_S = ""
+
+while(is_within_bounds(index , N)):
+    
+    target_character = S[index]
+    
+    current_character = S[index]
+    
+    while((is_within_bounds(index , N)) and (S[index] == target_character)):
+        
+        new_S = (new_S + current_character)
+        
+        current_character = get_next_alphabet(current_character)
+        
+        index = (index + 1)
+
+print(new_S)
