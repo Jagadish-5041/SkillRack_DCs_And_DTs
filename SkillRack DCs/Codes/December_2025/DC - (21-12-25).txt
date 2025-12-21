@@ -1,0 +1,62 @@
+Problem Statement :-
+
+Function - mergeEveryTwoIntegers() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+int get_first_digit(int A , int A_length){
+    
+    return (A / ((int) pow(10 , (A_length - 1))));
+}
+
+int get_last_digit(int A){
+    
+    return (A % 10);
+}
+
+long long int concat_two_numbers(long long int A , int A_length , long long int B , int B_length){
+    
+    return ((A * ((long) pow(10 , B_length))) + B);
+}
+
+boundedArray *mergeEveryTwoIntegers(int N , int *array){
+    
+    long long int *answer_array = ((long long int *) malloc(((N + 1) * sizeof(long long int))));
+    
+    int answer_array_index = 0;
+    
+    for(int index = 0 ; (index < N) ; index += 2){
+        
+        int X = array[index];
+        
+        int X_length = get_length_of_N(X);
+        
+        int Y = array[(index + 1)];
+        
+        int Y_length = get_length_of_N(Y);
+        
+        int sum_value = (get_last_digit(X) + get_first_digit(Y , Y_length));
+        
+        if(sum_value <= 9){
+            answer_array[answer_array_index++] = concat_two_numbers(concat_two_numbers((X / 10) , (X_length - 1) , sum_value , 1) , X_length , (Y % ((int) pow(10 , (Y_length - 1)))) , (Y_length - 1));
+        }else{
+            answer_array[answer_array_index++] = X;
+            answer_array[answer_array_index++] = Y;
+        }
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = answer_array_index;
+    
+    (bounded_array_reference -> arr) = answer_array;
+    
+    return bounded_array_reference;
+}
