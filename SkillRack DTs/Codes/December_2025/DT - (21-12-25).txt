@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Function - addTrailingZeroes() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+int add_trailing_zeroes(int number , int count_of_zeroes_to_be_added){
+    
+    for(int count = 1 ; (count <= count_of_zeroes_to_be_added) ; count++){
+        number = ((number * 10) + 0);
+    }
+    
+    return number;
+}
+
+void addTrailingZeroes(int N , int array[]){
+    
+    int maximum_number_length = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        maximum_number_length = max(maximum_number_length , get_length_of_N(array[index]));
+    }
+    
+    long long int sum_value = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sum_value += add_trailing_zeroes(array[index] , (maximum_number_length - get_length_of_N(array[index])));
+    }
+    
+    printf("%lld" , sum_value);
+}
