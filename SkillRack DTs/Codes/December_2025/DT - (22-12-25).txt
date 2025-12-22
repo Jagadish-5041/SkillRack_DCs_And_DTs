@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Matrix - Fold Down Recursively in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def depth_first_search(R , C , matrix):
+    
+    if(is_odd(R)):
+        return
+    
+    new_matrix = [[(matrix[i_1][j] + matrix[i_2][j]) for j in range(0 , C)] for i_1 , i_2 in zip(range(((R // 2) - 1) , -1 , -1) , range((R // 2) , R))]
+    
+    [print(*row_list) for row_list in new_matrix]
+    
+    depth_first_search((R // 2) , C , new_matrix)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+depth_first_search(R , C , matrix)
