@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Function - everyTwoDigitsToInteger() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int get_digit(char digit_character){
+    
+    return ((int) (digit_character - '0'));
+}
+
+long long int everyTwoDigitsToInteger(int N){
+    
+    long long int sum_value = 0;
+    
+    char *digits_string = ((char *) malloc((64 * sizeof(char))));
+    
+    sprintf(digits_string , "%d" , N);
+    
+    for(int M = strlen(digits_string) , index = 0 ; (index < (M - 1)) ; index++){
+        
+        long long int current_number = 0;
+        
+        for(int digit_1 = get_digit(digits_string[index]) , digit_2 = get_digit(digits_string[(index + 1)]) , current_digit = digit_1 , flag = (digit_1 <= digit_2) ; ((flag) ? (current_digit <= digit_2) : (current_digit >= digit_2)) ; ((flag) ? (current_digit++) : (current_digit--))){
+            current_number = ((current_number * 10) + current_digit);
+        }
+        
+        sum_value += current_number;
+    }
+    
+    free(digits_string);
+    
+    return sum_value;
+}
