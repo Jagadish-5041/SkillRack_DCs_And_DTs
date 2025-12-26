@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Smallest Binary Number Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string_number(N):
+    
+    return int(bin(N)[2 : ])
+
+def get_smallest_divisible_binary_number(N):
+    
+    current_N = 1
+    
+    while((get_binary_string_number(current_N) % N) != 0):
+        
+        current_N += 1
+    
+    return current_N
+
+(lambda N : print(sum(get_smallest_divisible_binary_number(X) for X in list(map(int , input().split()))))) (int(input()))
