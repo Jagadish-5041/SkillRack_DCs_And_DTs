@@ -1,0 +1,67 @@
+Problem Statement :-
+
+Function - findMissingInteger() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <limits.h>
+
+int min(int A , int B){
+    
+    return ((A <= B) ? (A) : (B));
+}
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+void findMissingInteger(int R , int C , int matrix[R][C]){
+    
+    int minimum_number = INT_MAX;
+    
+    int maximum_number = 0;
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            if(matrix[i][j] != -1){
+                
+                minimum_number = min(minimum_number , matrix[i][j]);
+                
+                maximum_number = max(maximum_number , matrix[i][j]);
+            }
+        }
+    }
+    
+    int *flag_array = ((int *) calloc((maximum_number + 1) , sizeof(int)));
+    
+    int minus_one_i = -999;
+    
+    int minus_one_j = -999;
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            minus_one_i = (matrix[i][j] == -1) ? (i) : (minus_one_i);
+            
+            minus_one_j = (matrix[i][j] == -1) ? (j) : (minus_one_j);
+            
+            (matrix[i][j] != -1) ? (flag_array[matrix[i][j]] = 1) : (printf(""));
+        }
+    }
+    
+    for(int number = minimum_number ; (number <= maximum_number) ; number++){
+        
+        if(flag_array[number] == 0){
+            
+            matrix[minus_one_i][minus_one_j] = number;
+            
+            break;
+        }
+    }
+    
+    free(flag_array);
+}
