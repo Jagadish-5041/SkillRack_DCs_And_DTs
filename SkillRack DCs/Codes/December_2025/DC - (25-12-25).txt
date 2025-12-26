@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Three Squares Encryption in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+B = input().strip()
+
+characters_map = {character : ((1 , ((index // 3) + 1) , ((index % 3) + 1)) if(1 <= (index + 1) <= 9) else ((2 , (((index - 9) // 3) + 1) , (((index - 9) % 3) + 1)) if(10 <= (index + 1) <= 18) else (3 , (((index - 18) // 3) + 1) , (((index - 18) % 3) + 1)))) for index , character in enumerate(B)}
+
+[print(*characters_map[character] , sep = "" , end = "") for character in A]
