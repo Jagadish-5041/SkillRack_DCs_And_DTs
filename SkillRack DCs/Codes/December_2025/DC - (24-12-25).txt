@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Prime Numbers - N Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+N = int(input())
+
+digits_list = list(map(int , input().split()))
+
+prime_numbers_set = set()
+
+for i in range(0 , N):
+    
+    (lambda A : ((prime_numbers_set.add(A)) if(is_prime(A)) else (""))) (digits_list[i])
+    
+    for j in range(0 , N):
+        
+        ((lambda B : ((prime_numbers_set.add(B)) if(is_prime(B)) else (""))) ((digits_list[i] * 10) + digits_list[j])) if(i != j) else ("")
+        
+        for k in range(0 , N):
+            
+            ((lambda C : ((prime_numbers_set.add(C)) if(is_prime(C)) else (""))) ((((digits_list[i] * 10) + digits_list[j]) * 10) + digits_list[k])) if((i != j) and (i != k) and (j != k)) else ("")
+
+print(*sorted(list(prime_numbers_set)))
