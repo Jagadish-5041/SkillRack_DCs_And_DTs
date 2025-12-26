@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Flowchart Logic 063 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+number = int(input())
+
+value = 0
+
+count = 0
+
+while(number > 0):
+    
+    if((number % 10) != 0):
+        value = ((value * 10) + (number % 10))
+    else:
+        count = (count + 1)
+    
+    number = (number // 10)
+
+while(count > 0):
+    
+    value = (value * 10)
+    
+    count = (count - 1)
+
+print(value)
