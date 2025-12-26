@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Split Binary & Sort Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def split_values(N):
+    
+    binary_string = get_binary_string(N)
+    
+    M = len(binary_string)
+    
+    value_1 = int(((binary_string[0 : ((M // 2) + 1)]) if(is_odd(M)) else (binary_string[0 : (M // 2)])) , 2)
+    
+    value_2 = int((binary_string[(M // 2) : M]) , 2)
+    
+    return (value_1 , value_2)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+new_values_list = []
+
+[((lambda new_value_1 , new_value_2 : (new_values_list.append(new_value_1) , new_values_list.append(new_value_2))) (*split_values(value))) for value in values_list]
+
+print(*sorted(new_values_list))
