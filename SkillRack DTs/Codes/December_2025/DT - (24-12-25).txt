@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Find Substrings - First & Last Occurrences in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def find_first_occurrence_index(character , string):
+    
+    return ((string.index(character)) if(character in string) else (0))
+
+def find_last_occurrence_index(character , string):
+    
+    return ((len(string) - string[::-1].index(character) - 1) if(character in string) else ((len(string) - 1)))
+
+N = int(input())
+
+words_list = [input().strip() for i in range(0 , N)]
+
+index_wise_ranges_map = {}
+
+for current_index in range(0 , N):
+    
+    previous_index = ((current_index - 1) % N)
+    
+    next_index = ((current_index + 1) % N)
+    
+    index_wise_ranges_map.setdefault(next_index , []).append(find_first_occurrence_index(words_list[current_index][-1] , words_list[next_index]))
+    
+    index_wise_ranges_map.setdefault(previous_index , []).append(find_last_occurrence_index(words_list[current_index][0] , words_list[previous_index]))
+
+[((lambda starting_index , ending_index : print(words_list[index][starting_index : (ending_index + 1)])) (*sorted(index_wise_ranges_map[index]))) for index in range(0 , N)]
