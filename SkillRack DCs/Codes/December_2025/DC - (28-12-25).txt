@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Words To Digits - Integers Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_number(index , N , string , words_to_digits_map):
+    
+    new_string = ""
+    
+    while(is_within_bounds(index , N)):
+        
+        while((is_within_bounds(index , N)) and (string[index].isdigit())):
+            
+            new_string += string[index]
+            
+            index += 1
+        
+        word_string = ""
+        
+        while((is_within_bounds(index , N)) and (not string[index].isdigit())):
+            
+            word_string += string[index]
+            
+            if(word_string in words_to_digits_map):
+                
+                new_string += words_to_digits_map[word_string]
+                
+                word_string = ""
+            
+            index += 1
+    
+    return int(new_string)
+
+(lambda N , words_to_digits_map : print(sum(get_number(0 , len(string) , string , words_to_digits_map) for string in input().strip().split()))) (int(input()) , {word : digit for word , digit in zip(("zero,one,two,three,four,five,six,seven,eight,nine".split(",")) , "0123456789")})
