@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Remove Preceding Alphabets And Sort in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+words_list = [input().strip() for i in range(0 , N)]
+
+shortest_word = min(words_list , key = len)
+
+common_starting_character = ""
+
+for character in shortest_word:
+    
+    if(sum(1 for word in words_list if((word != shortest_word) and (character in word))) == (N - 1)):
+        
+        common_starting_character = character
+        
+        break
+
+print(*sorted([word[word.index(common_starting_character) : ] for word in words_list]) , sep = "\n")
