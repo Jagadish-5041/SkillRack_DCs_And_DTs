@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Maximum Integer - Remove Digit D in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+D = input().strip()
+
+negative_integer_flag = (digits_string[0] == '-')
+
+digits_string = (digits_string[1 : ]) if(negative_integer_flag) else (digits_string)
+
+maximum_integer = (sys.maxsize * -1)
+
+for index , digit_string in enumerate(digits_string):
+    
+    if(digit_string == D):
+        
+        new_digits_string = (digits_string[ : index] + ((digits_string[(index + 1) : ]) if((index + 1) < N) else ("")))
+        
+        new_digits_string = ('-' + new_digits_string) if(negative_integer_flag) else (new_digits_string)
+        
+        maximum_integer = max(maximum_integer , int(new_digits_string))
+
+print(maximum_integer)
