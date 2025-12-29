@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Series Using Sum Of Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_digits(N):
+    
+    sum_of_digits = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        sum_of_digits = (sum_of_digits + digit)
+        
+        N = (N // 10)
+    
+    return sum_of_digits
+
+N , K = map(int , input().split())
+
+series_list = [N]
+
+[series_list.append((series_list[-1] + get_sum_of_digits(series_list[-1]))) for count in range(2 , (K + 1))]
+
+print(*series_list)
