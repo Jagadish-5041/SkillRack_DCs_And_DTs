@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Sort Pairs - Inside & Outside Parentheses in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+first_parentheses_or_second_parentheses_flag_list = []
+
+numbers_list_1 = []
+
+numbers_list_2 = []
+
+for string in input().strip().split():
+    
+    if(string[0] == '('):
+        first_parentheses_or_second_parentheses_flag_list.append(1)
+        numbers_list_1.append(int(string[1 : string.index(')')]))
+        numbers_list_2.append(int((string[(string.index(')') + 1) : ])))
+    else:
+        first_parentheses_or_second_parentheses_flag_list.append(2)
+        numbers_list_1.append(int(string[(string.index('(') + 1) : (len(string) - 1)]))
+        numbers_list_2.append(int(string[ : string.index('(')]))
+
+[print((("({}){}".format(number_1 , number_2)) if(flag_value == 1) else ("{}({})".format(number_2 , number_1))) , end = " ") for flag_value , number_1 , number_2 in zip(first_parentheses_or_second_parentheses_flag_list , sorted(numbers_list_1) , sorted(numbers_list_2 , reverse = True))]
