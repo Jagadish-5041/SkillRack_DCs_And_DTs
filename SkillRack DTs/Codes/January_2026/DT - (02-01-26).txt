@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Function - findSumDifferentBase() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int findSumDifferentBase(char *string){
+    
+    int sum_value = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        char base_representation_character = tolower(string_tokenizer[0]);
+        
+        char *base_string = ((char *) malloc((strlen(string_tokenizer) * sizeof(char))));
+        
+        strcat(base_string , &string_tokenizer[1]);
+        
+        int base_value = (base_representation_character == 'b') ? (2) : ((base_representation_character == 'o') ? (8) : ((base_representation_character == 'd') ? (10) : (16)));
+        
+        sum_value = (sum_value + strtol(base_string , NULL , base_value));
+    }
+    
+    return sum_value;
+}
