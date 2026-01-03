@@ -1,0 +1,24 @@
+Problem Statement:-
+
+Reduce Array - Subtract Size in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+while(True):
+    
+    new_values_list = [(value - N) for value in values_list if((value - N) > 0)]
+    
+    new_N = len(new_values_list)
+    
+    if(new_N <= 0):
+        break
+    
+    print(*new_values_list)
+    
+    N = new_N
+    
+    values_list = new_values_list.copy()
