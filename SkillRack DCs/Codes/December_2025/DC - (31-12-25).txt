@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Diamond With Plus Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_matrix(target_character , current_i , current_j , offset_i , offset_j , R , matrix):
+    
+    while((is_within_bounds(current_i , R) and (is_within_bounds(current_j , len(matrix[current_i]))))):
+        
+        matrix[current_i][current_j] = target_character
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+
+N = int(input())
+
+M = ((N * 2) - 1)
+
+matrix = [['-' for j in range(1 , (M + i))] for i in range(1 , ((N * 2) + 1) , 2)]
+
+[matrix.append(matrix[(N - i - 1)].copy()) for i in range(1 , N)]
+
+fill_matrix('*' , (N - 1) , 0 , -1 , 2 , M , matrix)
+
+fill_matrix('*' , 0 , (M - 1) , 1 , 2 , M , matrix)
+
+fill_matrix('*' , (N - 1) , (len(matrix[(N - 1)]) - 1) , 1 , -2 , M , matrix)
+
+fill_matrix('*' , (M - 1) , (len(matrix[(M - 1)]) - 1) , -1 , -2 , M , matrix)
+
+fill_matrix('*' , 0 , (M - 1) , 1 , 0 , M , matrix)
+
+fill_matrix('*' , (N - 1) , 0 , 0 , 2 , M , matrix)
+
+[print(*row_list , sep = "") for row_list in matrix]
