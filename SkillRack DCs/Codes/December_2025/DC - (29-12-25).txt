@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Flowchart Logic 051 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(number):
+    
+    return ((number & 1) == 0)
+
+X , Y = map(int , input().split())
+
+while(True):
+    
+    N = int(input())
+    
+    if(is_even(N)):
+        N += X
+        Y -= 1
+    else:
+        N += Y
+        X -= 1
+    
+    print(N , end = " ")
+    
+    if(N <= 0):
+        break
