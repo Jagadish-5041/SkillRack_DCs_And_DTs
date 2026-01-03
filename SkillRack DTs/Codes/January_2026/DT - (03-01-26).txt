@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Concat Same Words & Sort in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+words_frequency_map = {}
+
+[words_frequency_map.__setitem__(word_string , (words_frequency_map.get(word_string , 0) + 1)) for word_string in input().strip().split()]
+
+words_list = []
+
+for word_string , frequency in words_frequency_map.items():
+    
+    (words_list.append(word_string)) if(is_odd(frequency)) else ("")
+    
+    [words_list.append((word_string + word_string)) for count in range(1 , ((frequency) if(is_odd(frequency)) else (frequency + 1)) , 2)]
+
+print(*sorted(words_list))
