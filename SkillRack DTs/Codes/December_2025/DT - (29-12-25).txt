@@ -1,0 +1,54 @@
+Problem Statement :-
+
+Function - toggleBitsToZero() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((64 * sizeof(char))));
+    
+    while(N > 0){
+        
+        char bit = ((char) ((N % 2) + '0'));
+        
+        strncat(binary_string , &bit , 1);
+        
+        N = (N / 2);
+    }
+    
+    for(int left_index = 0 , right_index = (strlen(binary_string) - 1) ; (left_index < right_index) ; left_index++ , right_index--){
+        
+        char temp = binary_string[left_index];
+        
+        binary_string[left_index] = binary_string[right_index];
+        
+        binary_string[right_index] = temp;
+    }
+    
+    return binary_string;
+}
+
+int get_integer_with_odd_position_bits_toggled_to_0_from_LSB(int N){
+    
+    char *binary_string = get_binary_string(N);
+    
+    for(int index = (strlen(binary_string) - 1) ; (index >= 0) ; index -= 2){
+        binary_string[index] = '0';
+    }
+    
+    return strtol(binary_string , NULL , 2);
+}
+
+int toggleBitsToZero(int N , int *array){
+    
+    int sum = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        sum += get_integer_with_odd_position_bits_toggled_to_0_from_LSB(array[index]);
+    }
+    
+    return sum;
+}
