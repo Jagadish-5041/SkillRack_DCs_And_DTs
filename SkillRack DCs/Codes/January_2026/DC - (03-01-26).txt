@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Integers Sum - Split , Sort And Merge in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+numbers_list_1 = []
+
+numbers_list_2 = []
+
+for string in input().strip().split():
+    
+    pipe_index = string.index('|')
+    
+    left_half_string = string[ : pipe_index]
+    
+    right_half_string = string[(pipe_index + 1) : ]
+    
+    numbers_list_1.append(int((left_half_string + right_half_string)))
+    
+    numbers_list_2.append(int(left_half_string))
+    
+    numbers_list_2.append(int(right_half_string))
+
+numbers_list_2 = sorted(numbers_list_2)
+
+numbers_list_2 = [int((str(numbers_list_2[index]) + str(numbers_list_2[(index + 1)]))) for index in range(0 , len(numbers_list_2) , 2)]
+
+print(sum(numbers_list_1) , sum(numbers_list_2))
