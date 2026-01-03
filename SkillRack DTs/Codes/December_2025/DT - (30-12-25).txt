@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Hexadecimal - Replace Only Alphabets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , hexa_decimal_values_map : print(sum(int(("".join(hexa_decimal_values_map[character] for character in hexa_decimal_value))) for hexa_decimal_value in input().strip().split()))) (int(input()) , {key : str(value) for key , value in zip(("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F".split(",")) , range(0 , 16))})
