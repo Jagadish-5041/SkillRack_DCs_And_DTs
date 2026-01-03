@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Submatrix - Form And Sort Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def join_3_digits(A , B , C):
+    
+    return ((((A * 10) + B) * 10) + C)
+
+def get_numbers(matrix):
+    
+    return [join_3_digits(matrix[0][0] , matrix[0][1] , matrix[0][2]) , join_3_digits(matrix[1][0] , matrix[1][1] , matrix[1][2]) , join_3_digits(matrix[2][0] , matrix[2][1] , matrix[2][2]) , join_3_digits(matrix[0][0] , matrix[1][0] , matrix[2][0]) , join_3_digits(matrix[0][1] , matrix[1][1] , matrix[2][1]) , join_3_digits(matrix[0][2] , matrix[1][2] , matrix[2][2]) , join_3_digits(matrix[0][0] , matrix[1][1] , matrix[2][2]) , join_3_digits(matrix[0][2] , matrix[1][1] , matrix[2][0])]
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+K = 3
+
+numbers_list = []
+
+for i in range(0 , (R - K + 1) , K):
+    
+    for j in range(0 , (C - K + 1) , K):
+        
+        numbers_list += get_numbers([[matrix[k][l] for l in range(j , (j + K))] for k in range(i , (i + K))])
+
+print(*sorted(numbers_list))
