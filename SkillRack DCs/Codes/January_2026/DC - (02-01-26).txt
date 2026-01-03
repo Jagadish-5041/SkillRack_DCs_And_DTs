@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Reduce Array - Remove Odd in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+while(True):
+    
+    new_values_list = [(value // 2) for value in values_list]
+    
+    print(*new_values_list)
+    
+    values_list = [value for value in new_values_list if(is_even(value))]
+    
+    N = len(values_list)
+    
+    if(N <= 0):
+        break
