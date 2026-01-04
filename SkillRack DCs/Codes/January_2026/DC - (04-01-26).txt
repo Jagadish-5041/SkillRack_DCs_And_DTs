@@ -1,0 +1,77 @@
+Problem Statement :-
+
+Function - printTimeInSeconds() With Varargs in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+typedef struct time{
+    
+    int hours;
+    
+    int minutes;
+    
+    int seconds;
+} Time;
+
+int convert_hours_to_seconds(int hours){
+    
+    return (hours * 3600);
+}
+
+int convert_minutes_to_seconds(int minutes){
+    
+    return (minutes * 60);
+}
+
+void printTimeInSeconds(int variable_arguments_count , ...){
+    
+    int total_seconds = 0;
+    
+    va_list variable_arguments_list;
+    
+    va_start(variable_arguments_list , variable_arguments_count);
+    
+    for(int count = 1 ; (count <= variable_arguments_count) ; count++){
+        
+        Time time_structure = va_arg(variable_arguments_list , Time);
+        
+        total_seconds += (convert_hours_to_seconds((time_structure.hours)) + convert_minutes_to_seconds((time_structure.minutes)) + (time_structure.seconds));
+    }
+    
+    va_end(variable_arguments_list);
+    
+    printf("%d\n" , total_seconds);
+}
+
+int main(){
+    
+    Time time_1;
+    
+    Time time_2;
+    
+    Time time_3;
+    
+    Time time_4;
+    
+    scanf("%d:%d:%d\n" , &time_1.hours , &time_1.minutes , &time_1.seconds);
+    
+    scanf("%d:%d:%d\n" , &time_2.hours , &time_2.minutes , &time_2.seconds);
+    
+    scanf("%d:%d:%d\n" , &time_3.hours , &time_3.minutes , &time_3.seconds);
+    
+    scanf("%d:%d:%d\n" , &time_4.hours , &time_4.minutes , &time_4.seconds);
+    
+    printTimeInSeconds(1 , time_1);
+    
+    printTimeInSeconds(2 , time_1 , time_2);
+    
+    printTimeInSeconds(3 , time_1 , time_2 , time_3);
+    
+    printTimeInSeconds(4 , time_1 , time_2 , time_3 , time_4);
+    
+    return 0;
+}
