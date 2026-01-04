@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Split Ranges At X in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+range_strings_list = input().strip().split()
+
+X = int(input())
+
+ranges_list = []
+
+[((lambda starting_range_value , ending_range_value : ((ranges_list.append((starting_range_value , X)) , ranges_list.append((X , ending_range_value))) if(starting_range_value < X < ending_range_value) else (ranges_list.append((starting_range_value , ending_range_value))))) (*map(int , range_string.split("-")))) for range_string in range_strings_list]
+
+[print(*range_tuple , sep = "-") for range_tuple in sorted(ranges_list , key = lambda pair : (pair[0] , pair[1]))]
