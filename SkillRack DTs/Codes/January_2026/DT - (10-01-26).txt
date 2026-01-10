@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Long Pressed Keys Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+A = input().strip()
+
+A_i = 0
+
+A_N = len(A)
+
+B = input().strip()
+
+B_i = 0
+
+B_N = len(B)
+
+long_pressed_keys_count = 0
+
+while((is_within_bounds(A_i , A_N)) and (is_within_bounds(B_i , B_N))):
+    
+    temp_A_i = A_i
+    
+    temp_A_N = 0
+    
+    while((is_within_bounds(temp_A_i , A_N)) and (A[temp_A_i] == A[A_i])):
+        
+        temp_A_i += 1
+        
+        temp_A_N += 1
+    
+    A_i += temp_A_N
+    
+    temp_B_i = B_i
+    
+    temp_B_N = 0
+    
+    while((is_within_bounds(temp_B_i , B_N)) and (B[temp_B_i] == B[B_i])):
+        
+        temp_B_i += 1
+        
+        temp_B_N += 1
+    
+    B_i += temp_B_N
+    
+    long_pressed_keys_count = (long_pressed_keys_count + 1) if(temp_A_N != temp_B_N) else (long_pressed_keys_count)
+
+print(long_pressed_keys_count)
