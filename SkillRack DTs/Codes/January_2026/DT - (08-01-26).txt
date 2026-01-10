@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Vertical Alignment - Middle Character in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+words_list = [input().strip() for i in range(0 , N)]
+
+R = len(max(words_list , key = len))
+
+C = N
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+for j in range(0 , C):
+    
+    [matrix[i].__setitem__(j , words_list[j][index]) for i , index in zip(range((R // 2) , -1 , -1) , range((len(words_list[j]) // 2) , -1 , -1))]
+    
+    [matrix[i].__setitem__(j , words_list[j][index]) for i , index in zip(range((R // 2) , R) , range((len(words_list[j]) // 2) , len(words_list[j])))]
+
+[print(*row_list , sep = "") for row_list in matrix]
