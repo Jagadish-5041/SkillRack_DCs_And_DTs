@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Function - concatAndConvertToOctal() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) calloc(64 , sizeof(char)));
+    
+    while(N > 0){
+        
+        char bit = ((char) ((N % 2) + '0'));
+        
+        strncat(binary_string , &bit , 1);
+        
+        N = (N / 2);
+    }
+    
+    for(int left_pointer = 0 , right_pointer = (strlen(binary_string) - 1) ; (left_pointer < right_pointer) ; left_pointer++ , right_pointer--){
+        
+        char temp = binary_string[left_pointer];
+        
+        binary_string[left_pointer] = binary_string[right_pointer];
+        
+        binary_string[right_pointer] = temp;
+    }
+    
+    return binary_string;
+}
+
+void concatAndConvertToOctal(int N , int array[]){
+    
+    char *total_binary_string = ((char *) calloc(((N * N) * 64) , sizeof(char)));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        char *binary_string = get_binary_string(array[index]);
+        
+        strcat(total_binary_string , binary_string);
+        
+        free(binary_string);
+    }
+    
+    char *zeroes_string = "000";
+    
+    char *padded_binary_string = ((char *) calloc((strlen(total_binary_string) + 5) , sizeof(char)));
+    
+    strcat(padded_binary_string , zeroes_string);
+    
+    strcat(padded_binary_string , total_binary_string);
+    
+    free(total_binary_string);
+    
+    for(int M = strlen(padded_binary_string) , index = (M % 3) ; (index < M) ; index += 3){
+        
+        char *three_bits_string = ((char *) calloc(4 , sizeof(char)));
+        
+        strncat(three_bits_string , &padded_binary_string[index] , 3);
+        
+        printf("%d" , strtol(three_bits_string , NULL , 2));
+        
+        free(three_bits_string);
+    }
+    
+    free(padded_binary_string);
+}
