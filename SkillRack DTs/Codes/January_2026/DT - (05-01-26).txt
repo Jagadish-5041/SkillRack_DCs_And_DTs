@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Bus Schedule - Cities in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+data_list = [input().strip().split() for i in range(0 , int(input()))]
+
+C = input().strip()
+
+A_set = set()
+
+A_list = []
+
+B_set = set()
+
+B_list = []
+
+for A , B in data_list:
+    
+    if((A == C) and (B not in A_set)):
+        A_set.add(B)
+        A_list.append(B)
+    
+    if((B == C) and (A not in B_set)):
+        B_set.add(A)
+        B_list.append(A)
+
+print(C , "->" , ((" ".join(A_list)) if(A_list) else (-1)) , sep = " ")
+
+print(C , "<-" , ((" ".join(B_list)) if(B_list) else (-1)) , sep = " ")
