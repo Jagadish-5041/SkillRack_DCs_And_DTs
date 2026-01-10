@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Total Seconds - Type String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+keyboard_string = input().strip()
+
+target_string = input().strip()
+
+character_index_map = {character : index for index , character in enumerate(keyboard_string)}
+
+print(sum(abs((character_index_map[target_string[index]] - character_index_map[target_string[(index + 1)]])) for index in range(0 , (len(target_string) - 1))))
