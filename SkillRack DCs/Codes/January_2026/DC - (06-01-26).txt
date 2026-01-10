@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Products - Total Price in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+frequency_map = {}
+
+[frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in input().strip()]
+
+total_price = 0
+
+for character , frequency in frequency_map.items():
+    
+    if(character == 'A'):
+        total_price += (((frequency // 4) * 100) + ((frequency % 4) * 40))
+    elif(character == 'B'):
+        total_price += (frequency * 60)
+    elif(character == 'C'):
+        total_price += (((frequency // 6) * 200) + ((frequency % 6) * 55))
+    elif(character == 'D'):
+        total_price += (frequency * 95)
+
+print(total_price)
