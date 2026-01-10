@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Total Time - No Appointments in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_hours_to_minutes(hours):
+    
+    return (hours * 60)
+
+total_of_busy_minutes = 0
+
+for i in range(0 , int(input())):
+    
+    starting_time , ending_time = input().strip().split()
+    
+    starting_hours , starting_minutes = map(int , starting_time.split(":"))
+    
+    ending_hours , ending_minutes = map(int , ending_time.split(":"))
+    
+    total_of_busy_minutes = (total_of_busy_minutes + abs(((convert_hours_to_minutes(starting_hours) + starting_minutes) - (convert_hours_to_minutes(ending_hours) + ending_minutes))))
+
+total_of_free_minutes = (convert_hours_to_minutes(24) - total_of_busy_minutes)
+
+print(total_of_free_minutes)
