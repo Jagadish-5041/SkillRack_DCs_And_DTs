@@ -1,0 +1,59 @@
+Problem Statement :-
+
+Smallest Submatrix - Min And Max Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+minimum_number = sys.maxsize
+
+minimum_number_i = -999
+
+minimum_number_j = -999
+
+maximum_number = (sys.maxsize * -1)
+
+maximum_number_i = -999
+
+maximum_number_j = -999
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(minimum_number > matrix[i][j]):
+            
+            minimum_number = matrix[i][j]
+            
+            minimum_number_i = i
+            
+            minimum_number_j = j
+        
+        if(maximum_number < matrix[i][j]):
+            
+            maximum_number = matrix[i][j]
+            
+            maximum_number_i = i
+            
+            maximum_number_j = j
+
+starting_i = min(minimum_number_i , maximum_number_i)
+
+ending_i = max(minimum_number_i , maximum_number_i)
+
+starting_j = min(minimum_number_j , maximum_number_j)
+
+ending_j = max(minimum_number_j , maximum_number_j)
+
+for i in range(starting_i , (ending_i + 1)):
+    
+    for j in range(starting_j , (ending_j + 1)):
+        
+        print(matrix[i][j] , end = " ")
+    
+    print()
