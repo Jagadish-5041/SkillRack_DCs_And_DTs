@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Function - splitStringSameCharacters() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+void splitStringSameCharacters(char *string){
+    
+    for(int N = strlen(string) , index = 0 ; is_within_bounds(index , N) ; ){
+        
+        char current_string[(N + 1)];
+        
+        int current_string_index = 0;
+        
+        for(int temp_index = index ; ((is_within_bounds(temp_index , N)) && (string[temp_index] == string[index])) ; current_string_index++ , temp_index++){
+            current_string[current_string_index] = string[temp_index];
+        }
+        
+        current_string[current_string_index] = '\0';
+        
+        int M = strlen(current_string);
+        
+        if(M == 2){
+            printf("%c %c" , current_string[0] , current_string[1]);
+        }else{
+            printf("%s" , current_string);
+        }
+        
+        index = (index + M);
+    }
+}
