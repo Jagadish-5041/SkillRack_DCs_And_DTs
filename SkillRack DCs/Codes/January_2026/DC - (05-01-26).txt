@@ -1,0 +1,73 @@
+Problem Statement :-
+
+Form Integers - Divisible By 25 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check_divisibility_by_25(digit_string_list):
+    
+    if(len(digit_string_list) < 2):
+        return False
+    
+    last_two_digits_string = (digit_string_list[-2] + digit_string_list[-1])
+    
+    return ((last_two_digits_string == "00") or (last_two_digits_string == "25") or (last_two_digits_string == "50") or (last_two_digits_string == "75"))
+
+def depth_first_search(current_digit_string , current_index , N , A):
+    
+    if(current_index >= N):
+        
+        if((N > 1) and (A[0] == '0')):
+            return 0
+        else:
+            return ((1) if(check_divisibility_by_25(A)) else (0))
+    
+    count = 0
+    
+    if(A[current_index] == 'X'):
+        
+        A[current_index] = current_digit_string
+        
+        count += depth_first_search(current_digit_string , (current_index + 1) , N , A)
+        
+        A[current_index] = 'X'
+    
+    elif(A[current_index] == '_'):
+        
+        for digit_string in "0123456789":
+            
+            A[current_index] = digit_string
+            
+            count += depth_first_search(current_digit_string , (current_index + 1) , N , A)
+            
+            A[current_index] = '_'
+    
+    else:
+        
+        count += depth_first_search(current_digit_string , (current_index + 1) , N , A)
+    
+    return count
+
+A = list(input().strip())
+
+if((A[0] == '0') or (A == '0')):
+    
+    print((1) if(A == '0') else (0))
+    
+    quit()
+
+N = len(A)
+
+count = 0
+
+if('X' in A):
+    
+    for digit_string in "0123456789":
+        
+        count += depth_first_search(digit_string , 0 , N , A)
+
+else:
+    
+    count += depth_first_search('0' , 0 , N , A)
+
+print(count)
