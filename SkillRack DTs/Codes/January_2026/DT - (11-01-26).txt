@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Function - findStartingPosition() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+int *findStartingPosition(int R , int C , char *matrix , char *string){
+    
+    int N = strlen(string);
+    
+    int *first_character_matching_column_positions_array = ((int*) malloc((2 * sizeof(int))));
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            if(matrix[((i * C) + j)] == string[0]){
+                
+                int upwards_characters_matching_count = 0;
+                
+                for(int temp_i = i , string_index = 0 ; ((temp_i >= 0) && (string_index < N) && (string[string_index] == matrix[((temp_i * C) + j)])) ; temp_i-- , string_index++){
+                    upwards_characters_matching_count++;
+                }
+                
+                int downwards_characters_matching_count = 0;
+                
+                for(int temp_i = i , string_index = 0 ; ((temp_i < R) && (string_index < N) && (string[string_index] == matrix[((temp_i * C) + j)])) ; temp_i++ , string_index++){
+                    downwards_characters_matching_count++;
+                }
+                
+                if((upwards_characters_matching_count == N) || (downwards_characters_matching_count == N)){
+                    
+                    first_character_matching_column_positions_array[0] = (i + 1);
+                    
+                    first_character_matching_column_positions_array[1] = (j + 1);
+                    
+                    return first_character_matching_column_positions_array;
+                }
+            }
+        }
+    }
+    
+    return first_character_matching_column_positions_array;
+}
