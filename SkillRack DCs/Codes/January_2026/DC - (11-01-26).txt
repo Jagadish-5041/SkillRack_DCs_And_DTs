@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Save Maximum Frogs in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_count_of_saved_frogs(N , frogs_positions_list , X):
+    
+    saved_frogs_count = 0
+    
+    current_snake_position = 0
+    
+    for current_frog_position in sorted(frogs_positions_list , reverse = True):
+        
+        if(current_frog_position > current_snake_position):
+            saved_frogs_count += 1
+            current_snake_position += (X - current_frog_position)
+        else:
+            break
+    
+    return saved_frogs_count
+
+print(get_count_of_saved_frogs(int(input()) , list(map(int , input().split())) , int(input())))
