@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Match Left And Right - Words in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_map(character_index , words_list):
+    
+    words_map = {}
+    
+    [words_map.setdefault(word_string[character_index] , []).append(word_string) for word_string in words_list]
+    
+    return words_map
+
+words_list_1 = input().strip().split()
+
+words_list_2 = input().strip().split()
+
+map_1 = get_map(-1 , words_list_1)
+
+map_2 = get_map(0 , words_list_2)
+
+[((lambda character : print((map_1[character].pop(0) + map_2[character].pop(0)[1 : ]) , end = " ")) (word_string[-1])) for word_string in words_list_1]
