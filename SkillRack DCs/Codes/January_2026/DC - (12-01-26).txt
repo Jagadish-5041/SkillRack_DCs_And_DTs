@@ -1,0 +1,70 @@
+Problem Statement :-
+
+Function - insertBits() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((64 * sizeof(char))));
+    
+    while(N > 0){
+        
+        char bit = ((char) ((N % 2) + '0'));
+        
+        strncat(binary_string , &bit , 1);
+        
+        N = (N >> 1);
+    }
+    
+    for(int left_pointer = 0 , right_pointer = (strlen(binary_string) - 1) ; (left_pointer < right_pointer) ; left_pointer++ , right_pointer--){
+        
+        char temp = binary_string[left_pointer];
+        
+        binary_string[left_pointer] = binary_string[right_pointer];
+        
+        binary_string[right_pointer] = temp;
+    }
+    
+    return binary_string;
+}
+
+int get_first_set_bit_index_from_right(int N , char *binary_string){
+    
+    for(int index = (N - 1) ; (index >= 0) ; index--){
+        
+        if(binary_string[index] == '1'){
+            
+            return index;
+        }
+    }
+}
+
+int insertBits(int X , int Y){
+    
+    char *binary_string_X = get_binary_string(X);
+    
+    int N = strlen(binary_string_X);
+    
+    char *binary_string_Y = get_binary_string(Y);
+    
+    int M = strlen(binary_string_Y);
+    
+    int first_set_bit_index_from_right_in_X = get_first_set_bit_index_from_right(N , binary_string_X);
+    
+    char *new_binary_string = ((char *) malloc((1024 * sizeof(char))));
+    
+    sprintf(new_binary_string , "%.*s%s%s" , (first_set_bit_index_from_right_in_X + 1) , &binary_string_X[0] , binary_string_Y , &binary_string_X[(first_set_bit_index_from_right_in_X + 1)]);
+    
+    int new_number = strtol(new_binary_string , NULL , 2);
+    
+    free(binary_string_X);
+    
+    free(binary_string_Y);
+    
+    free(new_binary_string);
+    
+    return new_number;
+}
