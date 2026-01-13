@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Evaluate Expression - Operators As Words in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_evaluated_result(A , B , operator_word_string):
+    
+    return ((A + B) if(operator_word_string == "plus") else ((A - B) if(operator_word_string == "minus") else ((A * B) if(operator_word_string == "multiply") else ((A // B) if(operator_word_string == "divide") else (-999)))))
+
+operands_list = []
+
+operator_word_strings_list = []
+
+[(operands_list.append(int(string))) if(string.isdigit()) else (operator_word_strings_list.append(string)) for string in input().strip().split()]
+
+[operands_list.__setitem__((index + 1) , get_evaluated_result(operands_list[index] , operands_list[(index + 1)] , operator_word_strings_list[index])) for index in range(0 , (len(operands_list) - 1))]
+
+print(operands_list[-1])
