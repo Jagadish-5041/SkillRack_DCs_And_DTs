@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Find Smallest Integer - Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import heapq
+
+N = int(input())
+
+digit_numbers_map = {digit : [] for digit in range(0 , 10)}
+
+for number in list(map(int , input().split())):
+    
+    temp_number = number
+    
+    while(temp_number > 0):
+        
+        digit = (temp_number % 10)
+        
+        heapq.heappush(digit_numbers_map[digit] , number)
+        
+        temp_number = (temp_number // 10)
+
+K = int(input())
+
+sum_of_smallest_integer_for_each_digit_of_K = 0
+
+while(K > 0):
+    
+    digit = (K % 10)
+    
+    K = (K // 10)
+    
+    if(digit_numbers_map[digit]):
+        
+        smallest_integer_for_digit = heapq.heappop(digit_numbers_map[digit])
+        
+        sum_of_smallest_integer_for_each_digit_of_K = (sum_of_smallest_integer_for_each_digit_of_K + smallest_integer_for_digit)
+        
+        heapq.heappush(digit_numbers_map[digit] , smallest_integer_for_digit)
+
+print(sum_of_smallest_integer_for_each_digit_of_K)
