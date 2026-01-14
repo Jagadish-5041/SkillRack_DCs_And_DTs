@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Boxes & Gold Coins in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+gold_coins_list = list(map(int , input().split()))
+
+days_count = 0
+
+while(True):
+    
+    flag = True
+    
+    new_gold_coins_list = [gold_coins_list[0]]
+    
+    for index in range(1 , len(gold_coins_list)):
+        
+        if(gold_coins_list[(index - 1)] < gold_coins_list[index]):
+            flag = False
+        else:
+            new_gold_coins_list.append(gold_coins_list[index])
+    
+    if(flag):
+        break
+    
+    gold_coins_list = new_gold_coins_list
+    
+    days_count = (days_count + 1)
+
+print(days_count)
