@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Minimum - Maximum In Subarrays in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+from collections import deque
+
+N , K = map(int , input().split())
+
+values_list = list(map(int , input().split()))
+
+double_ended_queue = deque()
+
+minimum_value_among_maximum_values_from_all_possible_K_sized_subarrays = sys.maxsize
+
+for index in range(0 , N):
+    
+    while((double_ended_queue) and (double_ended_queue[0] <= (index - K))):
+        double_ended_queue.popleft()
+    
+    while((double_ended_queue) and (values_list[double_ended_queue[-1]] < values_list[index])):
+        double_ended_queue.pop()
+    
+    double_ended_queue.append(index)
+    
+    minimum_value_among_maximum_values_from_all_possible_K_sized_subarrays = (min(minimum_value_among_maximum_values_from_all_possible_K_sized_subarrays , values_list[double_ended_queue[0]])) if(index >= (K - 1)) else (minimum_value_among_maximum_values_from_all_possible_K_sized_subarrays)
+
+print(minimum_value_among_maximum_values_from_all_possible_K_sized_subarrays)
