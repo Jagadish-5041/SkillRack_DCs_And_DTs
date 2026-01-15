@@ -1,0 +1,22 @@
+Problem Statement :-
+
+Recursive Ones Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def depth_first_search(binary_string):
+    
+    one_bits_count = sum(1 for bit in binary_string if(bit == '1'))
+    
+    print(one_bits_count , end = " ")
+    
+    if(one_bits_count == 1):
+        return
+    
+    depth_first_search(get_binary_string(one_bits_count))
+
+depth_first_search(input().strip())
