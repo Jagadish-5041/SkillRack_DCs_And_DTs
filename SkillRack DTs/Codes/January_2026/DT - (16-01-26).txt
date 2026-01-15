@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Split Palindromes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(left_index , right_index , S):
+    
+    while(left_index < right_index):
+        
+        if(S[left_index] != S[right_index]):
+            
+            return False
+        
+        left_index += 1
+        
+        right_index -= 1
+    
+    return True
+
+S = input().strip()
+
+N = len(S)
+
+for index in range(0 , (N - 1)):
+    
+    if((is_palindrome(0 , index , S)) and (is_palindrome((index + 1) , (N - 1) , S))):
+        
+        print(S[0 : (index + 1)] , S[(index + 1) : ] , sep = "\n")
+        
+        quit()
