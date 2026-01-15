@@ -1,0 +1,56 @@
+Problem Statement :-
+
+Function - getIntegersWithSameEnds() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+boundedArray *getIntegersWithSameEnds(char *string , int K){
+    
+    int N = strlen(string);
+    
+    int *array = ((int *) malloc((N * sizeof(int))));
+    
+    int array_index = 0;
+    
+    for(int index = 0 ; (index <= (N - K)) ; index++){
+        
+        if((string[index] != '0') && (string[index] == string[(index + (K - 1))])){
+            
+            char *K_digits_number_string = ((char *) malloc(((K + 1) * sizeof(char))));
+            
+            strncat(K_digits_number_string , &string[index] , K);
+            
+            array[array_index++] = atol(K_digits_number_string);
+        }
+    }
+    
+    (array_index == 0) ? (array[array_index++] = -1) : (printf(""));
+    
+    if(array_index > 1){
+        
+        for(int i = 0 ; (i < array_index) ; i++){
+            
+            for(int j = (i + 1) ; (j < array_index) ; j++){
+                
+                if(array[i] > array[j]){
+                    
+                    int temp = array[i];
+                    
+                    array[i] = array[j];
+                    
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = array_index;
+    
+    (bounded_array_reference -> arr) = array;
+    
+    return bounded_array_reference;
+}
