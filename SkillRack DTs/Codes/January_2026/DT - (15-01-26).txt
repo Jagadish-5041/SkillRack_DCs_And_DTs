@@ -1,0 +1,42 @@
+Problem Statement :-
+
+Function - mergeThreeStringValues() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+char* mergeThreeStringValues(char *A , char *B , char *C){
+    
+    int A_N = strlen(A);
+    
+    int B_N = strlen(B);
+    
+    int C_N = strlen(C);
+    
+    char *answer_string = ((char *) malloc(((A_N + B_N + C_N + 1) * sizeof(char))));
+    
+    for(int A_i = 0 , B_i = 0 , C_i = 0 ; ((is_within_bounds(A_i , A_N)) && (is_within_bounds(B_i , B_N)) && (is_within_bounds(C_i , C_N))) ; ){
+        
+        char target_character = A[A_i];
+        
+        while((is_within_bounds(A_i , A_N)) && (A[A_i] == target_character)){
+            strncat(answer_string , &A[A_i++] , 1);
+        }
+        
+        while((is_within_bounds(B_i , B_N)) && (B[B_i] == target_character)){
+            strncat(answer_string , &B[B_i++] , 1);
+        }
+        
+        while((is_within_bounds(C_i , C_N)) && (C[C_i] == target_character)){
+            strncat(answer_string , &C[C_i++] , 1);
+        }
+    }
+    
+    return answer_string;
+}
