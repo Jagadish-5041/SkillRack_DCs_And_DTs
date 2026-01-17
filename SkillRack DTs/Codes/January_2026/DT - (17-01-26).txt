@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Next Non-Visited City in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+R , C , X , Y = map(int , input().split())
+
+offset_values_map = {'N' : (-1 , 0) , 'S' : (1 , 0) , 'W' : (0 , -1) , 'E' : (0 , 1)}
+
+current_i = (X - 1)
+
+current_j = (Y - 1)
+
+visited_flag_matrix = [[False for j in range(0 , C)] for i in range(0 , R)]
+
+visited_flag_matrix[current_i][current_j] = True
+
+for direction in input().strip():
+    
+    while((is_within_bounds((current_i + offset_values_map[direction][0]) , R)) and (is_within_bounds((current_j + offset_values_map[direction][1]) , C)) and (visited_flag_matrix[current_i][current_j])):
+        
+        current_i += offset_values_map[direction][0]
+        
+        current_j += offset_values_map[direction][1]
+    
+    visited_flag_matrix[current_i][current_j] = True
+
+print((current_i + 1) , (current_j + 1))
