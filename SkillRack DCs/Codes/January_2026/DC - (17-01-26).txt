@@ -1,0 +1,41 @@
+Problem Statement :-
+
+String Values And Integers Matching in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_number_string(string):
+    
+    number_string = ""
+    
+    current_word_string = ""
+    
+    words_to_digits_map = {word_string : digit for word_string , digit in zip("zero,one,two,three,four,five,six,seven,eight,nine".split(",") , "0123456789")}
+    
+    for character in string:
+        
+        current_word_string += character
+        
+        if(current_word_string in words_to_digits_map):
+            
+            number_string += words_to_digits_map[current_word_string]
+            
+            current_word_string = ""
+    
+    return number_string
+
+N = int(input())
+
+data_list = []
+
+numbers_positions_map = {}
+
+for index in range(0 , N):
+    
+    word_string , number_string = input().strip().split()
+    
+    data_list.append((word_string , number_string))
+    
+    numbers_positions_map[number_string] = (index + 1)
+
+[print(numbers_positions_map[get_number_string(word_string)] , end = " ") for word_string , number_string in data_list]
