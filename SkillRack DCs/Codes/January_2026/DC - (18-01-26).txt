@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Divide Matrix - Nine Submatrices in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+X , Y , P , Q = map(int , input().split())
+
+for starting_i , ending_i in [(0 , (X - 1)) , (X , (Y - 1)) , (Y , (R - 1))]:
+    
+    for starting_j , ending_j in [(0 , (P - 1)) , (P , (Q - 1)) , (Q , (C - 1))]:
+        
+        print(sum(matrix[i][j] for i in range(starting_i , (ending_i + 1)) for j in range(starting_j , (ending_j + 1))) , end = " ")
