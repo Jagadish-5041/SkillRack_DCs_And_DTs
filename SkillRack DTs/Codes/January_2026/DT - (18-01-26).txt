@@ -1,0 +1,61 @@
+Problem Statement :-
+
+Video Clip - Subtitles in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def convert_total_seconds_to_1_hour_time_format(total_seconds):
+    
+    minutes = ((total_seconds // 60) % 60)
+    
+    seconds = (total_seconds - convert_minutes_to_seconds(minutes))
+    
+    return ("{:02d}:{:02d}".format(minutes , seconds))
+
+def add_subtitle(time_string , subtitle_string , T , subtitles_map):
+    
+    minutes , seconds = map(int , time_string.split(":"))
+    
+    current_second = (convert_minutes_to_seconds(minutes) + seconds)
+    
+    for count in range(1 , (T + 1)):
+        
+        subtitles_map.setdefault(current_second , []).append(subtitle_string)
+        
+        current_second += 1
+
+subtitles_map = {}
+
+for i in range(0 , int(input())):
+    
+    data_string = input().strip()
+    
+    first_space_index = data_string.index(" ")
+    
+    last_space_index = (len(data_string) - data_string[::-1].index(" ") - 1)
+    
+    add_subtitle(data_string[ : first_space_index] , data_string[(first_space_index + 1) : last_space_index] , int(data_string[(last_space_index + 1) : ]) , subtitles_map)
+
+starting_time , ending_time = input().strip().split()
+
+starting_minutes , starting_seconds = map(int , starting_time.split(":"))
+
+ending_minutes , ending_seconds = map(int , ending_time.split(":"))
+
+seconds_list = [current_second for current_second in range((convert_minutes_to_seconds(starting_minutes) + starting_seconds) , ((convert_minutes_to_seconds(ending_minutes) + ending_seconds) + 1))]
+
+if(not any(subtitles_map.get(current_second , []) for current_second in seconds_list)):
+    
+    print(-1)
+
+else:
+    
+    for current_second in seconds_list:
+        
+        print(convert_total_seconds_to_1_hour_time_format(current_second) , end = " ")
+        
+        print(*subtitles_map.get(current_second , []) , sep = " | ")
