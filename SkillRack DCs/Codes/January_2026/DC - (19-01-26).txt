@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Function - findMinMaxInTwoArrays() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int get_count(int choice , int K , int N , int array[]){
+    
+    int count = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        (((choice == 1) && (array[index] > K)) || ((choice == 2) && (array[index] < K))) ? (count++) : (printf(""));
+    }
+    
+    return count;
+}
+
+int findMinMaxInTwoArrays(int N , int array_1[] , int M , int array_2[] , int K){
+    
+    return max(get_count(1 , K , N , array_1) , get_count(2 , K , M , array_2));
+}
