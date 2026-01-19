@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Combine Two Matrices - Vertically in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_transposed_matrix(original_matrix):
+    
+    R = len(original_matrix)
+    
+    C = len(original_matrix[0])
+    
+    transposed_matrix = [[None for i in range(0 , R)] for j in range(0 , C)]
+    
+    for i in range(0 , R):
+        
+        for j in range(0 , C):
+            
+            transposed_matrix[j][i] = original_matrix[i][j]
+    
+    return transposed_matrix
+
+def find_index(given_row_list , matrix):
+    
+    for index , current_row_list in enumerate(matrix):
+        
+        if(current_row_list == given_row_list):
+            
+            return index
+    
+    return -999
+
+def combine_two_matrices_horizontally(R , C , matrix_1 , matrix_2):
+    
+    index_1 = find_index(matrix_2[0] , matrix_1)
+    
+    if(index_1 != -999):
+        
+        for i_1 , i_2 in zip(range(index_1 , R) , range(0 , (R - index_1))):
+            
+            for j in range(0 , C):
+                
+                matrix_1[i_1][j] += matrix_2[i_2][j]
+        
+        return [row_list for row_list in (matrix_1 + matrix_2[(R - index_1) : R])]
+    
+    else:
+        
+        index_2 = find_index(matrix_2[-1] , matrix_1)
+        
+        for i_1 , i_2 in zip(range(0 , (index_2 + 1)) , range((R - index_2 - 1) , R)):
+            
+            for j in range(0 , C):
+                
+                matrix_2[i_2][j] += matrix_1[i_1][j]
+        
+        return [row_list for row_list in (matrix_2 + matrix_1[(index_2 + 1) : R])]
+
+def combine_two_matrices_vertically(R , C , matrix_1 , matrix_2):
+    
+    return get_transposed_matrix(combine_two_matrices_horizontally(C , R , get_transposed_matrix(matrix_1) , get_transposed_matrix(matrix_2)))
+
+R , C = map(int , input().split())
+
+matrix_1 = [list(map(int , input().split())) for i in range(0 , R)]
+
+matrix_2 = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(*row_list) for row_list in combine_two_matrices_vertically(R , C , matrix_1 , matrix_2)]
