@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Largest Submatrix - Border With 1s in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+consecutive_1_bits_count_from_right_matrix = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    one_bits_count = 0
+    
+    for j in range((C - 1) , -1 , -1):
+        
+        one_bits_count = (one_bits_count + 1) if(matrix[i][j] == 1) else (0)
+        
+        consecutive_1_bits_count_from_right_matrix[i][j] = one_bits_count
+
+consecutive_1_bits_count_from_bottom_matrix = [[0 for j in range(0 , C)] for i in range(0 , R)]
+
+for j in range(0 , C):
+    
+    one_bits_count = 0
+    
+    for i in range((R - 1) , -1 , -1):
+        
+        one_bits_count = (one_bits_count + 1) if(matrix[i][j] == 1) else (0)
+        
+        consecutive_1_bits_count_from_bottom_matrix[i][j] = one_bits_count
+
+for size in range(min(R , C) , 1 , -1):
+    
+    for i in range(0 , (R - size + 1)):
+        
+        for j in range(0 , (C - size + 1)):
+            
+            if((consecutive_1_bits_count_from_right_matrix[i][j] >= size) and (consecutive_1_bits_count_from_bottom_matrix[i][j] >= size) and (consecutive_1_bits_count_from_right_matrix[(i + size - 1)][j] >= size) and (consecutive_1_bits_count_from_bottom_matrix[i][(j + size - 1)] >= size)):
+                
+                print(size)
+                
+                quit()
+
+print(-1)
