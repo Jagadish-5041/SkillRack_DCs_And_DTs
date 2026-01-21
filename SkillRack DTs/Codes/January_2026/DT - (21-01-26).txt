@@ -1,0 +1,63 @@
+Problem Statement :-
+
+Function - addOrConcat() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdlib.h>
+#include <string.h>
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+char *addOrConcat(char *string){
+    
+    int N = strlen(string);
+    
+    char strings_array[(N + 1)][(N + 1)];
+    
+    int strings_array_index = 0;
+    
+    for(char *string_tokenizer = strtok(string , "+") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , "+")){
+        strcpy(strings_array[strings_array_index++] , string_tokenizer);
+    }
+    
+    char *answer_string = ((char *) malloc(((N + 1) * (N + 1)) * sizeof(char)));
+    
+    for(int index = 0 ; (index < strings_array_index) ; ){
+        
+        char *current_string = ((char *) malloc(((N + 1) * sizeof(char))));
+        
+        while((is_within_bounds(index , strings_array_index)) && (isalpha(strings_array[index][0]))){
+            
+            strcat(current_string , strings_array[index]);
+            
+            index++;
+        }
+        
+        long sum_value = 0;
+        
+        while((is_within_bounds(index , strings_array_index)) && (isdigit(strings_array[index][0]))){
+            
+            sum_value += atol(strings_array[index]);
+            
+            index++;
+        }
+        
+        int M = strlen(current_string);
+        
+        if((M != 0) && (sum_value != 0)){
+            sprintf(answer_string , "%s%s+%ld+" , answer_string , current_string , sum_value);
+        }else if(M != 0){
+            sprintf(answer_string , "%s%s+" , answer_string , current_string);
+        }else if(sum_value != 0){
+            sprintf(answer_string , "%s%ld+" , answer_string , sum_value);
+        }
+    }
+    
+    answer_string[(strlen(answer_string) - 1)] = '\0';
+    
+    return answer_string;
+}
