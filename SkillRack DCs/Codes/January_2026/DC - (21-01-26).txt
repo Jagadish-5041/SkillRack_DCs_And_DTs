@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Sort Words - Embedded Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import re
+
+def get_number_embedded_in_the_string(string):
+    
+    return int(("".join(re.findall(r'[\d+]' , string))))
+
+[print(S , end = " ") for S , X in sorted([(S , get_number_embedded_in_the_string(S)) for S in input().strip().split()] , key = lambda pair : pair[1])]
