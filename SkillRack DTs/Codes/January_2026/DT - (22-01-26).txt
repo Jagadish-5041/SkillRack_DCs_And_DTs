@@ -1,0 +1,58 @@
+Problem Statement :-
+
+Split Words Into Lines in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+S = input().strip()
+
+N = len(S)
+
+S_i = 0
+
+K = int(input())
+
+R = math.ceil((N / K))
+
+C = K
+
+matrix = [["" for j in range(0 , C)] for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        while((j == 0) and (0 <= S_i < N) and (S[S_i] == ' ')):
+            S_i += 1
+        
+        if(S_i >= N):
+            break
+        else:
+            matrix[i][j] = ('#') if(S[S_i] == ' ') else (S[S_i])
+        
+        S_i += 1
+    
+    if(S_i >= N):
+        break
+
+matrix = (matrix[:-1]) if(all((matrix[-1][j] == "") for j in range(0 , C))) else (matrix)
+
+R = len(matrix)
+
+new_S = ""
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        new_S += matrix[i][j]
+    
+    new_S = (new_S + '#') if(matrix[i][(C - 1)] != '#') else (new_S)
+
+words_list_1 = S.split()
+
+words_list_2 = new_S.replace("#" , " ").strip().split(" ")
+
+print(("YES") if(words_list_1 == words_list_2) else ("NO"))
