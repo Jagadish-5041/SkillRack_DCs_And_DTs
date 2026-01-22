@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Vertical Lines Count - N Points in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+coordinates_list = [list(map(int , input().split())) for i in range(0 , N)]
+
+L = int(input())
+
+count_of_vertical_lines_with_length_L = sum(1 for i in range(0 , N) for j in range((i + 1) , N) if((coordinates_list[i][0] == coordinates_list[j][0]) and (abs((coordinates_list[i][1] - coordinates_list[j][1])) == L)))
+
+print(count_of_vertical_lines_with_length_L)
