@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Function - replaceWithNextDigit() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char get_next_digit(char digit_character){
+    
+    return ((digit_character == '9') ? ('0') : (((digit_character - '0') + 1) + '0'));
+}
+
+void replaceWithNextDigit(int N){
+    
+    char *number_string = ((char *) malloc((64 * sizeof(char))));
+    
+    sprintf(number_string , "%d" , N);
+    
+    int M = strlen(number_string);
+    
+    int numbers_array[M];
+    
+    for(int M = strlen(number_string) , index = 0 ; (index < M) ; index++){
+        
+        char *copy_number_string = ((char *) malloc((64 * sizeof(char))));
+        
+        sprintf(copy_number_string , "%s" , number_string);
+        
+        copy_number_string[index] = get_next_digit(copy_number_string[index]);
+        
+        numbers_array[index] = atol(copy_number_string);
+    }
+    
+    for(int index_1 = 0 ; (index_1 < M) ; index_1++){
+        
+        for(int index_2 = (index_1 + 1) ; (index_2 < M) ; index_2++){
+            
+            if(numbers_array[index_2] < numbers_array[index_1]){
+                
+                int temp = numbers_array[index_1];
+                
+                numbers_array[index_1] = numbers_array[index_2];
+                
+                numbers_array[index_2] = temp;
+            }
+        }
+    }
+    
+    for(int index = 0 ; (index < M) ; index++){
+        printf("%d " , numbers_array[index]);
+    }
+}
