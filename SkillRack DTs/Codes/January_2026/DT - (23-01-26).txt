@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Collect Gold Coins - Instructions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+original_matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+copy_matrix = [row_list.copy() for row_list in original_matrix]
+
+visited_flag_matrix = [[False for j in range(0 , C)] for i in range(0 , R)]
+
+current_i = 0
+
+current_j = 0
+
+total_gold_coins_collected = 0
+
+directions_map = {'#' : (0 , 0) , 'N' : (-1 , 0) , 'S' : (1 , 0) , 'E' : (0 , 1) , 'W' : (0 , -1)}
+
+for direction in ('#' + input().strip()):
+    
+    offset_i , offset_j = directions_map[direction]
+    
+    current_i += offset_i
+    
+    current_j += offset_j
+    
+    if(not visited_flag_matrix[current_i][current_j]):
+        visited_flag_matrix[current_i][current_j] = True
+        total_gold_coins_collected = (total_gold_coins_collected + original_matrix[current_i][current_j])
+        original_matrix[current_i][current_j] = 0
+    elif(copy_matrix[current_i][current_j] > 0):
+        total_gold_coins_collected = (total_gold_coins_collected - 1)
+        copy_matrix[current_i][current_j] = (copy_matrix[current_i][current_j] - 1)
+
+print(total_gold_coins_collected)
