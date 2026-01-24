@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Merge Digits - Sort Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list(N):
+    
+    return [int(digit_string) for digit_string in str(N)]
+
+def get_combined_number(A , B):
+    
+    C = 0
+    
+    for digit_1 , digit_2 in zip(get_digits_list(A) , get_digits_list(B)):
+        
+        C = ((C * 10) + max(digit_1 , digit_2))
+        
+        C = ((C * 10) + min(digit_1 , digit_2))
+    
+    return C
+
+(lambda N , values_list : print(*sorted([get_combined_number(values_list[index] , values_list[(index + 1)]) for index in range(0 , N , 2)]))) (int(input()) , list(map(int , input().split())))
