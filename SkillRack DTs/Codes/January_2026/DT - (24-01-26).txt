@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Shortest String - Connecting Words in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_length_of_longest_prefix_of_B_that_is_matching_the_suffix_of_A_using_KMP_Algorithm(A , B):
+    
+    S = (B + '#' + A)
+    
+    N = len(S)
+    
+    prefix_index_list = [0 for i in range(0 , N)]
+    
+    for index_1 in range(1 , N):
+        
+        index_2 = prefix_index_list[(index_1 - 1)]
+        
+        while((index_2 > 0) and (S[index_1] != S[index_2])):
+            index_2 = prefix_index_list[(index_2 - 1)]
+        
+        index_2 = (index_2 + 1) if(S[index_1] == S[index_2]) else (index_2)
+        
+        prefix_index_list[index_1] = index_2
+    
+    return prefix_index_list[-1]
+
+words_list = input().strip().split()
+
+S = words_list[0]
+
+for index in range(1 , len(words_list)):
+    
+    longest_prefix_of_current_string_that_is_matching_the_suffix_of_S = get_length_of_longest_prefix_of_B_that_is_matching_the_suffix_of_A_using_KMP_Algorithm(S , words_list[index])
+    
+    S = (S + words_list[index][longest_prefix_of_current_string_that_is_matching_the_suffix_of_S : ])
+
+print(S)
