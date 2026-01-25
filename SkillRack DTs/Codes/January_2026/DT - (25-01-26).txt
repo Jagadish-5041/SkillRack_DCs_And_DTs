@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Function - swapDigitsSameSum() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+
+int min(int A , int B){
+    
+    return ((A <= B) ? (A) : (B));
+}
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (0) : (((int) log10(abs(N))) + 1));
+}
+
+void swapDigitsSameSum(int *pointer_1 , int *pointer_2){
+    
+    int number_1 = (*pointer_1);
+    
+    int number_2 = (*pointer_2);
+    
+    int minimum_number = min(number_1 , number_2);
+    
+    int N = get_length_of_N(minimum_number);
+    
+    int maximum_number = max(number_1 , number_2);
+    
+    int M = get_length_of_N(maximum_number);
+    
+    int divisor = ((int) pow(10 , N));
+    
+    int A = (maximum_number / divisor);
+    
+    int B = (maximum_number % divisor);
+    
+    int C = ((A * ((int) pow(10 , get_length_of_N(minimum_number)))) + minimum_number);
+    
+    int D = B;
+    
+    if(number_1 == minimum_number){
+        (*pointer_1) = C;
+        (*pointer_2) = D;
+    }else{
+        (*pointer_1) = D;
+        (*pointer_2) = C;
+    }
+}
