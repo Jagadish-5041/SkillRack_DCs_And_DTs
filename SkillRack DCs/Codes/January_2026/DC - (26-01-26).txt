@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Square Submatrix - Same Unit Digit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+N = int(input())
+
+for i in range(0 , (R - N + 1)):
+    
+    for j in range(0 , (C - N + 1)):
+        
+        if((lambda D : all(((matrix[k][l] % 10) == D) for k in range(i , (i + N)) for l in range(j , (j + N)))) (matrix[i][j] % 10)):
+            
+            print("Yes")
+            
+            quit()
+
+print("No")
