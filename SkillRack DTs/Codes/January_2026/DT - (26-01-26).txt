@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Triangle Layer Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum(target_count , current_i , current_j , offset_i , offset_j , R , C , matrix):
+    
+    sum_value = 0
+    
+    for count in range(1 , (target_count + 1)):
+        
+        sum_value += matrix[current_i][current_j]
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+    
+    return sum_value
+
+N = int(input())
+
+R = ((N // 2) + (N % 2))
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+sum_of_border_values = (get_sum(R , 0 , (C // 2) , 1 , 1 , R , C , matrix) + get_sum((C - 1) , (R - 1) , (C - 2) , 0 , -1 , R , C , matrix) + get_sum((R - 2) , (R - 2) , 1 , -1 , 1 , R , C , matrix))
+
+print(sum_of_border_values)
