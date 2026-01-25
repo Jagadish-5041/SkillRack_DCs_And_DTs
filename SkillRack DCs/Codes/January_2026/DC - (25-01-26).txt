@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Flowchart Logic 065 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+X , Y , D = map(int , input().split())
+
+while(X <= Y):
+    
+    temp = X
+    
+    flag = False
+    
+    while((temp > 0) and (not flag)):
+        
+        flag = (True) if((not flag) and ((temp % 10) == D)) else (flag)
+        
+        temp = (temp // 10)
+    
+    (print(X , end = " ")) if(flag) else ("")
+    
+    X = (X + 1)
