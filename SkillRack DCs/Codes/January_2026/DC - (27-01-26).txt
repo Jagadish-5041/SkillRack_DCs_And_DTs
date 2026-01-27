@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Smallest 5-Digit Integer in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_digits(N):
+    
+    sum_of_digits = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        sum_of_digits = (sum_of_digits + digit)
+        
+        N = (N // 10)
+    
+    return sum_of_digits
+
+sum_of_digits_map = {}
+
+[((lambda sum_of_digits : ((sum_of_digits_map.__setitem__(sum_of_digits , number)) if(sum_of_digits not in sum_of_digits_map) else (""))) (get_sum_of_digits(number))) for number in range(10000 , (99999 + 1))]
+
+target_sum_of_digits = int(input())
+
+print((sum_of_digits_map[target_sum_of_digits]) if(target_sum_of_digits in sum_of_digits_map) else (-1))
