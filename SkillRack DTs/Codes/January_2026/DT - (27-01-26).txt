@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Print Ranges - Array in DT (Daily Test) in SkillRack in Python Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def print_unique_ranges(sorted_unique_values_list):
+    
+    N = len(sorted_unique_values_list)
+    
+    ranges_set = set()
+    
+    index = 0
+    
+    while(is_within_bounds(index , N)):
+        
+        starting_range_value = sorted_unique_values_list[index]
+        
+        ending_range_value = sorted_unique_values_list[index]
+        
+        current_value = sorted_unique_values_list[index]
+        
+        while((is_within_bounds(index , N)) and (sorted_unique_values_list[index] == current_value)):
+            
+            ending_range_value = current_value
+            
+            current_value = (current_value + 1)
+            
+            index = (index + 1)
+        
+        print(starting_range_value , ending_range_value , sep = "-" , end = " ")
+
+int(input())
+
+print_unique_ranges(sorted(list(set((map(int , input().split()))))))
