@@ -1,0 +1,54 @@
+Problem Statement :-
+
+N String Values - First And Last in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def depth_first_search(valid_strings_count , N , A , K):
+    
+    global answer_string
+    
+    if(valid_strings_count <= 0):
+        return
+    
+    new_A = [('' , (index + 1)) for index in range(0 , N)]
+    
+    for S , P in A:
+        
+        M = len(S)
+        
+        if(is_odd(P)):
+            
+            if(M < K):
+                answer_string += S
+                K += 1
+            else:
+                answer_string += S[ : K]
+                new_A[(P - 1)] = (S[K : ] , P)
+        
+        else:
+            
+            if(M < K):
+                answer_string += S
+                K += 1
+            else:
+                answer_string += S[(K * -1) : ]
+                new_A[(P - 1)] = (S[ : (K * -1)] , P)
+    
+    depth_first_search(sum(1 for S , P in new_A if(S)) , len(new_A) , new_A , K)
+
+N = int(input())
+
+strings_list = [input().strip() for i in range(0 , N)]
+
+K = int(input())
+
+answer_string = ""
+
+depth_first_search(N , N , [(string , (index + 1)) for index , string in enumerate(strings_list)] , K)
+
+print(answer_string)
