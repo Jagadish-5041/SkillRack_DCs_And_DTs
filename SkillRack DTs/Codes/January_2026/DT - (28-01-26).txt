@@ -19,9 +19,7 @@ def depth_first_search(valid_strings_count , N , strings_and_positions_list , K)
     
     for string , position in strings_and_positions_list:
         
-        M = len(string)
-        
-        if(M < K):
+        if(len(string) < K):
             answer_string += string
             K += 1
         else:
