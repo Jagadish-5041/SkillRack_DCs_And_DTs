@@ -21,34 +21,23 @@ def depth_first_search(valid_strings_count , N , A , K):
         
         M = len(S)
         
-        if(is_odd(P)):
-            
-            if(M < K):
-                answer_string += S
-                K += 1
-            else:
-                answer_string += S[ : K]
-                new_A[(P - 1)] = (S[K : ] , P)
-        
+        if(M < K):
+            answer_string += S
+            K += 1
         else:
-            
-            if(M < K):
-                answer_string += S
-                K += 1
-            else:
-                answer_string += S[(K * -1) : ]
-                new_A[(P - 1)] = (S[ : (K * -1)] , P)
+            answer_string += ((S[ : K]) if(is_odd(P)) else (S[(K * -1) : ]))
+            new_A[(P - 1)] = (((S[K : ]) if(is_odd(P)) else (S[ : (K * -1)])) , P)
     
     depth_first_search(sum(1 for S , P in new_A if(S)) , len(new_A) , new_A , K)
 
 N = int(input())
 
-strings_list = [input().strip() for i in range(0 , N)]
+strings_and_positions_list = [(input().strip() , (index + 1)) for index in range(0 , N)]
 
 K = int(input())
 
 answer_string = ""
 
-depth_first_search(N , N , [(string , (index + 1)) for index , string in enumerate(strings_list)] , K)
+depth_first_search(N , N , strings_and_positions_list , K)
 
 print(answer_string)
