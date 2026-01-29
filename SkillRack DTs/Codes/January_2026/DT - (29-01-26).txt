@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Function - maximizeInteger() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+void sort_array_in_descending(int N , int *array){
+    
+    for(int i = 0 ; (i < N) ; i++){
+        
+        for(int j = (i + 1) ; (j < N) ; j++){
+            
+            if(array[i] < array[j]){
+                
+                int temp = array[i];
+                
+                array[i] = array[j];
+                
+                array[j] = temp;
+            }
+        }
+    }
+}
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+void maximizeInteger(int M , int array_1[M] , int N , int array_2[N]){
+    
+    sort_array_in_descending(N , array_2);
+    
+    for(int array_1_index = 0 , array_2_index = 0 ; ((is_within_bounds(array_1_index , M)) && (is_within_bounds(array_2_index , N))) ; ){
+        
+        while((is_within_bounds(array_1_index , M)) && (is_within_bounds(array_2_index , N)) && (array_1[array_1_index] >= array_2[array_2_index])){
+            array_1_index++;
+        }
+        
+        if((is_within_bounds(array_1_index , M)) && (is_within_bounds(array_2_index , N))){
+            
+            array_1[array_1_index] = array_2[array_2_index];
+            
+            array_1_index++;
+            
+            array_2_index++;
+        }
+    }
+}
