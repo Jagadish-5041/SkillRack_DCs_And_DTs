@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Define Class Stick in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+class Stick {
+    
+    int stick_length;
+    
+    Stick(int stick_length){
+        
+        this.stick_length = stick_length;
+    }
+    
+    public boolean is_odd(int N){
+        
+        return ((N & 1) == 1);
+    }
+    
+    public void combineStick(Stick stick_object){
+        
+        int stick_length_to_be_combined = stick_object.stick_length;
+        
+        if(stick_length_to_be_combined == 0){
+            System.out.println("Length of the stick cannot be zero");
+        }else{
+            this.stick_length = (this.stick_length + stick_length_to_be_combined);
+        }
+    }
+    
+    public void breakStick(){
+        
+        if(is_odd(this.stick_length)){
+            System.out.println("Length of the stick cannot be odd");
+        }else{
+            this.stick_length = (this.stick_length / 2);
+        }
+    }
+    
+    public int getLength(){
+        
+        return this.stick_length;
+    }
+}
