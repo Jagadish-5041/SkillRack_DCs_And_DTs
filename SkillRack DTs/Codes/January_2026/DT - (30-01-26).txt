@@ -1,0 +1,75 @@
+Problem Statement :-
+
+Bubble Shooting Game in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+ignored_bullets_count = 0
+
+for query in range(0 , int(input())):
+    
+    direction , index , color_string = [(int(value) - 1) if(index == 1) else (value) for index , value in enumerate(input().strip().split())]
+    
+    ignored_bullet_flag = True
+    
+    if(direction == 'T'):
+        
+        for i in range(0 , R):
+            
+            if(matrix[i][index] == color_string):
+                
+                matrix[i][index] = '*'
+                
+                ignored_bullet_flag = False
+                
+                break
+    
+    elif(direction == 'B'):
+        
+        for i in range((R - 1) , -1 , -1):
+            
+            if(matrix[i][index] == color_string):
+                
+                matrix[i][index] = '*'
+                
+                ignored_bullet_flag = False
+                
+                break
+    
+    elif(direction == 'L'):
+        
+        for j in range(0 , C):
+            
+            if(matrix[index][j] == color_string):
+                
+                matrix[index][j] = '*'
+                
+                ignored_bullet_flag = False
+                
+                break
+    
+    elif(direction == 'R'):
+        
+        for j in range((C - 1) , -1 , -1):
+            
+            if(matrix[index][j] == color_string):
+                
+                matrix[index][j] = '*'
+                
+                ignored_bullet_flag = False
+                
+                break
+    
+    ignored_bullets_count = (ignored_bullets_count + 1) if(ignored_bullet_flag) else (ignored_bullets_count)
+
+[print(*row_list) for row_list in matrix]
+
+print(ignored_bullets_count)
