@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Merge Two String Values - Two Ends in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+A_N = len(A)
+
+B = input().strip()
+
+B_N = len(B)
+
+C = ['' for i in range(0 , (A_N + B_N))]
+
+C_N = (A_N + B_N)
+
+C_left_index = 0
+
+C_right_index = (C_N - 1)
+
+for character_1 , character_2 in zip(A , B):
+    
+    condition_flag = (ord(character_1) <= ord(character_2))
+    
+    C[C_left_index] = (character_1) if(condition_flag) else (character_2)
+    
+    C[C_right_index] = (character_2) if(condition_flag) else (character_1)
+    
+    C_left_index = (C_left_index + 1)
+    
+    C_right_index = (C_right_index - 1)
+
+for character in max(A , B , key = len)[min(A_N , B_N) : ]:
+    
+    C[C_left_index] = character
+    
+    C_left_index = (C_left_index + 1)
+
+print(*C , sep = "")
