@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Match Name And Designation - Employees in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_data_from_file(file_name_string):
+    
+    data_list = []
+    
+    with open(file_name_string , 'r') as rows_string_from_file:
+        
+        for row_string in rows_string_from_file:
+            
+            data_list.append(row_string.strip())
+    
+    return data_list[1 : ]
+
+id_and_name_map = {}
+
+id_and_designation_map = {}
+
+for data_string_1 , data_string_2 in zip(get_data_from_file(input().strip()) , get_data_from_file(input().strip())):
+    
+    id_1 , name_string = [(int(value)) if(index == 0) else (value) for index , value in enumerate(data_string_1.split())]
+    
+    id_2 , designation_string = [(int(value)) if(index == 0) else (value) for index , value in enumerate(data_string_2.split())]
+    
+    id_and_name_map[id_1] = name_string
+    
+    id_and_designation_map[id_2] = designation_string
+
+[print(id_number , id_and_name_map[id_number] , id_and_designation_map[id_number]) for id_number in sorted(list(id_and_name_map.keys()))]
