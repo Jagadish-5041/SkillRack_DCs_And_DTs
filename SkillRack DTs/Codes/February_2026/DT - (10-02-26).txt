@@ -1,0 +1,64 @@
+Problem Statement :-
+
+Function - sortIntegersInplace() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+char *sortIntegersInplace(char *string){
+    
+    int N = strlen(string);
+    
+    char strings_array[N][N];
+    
+    int strings_array_index = 0;
+    
+    int numbers_array[N];
+    
+    int numbers_array_index = 0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        strcpy(strings_array[strings_array_index++] , string_tokenizer);
+        
+        if(isdigit(string_tokenizer[0])){
+            numbers_array[numbers_array_index++] = atoi(string_tokenizer);
+        }
+    }
+    
+    for(int i = 0 ; (i < numbers_array_index) ; i++){
+        
+        for(int j = (i + 1) ; (j < numbers_array_index) ; j++){
+            
+            if(numbers_array[i] > numbers_array[j]){
+                
+                int temp_value = numbers_array[i];
+                
+                numbers_array[i] = numbers_array[j];
+                
+                numbers_array[j] = temp_value;
+            }
+        }
+    }
+    
+    char *answer_string = ((char *) calloc((N + 1) , sizeof(char)));
+    
+    for(int i = 0 , j = 0 ; (i < strings_array_index) ; i++){
+        
+        if(isdigit(strings_array[i][0])){
+            sprintf(strings_array[i] , "%d" , numbers_array[j++]);
+        }
+        
+        strcat(answer_string , strings_array[i]);
+        
+        if(i < (strings_array_index - 1)){
+            strcat(answer_string , " ");
+        }
+    }
+    
+    return answer_string;
+}
