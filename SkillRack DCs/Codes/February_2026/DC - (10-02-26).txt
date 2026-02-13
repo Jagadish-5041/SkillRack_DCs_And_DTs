@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Remove Unit Digits - Previous & Next in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+T = int(input())
+
+values_list_index = 0
+
+for i in range(0 , T):
+    
+    if(len(values_list) <= 0):
+        break
+    
+    unit_digit = (values_list[values_list_index] % 10)
+    
+    values_list[values_list_index] = (values_list[values_list_index] // 10)
+    
+    if(values_list[values_list_index] == 0):
+        values_list.pop(values_list_index)
+        N = (len(values_list)) if(len(values_list)) else (1)
+        values_list_index = (((values_list_index) if(is_even(unit_digit)) else (values_list_index - 1)) % N)
+    else:
+        values_list_index = (((values_list_index + 1) if(is_even(unit_digit)) else (values_list_index - 1)) % len(values_list))
+
+S = (sum(values_list)) if(values_list) else (-1)
+
+print(S)
