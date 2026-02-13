@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Tap Code Decryption in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+tap_codes_list = input().strip().split()
+
+characters_matrix = [[(value[0]) if('/' in value) else (value) for value in input().strip().split()] for i in range(0 , 5)]
+
+[((lambda row_index , column_index : print(characters_matrix[row_index][column_index] , end = "")) ((len(tap_codes_list[index]) - 1) , (len(tap_codes_list[(index + 1)]) - 1))) for index in range(0 , len(tap_codes_list) , 2)]
