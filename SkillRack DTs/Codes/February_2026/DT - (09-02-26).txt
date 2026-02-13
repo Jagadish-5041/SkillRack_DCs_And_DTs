@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Group Words - Combinations in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+words_groups_map = {}
+
+[words_groups_map.setdefault(tuple(sorted(word_string)) , []).append(word_string) for word_string in input().strip().split()]
+
+[print(*words_list) for words_list in words_groups_map.values()]
