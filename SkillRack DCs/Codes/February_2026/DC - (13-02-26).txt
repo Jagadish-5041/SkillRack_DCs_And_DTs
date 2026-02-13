@@ -1,0 +1,27 @@
+Problem Statement :-
+
+String - Remove Minimum Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+N = len(S)
+
+index = 0
+
+valid_pair_of_characters_count = 0
+
+while(is_within_bounds(index , (N - 1))):
+    
+    if(S[index] != S[(index + 1)]):
+        valid_pair_of_characters_count += 1
+        index += 2
+    else:
+        index += 1
+
+print((N - (valid_pair_of_characters_count * 2)))
