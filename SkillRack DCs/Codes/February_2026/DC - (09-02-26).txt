@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Lazy Robot - Ignoring Commands in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+count_of_commands_ignored_by_robot = 0
+
+current_position_of_robot = 0
+
+idle_time_of_robot = 0
+
+for i in range(0 , N):
+    
+    T , X = map(int , input().split())
+    
+    if(T >= idle_time_of_robot):
+        distance_travelled_by_robot = abs((current_position_of_robot - X))
+        idle_time_of_robot = (T + distance_travelled_by_robot)
+        current_position_of_robot = X
+    else:
+        count_of_commands_ignored_by_robot += 1
+
+print(count_of_commands_ignored_by_robot)
+
+print(current_position_of_robot)
