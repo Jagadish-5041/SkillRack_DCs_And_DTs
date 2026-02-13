@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Sort String Based On Template in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+B = input().strip()
+
+characters_map = {character : [] for character in B}
+
+characters_list = []
+
+[(characters_map[character].append(character)) if(character in characters_map) else (characters_list.append(character)) for character in A]
+
+S = (("".join(character for values_list in characters_map.values() for character in values_list)) + ("".join(sorted(characters_list))))
+
+print(S)
