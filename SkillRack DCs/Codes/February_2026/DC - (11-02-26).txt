@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Function - removeReversedWords() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_reversed_string(char *string){
+    
+    int N = strlen(string);
+    
+    char *reversed_string = ((char *) calloc(N , sizeof(char)));
+    
+    for(int string_index = (N - 1) , reversed_string_index = 0 ; (string_index >= 0) ; string_index-- , reversed_string_index++){
+        reversed_string[reversed_string_index] = string[string_index];
+    }
+    
+    return reversed_string;
+}
+
+char *removeReversedWords(char *A , char *B){
+    
+    int N = strlen(A);
+    
+    char *answer_string = ((char *) calloc((N + 1) , sizeof(char)));
+    
+    char *reversed_B = get_reversed_string(B);
+    
+    for(char *string_tokenizer = strtok(A , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        if((strcmp(string_tokenizer , B) != 0) && (strcmp(string_tokenizer , reversed_B) != 0)){
+            
+            strcat(answer_string , string_tokenizer);
+            
+            strcat(answer_string , " ");
+        }
+    }
+    
+    (strlen(answer_string) == 0) ? (strcat(answer_string , "-1")) : (printf(""));
+    
+    return answer_string;
+}
