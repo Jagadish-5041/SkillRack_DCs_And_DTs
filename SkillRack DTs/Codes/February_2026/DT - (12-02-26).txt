@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Print Absolute Path - File System in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+stack = []
+
+absolute_path_of_files_list = []
+
+for path_string in input().strip().split("\\n"):
+    
+    current_depth_of_path = path_string.count("\\t")
+    
+    file_name_string = path_string.replace("\\t" , "")
+    
+    while(len(stack) > current_depth_of_path):
+        stack.pop()
+    
+    stack.append(file_name_string)
+    
+    (absolute_path_of_files_list.append(("\\".join(stack)))) if('.' in file_name_string) else ("")
+
+(print(*absolute_path_of_files_list , sep = "\n")) if(absolute_path_of_files_list) else (print(-1))
