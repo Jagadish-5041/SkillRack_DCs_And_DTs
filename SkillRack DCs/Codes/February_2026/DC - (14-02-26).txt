@@ -1,0 +1,31 @@
+Problem Statement :-
+
+First Non-Repeated Submatrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+K = int(input())
+
+frequency_map = {}
+
+for i in range(0 , (R - K + 1) , K):
+    
+    for j in range(0 , (C - K + 1) , K):
+        
+        sub_matrix_string = ("".join(matrix[k][l] for k in range(i , (i + K)) for l in range(j , (j + K))))
+        
+        frequency_map[sub_matrix_string] = (frequency_map.get(sub_matrix_string , 0) + 1)
+
+for key_string , frequency in frequency_map.items():
+    
+    if(frequency == 1):
+        
+        [(print(character)) if(((index + 1) % K) == 0) else (print(character , end = " ")) for index , character in enumerate(key_string)]
+        
+        quit()
+
+print(-1)
