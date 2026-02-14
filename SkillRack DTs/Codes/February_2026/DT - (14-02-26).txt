@@ -1,0 +1,52 @@
+Problem Statement :-
+
+Matrix - Detect Loop in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_negative(N):
+    
+    return (N < 0)
+
+def is_positive(N):
+    
+    return (N > 0)
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+current_i , current_j = map((lambda value : (value - 1)) , (map(int , input().split())))
+
+visited_coordinates_set = set()
+
+while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+    
+    if((current_i , current_j) in visited_coordinates_set):
+        print("YES")
+        quit()
+    
+    visited_coordinates_set.add((current_i , current_j))
+    
+    if((is_positive(matrix[current_i][current_j])) and (is_even(matrix[current_i][current_j]))):
+        current_i -= 1
+    elif((is_positive(matrix[current_i][current_j])) and (is_odd(matrix[current_i][current_j]))):
+        current_j += 1
+    elif((is_negative(matrix[current_i][current_j])) and (is_even(matrix[current_i][current_j]))):
+        current_i += 1
+    elif((is_negative(matrix[current_i][current_j])) and (is_odd(matrix[current_i][current_j]))):
+        current_j -= 1
+
+print("NO")
