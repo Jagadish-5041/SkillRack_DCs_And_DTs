@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Function - findAllDigits() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int findAllDigits(int N , int array[]){
+    
+    int digits_flag_array[10] = {0};
+    
+    for(int count_of_discovered_digits = 0 , index = 0 ; (index < N) ; index++){
+        
+        int X = array[index];
+        
+        while(X > 0){
+            
+            int digit = (X % 10);
+            
+            if(digits_flag_array[digit] == 0){
+                
+                digits_flag_array[digit] = 1;
+                
+                count_of_discovered_digits++;
+            }
+            
+            if(count_of_discovered_digits == 10){
+                return array[index];
+            }
+            
+            X = (X / 10);
+        }
+    }
+    
+    return -1;
+}
