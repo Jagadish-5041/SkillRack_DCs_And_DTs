@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Flowchart Logic 047 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , X , Y : [print(ctr , end = " ") for ctr in range(1 , (N + 1)) if(not (((ctr >= X) and (ctr <= Y)) or ((ctr % 3) == 0)))]) (*map(int , input().split()))
