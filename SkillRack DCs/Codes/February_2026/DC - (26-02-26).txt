@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Function - sortBasedOnDigits() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int custom_strcmp(int A , int B){
+    
+    char S_A[128];
+    
+    sprintf(S_A , "%d" , A);
+    
+    char S_B[128];
+    
+    sprintf(S_B , "%d" , B);
+    
+    return (strcmp(S_A , S_B) < 0);
+}
+
+void sortBasedOnDigits(int N , int *array){
+    
+    for(int i = 0 ; (i < N) ; i++){
+        
+        for(int j = 0 ; (j < N) ; j++){
+            
+            if(custom_strcmp(array[i] , array[j])){
+                
+                int temp = array[i];
+                
+                array[i] = array[j];
+                
+                array[j] = temp;
+            }
+        }
+    }
+}
