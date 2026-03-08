@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Cut & Remove Rods in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+current_minimum_value = min(values_list)
+
+non_zero_values_count = N
+
+while(non_zero_values_count > 0):
+    
+    print(non_zero_values_count)
+    
+    new_values_list = []
+    
+    new_minimum_value = sys.maxsize
+    
+    for value in values_list:
+        
+        if((value - current_minimum_value) > 0):
+            new_value = (value - current_minimum_value)
+            new_values_list.append(new_value)
+            new_minimum_value = min(new_minimum_value , new_value)
+        else:
+            new_values_list.append(0)
+            non_zero_values_count = (non_zero_values_count - 1) if(value != 0) else (non_zero_values_count)
+    
+    values_list = new_values_list
+    
+    current_minimum_value = new_minimum_value
