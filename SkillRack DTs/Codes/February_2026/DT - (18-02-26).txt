@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Matrix Replace Asterisks In Columns in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def check(count_of_columns_to_be_filled_with_only_numbers , column_wise_asterisk_counts_list):
+    
+    for j in range(0 , count_of_columns_to_be_filled_with_only_numbers):
+        
+        if(column_wise_asterisk_counts_list[j] > 0):
+            
+            return False
+    
+    return True
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+numbers_coordinates_list_from_right_side = [(i , j) for j in range((C - 1) , -1 , -1) for i in range(0 , R) if(matrix[i][j] != '*')]
+
+asterisks_coordinates_list_from_left_side = [(i , j) for j in range(0 , C) for i in range(0 , R) if(matrix[i][j] == '*')]
+
+column_wise_asterisk_counts_list = [sum(1 for i in range(0 , R) if(matrix[i][j] == '*')) for j in range(0 , C)]
+
+total_numbers_count_in_matrix = len(numbers_coordinates_list_from_right_side)
+
+count_of_columns_to_be_filled_with_only_numbers = (total_numbers_count_in_matrix // R)
+
+for (number_i , number_j) , (asterisk_i , asterisk_j) in zip(numbers_coordinates_list_from_right_side , asterisks_coordinates_list_from_left_side):
+    
+    matrix[number_i][number_j] , matrix[asterisk_i][asterisk_j] = matrix[asterisk_i][asterisk_j] , matrix[number_i][number_j]
+    
+    column_wise_asterisk_counts_list[asterisk_j] = (column_wise_asterisk_counts_list[asterisk_j] - 1)
+    
+    if(check(count_of_columns_to_be_filled_with_only_numbers , column_wise_asterisk_counts_list)):
+        break
+
+[print(*row_list) for row_list in matrix]
