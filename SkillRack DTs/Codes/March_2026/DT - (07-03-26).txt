@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Super Digit Integer in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def compute_power_function_in_log_N_time_complexity(base_value , power_value):
+    
+    product_value = 1
+    
+    while(power_value > 0):
+        
+        product_value = (product_value * base_value) if(is_odd(power_value)) else(product_value)
+        
+        base_value = (base_value * base_value)
+        
+        power_value = (power_value // 2)
+    
+    return product_value
+
+N = int(input())
+
+for D in range(2 , 10):
+    
+    if((str(D) * D) in str((D * compute_power_function_in_log_N_time_complexity(N , D)))):
+        
+        print("YES")
+        
+        quit()
+
+print("NO")
