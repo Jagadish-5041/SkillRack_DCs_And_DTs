@@ -1,0 +1,83 @@
+Problem Statement :-
+
+Function - removeIntegers() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *get_clean_string(char *string){
+    
+    char *copy_string = ((char *) malloc(((strlen(string) + 1) * sizeof(char))));
+    
+    int N = strlen(string);
+    
+    while((N >= 0) && ((string[(N - 1)] == '\r') || (string[(N - 1)] == '\n'))){
+        N--;
+    }
+    
+    sprintf(copy_string , "%.*s" , N , string);
+    
+    return copy_string;
+}
+
+int is_number(char *string){
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        
+        if(!isdigit(string[index])){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+void removeIntegers(char *old_file_name_string){
+    
+    char *new_file_name_string = "new_file_name";
+    
+    FILE *old_file_pointer = fopen(old_file_name_string , "r");
+    
+    FILE *new_file_pointer = fopen(new_file_name_string , "w");
+    
+    char old_row_string[1008];
+    
+    int previous_row_existing_flag = 0;
+    
+    while(fgets(old_row_string , sizeof(old_row_string) , old_file_pointer) != NULL){
+        
+        int N = strlen(old_row_string);
+        
+        char *new_row_string = ((char *) malloc((strlen(old_row_string) * sizeof(char))));
+        
+        (previous_row_existing_flag) ? (strcat(new_row_string , "\n")) : (printf(""));
+        
+        for(char *string_tokenizer = strtok(old_row_string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+            
+            char *clean_string = get_clean_string(string_tokenizer);
+            
+            if(!is_number(clean_string)){
+                
+                strcat(new_row_string , clean_string);
+                
+                strcat(new_row_string , " ");
+            }
+        }
+        
+        fputs(new_row_string , new_file_pointer);
+        
+        previous_row_existing_flag = 1;
+    }
+    
+    fclose(old_file_pointer);
+    
+    fclose(new_file_pointer);
+    
+    remove(old_file_name_string);
+    
+    rename(new_file_name_string , old_file_name_string);
+}
