@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Maximum Oranges - Equal Amount in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+minimum_value = sys.maxsize
+
+minimum_value_at_each_index_from_right_side_list = [None for i in range(0 , N)]
+
+for index in range((N - 1) , -1 , -1):
+    
+    minimum_value = min(minimum_value , values_list[index])
+    
+    minimum_value_at_each_index_from_right_side_list[index] = minimum_value
+
+maximum_oranges_collected_count = (sys.maxsize * -1)
+
+for index in range(0 , N):
+    
+    current_value = values_list[index]
+    
+    minimum_value_from_right_side = minimum_value_at_each_index_from_right_side_list[index]
+    
+    equal_oranges_collected_count = (min(current_value , minimum_value_from_right_side) * (N - index))
+    
+    maximum_oranges_collected_count = max(maximum_oranges_collected_count , equal_oranges_collected_count)
+
+print(maximum_oranges_collected_count)
