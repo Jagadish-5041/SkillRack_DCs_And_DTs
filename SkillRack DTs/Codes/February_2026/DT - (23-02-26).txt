@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Add Two Integers - Form K in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , K = map(int , input().split())
+
+values_list = list(map(int , input().split()))
+
+count = sum(1 for index_1 in range(0 , N) for index_2 in range((index_1 + 1) , N) if(any((((values_list[index_1] * sign_value_1) + (values_list[index_2] * sign_value_2)) == K) for sign_value_1 in (-1 , 1) for sign_value_2 in (-1 , 1))))
+
+print(count)
