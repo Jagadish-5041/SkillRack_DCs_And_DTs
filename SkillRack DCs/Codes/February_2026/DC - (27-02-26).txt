@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Frequency Shift Encryption in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def shift_K_alphabets(K , alphabet):
+    
+    return ((lambda offset_value : chr(((((ord(alphabet) - offset_value) + K) % 26) + offset_value))) (get_offset_value(alphabet)))
+
+frequency_map = {}
+
+for alphabet in input().strip():
+    
+    print(shift_K_alphabets(frequency_map.get(alphabet , 0) , alphabet) , end = "")
+    
+    frequency_map[alphabet] = (frequency_map.get(alphabet , 0) + 1)
