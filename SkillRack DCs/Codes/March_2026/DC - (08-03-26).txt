@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Prime Sentence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_numeric_value(character):
+    
+    return ((ord(character.lower()) - ord('a') + 1) if(character.isalpha()) else ((int(character)) if(character.isdigit()) else (0)))
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+numeric_values_of_words_list = [sum(get_numeric_value(character) for character in word_string) for word_string in input().strip().split()]
+
+total_numeric_values_sum_of_words = sum(numeric_values_of_words_list)
+
+print(("Prime") if(is_prime(total_numeric_values_sum_of_words)) else (("Almost Prime") if(any((is_prime((total_numeric_values_sum_of_words - numeric_value_of_word))) for numeric_value_of_word in numeric_values_of_words_list)) else ("Composite")))
