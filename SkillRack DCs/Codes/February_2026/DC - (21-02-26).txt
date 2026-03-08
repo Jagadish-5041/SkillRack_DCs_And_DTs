@@ -1,0 +1,70 @@
+Problem Statement :-
+
+Boats & Ships - North (or) West in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+public class Hello {
+    static int R, C;
+    public static boolean verticalShip(char mat[][], int row, int col) {
+        return (row-1>=0 && mat[row-1][col]=='#') || (row+1<R && mat[row+1][col]== '#');
+    }
+    public static boolean horizontalShip(char mat[][], int row, int col) {
+        return (col-1>=0 && mat[row][col-1]=='#') || (col+1<C && mat[row][col+1]=='#');
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        R = sc.nextInt();
+        C = sc.nextInt();
+        int hashCount = 0;
+        char mat[][] = new char[R][C];
+        for(int row=0;row<R;row++) {
+            for(int col=0;col<C;col++){
+                mat[row][col]=sc.next().charAt(0);
+                if (mat[row][col]=='#')
+                   hashCount++;
+            }
+        }
+        int minute=1;
+        while(hashCount>0) {
+            if (minute%2!=0){
+                for(int col=0;col<C;col++) {
+                    for(int row=0;row<R;row++){
+                        if(mat[row][col]=='#'){
+                            if(!horizontalShip(mat,row,col)){
+                                mat[row][col]='*';
+                                hashCount--;
+                                if(row+1<R && mat[row+1][col]=='#'){
+                                    mat[row+1][col]='*';
+                                    hashCount--;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            else{
+                for(int row=0;row<R;row++){
+                    for(int col=0;col<C;col++){
+                        if(mat[row][col]=='#'){
+                            if(!verticalShip(mat,row,col)){
+                                mat[row][col]='*';
+                                hashCount--;
+                                if(col+1<C && mat[row][col+1]=='#'){
+                                    mat[row][col+1]='*';
+                                    hashCount--;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            minute++;
+        }
+        System.out.print(minute-1);
+    }
+}
