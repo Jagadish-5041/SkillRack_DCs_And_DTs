@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Validate Password - Name And DOB in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+first_name_string , last_name_string = input().strip().split()
+
+year_string = input().strip().split("-")[-1]
+
+laptop_password_string = input().strip()
+
+actual_password_string = (last_name_string[0] + last_name_string[1] + year_string + first_name_string[-2] + first_name_string[-1])
+
+reversed_and_retained_case_of_characters_password_string = ("".join((character_2.upper()) if(character_1.isupper()) else ((character_2.lower()) if(character_1.islower()) else (character_2)) for character_1 , character_2 in zip(actual_password_string , actual_password_string[::-1])))
+
+print(("Correct") if(reversed_and_retained_case_of_characters_password_string == laptop_password_string) else ("Wrong"))
