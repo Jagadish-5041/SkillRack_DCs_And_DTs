@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Max Call Duration - Call Logs in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def get_total_seconds(time_string):
+    
+    return ((lambda hours , minutes , seconds : (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes) + seconds)) (*map(int , time_string.split(":"))))
+
+N = int(input())
+
+total_duration_of_phone_numbers_map = {}
+
+maximum_duration = 0
+
+for i in range(0 , N):
+    
+    phone_number_string , starting_time_string , ending_time_string = input().strip().split()
+    
+    current_duration = (get_total_seconds(ending_time_string) - get_total_seconds(starting_time_string))
+    
+    total_duration_of_phone_numbers_map[phone_number_string] = (total_duration_of_phone_numbers_map.get(phone_number_string , 0) + current_duration)
+    
+    maximum_duration = max(maximum_duration , total_duration_of_phone_numbers_map[phone_number_string])
+
+[print(phone_number_string) for phone_number_string , total_duration in total_duration_of_phone_numbers_map.items() if(total_duration == maximum_duration)]
