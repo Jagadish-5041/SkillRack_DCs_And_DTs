@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Function - sortSubstrings() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+boundedArray *sortSubstrings(char *string , int K){
+    
+    int N = strlen(string);
+    
+    char **words_array = ((char **) malloc((N * sizeof(char *))));
+    
+    for(int i = 0 ; (i < N) ; i++){
+        words_array[i] = ((char *) malloc((N * sizeof(char))));
+    }
+    
+    int words_array_index = 0;
+    
+    for(int index = 0 ; (index < N) ; index = (index + K) , words_array_index = (words_array_index + 1)){
+        sprintf(words_array[words_array_index] , "%.*s" , K , &string[index]);
+    }
+    
+    char temp_string[N];
+    
+    for(int i = 0 ; (i < words_array_index) ; i++){
+        
+        for(int j = (i + 1) ; (j < words_array_index) ; j++){
+            
+            if(strcmp(words_array[i] , words_array[j]) > 0){
+                
+                strcpy(temp_string , words_array[i]);
+                
+                strcpy(words_array[i] , words_array[j]);
+                
+                strcpy(words_array[j] , temp_string);
+            }
+        }
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = words_array_index;
+    
+    (bounded_array_reference -> words) = words_array;
+    
+    return bounded_array_reference;
+}
