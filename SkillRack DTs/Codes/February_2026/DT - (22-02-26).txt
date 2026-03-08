@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Shift Queries - Rows And Columns in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def shift_rows(K , row_index , R , C , matrix):
+    
+    K = (K % C)
+    
+    matrix[row_index] = ([matrix[row_index][column_index] for column_index in range((C - K) , C)] + [matrix[row_index][column_index] for column_index in range(0 , (C - K))])
+
+def shift_column(K , column_index , R , C , matrix):
+    
+    K = (K % R)
+    
+    column_values_list = [matrix[row_index][column_index] for row_index in range(0 , R)]
+    
+    column_values_list = ([matrix[row_index][column_index] for row_index in range((R - K) , R)] + [matrix[row_index][column_index] for row_index in range(0 , R)])
+    
+    [matrix[row_index].__setitem__(column_index , new_column_value) for row_index , new_column_value in zip(range(0 , R) , column_values_list)]
+
+def print_query_number_and_matrix(query_number , matrix):
+    
+    print("Query" , query_number)
+    
+    [print(*row_list) for row_list in matrix]
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+Q = int(input())
+
+for query_number in range(1 , (Q + 1)):
+    
+    X , K , character = [(int(value) - 1) if(index == 0) else ((int(value)) if(index == 1) else (value)) for index , value in enumerate(input().strip().split())]
+    
+    (shift_rows(K , X , R , C , matrix)) if(character == 'r') else (shift_column(K , X , R , C , matrix))
+    
+    print_query_number_and_matrix(query_number , matrix)
