@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Iron Rods - Strictly Increasing Order in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+rods_heights_list = list(map(int , input().split()))
+
+remaining_rods_heights_sum = 0
+
+for index in range(1 , N):
+    
+    previous_rod_height = rods_heights_list[(index - 1)]
+    
+    current_rod_height = rods_heights_list[index]
+    
+    rods_heights_list[index] = (previous_rod_height + 1)
+    
+    remaining_rods_heights_sum += (current_rod_height - rods_heights_list[index])
+
+while(remaining_rods_heights_sum >= (rods_heights_list[-1] + 1)):
+    
+    remaining_rods_heights_sum -= (rods_heights_list[-1] + 1)
+    
+    rods_heights_list.append((rods_heights_list[-1] + 1))
+
+print(*rods_heights_list)
