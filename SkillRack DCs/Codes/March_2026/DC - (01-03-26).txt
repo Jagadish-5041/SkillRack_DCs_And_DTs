@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Train - Passengers Waiting Time in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def get_total_seconds(time_string):
+    
+    return ((lambda hours , minutes : (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes))) (*map(int , time_string.split(":"))))
+
+def convert_seconds_to_minutes(total_seconds):
+    
+    return (total_seconds // 60)
+
+target_seconds = get_total_seconds(input().strip())
+
+for i in range(0 , int(input())):
+    
+    name_string , time_string = input().strip().split()
+    
+    (lambda total_seconds : print(name_string , ((-1) if(total_seconds >= target_seconds) else (convert_seconds_to_minutes(abs((total_seconds - target_seconds))))))) (get_total_seconds(time_string))
