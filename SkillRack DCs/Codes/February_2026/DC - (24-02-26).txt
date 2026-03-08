@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Append Alphabet - Surrounding Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def append_alphabet_to_surroundings(alphabet , offset_coordinates_list , current_i , current_j , R , C , matrix):
+    
+    for offset_i , offset_j in offset_coordinates_list:
+        
+        if((is_within_bounds((current_i + offset_i) , R)) and (is_within_bounds((current_j + offset_j) , C))):
+            
+            matrix[(current_i + offset_i)][(current_j + offset_j)] = (matrix[(current_i + offset_i)][(current_j + offset_j)] + alphabet)
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+offset_coordinates_list = [(-1 , -1) , (-1 , 0) , (-1 , 1) , (0 , 1) , (1 , 1) , (1 , 0) , (1 , -1) , (0 , -1)]
+
+[append_alphabet_to_surroundings(matrix[alphabet_i][alphabet_j] , offset_coordinates_list , alphabet_i , alphabet_j , R , C , matrix) for alphabet_i , alphabet_j in [(i , j) for i in range(0 , R) for j in range(0 , C) if((len(matrix[i][j]) == 1) and (matrix[i][j].isalpha()))]]
+
+[print(*row_list) for row_list in matrix]
