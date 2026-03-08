@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Sub Matrix Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S , R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+first_end_flag = False
+
+for i_1 in range(0 , R):
+    
+    for j_1 in range(0 , C):
+        
+        for i_2 in range(i_1 , R):
+            
+            for j_2 in range(j_1 , C):
+                
+                current_sum = 0
+                
+                for i_3 in range(i_1 , (i_2 + 1)):
+                    
+                    for j_3 in range(j_1 , (j_2 + 1)):
+                        
+                        current_sum += matrix[i_3][j_3]
+                
+                if(current_sum == S):
+                    
+                    (print("END")) if(first_end_flag) else ("")
+                    
+                    first_end_flag = (True) if(first_end_flag == False) else (first_end_flag)
+                    
+                    for i_3 in range(i_1 , (i_2 + 1)):
+                        
+                        for j_3 in range(j_1 , (j_2 + 1)):
+                            
+                            print(matrix[i_3][j_3] , end = " ")
+                        
+                        print()
