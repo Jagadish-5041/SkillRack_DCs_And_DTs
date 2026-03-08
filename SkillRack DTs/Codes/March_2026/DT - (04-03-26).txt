@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Sort N Dates in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+months_positions_map = {month_string : position for month_string , position in zip("jan feb mar apr may jun jul aug sep oct nov dec".split() , range(1 , 13))}
+
+dates_list = []
+
+for i in range(0 , int(input())):
+    
+    date_list = [None for count in range(0 , 3)]
+    
+    [(date_list.__setitem__(1 , value)) if(value.isalpha()) else ((date_list.__setitem__(0 , int(value))) if(len(value) == 2) else (date_list.__setitem__(2 , int(value)))) for value in input().strip().split("-")]
+    
+    dates_list.append(date_list)
+
+[print("{:02d}-{}-{:04d}".format(*date_list)) for date_list in sorted(dates_list , key = lambda date_list : (date_list[2] , months_positions_map[date_list[1].lower()] , date_list[0]))]
