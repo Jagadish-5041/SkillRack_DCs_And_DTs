@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Unique Alphabets To Ranges in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.lower()) else (ord('A')))
+
+def get_next_alphabet(alphabet):
+    
+    return (('z') if(alphabet == 'z') else ((lambda offset_value : chr((((ord(alphabet) - offset_value) + 1) + offset_value))) (get_offset_value(alphabet))))
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+unique_characters_list = sorted(list(set(input().strip())))
+
+N = len(unique_characters_list)
+
+index = 0
+
+while(is_within_bounds(index , N)):
+    
+    current_alphabet = unique_characters_list[index]
+    
+    current_range_of_alphabets_list = []
+    
+    while((is_within_bounds(index , N)) and (unique_characters_list[index] == current_alphabet)):
+        
+        current_range_of_alphabets_list.append(current_alphabet)
+        
+        current_alphabet = get_next_alphabet(current_alphabet)
+        
+        index = (index + 1)
+    
+    print(current_range_of_alphabets_list[0] , current_range_of_alphabets_list[-1] , sep = ":")
