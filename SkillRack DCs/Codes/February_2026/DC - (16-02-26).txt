@@ -1,0 +1,61 @@
+Problem Statement :-
+
+Function - removeRowsWithSameValue() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+boundedArray *removeRowsWithSameValue(int R , int C , int *matrix){
+    
+    int **answer_matrix = ((int **) malloc((R * sizeof(int *))));
+    
+    int matrix_row_index = 0;
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        int value = matrix[((i * C) + 0)];
+        
+        int flag = 0;
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            if(matrix[((i * C) + j)] != value){
+                
+                flag = 1;
+                
+                break;
+            }
+        }
+        
+        if(flag){
+            
+            answer_matrix[matrix_row_index] = ((int *) malloc((C * sizeof(int))));
+            
+            for(int matrix_column_index = 0 ; (matrix_column_index < C) ; matrix_column_index++){
+                answer_matrix[matrix_row_index][matrix_column_index] = matrix[((i * C) + matrix_column_index)];
+            }
+            
+            matrix_row_index++;
+        }
+    }
+    
+    if(matrix_row_index == 0){
+        
+        C = 1;
+        
+        answer_matrix[matrix_row_index] = ((int *) malloc((C * sizeof(int))));
+        
+        answer_matrix[matrix_row_index][0] = -1;
+        
+        matrix_row_index++;
+    }
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> R) = matrix_row_index;
+    
+    (bounded_array_reference -> C) = C;
+    
+    (bounded_array_reference -> matrix) = answer_matrix;
+    
+    return bounded_array_reference;
+}
