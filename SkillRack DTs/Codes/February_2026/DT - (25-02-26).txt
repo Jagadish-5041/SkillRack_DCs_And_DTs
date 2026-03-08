@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Combinations - Only Consonants in DT (Daily TesT) in SkillRack in Python - Programming
+
+Code :-
+
+s=input().strip()
+v="aeiouAEIOU"
+n=len(s)
+f=False
+for i in range(1, 1<<n):
+    comb=""
+    for j in range(n):
+        if i & (1<<j):
+            comb+=s[j]
+    if len(comb)>=2 and all(ch not in v for ch in comb):
+        print(comb)
+        f=True
+if not f:
+    print(-1)
