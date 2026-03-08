@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Move To Beginning - Operations Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def shift_last_K_characters_to_left(K , N , A):
+    
+    return ([A[index] for index in range((N - K) , N)] + [A[index] for index in range(0 , (N - K))])
+
+original_characters_list = list(input().strip())
+
+copy_characters_list = original_characters_list.copy()
+
+X , Y = map(int , input().split())
+
+N = len(copy_characters_list)
+
+flag = True
+
+operations_count = 0
+
+while((flag) or (original_characters_list != copy_characters_list)):
+    
+    flag = False
+    
+    copy_characters_list = shift_last_K_characters_to_left(((X) if(is_even(operations_count)) else (Y)) , N , copy_characters_list)
+    
+    operations_count = (operations_count + 1)
+
+print(operations_count)
