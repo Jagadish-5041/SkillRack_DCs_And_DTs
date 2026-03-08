@@ -1,0 +1,67 @@
+Problem Statement :-
+
+Matrix - Spirally Palindrome in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_clockwise_spirally_traversed_characters(starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    characters_string = ""
+    
+    for current_j in range(starting_j , (ending_j + 1)):
+        
+        characters_string += matrix[starting_i][current_j]
+    
+    for current_i in range((starting_i + 1) , (ending_i + 1)):
+        
+        characters_string += matrix[current_i][ending_j]
+    
+    for current_j in range((ending_j - 1) , (starting_j - 1) , -1):
+        
+        characters_string += matrix[ending_i][current_j]
+    
+    for current_i in range((ending_i - 1) , starting_i , -1):
+        
+        characters_string += matrix[current_i][starting_j]
+    
+    return characters_string
+
+def is_palindrome(N , string):
+    
+    for index in range(0 , ((N // 2) + 1)):
+        
+        if(string[index] != string[(N - index - 1)]):
+            
+            return False
+    
+    return True
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+total_layers_count = min(((R // 2) + (R % 2)) , ((C // 2) + (C % 2)))
+
+starting_i = 0
+
+ending_i = (R - 1)
+
+starting_j = 0
+
+ending_j = (C - 1)
+
+clockwise_spirally_traversed_characters_string = ""
+
+for layer in range(0 , total_layers_count):
+    
+    clockwise_spirally_traversed_characters_string = (clockwise_spirally_traversed_characters_string + get_clockwise_spirally_traversed_characters(starting_i , ending_i , starting_j , ending_j , R , C , matrix))
+    
+    starting_i = (starting_i + 1)
+    
+    ending_i = (ending_i - 1)
+    
+    starting_j = (starting_j + 1)
+    
+    ending_j = (ending_j - 1)
+
+print(("YES") if(is_palindrome((R * C) , clockwise_spirally_traversed_characters_string)) else ("NO"))
