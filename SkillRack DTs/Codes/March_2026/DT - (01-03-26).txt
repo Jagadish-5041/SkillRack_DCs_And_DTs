@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Remove Ranges - Overlaps in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+ranges_list = [tuple(map(int , range_string.split("-"))) for range_string in input().strip().split()]
+
+target_starting_range_value , target_ending_range_value = map(int , input().strip().split("-"))
+
+answer_ranges_list = []
+
+for current_starting_range_value , current_ending_range_value in ranges_list:
+    
+    if((current_starting_range_value > target_ending_range_value) or (target_starting_range_value > current_ending_range_value)):
+        answer_ranges_list.append((current_starting_range_value , current_ending_range_value))
+    else:
+        (answer_ranges_list.append((current_starting_range_value , (target_starting_range_value - 1)))) if(current_starting_range_value < target_starting_range_value) else ("")
+        (answer_ranges_list.append(((target_ending_range_value + 1) , current_ending_range_value))) if(current_ending_range_value > target_ending_range_value) else ("")
+
+([print(*current_range_tuple , sep = "-") for current_range_tuple in sorted(answer_ranges_list , key = lambda range_tuple : (range_tuple[0] , range_tuple[1]))]) if(answer_ranges_list) else (print(-1))
