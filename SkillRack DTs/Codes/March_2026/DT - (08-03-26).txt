@@ -1,0 +1,56 @@
+Problem Statement :-
+
+Compressed String Pattern Matching in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def check(A , B):
+    
+    if(len(A) != len(B)):
+        return False
+    
+    for character_1 , character_2 in zip(A.lower() , B.lower()):
+        
+        if((character_2 != '#') and (character_1 != character_2)):
+            
+            return False
+    
+    return True
+
+A = input().strip()
+
+B = input().strip()
+
+B_N = len(B)
+
+B_i = 0
+
+temp_A = ""
+
+while(is_within_bounds(B_i , B_N)):
+    
+    if(not B[B_i].isdigit()):
+        
+        temp_A += B[B_i]
+        
+        B_i += 1
+    
+    else:
+        
+        number_string = ""
+        
+        while((is_within_bounds(B_i , B_N)) and (B[B_i].isdigit())):
+            
+            number_string += B[B_i]
+            
+            B_i += 1
+        
+        for count in range(1 , (int(number_string) + 1)):
+            
+            temp_A += '#'
+
+print(("YES") if(check(A , temp_A)) else ("NO"))
