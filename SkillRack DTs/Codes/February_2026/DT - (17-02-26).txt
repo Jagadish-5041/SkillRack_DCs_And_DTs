@@ -1,0 +1,19 @@
+Problem Statement :-
+
+City Missiles in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+data_list = [tuple(map(int , input().split())) for i in range(0 , N)]
+
+for X , Y in data_list:
+    
+    if(((X + Y) , (Y * -1)) in data_list):
+        
+        print("YES")
+        
+        quit()
+
+print("NO")
