@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Shadow Sentences (or) Not in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+words_list_1 = input().strip().split()
+
+words_list_2 = input().strip().split()
+
+flag = (len(words_list_1) != len(words_list_2))
+
+for word_string_1 , word_string_2 in zip(words_list_1 , words_list_2):
+    
+    if((flag) or (len(word_string_1) != len(word_string_2)) or (len((set(word_string_1) & set(word_string_2))) != 0)):
+        
+        print("NO")
+        
+        quit()
+
+print("YES")
