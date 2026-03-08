@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Count Squares - Parallel To Axes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+coordinates_set = set(tuple(map(int , input().split())) for i in range(0 , N))
+
+Y_axis_based_coordinates_map = {}
+
+[Y_axis_based_coordinates_map.setdefault(Y , set()).add(X) for X , Y in coordinates_set]
+
+unique_squares_count_parallel_to_axes = sum(1 for X_1 , Y_1 in coordinates_set for X_2 in Y_axis_based_coordinates_map[Y_1] if((lambda square_length : ((X_2 > X_1) and ((X_1 , (Y_1 + square_length)) in coordinates_set) and ((X_2 , (Y_1 + square_length)) in coordinates_set))) (X_2 - X_1)))
+
+print(unique_squares_count_parallel_to_axes)
