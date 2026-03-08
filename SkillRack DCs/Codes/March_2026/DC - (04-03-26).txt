@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Maximum Sum - No Adjacenct in DC (Daily Challenge) in SkillRack in Python - Programmming
+
+Code :-
+
+N = int(input())
+
+list_1 = list(map(int , input().split()))
+
+list_2 = list(map(int , input().split()))
+
+maximum_column_values_list = [max(list_1[index] , list_2[index]) for index in range(0 , N)]
+
+if(N == 1):
+    print(maximum_column_values_list[0])
+    quit()
+
+previous_maximum_value_1 = max(maximum_column_values_list[0] , maximum_column_values_list[1])
+
+previous_maximum_value_2 = maximum_column_values_list[0]
+
+for index in range(2 , N):
+    
+    current_maximum_value = max(previous_maximum_value_1 , (maximum_column_values_list[index] + previous_maximum_value_2))
+    
+    previous_maximum_value_2 = previous_maximum_value_1
+    
+    previous_maximum_value_1 = current_maximum_value
+
+print(previous_maximum_value_1)
