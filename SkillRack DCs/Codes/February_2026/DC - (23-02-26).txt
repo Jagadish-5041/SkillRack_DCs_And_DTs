@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Employees - Working Time in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def convert_hours_to_seconds(hours):
+    
+    return (hours * 3600)
+
+def convert_minutes_to_seconds(minutes):
+    
+    return (minutes * 60)
+
+def get_total_seconds(time_string):
+    
+    hours , minutes = map(int , time_string.split(":"))
+    
+    return (convert_hours_to_seconds(hours) + convert_minutes_to_seconds(minutes))
+
+data_list = sorted([((lambda name_string , in_time_string , out_time_string : (((name_string , in_time_string , out_time_string) , (get_total_seconds(out_time_string) - get_total_seconds(in_time_string))))) (*input().strip().split())) for i in range(0 , int(input()))] , key = lambda data_tuple : ((data_tuple[1] * -1) , get_total_seconds(data_tuple[0][1]) , data_tuple[0][0]))
+
+[print(data_tuple[0]) for data_tuple , working_time in data_list]
