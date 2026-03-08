@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Function - zipArrays() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdarg.h>
+
+int min(int A , int B){
+    
+    return ((A <= B) ? (A) : (B));
+}
+
+void zipArrays(int variable_arguments_count , ...){
+    
+    int is_6_variable_arguments_count_flag = (variable_arguments_count == 6);
+    
+    va_list variable_arguments_list;
+    
+    va_start(variable_arguments_list , variable_arguments_count);
+    
+    int A_N = va_arg(variable_arguments_list , int);
+    
+    int *A = va_arg(variable_arguments_list , int*);
+    
+    int B_N = va_arg(variable_arguments_list , int);
+    
+    int *B = va_arg(variable_arguments_list , int*);
+    
+    int C_N = (is_6_variable_arguments_count_flag) ? (va_arg(variable_arguments_list , int)) : (-999);
+    
+    int *C = (is_6_variable_arguments_count_flag) ? (va_arg(variable_arguments_list , int*)) : (NULL);
+    
+    for(int minimum_length = (is_6_variable_arguments_count_flag) ? (min(A_N , min(B_N , C_N))) : (min(A_N , B_N)) , index = 0 ; (index < minimum_length) ; index++){
+        
+        if(is_6_variable_arguments_count_flag){
+            printf("%d %d %d\n" , A[index] , B[index] , C[index]);
+        }else{
+            printf("%d %d\n" , A[index] , B[index]);
+        }
+    }
+    
+    va_end(variable_arguments_count);
+}
