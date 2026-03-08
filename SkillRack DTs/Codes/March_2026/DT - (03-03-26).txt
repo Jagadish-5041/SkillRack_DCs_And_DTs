@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Toggle Vowels - Both Ends in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return ((character.isalpha()) and (character in 'aeiouAEIOU'))
+
+def toggle_alphabet(alphabet):
+    
+    return ((alphabet.upper()) if(alphabet.islower()) else (alphabet.lower()))
+
+characters_list = list(input().strip())
+
+vowels_indices_list = [index for index , character in enumerate(characters_list) if(is_vowel(character))]
+
+vowels_indices_list_left_index = 0
+
+vowels_indices_list_right_index = (len(vowels_indices_list) - 1)
+
+while(vowels_indices_list_left_index <= vowels_indices_list_right_index):
+    
+    characters_list[vowels_indices_list[vowels_indices_list_left_index]] = toggle_alphabet(characters_list[vowels_indices_list[vowels_indices_list_left_index]])
+    
+    characters_list[vowels_indices_list[vowels_indices_list_right_index]] = (toggle_alphabet(characters_list[vowels_indices_list[vowels_indices_list_right_index]])) if(vowels_indices_list_left_index != vowels_indices_list_right_index) else (characters_list[vowels_indices_list[vowels_indices_list_right_index]])
+    
+    vowels_indices_list_left_index += 1
+    
+    vowels_indices_list_right_index -= 1
+    
+    print(*characters_list , sep = "")
