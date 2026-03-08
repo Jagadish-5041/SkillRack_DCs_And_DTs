@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Matrix - Column Wise Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+new_R = max(sum(len(matrix[i][j]) for i in range(0 , R)) for j in range(0 , C))
+
+new_C = C
+
+new_matrix = [['*' for j in range(0 , new_C)] for i in range(0 , new_R)]
+
+column_wise_row_indices_list = [0 for j in range(0 , new_C)]
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        for character in matrix[i][j]:
+            
+            new_matrix[column_wise_row_indices_list[j]][j] = character
+            
+            column_wise_row_indices_list[j] = (column_wise_row_indices_list[j] + 1)
+
+[print(*row_list) for row_list in new_matrix]
