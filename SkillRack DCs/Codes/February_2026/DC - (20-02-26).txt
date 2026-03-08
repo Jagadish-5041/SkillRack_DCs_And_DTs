@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Function - getTotalPrice() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <ctype.h>
+#include <string.h>
+
+int contains(char character , char *string){
+    
+    int index = (strchr(string , character) - string);
+    
+    return ((0 <= index) && (index < strlen(string)));
+}
+
+double getTotalPrice(char *string){
+    
+    double total_price = 0.0;
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        if(string_tokenizer[(strlen(string_tokenizer) - 1)] == '.'){
+            string_tokenizer[(strlen(string_tokenizer) - 1)] = '\0';
+        }
+            
+        if((isdigit(string_tokenizer[0])) && (contains('.' , string_tokenizer))){
+            total_price += atof(string_tokenizer);
+        }
+    }
+    
+    return total_price;
+}
