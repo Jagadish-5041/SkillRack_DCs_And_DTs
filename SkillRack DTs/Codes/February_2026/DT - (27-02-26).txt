@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Sort Alphabets - Odd ASCII in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_ASCII_value(character):
+    
+    return ord(character)
+
+A = list(input().strip())
+
+B = sorted([character for character in A if(is_odd(get_ASCII_value(character)))])
+
+B_index = 0
+
+for A_index in range(0 , len(A)):
+    
+    if(is_odd(get_ASCII_value(A[A_index]))):
+        
+        A[A_index] = B[B_index]
+        
+        B_index = (B_index + 1)
+
+print(*A , sep = "")
