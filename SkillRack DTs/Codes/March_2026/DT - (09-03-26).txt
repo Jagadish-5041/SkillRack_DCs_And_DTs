@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Function - containsSequence() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+int containsSequence(int N , int *array , int K){
+    
+    int *flag_array = ((int *) calloc((K + 1) , sizeof(int)));
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(array[index] > K){
+            return 0;
+        }
+        
+        flag_array[array[index]] = 1;
+    }
+    
+    for(int number = 1 ; (number <= K) ; number++){
+        
+        if(flag_array[number] != 1){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
