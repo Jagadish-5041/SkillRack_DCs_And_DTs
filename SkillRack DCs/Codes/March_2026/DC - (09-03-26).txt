@@ -1,0 +1,161 @@
+Problem Statement :-
+
+Function - findBinarySum() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int is_within_bounds(int index , int N){
+    
+    return ((0 <= index) && (index < N));
+}
+
+int get_int_bit(char bit_character){
+    
+    return ((int) (bit_character - '0'));
+}
+
+int get_char_bit(int bit_integer){
+    
+    return ((char) (bit_integer + '0'));
+}
+
+char *add_two_binary_strings(char *A , char *B){
+    
+    int A_N = strlen(A);
+    
+    int B_N = strlen(B);
+    
+    int answer_string_N = (max(A_N , B_N) + 3);
+    
+    char *answer_string = ((char *) malloc((answer_string_N * sizeof(char))));
+    
+    answer_string[(answer_string_N - 1)] = '\0';
+    
+    int answer_string_i = (answer_string_N - 2);
+    
+    int A_i = (A_N - 1);
+    
+    int B_i = (B_N - 1);
+    
+    int carry_bit = 0;
+    
+    while((is_within_bounds(A_i , A_N)) && (is_within_bounds(B_i , B_N))){
+        
+        int bit_1 = get_int_bit(A[A_i]);
+        
+        int bit_2 = get_int_bit(B[B_i]);
+        
+        int sum_value = (bit_1 + bit_2 + carry_bit);
+        
+        int answer_bit = -999;
+        
+        if(sum_value == 0){
+            answer_bit = 0;
+            carry_bit = 0;
+        }else if(sum_value == 1){
+            answer_bit = 1;
+            carry_bit = 0;
+        }else if(sum_value == 2){
+            answer_bit = 0;
+            carry_bit = 1;
+        }else if(sum_value == 3){
+            answer_bit = 1;
+            carry_bit = 1;
+        }
+        
+        answer_string[answer_string_i] = get_char_bit(answer_bit);
+        
+        answer_string_i -= 1;
+        
+        A_i -= 1;
+        
+        B_i -= 1;
+    }
+    
+    while(is_within_bounds(A_i , A_N)){
+        
+        int sum_value = (get_int_bit(A[A_i]) + carry_bit);
+        
+        int answer_bit = -999;
+        
+        if(sum_value == 0){
+            answer_bit = 0;
+            carry_bit = 0;
+        }else if(sum_value == 1){
+            answer_bit = 1;
+            carry_bit = 0;
+        }else if(sum_value == 2){
+            answer_bit = 0;
+            carry_bit = 1;
+        }else if(sum_value == 3){
+            answer_bit = 1;
+            carry_bit = 1;
+        }
+        
+        answer_string[answer_string_i] = get_char_bit(answer_bit);
+        
+        answer_string_i -= 1;
+        
+        A_i -= 1;
+    }
+    
+    while(is_within_bounds(B_i , B_N)){
+        
+        int sum_value = (get_int_bit(B[B_i]) + carry_bit);
+        
+        int answer_bit = -999;
+        
+        if(sum_value == 0){
+            answer_bit = 0;
+            carry_bit = 0;
+        }else if(sum_value == 1){
+            answer_bit = 1;
+            carry_bit = 0;
+        }else if(sum_value == 2){
+            answer_bit = 0;
+            carry_bit = 1;
+        }else if(sum_value == 3){
+            answer_bit = 1;
+            carry_bit = 1;
+        }
+        
+        answer_string[answer_string_i] = get_char_bit(answer_bit);
+        
+        answer_string_i -= 1;
+        
+        B_i -= 1;
+    }
+    
+    if(carry_bit == 1){
+        
+        answer_string[answer_string_i] = get_char_bit(carry_bit);
+        
+        answer_string_i -= 1;
+    }
+    
+    int first_1_bit_index = 0;
+    
+    while((is_within_bounds(first_1_bit_index , answer_string_N)) && (answer_string[first_1_bit_index] != '1')){
+        first_1_bit_index++;
+    }
+    
+    return ((first_1_bit_index == answer_string_N) ? ("0") : (&answer_string[first_1_bit_index]));
+}
+
+char *findBinarySum(int N , char binary_strings_array[N][101]){
+    
+    char *answer_string = binary_strings_array[0];
+    
+    for(int index = 1 ; (index < N) ; index++){
+        answer_string = add_two_binary_strings(answer_string , binary_strings_array[index]);
+    }
+    
+    return answer_string;
+}
