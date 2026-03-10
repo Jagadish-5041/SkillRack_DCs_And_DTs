@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Snake Matrix Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+pattern_list = []
+
+pattern_value = 1
+
+for row_number in range(1 , (N + 1)):
+    
+    ([pattern_list.append(value) for value in range(pattern_value , (pattern_value + N))]) if(is_odd(row_number)) else ([pattern_list.append(value) for value in range((pattern_value + N - 1) , (pattern_value - 1) , -1)])
+    
+    pattern_value = (pattern_value + N)
+
+pattern_list_index = 0
+
+for asterisks_count in range((N - 1) , -1 , -1):
+    
+    print(*('*' * asterisks_count) , end = " ")
+    
+    print(*pattern_list[pattern_list_index : (pattern_list_index + N)])
+    
+    pattern_list_index = (pattern_list_index + N)
