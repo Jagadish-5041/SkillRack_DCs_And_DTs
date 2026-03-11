@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Print Directions - Visited Cities in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_next_coordinates(target_city_number , current_i , current_j , R , C , matrix):
+    
+    for offset_i , offset_j , direction in [(-1 , 0 , 'N') , (1 , 0 , 'S') , (0 , -1 , 'W') , (0 , 1 , 'E')]:
+        
+        if((is_within_bounds((current_i + offset_i) , R)) and (is_within_bounds((current_j + offset_j) , C)) and (matrix[(current_i + offset_i)][(current_j + offset_j)] == target_city_number)):
+            
+            return ((current_i + offset_i) , (current_j + offset_j) , direction)
+    
+    return (-999 , -999 , '#')
+
+R , C = map(int , input().split())
+
+matrix = [[(value) if(value == '*') else (int(value)) for value in input().strip().split()] for i in range(0 , R)]
+
+current_i = 0
+
+current_j = 0
+
+next_direction = None
+
+visited_city_number = 1
+
+while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C)) and (next_direction != '#')):
+    
+    current_i , current_j , next_direction = get_next_coordinates((visited_city_number + 1) , current_i , current_j , R , C , matrix)
+    
+    visited_city_number = (visited_city_number + 1)
+    
+    (print(next_direction , end = " ")) if(next_direction != '#') else ("")
