@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Square Submatrix - All Odd/Even in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+K = int((int(input()) ** 0.5))
+
+for i in range(0 , (R - K + 1)):
+    
+    for j in range(0 , (C - K + 1)):
+        
+        if((lambda parity_bits_sum : ((parity_bits_sum == 0) or (parity_bits_sum == (K * K)))) (sum((matrix[k][l] & 1) for k in range(i , (i + K)) for l in range(j , (j + K))))):
+            
+            print("Yes")
+            
+            quit()
+
+print("No")
