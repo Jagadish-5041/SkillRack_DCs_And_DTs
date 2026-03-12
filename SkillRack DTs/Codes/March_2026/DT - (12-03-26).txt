@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Minimum Substrings - Unique Characters in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+characters_flag_map = {}
+
+minimum_substrings_split_count = 0
+
+for character in (input().strip() + '#'):
+    
+    if((character == '#') or (character in characters_flag_map)):
+        
+        minimum_substrings_split_count = (minimum_substrings_split_count + 1)
+        
+        characters_flag_map = {}
+    
+    characters_flag_map[character] = True
+
+print(minimum_substrings_split_count)
