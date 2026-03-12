@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Function - reverseStringRetainCase() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+void reverseStringRetainCase(char *string){
+    
+    char *answer_string = ((char *) malloc((strlen(string) * sizeof(char))));
+    
+    for(char *string_tokenizer = strtok(string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        int N = strlen(string_tokenizer);
+        
+        char word_string[(N + 1)];
+        
+        word_string[N] = '\0';
+        
+        for(int i = 0 , j = (N - 1) ; (j >= 0) ; i++ , j--){
+            word_string[i] = ((isupper(string_tokenizer[i])) && (isalpha(string_tokenizer[j]))) ? (toupper(string_tokenizer[j])) : (((islower(string_tokenizer[i])) && (isalpha(string_tokenizer[j]))) ? (tolower(string_tokenizer[j])) : (string_tokenizer[j]));
+        }
+        
+        strcat(answer_string , word_string);
+        
+        strcat(answer_string , " ");
+    }
+    
+    strcpy(string , answer_string);
+    
+    free(answer_string);
+}
