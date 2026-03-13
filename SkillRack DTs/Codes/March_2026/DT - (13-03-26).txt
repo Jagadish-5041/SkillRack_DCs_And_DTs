@@ -1,0 +1,69 @@
+Problem Statement :-
+
+Function - countWordsOnlyAlphabets() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+int is_only_alphabets(int N , char *string){
+    
+    if((string[0] == '-') || (string[(N - 1)] == '-')){
+        return 0;
+    }
+    
+    int first_hyphen_found_flag = -999;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(string[index] == '-'){
+            
+            if(first_hyphen_found_flag == 1){
+                return 0;
+            }
+            
+            first_hyphen_found_flag = 1;
+        }
+        
+        if((!isalpha(string[index])) && (string[index] != '-')){
+            
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+int countWordsOnlyAlphabets(char *string){
+    
+    int N = strlen(string);
+    
+    char temp_string[(N + 1)];
+    
+    int temp_string_index = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if((string[index] != ',') && (string[index] != '.') && (string[index] != '?') && (string[index] != '!')){
+            
+            temp_string[temp_string_index++] = string[index];
+        }
+    }
+    
+    temp_string[temp_string_index] = '\0';
+    
+    int count = 0;
+    
+    for(char *string_tokenizer = strtok(temp_string , " ") ; (string_tokenizer != NULL) ; string_tokenizer = strtok(NULL , " ")){
+        
+        if(is_only_alphabets(strlen(string_tokenizer) , string_tokenizer)){
+            
+            count++;
+        }
+    }
+    
+    return count;
+}
