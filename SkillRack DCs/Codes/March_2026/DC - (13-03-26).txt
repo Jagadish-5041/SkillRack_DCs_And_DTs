@@ -1,0 +1,22 @@
+Problem Statement :-
+
+File - Reverse Lines in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+file_name_string = input().strip()
+
+N = int(input())
+
+first_N_lines_list = []
+
+with open(file_name_string , 'r') as file_rows:
+    
+    for index , row_string in enumerate(file_rows):
+        
+        if(index >= N):
+            break
+        
+        first_N_lines_list.append(row_string.strip())
+
+print(*first_N_lines_list[::-1] , sep = "\n")
