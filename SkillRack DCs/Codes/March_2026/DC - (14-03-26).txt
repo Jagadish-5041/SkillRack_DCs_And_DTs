@@ -1,0 +1,27 @@
+Problem Statement :-
+
+String - Shift Consonants in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in 'aeiouAEIOU'))
+
+characters_list = list(input().strip())
+
+consonants_list = [character for character in characters_list if(is_consonant(character))]
+
+consonants_list = (consonants_list[1 : ] + [consonants_list[0]])
+
+consonants_list_index = 0
+
+for index in range(0 , len(characters_list)):
+    
+    if(is_consonant(characters_list[index])):
+        
+        characters_list[index] = consonants_list[consonants_list_index]
+        
+        consonants_list_index = (consonants_list_index + 1)
+
+print(*characters_list , sep = "")
