@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Brick Wall Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+length , height = map(int , input().split())
+
+rows , columns = map(int , input().split())
+
+brick_1 = '*'
+
+brick_2 = '#'
+
+R = (rows * height)
+
+C = (columns * length)
+
+matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+flag_values_bricks_map = {-1 : (brick_1 , length) , 0 : (brick_2 , (length // 2)) , 1 : (brick_2 , length) , 2 : (brick_1 , (length // 2)) , 3 : (brick_1 , length)}
+
+alternate_flag_value = -1
+
+for row_index in range((R - height) , -1 , (height * -1)):
+    
+    for current_i in range(row_index , (row_index + height)):
+        
+        current_brick , current_brick_length = flag_values_bricks_map[alternate_flag_value]
+        
+        current_j = 0
+        
+        while(current_j < current_brick_length):
+            
+            matrix[current_i][current_j] = current_brick
+            
+            current_j = (current_j + 1)
+        
+        current_brick = (brick_2) if(current_brick == brick_1) else (brick_1)
+        
+        while(current_j < C):
+            
+            for column_index in range(0 , length):
+                
+                if(current_j < C):
+                    
+                    matrix[current_i][current_j] = current_brick
+                    
+                    current_j = (current_j + 1)
+            
+            current_brick = (brick_2) if(current_brick == brick_1) else (brick_1)
+    
+    alternate_flag_value = ((alternate_flag_value + 1) % 4)
+
+[print(*row_list , sep = "") for row_list in matrix]
