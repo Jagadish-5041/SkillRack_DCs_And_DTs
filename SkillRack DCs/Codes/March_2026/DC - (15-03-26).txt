@@ -1,0 +1,71 @@
+Problem Statement :-
+
+Matrix Layers - Repeated Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_layer_sum(starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    layer_sum = 0
+    
+    for current_j in range(starting_j , (ending_j + 1)):
+        
+        layer_sum += matrix[starting_i][current_j]
+    
+    for current_i in range((starting_i + 1) , (ending_i + 1)):
+        
+        layer_sum += matrix[current_i][ending_j]
+    
+    for current_j in range((ending_j - 1) , (starting_j - 1) , -1):
+        
+        layer_sum += matrix[ending_i][current_j]
+    
+    for current_i in range((ending_i - 1) , starting_i , -1):
+        
+        layer_sum += matrix[current_i][starting_j]
+    
+    return layer_sum
+
+N = int(input())
+
+matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+total_layers_count = ((N // 2) + (N % 2))
+
+starting_i = 0
+
+ending_i = (N - 1)
+
+starting_j = 0
+
+ending_j = (N - 1)
+
+layer_sums_list = []
+
+layer_sums_frequency = {}
+
+for layer in range(1 , (total_layers_count + 1)):
+    
+    current_layer_sum = get_layer_sum(starting_i , ending_i , starting_j , ending_j , N , N , matrix)
+    
+    starting_i = (starting_i + 1)
+    
+    ending_i = (ending_i - 1)
+    
+    starting_j = (starting_j + 1)
+    
+    ending_j = (ending_j - 1)
+    
+    layer_sums_list.append(current_layer_sum)
+    
+    layer_sums_frequency[current_layer_sum] = (layer_sums_frequency.get(current_layer_sum , 0) + 1)
+
+for layer_sum in layer_sums_list:
+    
+    if(layer_sums_frequency[layer_sum] > 1):
+        
+        print(layer_sum)
+        
+        quit()
+
+print(-1)
