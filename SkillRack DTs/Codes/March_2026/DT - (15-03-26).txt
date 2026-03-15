@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Longest Valid Parentheses in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+stack = [-1]
+
+maximum_length = 0
+
+for index , character in enumerate(input().strip()):
+    
+    if(character == '('):
+        
+        stack.append(index)
+    
+    else:
+        
+        stack.pop()
+        
+        if(len(stack) == 0):
+            stack.append(index)
+        else:
+            maximum_length = max(maximum_length , (index - stack[-1]))
+
+print(maximum_length)
