@@ -1,0 +1,49 @@
+Problem Statement :-
+
+Common Odd Digits - Same Position in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def compute_power_function_in_log_N_time_complexity(base_value , power_value):
+    
+    product_value = 1
+    
+    while(power_value > 0):
+        
+        product_value = (product_value * base_value) if(is_odd(power_value)) else (product_value)
+        
+        base_value = (base_value * base_value)
+        
+        power_value = (power_value // 2)
+    
+    return product_value
+
+def get_length_of_N(N):
+    
+    return ((0) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+X = int(input())
+
+Y = int(input())
+
+common_odd_digits_in_same_positions_number = 0
+
+while((X > 0) and (Y > 0)):
+    
+    X_digit = (X % 10)
+    
+    Y_digit = (Y % 10)
+    
+    common_odd_digits_in_same_positions_number = ((X_digit * compute_power_function_in_log_N_time_complexity(10 , get_length_of_N(common_odd_digits_in_same_positions_number))) + common_odd_digits_in_same_positions_number) if((is_odd(X_digit)) and (X_digit == Y_digit)) else (common_odd_digits_in_same_positions_number)
+    
+    X = (X // 10)
+    
+    Y = (Y // 10)
+
+print(common_odd_digits_in_same_positions_number)
