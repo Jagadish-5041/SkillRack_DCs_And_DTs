@@ -1,0 +1,54 @@
+Problem Statement :-
+
+Palindrome Queries in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_lexicographically_smallest_palindrome_after_rearrangement(characters_list):
+    
+    characters_frequency = {}
+    
+    [characters_frequency.__setitem__(character , (characters_frequency.get(character , 0) + 1)) for character in characters_list]
+    
+    odd_frequency_characters_count = 0
+    
+    odd_frequency_character = ""
+    
+    for character , frequency in characters_frequency.items():
+        
+        if(is_odd(frequency)):
+            
+            odd_frequency_characters_count = (odd_frequency_characters_count + 1)
+            
+            odd_frequency_character = character
+    
+    # Not Possible to form a Palindrome
+    
+    if(odd_frequency_characters_count > 1):
+        return characters_list
+    
+    left_half_string = ("".join((character * (characters_frequency[character] // 2)) for character in sorted(characters_frequency)))
+    
+    middle_string = (odd_frequency_character) if(odd_frequency_characters_count == 1) else ("")
+    
+    right_half_string = left_half_string[::-1]
+    
+    lexicographically_smallest_palindrome_characters_list = list((left_half_string + middle_string + right_half_string))
+    
+    return lexicographically_smallest_palindrome_characters_list
+
+A = list(input().strip())
+
+Q = int(input())
+
+for query in range(1 , (Q + 1)):
+    
+    L , R = map(int , input().split())
+    
+    A[(L - 1) : R] = get_lexicographically_smallest_palindrome_after_rearrangement(A[(L - 1) : R])
+    
+    print(*A , sep = "")
