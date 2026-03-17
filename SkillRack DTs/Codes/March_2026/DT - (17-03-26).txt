@@ -1,0 +1,52 @@
+Problem Statement :-
+
+Chess Piece - Validate Move in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def check(current_i , current_j , offset_i , offset_j , R , C , matrix , target_string):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        if(matrix[current_i][current_j] == target_string):
+            return True
+        
+        current_i += offset_i
+        
+        current_j += offset_j
+    
+    return False
+
+alphabets_string = "abcdefgh"
+
+numbers_string = "87654321"
+
+R = 8
+
+C = 8
+
+matrix = [[(alphabets_string[j] + numbers_string[i]) for j in range(0 , C)] for i in range(0 , R)]
+
+indices_map = {matrix[i][j] : (i , j) for i in range(0 , R) for j in range(0 , C)}
+
+coins_offsets_map = {'B' : [(-1 , -1) , (-1 , 1) , (1 , -1) , (1 , 1)] , 'K' : [(-1 , -2) , (-1 , 2) , (1 , -2) , (1 , 2) , (-2 , -1) , (-2 , 1) , (2 , -1) , (2 , 1)] , 'R' : [(-1 , 0) , (1 , 0) , (0 , -1) , (0 , 1)]}
+
+chess_piece = input().strip()
+
+source_string , target_string = input().strip().split()
+
+current_i , current_j = indices_map[source_string]
+
+for offset_i , offset_j in coins_offsets_map[chess_piece]:
+    
+    if(check(current_i , current_j , offset_i , offset_j , R , C , matrix , target_string)):
+        
+        print("Yes")
+        
+        quit()
+
+print("No")
