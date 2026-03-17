@@ -1,0 +1,67 @@
+Problem Statement :-
+
+Python - C 008 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *get_binary_string(int N){
+    
+    char *binary_string = ((char *) malloc((64 * sizeof(char))));
+    
+    int binary_string_index = 0;
+    
+    while(N > 0){
+        
+        char bit_character = ((char) ((N % 2) + '0'));
+        
+        binary_string[binary_string_index] = bit_character;
+        
+        binary_string_index = (binary_string_index + 1);
+        
+        N = (N / 2);
+    }
+    
+    binary_string[binary_string_index] = '\0';
+    
+    for(int left_index = 0 , right_index = (binary_string_index - 1) ; (left_index <= right_index) ; left_index++ , right_index--){
+        
+        char temp_value = binary_string[left_index];
+        
+        binary_string[left_index] = binary_string[right_index];
+        
+        binary_string[right_index] = temp_value;
+    }
+    
+    return binary_string;
+}
+
+int main(){
+    
+    int number_1;
+    
+    int number_2;
+    
+    int K;
+    
+    scanf("%d %d\n%d" , &number_1 , &number_2 , &K);
+    
+    char *number_1_binary_string = get_binary_string(number_1);
+    
+    int N = strlen(number_1_binary_string);
+    
+    char *number_2_binary_string = get_binary_string(number_2);
+    
+    int M = strlen(number_2_binary_string);
+    
+    char *answer_binary_string = ((char *) malloc(((N + M + 1) * sizeof(char))));
+    
+    sprintf(answer_binary_string , "%.*s%s" , K , number_1_binary_string , &number_2_binary_string[(M - K)]);
+    
+    printf("%lld" , strtoll(answer_binary_string , NULL , 2));
+    
+    return 0;
+}
