@@ -1,0 +1,58 @@
+Problem Statement :-
+
+Function - replaceCommaWithSpace() in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <string.h>
+
+char *get_new_row_string(int previous_row_existing_flag , char *row_string){
+    
+    int N = strlen(row_string);
+    
+    char *new_row_string = ((char *) malloc(((N + 1) * sizeof(char))));
+    
+    int new_row_string_index = 0;
+    
+    (previous_row_existing_flag == 1) ? (new_row_string[new_row_string_index++] = '\n') : (printf(""));
+    
+    while((N > 0) && ((row_string[(N - 1)] == '\r') || (row_string[(N - 1)] == '\n'))){
+        N--;
+    }
+    
+    for(int index = 0 ; (index < N) ; index++ , new_row_string_index++){
+        new_row_string[new_row_string_index] = (row_string[index] == ',') ? (' ') : (row_string[index]);
+    }
+    
+    return new_row_string;
+}
+
+void replaceCommaWithSpace(char *old_file_name_string){
+    
+    char *new_file_name_string = "new_file_name";
+    
+    FILE *old_file_pointer = fopen(old_file_name_string , "r");
+    
+    FILE *new_file_pointer = fopen(new_file_name_string , "w");
+    
+    char old_row_string[10008];
+    
+    int previous_row_existing_flag = 0;
+    
+    while(fgets(old_row_string , sizeof(old_row_string) , old_file_pointer) != NULL){
+        
+        char *new_row_string = get_new_row_string(previous_row_existing_flag , old_row_string);
+        
+        fputs(new_row_string , new_file_pointer);
+        
+        previous_row_existing_flag = 1;
+    }
+    
+    fclose(old_file_pointer);
+    
+    fclose(new_file_pointer);
+    
+    remove(old_file_name_string);
+    
+    rename(new_file_name_string , old_file_name_string);
+}
