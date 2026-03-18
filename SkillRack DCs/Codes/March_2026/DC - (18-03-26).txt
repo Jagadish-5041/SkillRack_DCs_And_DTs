@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Function - findMaxCost() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+int max(int A , int B){
+    
+    return ((A >= B) ? (A) : (B));
+}
+
+int findMaxCost(int N , struct Box box_structures_array[]){
+    
+    int maximum_cost = 0;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        maximum_cost = max(maximum_cost , ((box_structures_array[index].pens * 10) + (box_structures_array[index].pencils * 5) + (box_structures_array[index].erasers * 3)));
+    }
+    
+    return maximum_cost;
+}
