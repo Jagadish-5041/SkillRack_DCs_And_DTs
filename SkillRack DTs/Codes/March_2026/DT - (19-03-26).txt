@@ -1,0 +1,83 @@
+Problem Statement :-
+
+String - Addition & Subtraction in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def add_strings(string_1 , string_2):
+    
+    if('-' in string_1):
+        return ((lambda S : subtract_strings((S[0] + string_2) , S[1])) (string_1.split("-")))
+    
+    answer_string = ""
+    
+    for character in sorted((string_1 + string_2)):
+        answer_string += character
+    
+    return answer_string
+
+def get_frequency_map(S):
+    
+    frequency_map = {alphabet : 0 for alphabet in "abcdefghijklmnopqrstuvwxyz"}
+    
+    [frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in S]
+    
+    return frequency_map
+
+def subtract_strings(string_1 , string_2):
+    
+    if('-' in string_1):
+        S = string_1.split('-')
+        A = S[0]
+        B = add_strings(string_2 , S[1])
+    else:
+        A = string_1
+        B = string_2
+    
+    set_A = set(A)
+    
+    set_B = set(B)
+    
+    frequency_map_A = get_frequency_map(A)
+    
+    frequency_map_B = get_frequency_map(B)
+    
+    for alphabet in "abcdefghijklmnopqrstuvwxyz":
+        
+        while((frequency_map_A[alphabet] > 0) and (frequency_map_B[alphabet] > 0)):
+            
+            frequency_map_A[alphabet] -= 1
+            
+            frequency_map_B[alphabet] -= 1
+    
+    left_half_string = ""
+    
+    for character in frequency_map_A:
+        
+        if(frequency_map_A[character] > 0):
+            
+            left_half_string += (character * frequency_map_A[character])
+    
+    middle_character = '-'
+    
+    right_half_string = ""
+    
+    for character in frequency_map_B:
+        
+        if(frequency_map_B[character] > 0):
+            
+            right_half_string += (character * frequency_map_B[character])
+    
+    answer_string = (left_half_string + middle_character + right_half_string) if(right_half_string) else (left_half_string)
+    
+    return answer_string
+
+expression_string = input().strip()
+
+alphabet_strings_list = (expression_string.replace('+' , '#').replace('-' , '#').split("#"))
+
+operators_list = [character for character in expression_string if((character == '+') or (character == '-'))]
+
+[alphabet_strings_list.__setitem__((index + 1) , ((add_strings(alphabet_strings_list[index] , alphabet_strings_list[(index + 1)])) if(operators_list[index] == '+') else (subtract_strings(alphabet_strings_list[index] , alphabet_strings_list[(index + 1)])))) for index in range(0 , len(operators_list))]
+
+print(alphabet_strings_list[-1])
