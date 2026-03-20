@@ -1,0 +1,30 @@
+Problem Statement :-
+
+Count Set Bits - All Positions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+while(True):
+    
+    set_bits_count = 0
+    
+    non_zero_values_count = 0
+    
+    for index in range(0 , N):
+        
+        bit = (values_list[index] & 1)
+        
+        set_bits_count = (set_bits_count + 1) if(bit == 1) else (set_bits_count)
+        
+        values_list[index] = (values_list[index] >> 1)
+        
+        non_zero_values_count = (non_zero_values_count + 1) if(values_list[index] > 0) else (non_zero_values_count)
+    
+    print(set_bits_count , end = " ")
+    
+    if(non_zero_values_count == 0):
+        break
