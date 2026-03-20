@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Camel Case Pattern Matching in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+S_N = len(S)
+
+S_i = 0
+
+P = input().strip()
+
+P_N = len(P)
+
+P_i = 0
+
+while((S_i < S_N) and (P_i < P_N)):
+    
+    if(S[S_i] == P[P_i]):
+        
+        S_i += 1
+        
+        P_i += 1
+    
+    else:
+        
+        S_i += 1
+
+print(("YES") if((P_i >= P_N) and (all(S[index].islower() for index in range(S_i , S_N)))) else ("NO"))
