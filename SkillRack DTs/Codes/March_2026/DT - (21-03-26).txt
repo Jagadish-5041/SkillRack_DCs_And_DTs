@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Matrix - Alphabets Pair Encryption in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R = 5
+
+C = 5
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+coordinates_map = {}
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(len(matrix[i][j]) == 3):
+            
+            coordinates_map[matrix[i][j][0]] = (i ,j)
+            
+            coordinates_map[matrix[i][j][2]] = (i , j)
+        
+        else:
+            
+            coordinates_map[matrix[i][j]] = (i , j)
+
+S = input().strip()
+
+for index in range(0 , (len(S) - 2 + 1) , 2):
+    
+    character_1 = S[index]
+    
+    character_2 = S[(index + 1)]
+    
+    row_index_1 , column_index_1 = coordinates_map[character_1]
+    
+    row_index_2 , column_index_2 = coordinates_map[character_2]
+    
+    (print(character_1 , character_2 , sep = "" , end = "")) if((row_index_1 == row_index_2) and (column_index_1 == column_index_2)) else ((print(matrix[row_index_1][((column_index_1 + 1) % C)][0] , matrix[row_index_2][((column_index_2 + 1) % C)][0] , sep = "" , end = "")) if(row_index_1 == row_index_2) else ((print(matrix[((row_index_1 + 1) % R)][column_index_1][0] , matrix[((row_index_2 + 1) % R)][column_index_2][0] , sep = "" , end = "")) if(column_index_1 == column_index_2) else ((print(matrix[row_index_2][column_index_1][0] , matrix[row_index_1][column_index_2][0] , sep = "" , end = "")) if(column_index_1 < column_index_2) else (print(matrix[row_index_1][column_index_2][0] , matrix[row_index_2][column_index_1][0] , sep = "" , end = "")))))
