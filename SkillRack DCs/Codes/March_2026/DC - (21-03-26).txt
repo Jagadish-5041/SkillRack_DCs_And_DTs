@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Integer Compression - Right To Left in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_added_digits_string(N):
+    
+    return str(((N % 10) + (N // 10)))
+
+def compress_number(S):
+    
+    flag = True
+    
+    while(flag):
+        
+        print(S)
+        
+        new_S = ""
+        
+        flag = (len(S) > 1)
+        
+        S_N = len(S)
+        
+        S_i = (S_N - 1)
+        
+        is_number_length_odd_flag = is_odd(S_N)
+        
+        while(((S_i >= 1) if(is_number_length_odd_flag) else (S_i >= 0))):
+            
+            new_S = (get_added_digits_string(int((S[(S_i - 1)] + S[S_i]))) + new_S)
+            
+            S_i = (S_i - 2)
+        
+        new_S = (S[0] + new_S) if(is_number_length_odd_flag) else (new_S)
+        
+        S = new_S
+
+compress_number(input().strip())
