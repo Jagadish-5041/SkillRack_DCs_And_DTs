@@ -1,0 +1,50 @@
+Problem Statement :-
+
+Function - getConsecutiveVowels() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+int is_vowel(char character){
+    
+    return ((isalpha(character)) && ((character == 'a') || (character == 'e') || (character == 'i') || (character == 'o') || (character == 'u')));
+}
+
+boundedArray *getConsecutiveVowels(char string[]){
+    
+    int N = strlen(string);
+    
+    char **vowel_strings_array = ((char **) malloc((N * sizeof(char *))));
+    
+    int vowel_strings_array_index = 0;
+    
+    for(int index = 0 ; (index < N) ; ){
+        
+        while((index < N) && (!is_vowel(tolower(string[index])))){
+            index++;
+        }
+        
+        char *vowels_string = ((char *) malloc(((N + 1) * sizeof(char))));
+        
+        while((index < N) && (is_vowel(tolower(string[index])))){
+            
+            strncat(vowels_string , &string[index] , 1);
+            
+            index++;
+        }
+        
+        (strlen(vowels_string) != 0) ? (vowel_strings_array[vowel_strings_array_index++] = vowels_string) : (printf(""));
+    }
+    
+    (vowel_strings_array_index == 0) ? (vowel_strings_array[vowel_strings_array_index++] = "-1") : (printf(""));
+    
+    boundedArray *bounded_array_reference = ((boundedArray *) malloc(sizeof(boundedArray)));
+    
+    (bounded_array_reference -> SIZE) = vowel_strings_array_index;
+    
+    (bounded_array_reference -> vowels) = vowel_strings_array;
+}
