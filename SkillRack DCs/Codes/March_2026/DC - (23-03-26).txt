@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Digits Asterisks Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_frequency_map = {}
+
+[digits_frequency_map.__setitem__(int(digit_string) , (digits_frequency_map.get(int(digit_string) , 0) + 1)) for digit_string in input().strip()]
+
+R = len(digits_frequency_map)
+
+C = max(digits_frequency_map.values())
+
+for i in digits_frequency_map.keys():
+    
+    [print(i , sep = " " , end = " ") for j in range(1 , (digits_frequency_map[i] + 1))]
+    
+    [print('*' , sep = " " , end = " ") for j in range(digits_frequency_map[i] , C)]
+    
+    print()
