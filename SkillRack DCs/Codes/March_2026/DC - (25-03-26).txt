@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Print Between Repeated Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+character_indices_map = {}
+
+[character_indices_map.setdefault(character , []).append(index) for index , character in enumerate(S)]
+
+answer_list = []
+
+[[answer_list.append(S[indices_list[indices_list_index] : (indices_list[(indices_list_index + 1)] + 1)]) for indices_list_index in range(0 , (len(indices_list) - 1))] for indices_list in character_indices_map.values() if(len(indices_list) > 1)]
+
+(print(*answer_list , sep = "\n")) if(answer_list) else (print(-1))
