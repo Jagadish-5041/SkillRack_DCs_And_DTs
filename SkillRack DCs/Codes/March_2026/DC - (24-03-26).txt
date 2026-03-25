@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Rook Game in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+rows_indices_set = set()
+
+columns_indices_set = set()
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(matrix[i][j] == 1):
+            
+            rows_indices_set.add(i)
+            
+            columns_indices_set.add(j)
+
+moves_count = min((R - len(rows_indices_set)) , (C - len(columns_indices_set)))
+
+print(('A') if(is_odd(moves_count)) else ('B'))
