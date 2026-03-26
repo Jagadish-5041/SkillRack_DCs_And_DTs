@@ -1,0 +1,16 @@
+Problem Statement :-
+
+Function - incrementRowWise() in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+void incrementRowWise(int R , int C , int *matrix){
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            matrix[((i * C) + j)] = (matrix[((i * C) + j)] + (i + 1));
+        }
+    }
+}
