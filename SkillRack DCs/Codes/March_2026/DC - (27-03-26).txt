@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Electronic Display - Maximum Value in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(current_sum , target_sum , current_digit , segments_map , current_number_string , current_number_string_length):
+    
+    global maximum_4_digit_number
+    
+    if((current_sum == target_sum) and (current_number_string_length == 4)):
+        maximum_4_digit_number = max(maximum_4_digit_number , int(current_number_string))
+        return
+    
+    if((current_digit < 0) or (current_sum > target_sum) or (current_number_string_length > 4)):
+        return
+    
+    # Pick - 1
+    
+    depth_first_search((current_sum + segments_map[current_digit]) , target_sum , current_digit , segments_map , (current_number_string + str(current_digit)) , (current_number_string_length + 1))
+    
+    # Pick - 2
+    
+    depth_first_search((current_sum + segments_map[current_digit]) , target_sum , (current_digit - 1) , segments_map , (current_number_string + str(current_digit)) , (current_number_string_length + 1))
+    
+    # Not-Pick
+    
+    depth_first_search(current_sum , target_sum , (current_digit - 1) , segments_map , current_number_string , current_number_string_length);
+
+maximum_4_digit_number = 0
+
+depth_first_search(0 , int(input()) , 9 , {digit : segments_count for digit , segments_count in zip([0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9] , [6 , 2 , 5 , 5 , 4 , 5 , 6 , 3 , 7 , 6])} , "" , 0)
+
+print(maximum_4_digit_number)
