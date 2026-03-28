@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Split Sum - Floating Point Values in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+N = int(input())
+
+A = []
+
+B = []
+
+for float_value in list(map(float , input().strip().split())):
+    
+    int_value = math.floor(float_value)
+    
+    (A.append(int_value)) if(float_value > (int_value + 0.5)) else (B.append(int_value))
+
+print(sum(A) , sum(B))
