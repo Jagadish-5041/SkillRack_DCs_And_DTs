@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Define Class Travels in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+class Travels:
+    
+    def __init__(self , initial_bus_capacity):
+        
+        self.bus_capacity = initial_bus_capacity
+        
+        self.routes_map = {}
+    
+    def bookTickets(self , source , destination , required_seats_count):
+        
+        key = (source , destination)
+        
+        self.routes_map[key] = (self.bus_capacity) if(key not in self.routes_map) else (self.routes_map[key])
+        
+        if(self.routes_map[key] >= required_seats_count):
+            
+            self.routes_map[key] -= required_seats_count
+            
+            return True
+        
+        return False
