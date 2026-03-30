@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Difference Of Odd And Even Digitis Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def get_absolute_difference_of_odd_digits_sum_and_even_digits_sum(number_string):
+    
+    odd_digits_sum = 0
+    
+    even_digits_sum = 0
+    
+    for digit_string in number_string:
+        
+        digit = int(digit_string)
+        
+        odd_digits_sum = (odd_digits_sum + digit) if(is_odd(digit)) else (odd_digits_sum)
+        
+        even_digits_sum = (even_digits_sum + digit) if(is_even(digit)) else (even_digits_sum)
+    
+    return abs((odd_digits_sum - even_digits_sum))
+
+print(get_absolute_difference_of_odd_digits_sum_and_even_digits_sum(input().strip()))
