@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Max Door Number Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def depth_first_search(current_i , current_j , R , C , matrix , dp_matrix):
+    
+    if((not is_within_bounds(current_i , R)) or (not is_within_bounds(current_j , C))):
+        return 0
+    
+    if(not (dp_matrix[current_i][current_j] is None)):
+        return dp_matrix[current_i][current_j]
+    
+    # Move Right Direction
+    
+    move_right = depth_first_search(current_i , (current_j + 1) , R , C , matrix , dp_matrix)
+    
+    # Move Down Direction
+    
+    move_down = depth_first_search((current_i + 1) , current_j , R , C , matrix , dp_matrix)
+    
+    maximum_path_sum = (matrix[current_i][current_j] + max(move_right , move_down))
+    
+    dp_matrix[current_i][current_j] = maximum_path_sum
+    
+    return dp_matrix[current_i][current_j]
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+dp_matrix = [[None for j in range(0 , C)] for i in range(0 , R)]
+
+maximum_path_sum = max(depth_first_search(i , j , R , C , matrix , dp_matrix) for i in range(0 , R) for j in range(0 , C))
+
+print(maximum_path_sum)
