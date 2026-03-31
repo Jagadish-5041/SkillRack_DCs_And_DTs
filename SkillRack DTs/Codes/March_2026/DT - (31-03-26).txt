@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Character Palindrome Check in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+frequency_map = {}
+
+[frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in input().strip()]
+
+odd_frequency_characters_count = sum(1 for frequency in frequency_map.values() if(is_odd(frequency)))
+
+print(("no") if(odd_frequency_characters_count > 1) else ("yes"))
