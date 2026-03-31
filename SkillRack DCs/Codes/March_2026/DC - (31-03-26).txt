@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Pattern Printing Middle Letter - Odd Length String [ZOHO] in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+[print((('*' * (N - row_index - 1)) + ("".join(S[(((N // 2) + offset_index) % N)] for offset_index in range(0 , (row_index + 1)))))) for row_index in range(0 , N)]
