@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Even Number of Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+N = int(input())
+
+[print(value , end = " ") for value in list(map(int , input().split())) if(is_even(get_length_of_N(value)))]
