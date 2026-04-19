@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Print Next Vowel in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+S = input().strip()
+
+previous_vowel = S[-1]
+
+new_S = ""
+
+for current_character in S[::-1]:
+    
+    new_S = (((previous_vowel) if(is_vowel(previous_vowel)) else (current_character)) + new_S)
+    
+    previous_vowel = (current_character) if(is_vowel(current_character)) else (previous_vowel)
+
+print(new_S)
