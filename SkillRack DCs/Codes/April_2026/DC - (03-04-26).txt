@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Alternate Letters In UpperCase in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_new_word_string(word_string):
+    
+    return ("".join(((character.upper()) if(is_odd((index + 1))) else (character.lower())) for index , character in enumerate(word_string)))
+
+S = input().strip()
+
+S_i = 0
+
+S_N = len(S)
+
+new_S = ""
+
+while(is_within_bounds(S_i , S_N)):
+    
+    word_string = ""
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i].isalpha())):
+        
+        word_string = (word_string + S[S_i])
+        
+        S_i = (S_i + 1)
+    
+    not_word_string = ""
+    
+    while((is_within_bounds(S_i , S_N)) and (not S[S_i].isalpha())):
+        
+        not_word_string = (not_word_string + S[S_i])
+        
+        S_i = (S_i + 1)
+    
+    new_S = (new_S + get_new_word_string(word_string) + not_word_string)
+
+print(new_S)
