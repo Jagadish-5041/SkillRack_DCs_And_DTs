@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Count The 1s In The Binary Representation in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+count_of_1_bits = 0
+
+while(N > 0):
+    
+    N = (N & (N - 1))
+    
+    count_of_1_bits = (count_of_1_bits + 1)
+
+print(count_of_1_bits)
