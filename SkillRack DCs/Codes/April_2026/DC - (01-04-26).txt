@@ -1,0 +1,121 @@
+Problem Statement :-
+
+Village Gangs - Max Count in DC (Daily Challenge) in SkillRack in Java Programming
+
+Code :-
+
+import java.util.*;
+
+class Class_Union_Find_or_Class_Disjoint_Set_Union {
+    
+    int components_count;
+    
+    int number_of_nodes;
+    
+    int[] parent_array;
+    
+    int[] rank_array;
+    
+    int[] component_sizes_array;
+    
+    Class_Union_Find_or_Class_Disjoint_Set_Union(int N){
+        
+        this.components_count = N;
+        
+        this.number_of_nodes = N;
+        
+        this.parent_array = new int[N];
+        
+        this.rank_array = new int[N];
+        
+        this.component_sizes_array = new int[N];
+        
+        initialize_arrays();
+    }
+    
+    public void initialize_arrays(){
+        
+        for(int node = 0 ; (node < this.number_of_nodes) ; node++){
+            
+            this.parent_array[node] = node;
+            
+            this.rank_array[node] = 0;
+            
+            this.component_sizes_array[node] = 1;
+        }
+    }
+    
+    public int get_component_size(int node){
+        
+        return this.component_sizes_array[find_ultimate_parent_node(node)];
+    }
+    
+    public int find_ultimate_parent_node(int node){
+        
+        this.parent_array[node] = (this.parent_array[node] != node) ? (find_ultimate_parent_node(parent_array[node])) : (this.parent_array[node]);
+        
+        return this.parent_array[node];
+    }
+    
+    public boolean union(int node_1 , int node_2){
+        
+        int ultimate_parent_of_node_1 = find_ultimate_parent_node(node_1);
+        
+        int ultimate_parent_of_node_2 = find_ultimate_parent_node(node_2);
+        
+        if(ultimate_parent_of_node_1 == ultimate_parent_of_node_2){
+            return false;
+        }
+        
+        if(this.rank_array[ultimate_parent_of_node_1] == this.rank_array[ultimate_parent_of_node_2]){
+            this.parent_array[ultimate_parent_of_node_2] = ultimate_parent_of_node_1;
+            this.rank_array[ultimate_parent_of_node_1] = (this.rank_array[ultimate_parent_of_node_1] + 1);
+            this.component_sizes_array[ultimate_parent_of_node_1] = (this.component_sizes_array[ultimate_parent_of_node_1] + this.component_sizes_array[ultimate_parent_of_node_2]);
+        }else if(this.rank_array[ultimate_parent_of_node_1] > this.rank_array[ultimate_parent_of_node_2]){
+            this.parent_array[ultimate_parent_of_node_2] = ultimate_parent_of_node_1;
+            this.component_sizes_array[ultimate_parent_of_node_1] = (this.component_sizes_array[ultimate_parent_of_node_1] + this.component_sizes_array[ultimate_parent_of_node_2]);
+        }else if(this.rank_array[ultimate_parent_of_node_2] > this.rank_array[ultimate_parent_of_node_1]){
+            this.parent_array[ultimate_parent_of_node_1] = ultimate_parent_of_node_2;
+            this.component_sizes_array[ultimate_parent_of_node_2] = (this.component_sizes_array[ultimate_parent_of_node_2] + this.component_sizes_array[ultimate_parent_of_node_1]);
+        }
+        
+        this.components_count--;
+        
+        return true;
+    }
+}
+
+public class Hello {
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt();
+        
+        int C = sc.nextInt();
+        
+        sc.nextLine();
+        
+        Class_Union_Find_or_Class_Disjoint_Set_Union class_union_find_or_class_disjoint_set_union_object = new Class_Union_Find_or_Class_Disjoint_Set_Union(N);
+        
+        for(int i = 0 ; (i < C) ; i++){
+            
+            int node_1 = (sc.nextInt() - 1);
+            
+            int node_2 = (sc.nextInt() - 1);
+            
+            sc.nextLine();
+            
+            class_union_find_or_class_disjoint_set_union_object.union(node_1 , node_2);
+        }
+        
+        int maximum_component_size = 0;
+        
+        for(int node = 0 ; (node < N) ; node++){
+            maximum_component_size = Math.max(maximum_component_size , class_union_find_or_class_disjoint_set_union_object.get_component_size(node));
+        }
+        
+        System.out.println(maximum_component_size);
+    }
+}
