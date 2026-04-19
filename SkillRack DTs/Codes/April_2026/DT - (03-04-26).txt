@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Reverse Odd Columns in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(*[(matrix[(R - i - 1)][j]) if(is_odd((j + 1))) else (matrix[i][j]) for j in range(0 , C)]) for i in range(0 , R)]
