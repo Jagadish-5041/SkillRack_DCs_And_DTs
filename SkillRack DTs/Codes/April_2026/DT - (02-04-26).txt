@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Equivalent Diagonal Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_traversed_unique_values(current_i , current_j , offset_i , offset_j , R , C , matrix):
+    
+    values_set = set()
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        values_set.add(matrix[current_i][current_j])
+        
+        current_i = (current_i + offset_i)
+        
+        current_j = (current_j + offset_j)
+    
+    return values_set
+
+N = int(input())
+
+matrix = [list(map(int , input().split())) for i in range(0 , N)]
+
+print(("yes") if(sorted(get_traversed_unique_values(0 , 0 , 1 , 1 , N , N , matrix)) == sorted(get_traversed_unique_values(0 , (N - 1) , 1 , -1 , N , N , matrix))) else ("no"))
