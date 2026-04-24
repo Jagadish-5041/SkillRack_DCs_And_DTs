@@ -1,0 +1,22 @@
+Problem Statement :-
+
+C++ - Class Definition Student Marks in DT (Daily Test) in SkillRack in C++ - Programming
+
+Code :-
+
+class Student {
+    
+    int marks;
+    
+    public :
+        
+        Student(int parameter_marks){
+            
+            marks = parameter_marks;
+        }
+    
+    int getMarks(){
+        
+        return marks;
+    }
+};
