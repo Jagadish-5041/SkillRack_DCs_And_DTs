@@ -1,0 +1,17 @@
+Problem Statement :-
+
+String - Substring Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+S_N = len(S)
+
+T_S = input().strip()
+
+T_S_N = len(T_S)
+
+substrings_count = sum(1 for index in range(0 , (S_N - T_S_N + 1)) if(S[index : (index + T_S_N)] == T_S))
+
+print(substrings_count)
