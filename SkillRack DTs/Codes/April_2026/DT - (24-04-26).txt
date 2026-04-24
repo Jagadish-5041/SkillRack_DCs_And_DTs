@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Odd Integer Between Even Integers in DT (Daily Test) in SkillRAck in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+values_list = ([values_list[1]] + values_list + [values_list[-2]])
+
+[print(values_list[index] , end = " ") for index in range((len(values_list) - 2) , 0 , -1) if((is_even(values_list[(index - 1)])) and (is_odd(values_list[index])) and (is_even(values_list[(index + 1)])))]
