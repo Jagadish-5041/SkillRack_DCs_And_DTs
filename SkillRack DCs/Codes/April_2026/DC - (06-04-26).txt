@@ -1,0 +1,22 @@
+Problem Statement :-
+
+Ways To Repay Loan in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(N , dp_matrix):
+    
+    if(N == 0):
+        return 1
+    
+    if(N < 0):
+        return 0
+    
+    if(dp_matrix[N] is not None):
+        return dp_matrix[N]
+    
+    dp_matrix[N] = (depth_first_search((N - 1) , dp_matrix) + depth_first_search((N - 2) , dp_matrix))
+    
+    return dp_matrix[N]
+
+(lambda N : print(depth_first_search(N , [None for i in range(0 , (N + 1))]))) (int(input()))
