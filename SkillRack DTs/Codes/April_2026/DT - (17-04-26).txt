@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sum Of Tenth Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : print(sum(((value % 100) // 10) for value in list(map(int , input().split()))))) (int(input()))
