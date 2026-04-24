@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Array Print Every Mth Integer in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , M : [print(value , end = " ") for index , value in enumerate(list(map(int , input().split()))) if(((index + 1) % M) == 0)]) (*map(int , input().split()))
