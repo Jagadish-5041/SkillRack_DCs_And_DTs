@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Print String As Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+K = int(input())
+
+R = (N // K) if((N % K) == 0) else ((N // K) + 1)
+
+C = K
+
+[print(S[(i * K) : min(((i * K) + K) , N)]) for i in range(0 , R)]
