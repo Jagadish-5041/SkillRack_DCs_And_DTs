@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Sean's Encryption Quest! in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(character):
+    
+    return ((ord('a')) if(character.islower()) else (ord('A')))
+
+def add_K_to_alphabet(offset_value , alphabet , K):
+    
+    return chr(((((ord(alphabet) - offset_value) + K) % 26) + offset_value))
+
+X = int(input())
+
+K = ((lambda value : ((1) if(value <= 0) else (value))) (int(input())))
+
+S = input().strip()
+
+if((X not in [-1 , 0 , 1]) or (not S.isupper())):
+    
+    print("Invalid Input")
+    
+else:
+    
+    for character in S:
+        
+        print(add_K_to_alphabet(get_offset_value(character) , character , K) , end = "")
+        
+        K = (K - 1) if(X == -1) else ((K + 1) if(X == 1) else (K))
