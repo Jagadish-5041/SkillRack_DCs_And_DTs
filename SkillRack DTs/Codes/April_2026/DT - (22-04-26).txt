@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Print Tenth Digit Along With Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : ((lambda S : print((((((N // 10) * 10) + (abs((S - (N % 10))))) * 10) + (N % 10)))) (int(input())))) (int(input()))
