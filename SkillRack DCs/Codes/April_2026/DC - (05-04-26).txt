@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Smallest Substring - All Distinct Letters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+total_unique_characters_count = len(set(S))
+
+current_window_unique_characters_count = 0
+
+running_frequency_map = {}
+
+first_pointer = 0
+
+minimum_substring_length_with_all_unique_characters = N
+
+for second_pointer in range(0 , N):
+    
+    running_frequency_map[S[second_pointer]] = (running_frequency_map.get(S[second_pointer] , 0) + 1)
+    
+    current_window_unique_characters_count = (current_window_unique_characters_count + 1) if(running_frequency_map[S[second_pointer]] == 1) else (current_window_unique_characters_count)
+    
+    while(current_window_unique_characters_count == total_unique_characters_count):
+        
+        current_substring_length_with_all_unique_characters = (second_pointer - first_pointer + 1)
+        
+        minimum_substring_length_with_all_unique_characters = min(minimum_substring_length_with_all_unique_characters , current_substring_length_with_all_unique_characters)
+        
+        running_frequency_map[S[first_pointer]] = (running_frequency_map[S[first_pointer]] - 1)
+        
+        current_window_unique_characters_count = (current_window_unique_characters_count - 1) if(running_frequency_map[S[first_pointer]] == 0) else (current_window_unique_characters_count)
+        
+        (running_frequency_map.pop(S[first_pointer] , None)) if(running_frequency_map[S[first_pointer]] == 0) else ("")
+        
+        first_pointer = (first_pointer + 1)
+
+print(minimum_substring_length_with_all_unique_characters)
