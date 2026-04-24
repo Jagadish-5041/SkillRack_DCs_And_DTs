@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Recursive Add - Two Successive Elements in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digital_sum(N):
+    
+    if(0 <= N <= 9):
+        return N
+    
+    digits_sum = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_sum = (digits_sum + digit)
+        
+        N = (N // 10)
+    
+    return get_digital_sum(digits_sum)
+
+def depth_first_search(values_list):
+    
+    return ((get_digital_sum(values_list[0])) if(len(values_list) == 1) else (depth_first_search([(values_list[index] + values_list[(index + 1)]) for index in range(0 , (len(values_list) - 1))])))
+
+(lambda N : print(depth_first_search(list(map(int , input().split()))))) (int(input()))
