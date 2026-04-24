@@ -1,0 +1,23 @@
+Problem Statement :-
+
+String Reversal First And Second Half in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def print_reversal_first_and_second_half_of_string(N , S):
+    
+    left_half_string = S[0 : (N // 2)]
+    
+    middle_character = (S[(N // 2)]) if(is_odd(N)) else ("")
+    
+    right_half_string = (S[((N // 2) + 1) : N]) if(is_odd(N)) else (S[(N // 2) : N])
+    
+    reversal_first_and_second_half_string = (left_half_string[::-1] + middle_character + right_half_string[::-1])
+    
+    print(reversal_first_and_second_half_string)
+
+(lambda S : print_reversal_first_and_second_half_of_string(len(S) , S)) (input().strip())
