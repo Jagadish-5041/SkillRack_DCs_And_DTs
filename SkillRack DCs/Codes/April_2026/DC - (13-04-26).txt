@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Train Journey - Initial Boarding Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , B = map(int , input().split())
+
+initial_boarding_count = (B * -1)
+
+for i in range(0 , N):
+    
+    passengers_who_alighted_the_train_count , passengers_who_boarded_the_train_count = map(int , input().split())
+    
+    initial_boarding_count = (initial_boarding_count + (passengers_who_alighted_the_train_count * - 1) + passengers_who_boarded_the_train_count)
+
+print(abs(initial_boarding_count))
