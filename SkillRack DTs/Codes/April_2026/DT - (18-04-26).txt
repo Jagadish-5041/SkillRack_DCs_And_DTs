@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Divisible By Both 2 And 3 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : [print(value , end = " ") for value in list(map(int , input().split())) if(((value % 2) == 0) and ((value % 3) == 0))]) (int(input()))
