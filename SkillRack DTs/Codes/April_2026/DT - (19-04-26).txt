@@ -1,0 +1,11 @@
+Problem Statement :-
+
+First X Vowels in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+(lambda X : print(*[character for character in input().strip() if(is_vowel(character))][0 : X] , sep = "")) (int(input()))
