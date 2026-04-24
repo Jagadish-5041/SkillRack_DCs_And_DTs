@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Smaller Number Based On Unit Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+(lambda A , B : print((max(A , B)) if(get_unit_digit(A) == get_unit_digit(B)) else (sorted([A , B] , key = lambda value : get_unit_digit(value))[0]))) (*map(int , input().split()))
