@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Position Digits Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A , B = map(int , input().split())
+
+while((A > 0) or (B > 0)):
+    
+    digit_1 = (A % 10)
+    
+    digit_2 = (B % 10)
+    
+    digits_sum = (digit_1 + digit_2)
+    
+    print(digits_sum , end = " ")
+    
+    A = (A // 10)
+    
+    B = (B // 10)
