@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Split Odd Length Number - Minimal Difference in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+sorted_digits_string = ("".join(sorted(input().strip())))
+
+N = len(sorted_digits_string)
+
+first_non_zero_digit_index = None
+
+for index , digit_string in enumerate(sorted_digits_string):
+    
+    if((digit_string != '0') and (first_non_zero_digit_index is None)):
+        
+        first_non_zero_digit_index = index
+        
+        break
+
+sorted_digits_string = (sorted_digits_string[first_non_zero_digit_index] + sorted_digits_string[ : first_non_zero_digit_index] + sorted_digits_string[(first_non_zero_digit_index + 1) : ])
+
+A = sorted_digits_string[0 : ((N // 2) + 1)]
+
+B = sorted_digits_string[((N // 2) + 1) : N][::-1]
+
+print(A , B , sep = " \n")
