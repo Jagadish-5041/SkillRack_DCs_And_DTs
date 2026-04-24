@@ -1,0 +1,7 @@
+Problem Statement :-
+
+IPv4 Address Validity in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda data_list : print(("Valid") if((len(data_list) == 4) and (all(((data_value.isdigit()) and (0 <= int(data_value) <= 255)) for data_value in data_list))) else ("Invalid"))) (input().strip().split("."))
