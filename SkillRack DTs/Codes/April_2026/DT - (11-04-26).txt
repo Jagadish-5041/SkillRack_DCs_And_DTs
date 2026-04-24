@@ -1,0 +1,29 @@
+Problem Statement :-
+
+N String Most Vowels Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+def get_vowels_count(S):
+    
+    return sum(1 for character in S if(is_vowel(character)))
+
+maximum_vowels_count_string = ""
+
+maximum_vowels_count = 0
+
+for i in range(0 , int(input())):
+    
+    string = input().strip()
+    
+    vowels_count = get_vowels_count(string)
+    
+    maximum_vowels_count_string = (string) if(maximum_vowels_count < vowels_count) else (maximum_vowels_count_string)
+    
+    maximum_vowels_count = max(maximum_vowels_count , vowels_count)
+
+print(maximum_vowels_count_string)
