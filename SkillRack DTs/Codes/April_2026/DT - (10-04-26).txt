@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Character Repeating N Times in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_K_times_repeated_characters_string(S , K):
+    
+    frequency_map = {}
+    
+    [frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in S]
+    
+    return ("".join(key for key , value in frequency_map.items() if(value == K)))
+
+print(get_K_times_repeated_characters_string(*[(input_value) if(index == 0) else (int(input_value)) for index , input_value in enumerate(input().strip().split())]))
