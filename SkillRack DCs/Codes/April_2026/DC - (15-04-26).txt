@@ -1,0 +1,44 @@
+Problem Statement :-
+
+Sliding Window Maximum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+from collections import deque
+
+def compare_sliding_window(N , K , values_list):
+    
+    answer_list = []
+    
+    answer_deque = deque()
+    
+    for index in range(0 , K):
+        
+        while((answer_deque) and (values_list[answer_deque[-1]] < values_list[index])):
+            answer_deque.pop()
+        
+        answer_deque.append(index)
+    
+    previous_window_maximum_value = values_list[answer_deque[0]]
+    
+    answer_list.append(previous_window_maximum_value)
+    
+    for index in range(K , N):
+        
+        while((answer_deque) and (answer_deque[0] <= (index - K))):
+            answer_deque.popleft()
+        
+        while((answer_deque) and (values_list[answer_deque[-1]] < values_list[index])):
+            answer_deque.pop()
+        
+        answer_deque.append(index)
+        
+        current_window_maximum_value = values_list[answer_deque[0]]
+        
+        answer_list.append(max(previous_window_maximum_value , current_window_maximum_value))
+        
+        previous_window_maximum_value = current_window_maximum_value
+    
+    print(*answer_list)
+
+(lambda N , K : compare_sliding_window(N , K , list(map(int , input().split())))) (*map(int , input().split()))
