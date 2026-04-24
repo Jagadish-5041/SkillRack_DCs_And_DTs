@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Median Of Three Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda A , B , C : print((-1) if((A == B) or (A == C) or (B == C)) else (sorted([A , B , C])[1]))) (*map(int , input().split()))
