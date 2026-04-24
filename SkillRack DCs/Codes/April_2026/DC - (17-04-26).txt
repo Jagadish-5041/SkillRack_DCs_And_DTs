@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Unique Numbers Count Within Range in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , starting_range_value , ending_range_value : print(len(set([value for value in list(map(int , input().split())) if(starting_range_value <= value <= ending_range_value)])))) (*map(int , input().split()))
