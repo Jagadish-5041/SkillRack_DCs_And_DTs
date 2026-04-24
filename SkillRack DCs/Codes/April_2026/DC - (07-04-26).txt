@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Isomorphic Strings in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+B = input().strip()
+
+if(len(A) != len(B)):
+    print("NO")
+    quit()
+
+A_map = {}
+
+B_map = {}
+
+for character_1 , character_2 in zip(A , B):
+    
+    if((character_1 not in A_map) and (character_2 not in B_map)):
+        A_map[character_1] = character_2
+        B_map[character_2] = character_1
+    elif((A_map.get(character_1 , None) != character_2) or (B_map.get(character_2 , None) != character_1)):
+        print("NO")
+        quit()
+
+print("YES")
