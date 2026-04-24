@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Reverse The String Value Till Last Vowel in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+def get_last_vowel_index(S):
+    
+    for index in range((len(S) - 1) , -1 , -1):
+        
+        if(is_vowel(S[index])):
+            
+            return index
+    
+    return -999
+
+(lambda S : ((lambda last_vowel_index : print(S[ : (last_vowel_index + 1)][::-1] , S[(last_vowel_index + 1) : ] , sep = "")) (get_last_vowel_index(S)))) (input().strip())
