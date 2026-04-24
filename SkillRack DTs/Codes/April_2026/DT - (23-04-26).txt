@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Repeating Character Toggle Last in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+S_N = len(S)
+
+S_i = 0
+
+while(is_within_bounds(S_i , S_N)):
+    
+    current_character = S[S_i]
+    
+    current_characters_list = []
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i] == current_character)):
+        
+        current_characters_list.append(S[S_i])
+        
+        S_i = (S_i + 1)
+    
+    current_characters_list[-1] = (current_characters_list[-1].upper()) if(len(current_characters_list) > 1) else (current_characters_list[-1])
+    
+    print(*current_characters_list , sep = "" , end = "")
