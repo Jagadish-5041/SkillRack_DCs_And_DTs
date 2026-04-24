@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Sort Numbers - Factors Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_factors_count(N):
+    
+    factors_count = 1
+    
+    for number in range(1 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            factors_count = (factors_count + 1) if(number == (N // number)) else (factors_count + 2)
+    
+    return factors_count
+
+(lambda N : [print(data_tuple[0] , end = " ") for data_tuple in sorted([(number , get_factors_count(number)) for number in list(map(int , input().split()))] , key = lambda pair : (pair[1] , pair[0]))]) (int(input()))
