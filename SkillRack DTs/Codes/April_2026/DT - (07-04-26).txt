@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Largest Integer In Each Column in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(max(matrix[i][j] for i in range(0 , R)) , end = " ") for j in range(0 , C)]
