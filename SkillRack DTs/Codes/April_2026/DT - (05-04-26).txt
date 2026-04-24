@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Number - Power Of 2 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_power_of_2(N):
+    
+    return ((N > 0) and ((N & (N - 1)) == 0))
+
+print(("YES") if(is_power_of_2(int(input()))) else ("NO"))
