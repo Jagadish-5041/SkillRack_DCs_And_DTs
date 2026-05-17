@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Odd Border Elements in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_border_element(current_i , current_j , R , C):
+    
+    return ((current_i == 0) or (current_i == (R - 1)) or (current_j == 0) or (current_j == (C - 1)))
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(matrix[i][j] , end = " ") for i in range(0 , R) for j in range(0 , C) if((is_border_element(i , j , R , C)) and (is_odd(matrix[i][j])))]
