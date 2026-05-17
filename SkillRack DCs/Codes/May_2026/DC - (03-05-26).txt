@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Reversed Alphabet Position in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_alphabet_position(alphabet):
+    
+    return (ord(alphabet) - get_offset_value(alphabet))
+
+def get_alphabet_reversed_position(alphabet):
+    
+    return (26 - get_alphabet_position(alphabet) - 1)
+
+def get_alphabet_at_given_position(position , offset_value):
+    
+    return chr((offset_value + position))
+
+def get_reversed_alphabet(alphabet):
+    
+    return get_alphabet_at_given_position(get_alphabet_reversed_position(alphabet) , get_offset_value(alphabet))
+
+[print(get_reversed_alphabet(character) , end = "") for character in input().strip()]
