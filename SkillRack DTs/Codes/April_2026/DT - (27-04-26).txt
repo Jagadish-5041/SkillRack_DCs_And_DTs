@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Replace Vowels By Preceding Consonants in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+S = input().strip()
+
+preceding_consonant = S[0]
+
+for character in S:
+    
+    preceding_consonant = (character) if(is_consonant(character)) else (preceding_consonant)
+    
+    print(preceding_consonant , end = "")
