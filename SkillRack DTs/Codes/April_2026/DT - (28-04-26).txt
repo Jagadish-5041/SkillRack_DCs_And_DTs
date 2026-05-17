@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Count Of Common Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+digit_sets_list = [set(digits_string) for digits_string in input().strip().split()]
+
+answer_set = digit_sets_list[0]
+
+for digits_set in digit_sets_list[1 : ]:
+    
+    answer_set = (answer_set & digits_set)
+
+print(len(answer_set))
