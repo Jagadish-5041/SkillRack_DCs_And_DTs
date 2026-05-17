@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Print Largest And Smallest Palindrome in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(string):
+    
+    return (string == string[::-1])
+
+(lambda palindrome_strings_list : ((print(max(palindrome_strings_list , key = len) , min(palindrome_strings_list , key = len) , sep = "\n")) if(palindrome_strings_list) else (print(-1)))) ([string for string in input().strip().split() if(is_palindrome(string))])
