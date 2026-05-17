@@ -1,0 +1,15 @@
+Problem Statement :-
+
+String Alphabets Position Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('A')) if(alphabet.isupper()) else (ord('a')))
+
+def get_alphabet_position(alphabet):
+    
+    return (ord(alphabet) - get_offset_value(alphabet) + 1)
+
+print(sum(get_alphabet_position(alphabet) for alphabet in input().strip()))
