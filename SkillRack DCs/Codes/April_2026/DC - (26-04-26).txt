@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Bar Graph Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+bar_graphs_lengths_list = list(map(int , input().split()))
+
+R = max(bar_graphs_lengths_list)
+
+C = N
+
+matrix = [['-' for j in range(0 , C)] for i in range(0 , R)]
+
+[matrix[i].__setitem__(j , '*') for j in range(0 , C) for i in range((R - bar_graphs_lengths_list[j]) , R)]
+
+[print(*row_list , sep = "") for row_list in matrix]
