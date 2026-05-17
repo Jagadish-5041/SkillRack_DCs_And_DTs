@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Swap Elements At Position X And Y in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , position_X , position_Y = map(int , input().split())
+
+values_list = list(map(int , input().split()))
+
+values_list[(position_X - 1)] , values_list[(position_Y - 1)] = values_list[(position_Y - 1)] , values_list[(position_X - 1)]
+
+print(*values_list)
