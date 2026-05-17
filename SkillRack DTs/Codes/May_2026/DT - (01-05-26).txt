@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sum Of Addition Subtraction And Multiplication in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda A , B : print(sum([(A + B) , (A - B) , (A * B)]))) (*map(int , input().split()))
