@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Print Largest And Smallest String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda words_list : print(max(words_list , key = len) , min(words_list , key = len))) ([(string[:-1]) if(not string[-1].isalnum()) else (string) for string in input().strip().split() if(not any((not string[index].isalnum()) for index in range(0 , (len(string) - 1))))])
