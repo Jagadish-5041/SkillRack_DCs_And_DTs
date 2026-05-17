@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Reverse Odd Positions in String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+characters_list = list(input().strip())
+
+odd_characters_reversed_list = [character for index , character in enumerate(characters_list) if(is_odd((index + 1)))][::-1]
+
+[characters_list.__setitem__(index_1 , odd_characters_reversed_list[index_2]) for index_1 , index_2 in zip(range(0 , len(characters_list) , 2) , range(0 , len(odd_characters_reversed_list)))]
+
+print(*characters_list , sep = "")
