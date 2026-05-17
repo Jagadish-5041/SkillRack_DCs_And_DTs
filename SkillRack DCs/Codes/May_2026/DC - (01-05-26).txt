@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Largest Elements - Rows And Columns in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(max(matrix[i][j] for j in range(0 , C)) , end = " ") for i in range(0 , R)]
+
+print()
+
+[print(max(matrix[i][j] for i in range(0 , R)) , end = " ") for j in range(0 , C)]
