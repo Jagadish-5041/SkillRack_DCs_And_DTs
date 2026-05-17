@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Right Angled Triangle Check in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check_pythagoren_theorem(A , B , C):
+    
+    return (((A ** 2) + (B ** 2)) == (C ** 2))
+
+sides_list = list(map(int , input().split()))
+
+N = len(sides_list)
+
+for i in range(0 , N):
+    
+    for j in range(0 , N):
+        
+        for k in range(0 , N):
+            
+            if((i != j) and (i != k) and (j != k) and (check_pythagoren_theorem(sides_list[i] , sides_list[j] , sides_list[k]))):
+                
+                print("yes")
+                
+                quit()
+
+print("no")
