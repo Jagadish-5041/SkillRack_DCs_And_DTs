@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Circular Substring in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S , starting_index , ending_index = [(value) if(index == 0) else (int(value)) for index , value in enumerate(input().strip().split())]
+
+N = len(S)
+
+flag = True
+
+current_index = starting_index
+
+while(flag):
+    
+    flag = (current_index != ending_index)
+    
+    print(S[current_index] , end = "")
+    
+    current_index = ((current_index + 1) % N)
