@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Continuous Alphabet Sequence(s) in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_next_alphabet(alphabet):
+    
+    return ((lambda offset_value : chr(((((ord(alphabet) - offset_value) + 1) % 26) + offset_value))) (get_offset_value(alphabet)))
+
+S = input().strip()
+
+S_i = 0
+
+S_N = len(S)
+
+flag = True
+
+while(is_within_bounds(S_i , S_N)):
+    
+    current_alphabet = S[S_i]
+    
+    current_string = ""
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i] == current_alphabet)):
+        
+        current_string = (current_string + S[S_i])
+        
+        S_i = (S_i + 1)
+        
+        current_alphabet = get_next_alphabet(current_alphabet)
+    
+    if(len(current_string) > 1):
+        
+        flag = False
+        
+        print(current_string , end = "")
+
+(print(-1)) if(flag) else ("")
