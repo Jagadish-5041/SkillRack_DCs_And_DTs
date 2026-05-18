@@ -1,0 +1,32 @@
+Problem Statement :-
+
+Product Of Prime Numbers In The Given Range in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+starting_range_value , ending_range_value = map(int , input().split())
+
+product_of_prime_numbers = 1
+
+for number in range(starting_range_value , (ending_range_value + 1)):
+    
+    if(is_prime(number)):
+        
+        product_of_prime_numbers = (product_of_prime_numbers * number)
+
+print(product_of_prime_numbers)
