@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Hyphen Asterisk Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+matrix = [["" for j in range(0 , N)] for i in range(0 , N)]
+
+for j in range(0 , ((N // 2) + 1)):
+    
+    cell_value = '*'
+    
+    for i in range(j , (N - j)):
+        
+        matrix[i][j] = cell_value
+        
+        cell_value = ('-') if(cell_value == '*') else ('*')
+
+[print(*row_list , sep = "") for row_list in matrix]
