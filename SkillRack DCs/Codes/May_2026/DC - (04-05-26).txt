@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Next Palindromic Number in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_immediate_next_palindromic_number(number):
+    
+    digits_list = list(str(number))
+    
+    N = len(digits_list)
+    
+    if(all((digit_string == '9') for digit_string in digits_list)):
+        return int(('1' + ('0' * (N - 1)) + '1'))
+    
+    new_digits_list = (digits_list[ : ((N // 2) + 1)] + digits_list[ : (N // 2)][::-1]) if(is_odd(N)) else (digits_list[ : (N // 2)] + digits_list[ : (N // 2)][::-1])
+    
+    new_number = int(("".join(new_digits_list)))
+    
+    while(number >= new_number):
+        
+        if(is_odd(N)):
+            
+            new_digits_list[(N // 2)] = str((int(new_digits_list[(N // 2)]) + 1))
+        
+        else:
+            
+            new_digits_list[(N // 2)] = str((int(new_digits_list[(N // 2)]) + 1))
+            
+            new_digits_list[((N // 2) - 1)] = str((int(new_digits_list[((N // 2) - 1)]) + 1))
+        
+        new_number = int(("".join(new_digits_list)))
+    
+    return new_number
+
+print(get_immediate_next_palindromic_number(int(input().strip())))
