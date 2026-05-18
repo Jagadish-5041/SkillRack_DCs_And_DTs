@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Count Of Digit In String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , digit_string , strings_list : [print(string.count(digit_string) , end = " ") for string in strings_list]) (int(input()) , input().strip() , input().strip().split())
