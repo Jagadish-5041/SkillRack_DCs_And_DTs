@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Distance From Origin in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_Euclidean_Distance(X_1 , Y_1 , X_2 , Y_2):
+    
+    return ((((X_2 - X_1) ** 2) + ((Y_2 - Y_1) ** 2)) ** 0.5)
+
+(lambda X , Y : print("{:.2f}".format(round(get_Euclidean_Distance(0 , 0 , X , Y) , 2)))) (*map(int , input().split()))
