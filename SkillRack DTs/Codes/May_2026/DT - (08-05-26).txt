@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Remove Maximum Sum Row in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+rows_sums_list = [sum(row_list) for row_list in matrix]
+
+maximum_row_sum = max(rows_sums_list)
+
+first_maximum_row_sum_flag = True
+
+for i in range(0 , R):
+    
+    if((first_maximum_row_sum_flag) and (rows_sums_list[i] == maximum_row_sum)):
+        
+        first_maximum_row_sum_flag = False
+    
+    else:
+        
+        print(*matrix[i])
