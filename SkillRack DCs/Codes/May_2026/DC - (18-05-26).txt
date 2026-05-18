@@ -1,0 +1,17 @@
+Problem Statement :-
+
+String Circular Print in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+S_i = 0
+
+S_N = len(S)
+
+for count in range(1 , (int(input()) + 1)):
+    
+    print(S[S_i] , end = "")
+    
+    S_i = ((S_i + 1) % S_N)
