@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Greater Values In Array in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , M = map(int , input().split())
+
+A = list(map(int , input().split()))
+
+[print(value , end = " ") for value in A if(value > M)]
