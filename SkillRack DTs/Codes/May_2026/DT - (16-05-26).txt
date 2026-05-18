@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Print Common Character Two String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda A , B : print(*sorted((set(A) & set(B))))) (*input().strip().split())
