@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Count Of UpperCase Letters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(sum(1 for character in input().strip() if(character.isupper())))
