@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Largest Unit Digit Number in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(sorted(list(map(int , input().split())) , key = lambda value : (((value % 10) * -1) , (value * -1)))[0])
