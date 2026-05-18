@@ -1,0 +1,26 @@
+Problem Statement :-
+
+C++ - Class Method Definition Calculator Add in DC (Daily Challenge) in SkillRack in C++ - Programming
+
+Code :-
+
+class Calculator {
+    
+    int A;
+    
+    int B;
+    
+    public :
+        
+        Calculator(int X , int Y){
+            
+            A = X;
+            
+            B = Y;
+        }
+        
+        int add(){
+            
+            return (A + B);
+        }
+};
