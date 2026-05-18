@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Smallest Sum Of Two Numbers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , sorted_values_list : print((sorted_values_list[0] + sorted_values_list[1]))) (int(input()) , sorted(list(map(int , input().split()))))
