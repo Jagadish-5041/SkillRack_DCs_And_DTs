@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Nearest Perfect Square Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_square_root_value(N):
+    
+    return int((N ** 0.5))
+
+def get_squared_value(N):
+    
+    return (N * N)
+
+N = int(input())
+
+square_root_value = get_square_root_value(N)
+
+lower_perfect_square_value = get_squared_value(square_root_value)
+
+upper_perfect_square_value = get_squared_value((square_root_value + 1))
+
+print((lower_perfect_square_value) if((N - lower_perfect_square_value) <= (upper_perfect_square_value - N)) else (upper_perfect_square_value))
