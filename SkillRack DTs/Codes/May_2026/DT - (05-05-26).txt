@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Reverse Position Of Character In String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_reversed_alphabet(alphabet):
+    
+    return ((lambda offset_value : chr(((26 - (ord(alphabet) - offset_value) - 1) + offset_value))) (get_offset_value(alphabet)))
+
+[print(((get_reversed_alphabet(character)) if(character.isalpha()) else (character)) , end = "") for character in input().strip()]
