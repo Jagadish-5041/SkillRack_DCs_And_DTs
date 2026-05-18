@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Hundreth Digit Odd in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_hundreth_digit(N):
+    
+    return ((N % 1000) // 100)
+
+for number in list(map(int , input().split())):
+    
+    if(is_odd(get_hundreth_digit(number))):
+        
+        print(number)
+        
+        quit()
