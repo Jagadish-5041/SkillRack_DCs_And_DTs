@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Product Of N And The Number Of Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((0) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+(lambda N : print((N * get_length_of_N(N)))) (int(input()))
