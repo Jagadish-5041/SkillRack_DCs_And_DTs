@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Tenth Digit Odd Average in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_10_th_digit(N):
+    
+    return ((N % 100) // 10)
+
+(lambda N , odd_tenth_digit_values_list : (print("{:.2f}".format(round((sum(odd_tenth_digit_values_list) / len(odd_tenth_digit_values_list)) , 2)))) if(len(odd_tenth_digit_values_list) > 0) else (print("0.00"))) (int(input()) , [value for value in list(map(int , input().split())) if(is_odd(get_10_th_digit(value)))])
