@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Check Step Sequence in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+for index in range(0 , N):
+    
+    if(((is_within_bounds((index - 1) , N)) and (abs((values_list[index] - values_list[(index - 1)])) != 1)) or ((is_within_bounds((index + 1) , N)) and (abs((values_list[index] - values_list[(index + 1)])) != 1))):
+        
+        print("no")
+        
+        quit()
+
+print("yes")
