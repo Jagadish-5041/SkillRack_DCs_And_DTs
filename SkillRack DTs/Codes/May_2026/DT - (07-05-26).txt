@@ -1,0 +1,45 @@
+Problem Statement :-
+
+First NxN In Spiral in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def print_layer(starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    [print(matrix[starting_i][current_j] , end = " ") for current_j in range(starting_j , (ending_j + 1))]
+    
+    [print(matrix[current_i][ending_j] , end = " ") for current_i in range((starting_i + 1) , (ending_i + 1))]
+    
+    [print(matrix[ending_i][current_j] , end = " ") for current_j in range((ending_j - 1) , (starting_j - 1) , -1)]
+    
+    [print(matrix[current_i][starting_j] , end = " ") for current_i in range((ending_i - 1) , starting_i , -1)]
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [[(((i * C) + j) + 1) for j in range(0 , C)] for i in range(0 , R)]
+
+starting_i = 0
+
+ending_i = (R - 1)
+
+starting_j = 0
+
+ending_j = (C - 1)
+
+total_layers_count = min(((R // 2) + (R % 2)) , ((C // 2) + (C % 2)))
+
+for layer in range(1 , (total_layers_count + 1)):
+    
+    print_layer(starting_i , ending_i , starting_j , ending_j , R , C , matrix)
+    
+    starting_i = (starting_i + 1)
+    
+    ending_i = (ending_i - 1)
+    
+    starting_j = (starting_j + 1)
+    
+    ending_j = (ending_j - 1)
