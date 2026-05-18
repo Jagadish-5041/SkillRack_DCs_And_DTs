@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Pattern Printing - Mirror Image With Hyphens in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+for number , hyphens_count in zip(range(N , 0 , -1) , range(1 , ((N * 2) + 1) , 2)):
+    
+    left_string = (str(number) * number)
+    
+    middle_string = ('-' * hyphens_count)
+    
+    right_string = left_string
+    
+    row_string = (left_string + middle_string + right_string)
+    
+    print(row_string)
