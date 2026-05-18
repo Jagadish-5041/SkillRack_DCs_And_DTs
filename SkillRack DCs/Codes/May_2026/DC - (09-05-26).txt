@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Replacing Digit With Values In Position in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda digits_string : ((lambda N : [print(((digits_string[(int(digit) - 1)]) if(int(digit) <= N) else ('0')) , end = "") for digit in digits_string]) (len(digits_string)))) (input().strip())
