@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Plus Star Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [[((i + 1)) if(j == (C // 2)) else (((j + 1)) if(i == (R // 2)) else (('*') if((i == j) or (j == (C - i - 1))) else ('-'))) for j in range(0 , C)] for i in range(0 , R)]
+
+[print(*row_list , sep = "") for row_list in matrix]
