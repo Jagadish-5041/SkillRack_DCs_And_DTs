@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Print First And Last Character in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S : print(S[0] , S[-1] , sep = "")) (input().strip())
