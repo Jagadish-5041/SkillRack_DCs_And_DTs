@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Maximum Speed Of Bike in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , P , Q = map(int , input().split())
+
+current_speed = 40
+
+maximum_speed = 0
+
+for speed in list(map(int , input().split())):
+    
+    maximum_speed = max(maximum_speed , current_speed)
+    
+    current_speed = (current_speed + P) if(speed == P) else ((current_speed - Q) if(speed == Q) else (current_speed))
+    
+    maximum_speed = max(maximum_speed , current_speed)
+
+print(maximum_speed)
