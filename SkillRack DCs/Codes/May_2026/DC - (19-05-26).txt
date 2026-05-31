@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Adjacent Odd Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(digit_string):
+    
+    return (digit_string in "13579")
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+for index in range(0 , N):
+    
+    if(((index == 0) and (is_odd(digits_string[(index + 1)]))) or ((index == (N - 1)) and (is_odd(digits_string[(index - 1)]))) or ((is_odd(digits_string[(index - 1)])) and (is_odd(digits_string[(index + 1)])))):
+        
+        print(digits_string[index] , end = "")
