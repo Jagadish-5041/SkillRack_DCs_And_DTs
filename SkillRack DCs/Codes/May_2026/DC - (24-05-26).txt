@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Alternate X Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+S_i = 0
+
+S_N = len(S)
+
+X = int(input())
+
+while(is_within_bounds(S_i , S_N)):
+    
+    print(S[S_i : (S_i + X)] , end = "")
+    
+    S_i = (S_i + (X * 2))
