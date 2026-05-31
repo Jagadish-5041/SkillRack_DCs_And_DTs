@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Check If The ChessBoard Is Valid Or Invalid in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alternate_character(current_character):
+    
+    return (('B') if(current_character == 'W') else ('W'))
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_valid(target_character , current_i , current_j , R , C , matrix):
+    
+    for offset_i , offset_j in [(-1 , 0) , (1 , 0) , (0 , -1) , (0 , 1)]:
+        
+        if((is_within_bounds((current_i + offset_i) , R)) and (is_within_bounds((current_j + offset_j) , C)) and (matrix[(current_i + offset_i)][(current_j + offset_j)] != target_character)):
+            
+            return False
+    
+    return True
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [input().strip() for i in range(0 , R)]
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(not is_valid(get_alternate_character(matrix[i][j]) , i , j , R , C , matrix)):
+            
+            print("Invalid")
+            
+            quit()
+
+print("Valid")
