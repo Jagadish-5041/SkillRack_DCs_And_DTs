@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Word Count With Two Separators in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(sum(1 for string in input().strip().replace("," , " ").split(" ") if(string)))
