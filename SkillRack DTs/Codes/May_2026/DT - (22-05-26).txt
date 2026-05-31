@@ -1,0 +1,16 @@
+Problem Statement :-
+
+Morse Code in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alphabet_from_position(alphabet_position):
+    
+    return chr(((alphabet_position - 1) + ord('a')))
+
+while(True):
+    
+    try:
+        print(get_alphabet_from_position(sum(list(map(int , input().strip().split())))) , end = "")
+    except:
+        break
