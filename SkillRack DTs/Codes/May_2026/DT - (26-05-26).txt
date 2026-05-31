@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Sum Of Traversed Integers In Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+traversed_numbers_sum = 0
+
+current_i = 0
+
+current_j = 0
+
+while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+    
+    traversed_numbers_sum = (traversed_numbers_sum + matrix[current_i][current_j])
+    
+    data_list = max(([(0 , -999 , -999)] + [(matrix[next_i][next_j] , next_i , next_j) for next_i , next_j in [((current_i - 1) , (current_j + 1)) , (current_i , (current_j + 1)) , ((current_i + 1) , (current_j + 1))] if((is_within_bounds(next_i , R)) and (is_within_bounds(next_j , C)))]) , key = lambda data_tuple : data_tuple[0])
+    
+    current_i = data_list[1]
+    
+    current_j = data_list[2]
+
+print(traversed_numbers_sum)
