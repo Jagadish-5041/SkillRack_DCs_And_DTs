@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Decremented Value Of M in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+M , N = map(int , input().split())
+
+for count in range(1 , (N + 1)):
+    
+    M = (M // 10) if(get_unit_digit(M) == 0) else (M - 1)
+
+print(M)
