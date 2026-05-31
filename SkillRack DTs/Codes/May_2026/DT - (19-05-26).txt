@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Pattern Printing - Numeric Sequence in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda R , C : [print(*[(i + j + 1) for j in range(0 , C)]) for i in range(0 , R)]) (*map(int , input().split()))
