@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Center Align Strings - Pattern Printing in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+strings_list = []
+
+longest_string_length = 0
+
+while(True):
+    
+    try:
+        
+        strings_list.append(input().rstrip())
+        
+        longest_string_length = max(longest_string_length , len(strings_list[-1]))
+    
+    except:
+        
+        break
+
+asterisks_string = ('*' * (longest_string_length + 2))
+
+print(asterisks_string)
+
+[print(('*' + ('-' * (((longest_string_length - len(string)) // 2) + ((longest_string_length - len(string)) % 2))) + string + ('-' * ((longest_string_length - len(string)) // 2)) + '*')) for string in strings_list]
+
+print(asterisks_string)
