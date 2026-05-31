@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Gold Pots Unit Digit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+index = 0
+
+sum_value = 0
+
+while(is_within_bounds(index , N)):
+    
+    sum_value = (sum_value + values_list[index])
+    
+    index = (index + get_unit_digit(values_list[index]))
+
+print(sum_value)
