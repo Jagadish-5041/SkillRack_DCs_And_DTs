@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Circular Track To Reach Initial Position in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , initial_position , M = map(int , input().split())
+
+steps_count = 0
+
+current_position = initial_position
+
+while(True):
+    
+    steps_count = (steps_count + 1)
+    
+    current_position = (((current_position + M - 1) % N) + 1)
+    
+    if(current_position == initial_position):
+        
+        print(steps_count)
+        
+        quit()
