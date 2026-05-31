@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Alternate From To Print in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def print_pattern(starting_value , ending_value , offset_value):
+    
+    [print(value , end = " ") for value in range(starting_value , (ending_value + offset_value) , offset_value)]
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+[(print_pattern(values_list[index] , values_list[(index + 1)] , 1)) if(is_odd((index + 1))) else (print_pattern(values_list[(index + 1)] , values_list[index] , -1)) for index in range(0 , (N - 1))]
