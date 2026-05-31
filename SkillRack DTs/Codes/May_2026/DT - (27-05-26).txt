@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Sort Columns Based On Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+data_list = sorted([(sum(matrix[i][j] for i in range(0 , R)) , j) for j in range(0 , C)] , key = lambda data_tuple : data_tuple[0])
+
+[print(*[matrix[i][j] for column_sum , j in data_list]) for i in range(0 , R)]
