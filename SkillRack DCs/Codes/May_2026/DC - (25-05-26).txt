@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Least Occurring Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_frequency_map = {digit : 0 for digit in range(0 , 10)}
+
+for number in list(map(int , input().split())):
+    
+    while(number > 0):
+        
+        digit = (number % 10)
+        
+        digits_frequency_map[digit] = (digits_frequency_map[digit] + 1)
+        
+        number = (number // 10)
+
+minimum_frequency = min([frequency for frequency in digits_frequency_map.values() if(frequency != 0)])
+
+print(*[digit for digit in range(0 , 10) if(digits_frequency_map[digit] == minimum_frequency)])
