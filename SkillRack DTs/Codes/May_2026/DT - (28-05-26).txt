@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Divide Palindromes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(string):
+    
+    return (string == string[::-1])
+
+S = input().strip()
+
+N = len(S)
+
+for index in range(0 , N):
+    
+    if((is_palindrome(S[0 : (index + 1)])) and (is_palindrome(S[(index + 1) : N]))):
+        
+        print(S[0 : (index + 1)] , S[(index + 1) : N])
+        
+        quit()
