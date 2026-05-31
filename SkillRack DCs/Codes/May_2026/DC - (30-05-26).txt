@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Character Asterisk Alternate Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_next_alphabet(current_alphabet):
+    
+    return ((lambda offset_value : chr(((((ord(current_alphabet) - offset_value) + 1) % 26) + offset_value))) (get_offset_value(current_alphabet)))
+
+N = int(input())
+
+odd_rows_alphabets_count = (((N // 2) + (N % 2)) * N)
+
+even_rows_alphabets_count = ((N // 2) * (N - 1))
+
+R = N
+
+C = (N + (N - 1))
+
+total_alphabets_count = (odd_rows_alphabets_count + even_rows_alphabets_count)
+
+pattern_string = ""
+
+current_alphabet = 'a'
+
+for count in range(1 , (total_alphabets_count + 1)):
+    
+    pattern_string = (pattern_string + current_alphabet + '*')
+    
+    current_alphabet = get_next_alphabet(current_alphabet)
+
+[print(pattern_string[(row_index * C) : ((row_index * C) + C)]) for row_index in range(0 , R)]
