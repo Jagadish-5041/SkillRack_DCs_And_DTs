@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Smallest Possible Odd Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+odd_digits_list = []
+
+even_digits_list = []
+
+[((lambda digit : (odd_digits_list.append(digit)) if(is_odd(digit)) else (even_digits_list.append(digit))) (int(digit_string))) for digits_string in input().strip().split() for digit_string in digits_string]
+
+if(len(odd_digits_list) == 0):
+    print(-1)
+    quit()
+
+odd_digits_list.sort()
+
+even_digits_list.sort()
+
+maximum_odd_digit = odd_digits_list.pop(-1)
+
+digits_list = (odd_digits_list + even_digits_list)
+
+minimum_non_zero_digit = 10
+
+minimum_non_zero_digit_index = 0
+
+for index , digit in enumerate(digits_list):
+    
+    if((digit != 0) and (minimum_non_zero_digit > digit)):
+        
+        minimum_non_zero_digit = digit
+        
+        minimum_non_zero_digit_index = index
+
+digits_list.pop(minimum_non_zero_digit_index)
+
+minimum_possible_odd_number_digits_list = ([minimum_non_zero_digit] + sorted(digits_list) + [maximum_odd_digit])
+
+print(*minimum_possible_odd_number_digits_list , sep = "")
