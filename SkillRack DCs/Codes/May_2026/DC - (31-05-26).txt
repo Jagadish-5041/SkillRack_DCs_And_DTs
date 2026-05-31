@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Case Sensitive Character Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_alphabet(alphabet_position):
+    
+    return chr(((ord('a') + alphabet_position - 1)))
+
+S = input().strip()
+
+target_alphabet = get_alphabet(int(input()))
+
+upper_case_or_lower_case = input().strip().lower()
+
+target_character = (target_alphabet.lower()) if(upper_case_or_lower_case == 'l') else (target_alphabet.upper())
+
+count = 0
+
+for character in S:
+    
+    if(character == target_character):
+        
+        count = (count + 1)
+
+print((-1) if(count == 0) else (count))
