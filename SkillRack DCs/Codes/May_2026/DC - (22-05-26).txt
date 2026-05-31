@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Next Number Same Unit Digit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , values_list : print(*[values_list[index] for index in range(0 , (N - 1)) if((values_list[index] % 10) == (values_list[(index + 1)] % 10))])) (int(input().strip()) , list(map(int , input().strip().split())))
