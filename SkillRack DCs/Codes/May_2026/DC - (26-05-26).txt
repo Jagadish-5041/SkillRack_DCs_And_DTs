@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Lucky Draw Winner in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+[values_list.pop((position - 1)) for position in list(map(int , input().split()))]
+
+print(values_list[0])
