@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Convert 0's To 1's At Even Position(s) in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def compute_power_function_in_log_N_time_complexity(base_value , power_value):
+    
+    product_value = 1
+    
+    while(power_value > 0):
+        
+        product_value = (product_value * base_value) if(is_odd(power_value)) else (product_value)
+        
+        base_value = (base_value * base_value)
+        
+        power_value = (power_value // 2)
+    
+    return product_value
+
+def get_converted_N(N):
+    
+    converted_N = 0
+    
+    position = 1
+    
+    while(N > 0):
+        
+        bit = (1) if(is_even(position)) else ((N & 1))
+        
+        converted_N = (converted_N + (bit * compute_power_function_in_log_N_time_complexity(2 , (position - 1))))
+        
+        position = (position + 1)
+        
+        N = (N >> 1)
+    
+    return converted_N
+
+print(get_converted_N(int(input())))
