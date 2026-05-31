@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Common Alphabets N Strings in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+strings_list = [input().strip() for i in range(0 , N)]
+
+answer_set = set(strings_list[0])
+
+for string in strings_list:
+    
+    answer_set = (answer_set & set(string))
+
+print(len(answer_set))
