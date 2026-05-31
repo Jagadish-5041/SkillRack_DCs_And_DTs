@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Transpose Of Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+matrix = []
+
+while(True):
+    
+    try:
+        matrix.append(list(map(int , input().strip().split())))
+    except:
+        break
+
+R = len(matrix)
+
+C = len(matrix[0])
+
+[print(*[matrix[i][j] for i in range(0 , R)]) for j in range(0 , C)]
