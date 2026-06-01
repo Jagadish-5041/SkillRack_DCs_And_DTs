@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Merge N Pairs Of String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+for i in range(0 , int(input())):
+    
+    A , B = input().strip().split()
+    
+    A_N = len(A)
+    
+    B_N = len(B)
+    
+    smallest_string = (min(A , B , key = len)) if(A_N != B_N) else (A)
+    
+    largest_string = (max(A , B , key = len)) if(A_N != B_N) else (B)
+    
+    [print(character_1 , character_2 , sep = "" , end = "") for character_1 ,character_2 in zip(A , B)]
+    
+    (print(largest_string[len(smallest_string) : ])) if(A_N != B_N) else (print())
