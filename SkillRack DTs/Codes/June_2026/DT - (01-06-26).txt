@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Print Xth Number That Can Be Formed With Digits In N in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(current_combination_string , visited_flag_list , digits_string , N):
+    
+    global all_combinations_set
+    
+    (all_combinations_set.add(int(current_combination_string))) if((current_combination_string) and (int(current_combination_string) != 0)) else ("")
+    
+    for index in range(0 , N):
+        
+        if(not visited_flag_list[index]):
+            
+            if((len(current_combination_string) == 0) and (digits_string[index] == 0)):
+                continue
+            
+            visited_flag_list[index] = True
+            
+            depth_first_search((current_combination_string + digits_string[index]) , visited_flag_list , digits_string , N)
+            
+            visited_flag_list[index] = False
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+X = int(input())
+
+all_combinations_set = set()
+
+depth_first_search("" , [False for index in range(0 , N)] , digits_string , N)
+
+(print(sorted(list(all_combinations_set))[(X - 1)])) if(len(all_combinations_set) >= X) else (print(-1))
