@@ -1,0 +1,7 @@
+Problem Statement :-
+
+N Integers Unit Digit Multiplication in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , values_list : [print(((values_list[((index - 1) % N)] % 10) * values_list[index]) , end = " ") for index in range(0 , N)]) (int(input()) , list(map(int , input().split())))
