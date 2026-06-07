@@ -1,0 +1,47 @@
+Problem Statement :-
+
+String Triangle Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_N_natural_numbers(N):
+    
+    return ((N * (N + 1)) // 2)
+
+def get_rows_count(N):
+    
+    number = 1
+    
+    while(True):
+        
+        if(get_sum_of_N_natural_numbers(number) >= N):
+            
+            return number
+        
+        else:
+            
+            number = (number + 1)
+
+X = int(input())
+
+strings_list = input().strip().split()
+
+X_characters_strings_list = [string[(len(string) - X) : ] for string in strings_list]
+
+asterisks_string = ('*' * X)
+
+R = get_rows_count(len(strings_list))
+
+sum_of_N_natural_numbers_of_R = get_sum_of_N_natural_numbers(R)
+
+while(len(X_characters_strings_list) != sum_of_N_natural_numbers_of_R):
+    
+    X_characters_strings_list.append(asterisks_string)
+
+X_characters_strings_list_index = 0
+
+for count in range(1 , (R + 1)):
+    
+    print(*X_characters_strings_list[X_characters_strings_list_index : (X_characters_strings_list_index + count)])
+    
+    X_characters_strings_list_index = (X_characters_strings_list_index + count)
