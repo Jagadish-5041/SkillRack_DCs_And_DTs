@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Remove Largest N Columns in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+N = int(input())
+
+column_wise_sums_data_list = sorted([((sum(matrix[i][j] for i in range(0 , R))) , j) for j in range(0 , C)] , key = lambda data_tuple : (data_tuple[0] * -1))
+
+remaining_N_columns_indices_list = sorted([j for column_sum , j in column_wise_sums_data_list[N : ]])
+
+[print(*[matrix[i][j] for j in remaining_N_columns_indices_list]) for i in range(0 , R)]
