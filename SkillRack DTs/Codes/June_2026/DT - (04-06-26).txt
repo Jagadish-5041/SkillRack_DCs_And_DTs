@@ -1,0 +1,23 @@
+Problem Statement :-
+
+String Formation Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_frequency_map(string):
+    
+    frequency_map = {}
+    
+    [frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in string]
+    
+    return frequency_map
+
+A = input().strip()
+
+B = input().strip()
+
+A_frequency_map = get_frequency_map(A)
+
+B_frequency_map = get_frequency_map(B)
+
+print(min(A_frequency_map.get(character , 0) for character in B_frequency_map.keys()))
