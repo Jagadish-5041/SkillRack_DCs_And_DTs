@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Word Train Without Fixed First String in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+word_strings_list = [input().strip() for index in range(0 , N)]
+
+first_alphabet_words_map = {word_string[0] : word_string for word_string in word_strings_list}
+
+last_alphabets_string = ("".join(word_string[-1] for word_string in word_strings_list))
+
+for word_string in word_strings_list:
+    
+    if(word_string[0] not in last_alphabets_string):
+        
+        starting_word_string = word_string
+        
+        break
+
+current_word_string = starting_word_string
+
+for count in range(0 , N):
+    
+    print(current_word_string)
+    
+    current_word_string = first_alphabet_words_map.get(current_word_string[-1] , "")
