@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Unique Embedded Decimal Values in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_number_from_binary_string(binary_string):
+    
+    return int(binary_string , 2)
+
+binary_string = get_binary_string(int(input()))
+
+binary_string_length = len(binary_string)
+
+visited_numbers_set = set()
+
+for index_1 in range(0 , binary_string_length):
+    
+    for index_2 in range(index_1 , binary_string_length):
+        
+        number = get_number_from_binary_string(binary_string[index_1 : (index_2 + 1)])
+        
+        (print(number , end = " ")) if(number not in visited_numbers_set) else ("")
+        
+        visited_numbers_set.add(number)
