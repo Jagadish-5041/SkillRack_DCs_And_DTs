@@ -1,0 +1,13 @@
+Problem Statement :-
+
+String Count in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+R , C = map(int , input().strip().split())
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+print(sum(("".join(matrix[i])).count(S) for i in range(0 , R)))
