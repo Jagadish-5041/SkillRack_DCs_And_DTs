@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Butterfly Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_N_th_odd_number(N):
+    
+    return ((N * 2) - 1)
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+values_list = [str(number) for number in range(1 , ((N * N) + 1))]
+
+values_list_index = 0
+
+M = (N // 2)
+
+for i in range(0 , M):
+    
+    padding_string = ("---" * i)
+    
+    middle_string = ('-' * get_N_th_odd_number((M - i)))
+    
+    numbers_pattern_string_1 = (("-".join(values_list[values_list_index : (values_list_index + (M - i + 1))]))) if(is_odd((i + 1))) else (("-".join(values_list[values_list_index : (values_list_index + (M - i + 1))][::-1])))
+    
+    numbers_pattern_string_2 = ("-".join(values_list[values_list_index : (values_list_index + (M - i + 1))][::-1])) if(is_odd((i + 1))) else (("-".join(values_list[values_list_index : (values_list_index + (M - i + 1))])))
+    
+    values_list_index = (values_list_index + (M - i + 1))
+    
+    print(padding_string , numbers_pattern_string_1 , middle_string , numbers_pattern_string_2 , sep = "")
+
+print((("---" * M) + '0'))
+
+values_list_index = 0
+
+for i in range((M + 1) , N):
+    
+    padding_string = ("---" * (N - i - 1))
+    
+    middle_string = ('-' * get_N_th_odd_number((M - (N - i) + 1)))
+    
+    numbers_pattern_string_1 = (("-".join(values_list[values_list_index : (values_list_index + ((M - (N - i) + 1) + 1))][::-1]))) if(is_odd((M - (N - i) + 1))) else (("-".join(values_list[values_list_index : (values_list_index + ((M - (N - i) + 1) + 1))])))
+    
+    numbers_pattern_string_2 = (("-".join(values_list[values_list_index : (values_list_index + ((M - (N - i) + 1) + 1))]))) if(is_odd((M - (N - i) + 1))) else (("-".join(values_list[values_list_index : (values_list_index + ((M - (N - i) + 1) + 1))][::-1])))
+    
+    values_list_index = (values_list_index + ((M - (N - i) + 1) + 1))
+    
+    print(padding_string , numbers_pattern_string_1 , middle_string , numbers_pattern_string_2 , sep = "")
