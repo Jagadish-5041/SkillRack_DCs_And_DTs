@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Same Characters In ZigZag Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [input().strip().split() for i in range(0 , R)]
+
+zig_zag_traversal_string_1 = (("".join(("".join(matrix[i][j] for j in range(((C - 1) if(is_even(position)) else (0)) , ((-1) if(is_even(position)) else (C)) , ((-1) if(is_even(position)) else (1))))) for i , position in zip(range(0 , R) , range(1 , (R + 1))))))
+
+zig_zag_traversal_string_2 = (("".join(("".join(matrix[i][j] for j in range(((R - 1) if(is_odd(position)) else (0)) , ((-1) if(is_odd(position)) else (R)) , ((-1) if(is_odd(position)) else (1))))) for i , position in zip(range((R - 1) , -1 , -1) , range(1 , (R + 1))))))
+
+zig_zag_traversal_string_length = (R * C)
+
+answer_string = (" ".join(zig_zag_traversal_string_1[index] for index in range(0 , ((zig_zag_traversal_string_length // 2) + (zig_zag_traversal_string_length % 2))) if(zig_zag_traversal_string_1[index] == zig_zag_traversal_string_2[index])))
+
+print((answer_string) if(answer_string) else (-1))
