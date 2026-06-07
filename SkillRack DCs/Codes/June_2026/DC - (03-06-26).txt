@@ -1,0 +1,57 @@
+Problem Statement :-
+
+Border Center Asterisk Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def fill_layer(target_character , starting_i , ending_i , starting_j , ending_j , matrix):
+    
+    [matrix[starting_i].__setitem__(current_j , target_character) for current_j in range(starting_j , (ending_j + 1))]
+    
+    [matrix[current_i].__setitem__(ending_j , target_character) for current_i in range((starting_i + 1) , (ending_i + 1))]
+    
+    [matrix[ending_i].__setitem__(current_j , target_character) for current_j in range((ending_j - 1) , (starting_j - 1) , -1)]
+    
+    [matrix[current_i].__setitem__(starting_j , target_character) for current_i in range((ending_i - 1) , starting_i , -1)]
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+row_wise_cell_value = 1
+
+for i in range(1 , (R - 1)):
+    
+    for j in range(1 , (C - 1)):
+        
+        matrix[i][j] = row_wise_cell_value
+        
+        row_wise_cell_value = (row_wise_cell_value + 1)
+
+total_layers_count = min(((R // 2) + (R % 2)) , ((C // 2) + (C % 2)))
+
+starting_i = 0
+
+ending_i = (R - 1)
+
+starting_j = 0
+
+ending_j = (C - 1)
+
+for layer in range(1 , total_layers_count):
+    
+    starting_i = (starting_i + 1)
+    
+    ending_i = (ending_i - 1)
+    
+    starting_j = (starting_j + 1)
+    
+    ending_j = (ending_j - 1)
+
+fill_layer('*' , starting_i , ending_i , starting_j , ending_j , matrix)
+
+[print(*row_list) for row_list in matrix]
