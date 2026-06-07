@@ -1,0 +1,72 @@
+Problem Statement :-
+
+Smallest Window Substring in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def get_frequency_map(string):
+    
+    frequency_map = {}
+    
+    [frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in string]
+    
+    return frequency_map
+
+def minimum_window_substring_LeetCode_76_Problem(A , B):
+    
+    A_N = len(A)
+    
+    B_N = len(B)
+    
+    starting_index = 0
+    
+    ending_index = sys.maxsize
+    
+    A_frequency_map = {}
+    
+    B_frequency_map = get_frequency_map(B)
+    
+    first_pointer = 0
+    
+    second_pointer = 0
+    
+    while(second_pointer < A_N):
+        
+        character_at_second_pointer = A[second_pointer]
+        
+        A_frequency_map.__setitem__(character_at_second_pointer , (A_frequency_map.get(character_at_second_pointer , 0) + 1))
+        
+        second_pointer = (second_pointer + 1)
+        
+        while(True):
+            
+            flag = False
+            
+            for key_character in B_frequency_map.keys():
+                
+                if(A_frequency_map.get(key_character , 0) < B_frequency_map[key_character]):
+                    
+                    flag = True
+                    
+                    break
+            
+            if(flag):
+                break
+            
+            if(ending_index > (second_pointer - first_pointer)):
+                
+                starting_index = first_pointer
+                
+                ending_index = (second_pointer - first_pointer)
+            
+            character_at_first_pointer = A[first_pointer]
+            
+            first_pointer = (first_pointer + 1)
+            
+            A_frequency_map[character_at_first_pointer] = (A_frequency_map[character_at_first_pointer] - 1)
+    
+    print((A[starting_index : (starting_index + ending_index)]) if(ending_index != sys.maxsize) else (-1))
+
+minimum_window_substring_LeetCode_76_Problem(*input().strip().split())
