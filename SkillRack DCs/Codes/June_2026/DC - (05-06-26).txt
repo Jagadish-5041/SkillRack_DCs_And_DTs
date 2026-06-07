@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Alphabets Plus Digits Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_sum(string):
+    
+    return sum(int(character) for character in string if(character.isdigit()))
+
+def get_K_th_alphabet_from_current_alphabet(current_alphabet , K):
+    
+    return chr(((((ord(current_alphabet) - ord('a')) + K) % 26) + ord('a')))
+
+string = input().strip()
+
+digits_sum = get_digits_sum(string)
+
+[print(get_K_th_alphabet_from_current_alphabet(character.lower() , digits_sum) , end = "") for character in string if(character.isalpha())]
