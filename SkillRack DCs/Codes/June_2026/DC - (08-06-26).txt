@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Count Binary Value In Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+R , C = map(int , input().split())
+
+matrix = [("".join(input().strip().split())) for i in range(0 , R)]
+
+target_binary_string = get_binary_string(int(input().strip()))
+
+target_binary_string_length = len(target_binary_string)
+
+binary_strings_list = []
+
+[[binary_strings_list.append(matrix[i][j : (j + target_binary_string_length)]) for j in range(0 , (C - target_binary_string_length + 1))] for i in range(0 , R)]
+
+[binary_strings_list.append(("".join(matrix[k][j] for k in range(i , (i + target_binary_string_length))))) for j in range(0 , C) for i in range(0 , (R - target_binary_string_length + 1))]
+
+count = binary_strings_list.count(target_binary_string)
+
+print(count)
