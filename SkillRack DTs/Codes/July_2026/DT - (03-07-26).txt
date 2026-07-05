@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Squares And Sum Of N Natural Numbers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_square_value(N):
+    
+    return (N * N)
+
+def get_cube_value(N):
+    
+    return (N * N * N)
+
+N = int(input().strip())
+
+cube_of_N = get_cube_value(N)
+
+number = 1
+
+square_values_list = []
+
+while(get_square_value(number) <= cube_of_N):
+    
+    square_values_list.append(get_square_value(number))
+    
+    number = (number + 1)
+
+print(*square_values_list)
+
+print(sum(square_values_list))
