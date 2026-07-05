@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Concatenated Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def add_two_number_strings(A , A_N , B , B_N):
+    
+    N = max(A_N , B_N)
+    
+    padding_zeroes_string = ('0' * N)
+    
+    A = (padding_zeroes_string[0 : (N - A_N)] + A)
+    
+    B = (padding_zeroes_string[0 : (N - B_N)] + B)
+    
+    C = ""
+    
+    carry_value = 0
+    
+    for index in range((N - 1) , -1 , -1):
+        
+        sum_value = (int(A[index]) + int(B[index]) + carry_value)
+        
+        answer_value = (sum_value % 10)
+        
+        carry_value = (sum_value // 10)
+        
+        C = (str(answer_value) + C)
+    
+    C = (str(carry_value) + C) if(carry_value != 0) else (C)
+    
+    return C
+
+M , N = map(int , input().strip().split())
+
+A = ("".join(input().strip().split()))
+
+B = ("".join(input().strip().split()))
+
+print(add_two_number_strings(A , len(A) , B , len(B)))
