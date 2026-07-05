@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Pattern Printing - X Pattern With Asterisk in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_primary_diagonal(current_row_index , current_column_index , R , C):
+    
+    return (current_row_index == current_column_index)
+
+def is_secondary_diagonal(current_row_index , current_column_index , R , C):
+    
+    return ((current_row_index + current_column_index) == (C - 1))
+
+def get_pattern_value(current_row_index , current_column_index , R , C):
+    
+    return (((current_row_index + 1) if(current_row_index <= (R // 2)) else (R - current_row_index)) if((is_primary_diagonal(current_row_index , current_column_index , R , C)) or (is_secondary_diagonal(current_row_index , current_column_index , R , C))) else ('*'))
+
+N = int(input())
+
+R = ((N * 2) - 1)
+
+C = ((N * 2) - 1)
+
+[print(*[get_pattern_value(i , j , R , C) for j in range(0 , C)] , sep = "") for i in range(0 , R)]
