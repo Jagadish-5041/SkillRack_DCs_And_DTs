@@ -1,0 +1,25 @@
+Problem Statement :-
+
+2*2 Sub Matrix With Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+S = int(input().strip())
+
+K = 2
+
+for i in range(0 , (R - K + 1)):
+    
+    for j in range(0 , (C - K + 1)):
+        
+        sub_matrix_sum = sum(matrix[k][l] for k in range(i , (i + K)) for l in range(j , (j + K)))
+        
+        if(sub_matrix_sum == S):
+            
+            [print(*[matrix[k][l] for l in range(j , (j + K))]) for k in range(i , (i + K))]
+            
+            quit()
