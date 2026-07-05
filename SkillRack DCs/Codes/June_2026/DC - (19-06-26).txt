@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Row Increment - Last Element Unit Digit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+[((lambda offset_value : print(*[(matrix[i][j] + offset_value) for j in range(0 , C)])) (matrix[i][-1] % 10)) for i in range(0 , R)]
