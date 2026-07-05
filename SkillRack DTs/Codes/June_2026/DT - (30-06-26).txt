@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Maximum Odd Or Even in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+maximum_odd_number_from_left = 0
+
+maximum_even_number_from_right = 0
+
+left_side_maximum_odd_number_list = [None for i in range(0 , N)]
+
+right_side_maximum_even_number_list = [None for i in range(0 , N)]
+
+for index_1 , index_2 in zip(range(0 , N , 1) , range((N - 1) , -1 , -1)):
+    
+    maximum_odd_number_from_left = (max(maximum_odd_number_from_left , values_list[index_1])) if(is_odd(values_list[index_1])) else (maximum_odd_number_from_left)
+    
+    maximum_even_number_from_right = (max(maximum_even_number_from_right , values_list[index_2])) if(is_even(values_list[index_2])) else (maximum_even_number_from_right)
+    
+    left_side_maximum_odd_number_list[index_1] = maximum_odd_number_from_left
+    
+    right_side_maximum_even_number_list[index_2] = maximum_even_number_from_right
+
+print(*[max(values_list[index] , ((left_side_maximum_odd_number_list[index]) if(is_odd(values_list[index])) else (right_side_maximum_even_number_list[index]))) for index in range(0 , N)])
