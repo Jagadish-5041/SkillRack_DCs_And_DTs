@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Bottom Right Quadrant in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+M = (N // 2)
+
+[print(*[matrix[i][j] for j in range(M , N)]) for i in range(M , N)]
