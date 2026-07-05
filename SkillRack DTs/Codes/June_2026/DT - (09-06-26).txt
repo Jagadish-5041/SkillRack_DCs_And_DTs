@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Last Box Picked By The Poet in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+index = (N - 1)
+
+while(is_within_bounds(index , N)):
+    
+    unit_digit = (values_list[index] % 10)
+    
+    if((index == 0) or (unit_digit == 0)):
+        print(values_list[index])
+        quit()
+    
+    index = (index - unit_digit) if(is_within_bounds((index - unit_digit) , N)) else (0)
