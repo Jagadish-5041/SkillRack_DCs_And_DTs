@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Queries Of Library in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+borrows_and_returns_map = {}
+
+for i in range(0 , int(input().strip())):
+    
+    data_string = input().strip()
+    
+    is_borrow_flag = (data_string[0] == '+')
+    
+    number = int(data_string[1 : ])
+    
+    borrows_and_returns_map[number] = (borrows_and_returns_map.get(number , 0) + 1) if(is_borrow_flag) else (borrows_and_returns_map.get(number , 0) - 1)
+
+maximum_books_in_hand = max(value for value in borrows_and_returns_map.values() if(value > 0))
+
+print(*[key for key in sorted(borrows_and_returns_map.keys() , reverse = True) if(borrows_and_returns_map[key] == maximum_books_in_hand)])
