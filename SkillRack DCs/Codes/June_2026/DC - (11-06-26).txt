@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Pattern Printing - N Values With Asterisk in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+upper_string = ('*' * ((N * 2) + 1))
+
+middle_string = ('*' + ("*".join(str(number) for number in range(1 , (N + 1)))) + '*')
+
+lower_string = upper_string
+
+print(upper_string , middle_string , lower_string , sep = "\n")
