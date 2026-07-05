@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Check If Vertical Zig-Zag Or Not in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+current_cell_value = 1
+
+for j in range(0 , C):
+    
+    starting_row_index , ending_row_index , offset_value = (0 , R , 1) if(is_odd((j + 1))) else ((R - 1) , -1 , -1)
+    
+    for i in range(starting_row_index , ending_row_index , offset_value):
+        
+        if(matrix[i][j] != current_cell_value):
+            
+            print("No")
+            
+            quit()
+        
+        current_cell_value = (current_cell_value + 1)
+
+print("Yes")
