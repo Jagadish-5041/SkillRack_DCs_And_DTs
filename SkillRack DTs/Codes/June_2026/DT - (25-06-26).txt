@@ -1,0 +1,54 @@
+Problem Statement :-
+
+Print At Most X Factors in DT (Daily Test) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+
+public class Hello {
+    
+    public static boolean check_factors_count(long N , int X){
+        
+        int factors_count = 0;
+        
+        for(long number = 1 ; ((number * number) <= N) ; number++){
+            
+            if((N % number) == 0){
+                
+                factors_count = (number != (N / number)) ? (factors_count + 2) : (factors_count + 1);
+                
+                if(factors_count > X){
+                    return false;
+                }
+            }
+        }
+        
+        return (factors_count <= X);
+    }
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt();
+        
+        int X = sc.nextInt();
+        
+        boolean flag = true;
+        
+        for(int i = 0 ; (i < N) ; i++){
+            
+            long number = sc.nextLong();
+            
+            if(check_factors_count(number , X)){
+                
+                flag = false;
+                
+                System.out.print(number + " ");
+            }
+        }
+        
+        System.out.print((flag) ? (-1) : (""));
+    }
+}
