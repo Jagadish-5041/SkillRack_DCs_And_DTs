@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Grade Of A Student in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda mark_value : print((('S') if(80 <= mark_value <= 100) else (('A') if(60 <= mark_value < 80) else (('B') if(50 <= mark_value < 60) else ('C')))))) (int(input().strip()))
