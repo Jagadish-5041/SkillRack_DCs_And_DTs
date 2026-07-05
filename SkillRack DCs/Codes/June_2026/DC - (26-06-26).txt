@@ -1,0 +1,53 @@
+Problem Statement :-
+
+Merged Sorted Array in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+A_N , B_N = map(int , input().strip().split())
+
+A = list(map(int , input().strip().split()))
+
+B = list(map(int , input().strip().split()))
+
+A_i = 0
+
+B_i = 0
+
+while((is_within_bounds(A_i , A_N)) and (is_within_bounds(B_i , B_N))):
+    
+    if(A[A_i] > B[B_i]):
+        
+        print(A[A_i] , end = " ")
+        
+        A_i = (A_i + 1)
+    
+    elif(B[B_i] > A[A_i]):
+        
+        print(B[B_i] , end = " ")
+        
+        B_i = (B_i + 1)
+    
+    else:
+        
+        print(A[A_i] , B[B_i] , end = " ")
+        
+        A_i = (A_i + 1)
+        
+        B_i = (B_i + 1)
+
+while(is_within_bounds(A_i , A_N)):
+    
+    print(A[A_i] , end = " ")
+    
+    A_i = (A_i + 1)
+
+while(is_within_bounds(B_i , B_N)):
+    
+    print(B[B_i] , end = " ")
+    
+    B_i = (B_i + 1)
