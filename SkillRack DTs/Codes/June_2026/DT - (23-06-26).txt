@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Count Of Closed Walk - Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N , K = map(int , input().strip().split())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+count = 0
+
+for i in range(0 , (R - K + 1)):
+    
+    for j in range(0 , (C - K + 1)):
+        
+        if(all(is_even(matrix[k][l]) for k in range(i , (i + K)) for l in range(j , (j + K)) if((k == i) or (k == (i + K - 1)) or (l == j) or (l == (j + K - 1))))):
+            
+            count = (count + 1)
+
+print(count)
