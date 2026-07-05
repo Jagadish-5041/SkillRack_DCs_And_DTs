@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Fibonacci Numbers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+values_list = list(map(int , input().split()))
+
+maximum_value = max(values_list)
+
+A = 0
+
+B = 1
+
+C = (A + B)
+
+fibonacci_series_set = set({0 , 1})
+
+while(C <= maximum_value):
+    
+    C = (A + B)
+    
+    fibonacci_series_set.add(C)
+    
+    A = B
+    
+    B = C
+
+print(*[value for value in values_list if(value in fibonacci_series_set)])
