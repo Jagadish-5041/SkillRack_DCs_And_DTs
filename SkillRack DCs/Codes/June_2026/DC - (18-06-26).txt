@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Interchange Diagonals In Matrix in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_primary_diagonal(current_i , current_j , R , C):
+    
+    return (current_i == current_j)
+
+def is_secondary_diagonal(current_i , current_j , R , C):
+    
+    return ((current_i + current_j) == (C - 1))
+
+N = int(input())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+[print(*[(matrix[i][(C - j - 1)]) if((is_primary_diagonal(i , j , R , C)) or (is_secondary_diagonal(i , j , R , C))) else (matrix[i][j]) for j in range(0 , C)]) for i in range(0 , R)]
