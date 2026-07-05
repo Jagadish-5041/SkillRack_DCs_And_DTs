@@ -1,0 +1,27 @@
+Problem Statement :-
+
+String Rotation in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+A_N = len(A)
+
+B = input().strip()
+
+B_N = len(B)
+
+if(A_N != B_N):
+    print("NO")
+    quit()
+
+for count in range(0 , A_N):
+    
+    if(A == B):
+        print("YES")
+        quit()
+    
+    B = (B[1 : ] + B[0])
+
+print("NO")
