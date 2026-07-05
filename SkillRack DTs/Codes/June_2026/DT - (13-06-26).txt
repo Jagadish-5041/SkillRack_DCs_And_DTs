@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Matched Word(s) in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_same_pattern(string_1 , string_2):
+    
+    if(len(string_1) != len(string_2)):
+        return False
+    
+    index_1 = 0
+    
+    N = len(string_1)
+    
+    index_2 = 0
+    
+    M = len(string_2)
+    
+    while((is_within_bounds(index_1 , N)) and (is_within_bounds(index_2 , N))):
+        
+        current_sub_string_1 = ""
+        
+        current_character_1 = string_1[index_1]
+        
+        while((is_within_bounds(index_1 , N)) and (string_1[index_1] == current_character_1)):
+            
+            current_sub_string_1 = (current_sub_string_1 + string_1[index_1])
+            
+            index_1 = (index_1 + 1)
+        
+        current_sub_string_2 = ""
+        
+        current_character_2 = string_2[index_2]
+        
+        while((is_within_bounds(index_2 , M)) and (string_2[index_2] == current_character_2)):
+            
+            current_sub_string_2 = (current_sub_string_2 + string_2[index_2])
+            
+            index_2 = (index_2 + 1)
+        
+        if(len(current_sub_string_1) != len(current_sub_string_2)):
+            return False
+    
+    return True
+
+pattern_string = input().strip()
+
+answer_list = [string for string in input().strip().split() if(is_same_pattern(string , pattern_string))]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
