@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sum Of Product Of Every Two Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+numbers_list = []
+
+[numbers_list.append(int(digits_string[index : (index + 2)])) for index in range(0 , (N - 2 + 1) , 2)]
+
+(numbers_list.append(int(digits_string[-1]))) if(is_odd(N)) else ("")
+
+(numbers_list.append(1)) if(is_odd(len(numbers_list))) else ("")
+
+sum_of_product_of_every_two_digits = sum((numbers_list[index] * numbers_list[(index + 1)]) for index in range(0 , (len(numbers_list) - 2 + 1) , 2))
+
+print(sum_of_product_of_every_two_digits)
