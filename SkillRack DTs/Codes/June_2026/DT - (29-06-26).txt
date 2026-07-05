@@ -1,0 +1,71 @@
+Problem Statement :-
+
+Alphabet Or Digit Adjacent Values in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+for index in range(1 , (N - 1)):
+    
+    if((S[(index - 1)].isdigit()) and (S[(index + 1)].isdigit())):
+        
+        left_digits_string = ""
+        
+        for i in range((index - 1) , -1 , -1):
+            
+            if(S[i].isdigit()):
+                
+                left_digits_string = (left_digits_string + S[i])
+            
+            else:
+                
+                break
+        
+        right_digits_string = ""
+        
+        for i in range((index + 1) , N):
+            
+            if(S[i].isdigit()):
+                
+                right_digits_string = (right_digits_string + S[i])
+            
+            else:
+                
+                break
+        
+        answer_string = (left_digits_string[::-1] + right_digits_string)
+        
+        print(answer_string , end = " ")
+    
+    elif((S[(index - 1)].isalpha()) and (S[(index + 1)].isalpha())):
+        
+        left_alphabets_string = ""
+        
+        for i in range((index - 1) , -1 , -1):
+            
+            if(S[i].isalpha()):
+                
+                left_alphabets_string = (left_alphabets_string + S[i])
+            
+            else:
+                
+                break
+        
+        right_alphabets_string = ""
+        
+        for i in range((index + 1) , N):
+            
+            if(S[i].isalpha()):
+                
+                right_alphabets_string = (right_alphabets_string + S[i])
+            
+            else:
+                
+                break
+        
+        answer_string = (left_alphabets_string[::-1] + right_alphabets_string)
+        
+        print(answer_string , end = " ")
