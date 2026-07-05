@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Rearrange Matrix Without Duplicates In Each Column in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+frequency_map = {}
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        frequency_map[matrix[i][j]] = (frequency_map.get(matrix[i][j] , 0) + 1)
+        
+        if(frequency_map[matrix[i][j]] > C):
+            
+            print("NO")
+            
+            quit()
+
+print("YES")
