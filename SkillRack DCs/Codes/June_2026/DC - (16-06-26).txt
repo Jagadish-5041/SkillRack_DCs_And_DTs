@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Consecutive Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+digits_string = input().strip()
+
+index = 0
+
+N = len(digits_string)
+
+new_digits_string = ""
+
+while(is_within_bounds(index , N)):
+    
+    current_sub_string = ""
+    
+    current_character = digits_string[index]
+    
+    while((is_within_bounds(index , N)) and (digits_string[index] == current_character)):
+        
+        current_sub_string = (current_sub_string + digits_string[index])
+        
+        index = (index + 1)
+    
+    current_sub_string = (current_sub_string + current_sub_string) if(len(current_sub_string) == 1) else (current_sub_string)
+    
+    new_digits_string = (new_digits_string + current_sub_string)
+
+new_number = int(new_digits_string)
+
+print(new_number)
