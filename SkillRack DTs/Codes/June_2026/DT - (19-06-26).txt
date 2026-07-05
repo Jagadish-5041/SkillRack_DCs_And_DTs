@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Series - Digit At Nth Position in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+M , N = map(int , input().strip().split())
+
+series_string = ""
+
+for number in range(1 , (M + 1)):
+    
+    series_string = (series_string + str(number))
+    
+    if(len(series_string) >= N):
+        
+        print(series_string[(N - 1)])
+        
+        quit()
