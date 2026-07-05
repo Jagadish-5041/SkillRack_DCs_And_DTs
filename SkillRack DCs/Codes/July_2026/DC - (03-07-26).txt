@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Matrix Side View in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+left_most_characters_list = []
+
+right_most_characters_list = []
+
+for i in range(0 , R):
+    
+    left_most_character = None
+    
+    right_most_character = None
+    
+    for character in input().strip().split():
+        
+        left_most_character = (character) if((left_most_character is None) and (character.isalpha())) else (left_most_character)
+        
+        right_most_character = (character) if(character.isalpha()) else (right_most_character)
+    
+    left_most_characters_list.append(left_most_character)
+    
+    right_most_characters_list.append(right_most_character)
+
+print(*((left_most_characters_list) if(input().strip().lower() == 'l') else (right_most_characters_list)) , sep = "")
