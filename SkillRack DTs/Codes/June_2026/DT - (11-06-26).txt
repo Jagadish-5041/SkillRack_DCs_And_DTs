@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Xth Element In Spiral Form Of Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().split())
+
+R = N
+
+C = N
+
+matrix = [list(map(int , input().split())) for i in range(0 , R)]
+
+starting_i = 0
+
+ending_i = (R - 1)
+
+starting_j = 0
+
+ending_j = (C - 1)
+
+total_layers_count = min(((R // 2) + (R % 2)) , ((C // 2) + (C % 2)))
+
+layer_wise_elements_list = []
+
+for layer in range(1 , (total_layers_count + 1)):
+    
+    [layer_wise_elements_list.append(matrix[starting_i][current_j]) for current_j in range(starting_j , (ending_j + 1))]
+    
+    [layer_wise_elements_list.append(matrix[current_i][ending_j]) for current_i in range((starting_i + 1) , (ending_i + 1))]
+    
+    [layer_wise_elements_list.append(matrix[ending_i][current_j]) for current_j in range((ending_j - 1) , (starting_j - 1) , -1)]
+    
+    [layer_wise_elements_list.append(matrix[current_i][starting_j]) for current_i in range((ending_i - 1) , starting_i , -1)]
+    
+    starting_i = (starting_i + 1)
+    
+    ending_i = (ending_i - 1)
+    
+    starting_j = (starting_j + 1)
+    
+    ending_j = (ending_j - 1)
+
+print(layer_wise_elements_list[(X - 1)])
