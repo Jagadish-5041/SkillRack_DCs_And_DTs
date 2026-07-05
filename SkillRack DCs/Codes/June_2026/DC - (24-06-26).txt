@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Characters Repeating Atleast N Times in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+S_i = 0
+
+S_N = len(S)
+
+K = int(input())
+
+while(is_within_bounds(S_i , S_N)):
+    
+    current_character = S[S_i]
+    
+    current_sub_string = ""
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i] == current_character)):
+        
+        current_sub_string = (current_sub_string + S[S_i])
+        
+        S_i = (S_i + 1)
+    
+    (print(current_sub_string[0] , end = "")) if(len(current_sub_string) >= K) else ("")
