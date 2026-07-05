@@ -1,0 +1,7 @@
+Problem Statement :-
+
+String Expansion in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S : [print(S[0 : (index + 1)] , end = "") for index in range(0 , len(S))]) (input().strip())
