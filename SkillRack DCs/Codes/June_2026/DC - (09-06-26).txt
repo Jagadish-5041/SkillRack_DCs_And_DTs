@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Common Integers Between M And N in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A_N , B_N = map(int , input().strip().split())
+
+if((A_N <= 0) or (B_N <= 0)):
+    print("Invalid")
+    quit()
+
+A_set = dict.fromkeys(list(map(int , input().split())))
+
+B_set = dict.fromkeys(list(map(int , input().split())))
+
+common_numbers_list = [number for number in A_set if(number in B_set)]
+
+(print(*common_numbers_list)) if(common_numbers_list) else (print("Invalid"))
