@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Equal Number Of 1's In Binary Representation in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_set_bits_count(N):
+    
+    set_bits_count = 0
+    
+    while(N > 0):
+        
+        set_bits_count = (set_bits_count + 1)
+        
+        N = (N & (N - 1))
+    
+    return set_bits_count
+
+starting_range_value , ending_range_value , N = map(int , input().strip().split())
+
+X = get_set_bits_count(N)
+
+answer_list = [number for number in range(starting_range_value , (ending_range_value + 1)) if(get_set_bits_count(number) == X)]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
