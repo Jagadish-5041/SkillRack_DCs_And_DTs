@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Longest Common Prefix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input())
+
+words_list = [input().strip() for i in range(0 , N)]
+
+shortest_word_string = min(words_list , key = len)
+
+for index in range((len(shortest_word_string) - 1) , -1 , -1):
+    
+    if((lambda prefix_string : all(word_string.startswith(prefix_string) for word_string in words_list)) (shortest_word_string[0 : (index + 1)])):
+        
+        print(shortest_word_string[0 : (index + 1)])
+        
+        quit()
+
+print(-1)
