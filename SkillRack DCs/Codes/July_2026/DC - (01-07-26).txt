@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Rock - Paper - Scissors Game in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+player_1_s_score = 0
+
+player_2_s_score = 0
+
+points_weightage_values_map = {value : index for index , value in enumerate("rock,paper,scissors".strip().split(","))}
+
+for i in range(0 , int(input().strip())):
+    
+    player_1_s_action , player_2_s_action = input().strip().split()
+    
+    difference_modulus_of_3 = ((points_weightage_values_map[player_1_s_action] - points_weightage_values_map[player_2_s_action]) % 3)
+    
+    player_1_s_score = (player_1_s_score + 1) if(difference_modulus_of_3 == 1) else (player_1_s_score)
+    
+    player_2_s_score = (player_2_s_score + 1) if(difference_modulus_of_3 == 2) else (player_2_s_score)
+
+print((("Tie") if(player_1_s_score == player_2_s_score) else ((1) if(player_1_s_score > player_2_s_score) else (2))))
