@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Diagonal Suffix Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+primary_diagonal_values_list = [matrix[i][j] for i in range(0 , N) for j in range(0 , N) if(i == j)]
+
+secondary_diagonal_values_list = [matrix[i][j] for i in range(0 , N) for j in range(0 , N) if((i + j) == (N - 1))]
+
+total_primary_diagonal_sum = sum(primary_diagonal_values_list)
+
+primary_diagonal_suffix_sum = total_primary_diagonal_sum
+
+primary_diagonal_suffixes_list = [primary_diagonal_suffix_sum]
+
+for index in range(0 , (len(primary_diagonal_values_list) - 1)):
+    
+    primary_diagonal_suffix_sum = (primary_diagonal_suffix_sum - primary_diagonal_values_list[index])
+    
+    primary_diagonal_suffixes_list.append(primary_diagonal_suffix_sum)
+
+total_secondary_diagonal_sum = sum(secondary_diagonal_values_list)
+
+secondary_diagonal_suffix_sum = total_secondary_diagonal_sum
+
+secondary_diagonal_suffixes_list = [secondary_diagonal_suffix_sum]
+
+for index in range(0 , (len(secondary_diagonal_values_list) - 1)):
+    
+    secondary_diagonal_suffix_sum = (secondary_diagonal_suffix_sum - secondary_diagonal_values_list[index])
+    
+    secondary_diagonal_suffixes_list.append(secondary_diagonal_suffix_sum)
+
+[print(*data_list) for data_list , sum_value in sorted([(primary_diagonal_suffixes_list , sum(primary_diagonal_suffixes_list)) , (secondary_diagonal_suffixes_list , sum(secondary_diagonal_suffixes_list))] , key = lambda pair : (pair[1] * -1))]
