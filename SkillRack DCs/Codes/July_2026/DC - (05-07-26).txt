@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Consonants Rotated String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+def rotate_K_times(K , N , string):
+    
+    K = (K % N)
+    
+    return (string[K : N] + string[0 : K])
+
+characters_list , K = [(list(value)) if(index == 0) else (int(value)) for index , value in enumerate(input().strip().split())]
+
+consonants_string = ("".join(character for character in characters_list if(is_consonant(character))))
+
+consonants_string = rotate_K_times(K , len(consonants_string) , consonants_string)
+
+consonants_string_index = 0
+
+for index in range(0 , len(characters_list)):
+    
+    if(is_consonant(characters_list[index])):
+        
+        characters_list[index] = consonants_string[consonants_string_index]
+        
+        consonants_string_index = (consonants_string_index + 1)
+
+print(*characters_list , sep = "")
