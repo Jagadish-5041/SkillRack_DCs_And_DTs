@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Inverted V Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+string_1 = input().strip()
+
+string_2 = input().strip()
+
+A = None
+
+B = None
+
+A = (string_1) if(string_1[-1] == string_2[0]) else ((string_2) if(string_2[-1] == string_1[0]) else (None))
+
+B = (string_2) if(string_1[-1] == string_2[0]) else ((string_1) if(string_2[-1] == string_1[0]) else (None))
+
+if((A is None) or (B is None)):
+    print(-1)
+    quit()
+
+N = min(len(A) , len(B))
+
+hyphens_string = ('-' * (N * 2))
+
+[print((hyphens_string[0 : (N - i)] + ((A[(N - i)]) if(i == 1) else (A[(N - i)] + hyphens_string[0 : j] + B[(i - 1)])))) for i , j in zip(range(1 , (N + 1)) , range(-1 , (N * 3) , 2))]
