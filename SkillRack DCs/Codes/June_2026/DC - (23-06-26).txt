@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Count The Successful Withdrawls in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda A , X , Y : print((A // (X + Y)))) (*map(int , input().strip().split()))
