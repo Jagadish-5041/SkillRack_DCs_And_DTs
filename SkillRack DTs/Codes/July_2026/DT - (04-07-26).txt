@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Count Of Concatenated Multiples in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().strip().split())
+
+values_list = list(map(int , input().strip().split()))
+
+count = sum(1 for i in range(0 , N) for j in range(0 , N) if((i != j) and ((int((str(values_list[i]) + str(values_list[j]))) % X) == 0)))
+
+print(count)
