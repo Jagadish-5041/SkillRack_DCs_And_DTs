@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Alphabet N*N Matrix in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_K_times_anti_clockwise_rotated_list(K , values_list):
+    
+    N = len(values_list)
+    
+    K = (K % N)
+    
+    return (values_list[K : N] + values_list[0 : K])
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+sub_array_size , K = map(int , input().strip().split())
+
+[print(*get_K_times_anti_clockwise_rotated_list(K , values_list[i : (i + sub_array_size)]) , sep = " " , end = " ") for i in range(0 , N , sub_array_size)]
