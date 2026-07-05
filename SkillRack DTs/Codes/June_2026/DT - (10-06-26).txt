@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Rearrange Matrix Without Duplicates In Each Row in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().split())
+
+frequency_map = {}
+
+[frequency_map.__setitem__(number , (frequency_map.get(number , 0) + 1)) for i in range(0 , R) for number in list(map(int , input().split()))]
+
+for key , frequency in frequency_map.items():
+    
+    if(frequency > R):
+        
+        print("NO")
+        
+        quit()
+
+print("YES")
