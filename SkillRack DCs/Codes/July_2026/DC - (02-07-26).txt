@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Count Of Common Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+frequency_map_1 = {}
+
+for i in range(0 , ((N // 2) + (N % 2))):
+    
+    for j in range((N // 2) , N):
+        
+        frequency_map_1[matrix[i][j]] = (frequency_map_1.get(matrix[i][j] , 0) + 1)
+
+frequency_map_2 = {}
+
+for i in range((N // 2) , N):
+    
+    for j in range(0 , ((N // 2) + (N % 2))):
+        
+        frequency_map_2[matrix[i][j]] = (frequency_map_2.get(matrix[i][j] , 0) + 1)
+
+sum_value = 0
+
+for value in frequency_map_1.keys():
+    
+    if(value in frequency_map_2):
+        
+        sum_value = (sum_value + min(frequency_map_1[value] , frequency_map_2[value]))
+
+print(sum_value)
