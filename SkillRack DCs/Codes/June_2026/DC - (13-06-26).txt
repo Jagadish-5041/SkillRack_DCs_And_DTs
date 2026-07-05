@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Largest Even Number in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+digits_list = [int(digit_string) for digits_string in input().strip().split() for digit_string in digits_string]
+
+smallest_even_digit = 10
+
+smallest_even_digit_index = -999
+
+for index , digit in enumerate(digits_list):
+    
+    if((digit != 0) and (is_even(digit)) and (smallest_even_digit > digit)):
+        
+        smallest_even_digit = digit
+        
+        smallest_even_digit_index = index
+
+if(smallest_even_digit_index == -999):
+    print(-1)
+    quit()
+
+digits_list.pop(smallest_even_digit_index)
+
+largest_even_number_digits_list = (sorted(digits_list , reverse = True) + [smallest_even_digit])
+
+print(*largest_even_number_digits_list , sep = "")
