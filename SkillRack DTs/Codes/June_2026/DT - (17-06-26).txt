@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Left Rotation Of Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def rotate_list_K_times(values_list , N , K):
+    
+    K = (K % N)
+    
+    print(*(values_list[K : N] + values_list[0 : K]))
+
+(lambda values_list : [rotate_list_K_times(values_list , len(values_list) , K) for K in list(map(int , input().split()))]) (list(map(int , input().split())))
