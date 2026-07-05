@@ -1,0 +1,15 @@
+Problem Statement :-
+
+String Characters Mixing in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+characters_list_1 , characters_list_2 = map(list , input().strip().split())
+
+for index in range(0 , len(characters_list_1)):
+    
+    characters_list_copy = characters_list_2.copy()
+    
+    characters_list_copy[index] = characters_list_1[index]
+    
+    print(*characters_list_copy , sep = "" , end = " ")
