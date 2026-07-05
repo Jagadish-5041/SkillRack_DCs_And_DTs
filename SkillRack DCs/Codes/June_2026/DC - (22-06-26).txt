@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Rotate K Times in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_K_times_clockwise_rotated_list(N , values_list , K):
+    
+    return ((lambda new_K : values_list[(N - new_K) : N] + values_list[0 : (N - new_K)]) (K % N))
+
+print(*get_K_times_clockwise_rotated_list(int(input().strip()) , list(map(int , input().strip().split())) , int(input().strip())))
