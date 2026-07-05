@@ -1,0 +1,105 @@
+Problem Statement :-
+
+Find The Closest Palindrome in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def compute_power_function_in_log_N_time_complexity(base_value , power_value):
+    
+    product_value = 1
+    
+    while(power_value > 0):
+        
+        product_value = (product_value * base_value) if(is_odd(power_value)) else (product_value)
+        
+        base_value = (base_value * base_value)
+        
+        power_value = (power_value // 2)
+    
+    return product_value
+
+def get_absolute_difference(A , B):
+    
+    return abs((A - B))
+
+def get_closest_number(target_number , numbers_list):
+    
+    minimum_absolute_difference = sys.maxsize
+    
+    closest_number = sys.maxsize
+    
+    for number in numbers_list:
+        
+        if(number != target_number):
+            
+            current_absolute_difference = get_absolute_difference(target_number , number)
+            
+            if(minimum_absolute_difference == current_absolute_difference):
+                closest_number = min(closest_number , number)
+            elif(minimum_absolute_difference > current_absolute_difference):
+                minimum_absolute_difference = current_absolute_difference
+                closest_number = number
+    
+    return closest_number
+
+number = int(input())
+
+digits_string = str(number)
+
+N = len(digits_string)
+
+possible_answers_list = []
+
+left_string_1 = str((int(digits_string[0 : ((N // 2) + (N % 2))]) - 1))
+
+right_string_1 = (left_string_1[:-1][::-1]) if(is_odd(N)) else (left_string_1[::-1])
+
+possible_answers_list.append(int((left_string_1 + right_string_1)))
+
+left_string_2 = digits_string[0 : ((N // 2) + (N % 2))]
+
+right_string_2 = (left_string_2[:-1][::-1]) if(is_odd(N)) else (left_string_2[::-1])
+
+possible_answers_list.append(int((left_string_2 + right_string_2)))
+
+left_string_3 = str((int(digits_string[0 : ((N // 2) + (N % 2))]) + 1))
+
+right_string_3 = (left_string_3[:-1][::-1]) if(is_odd(N)) else (left_string_3[::-1])
+
+possible_answers_list.append(int((left_string_3 + right_string_3)))
+
+"""
+Handle cases near powers of 10 where simple prefix mirroring may miss a closer palindrome.
+
+Examples :-
+
+99 -> 101
+
+100 -> 99
+
+999 -> 1001
+
+1000 -> 999
+
+9999 -> 10001
+
+10000 -> 9999
+
+These boundary palindromes are added explicitly to cover digit-length transition cases.
+"""
+
+powers_of_10_number = compute_power_function_in_log_N_time_complexity(10 , (N - 1))
+
+possible_answers_list.append((powers_of_10_number - 1))
+
+possible_answers_list.append((powers_of_10_number + 1))
+
+closest_palindrome_number = get_closest_number(number , possible_answers_list)
+
+print(closest_palindrome_number)
