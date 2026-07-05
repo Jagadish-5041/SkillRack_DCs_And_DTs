@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Profit And Loss Percentage in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_absolute_difference(A , B):
+    
+    return abs((A - B))
+
+def get_profit_or_loss_percentage(cost_price , selling_price):
+    
+    return ((get_absolute_difference(cost_price , selling_price) / cost_price) * 100)
+
+def is_loss(cost_price , selling_price):
+    
+    return (cost_price > selling_price)
+
+def is_profit(cost_price , selling_price):
+    
+    return (cost_price < selling_price)
+
+N = int(input())
+
+data_list = [map(int , input().split()) for i in range(0 , N)]
+
+M = int(input())
+
+losses_count = 0
+
+profits_count = 0
+
+for cost_price , selling_price in data_list:
+    
+    profit_or_loss_percentage = get_profit_or_loss_percentage(cost_price , selling_price)
+    
+    losses_count = (losses_count + 1) if((is_loss(cost_price , selling_price)) and (profit_or_loss_percentage >= M)) else (losses_count)
+    
+    profits_count = (profits_count + 1) if((is_profit(cost_price , selling_price)) and (profit_or_loss_percentage >= M)) else (profits_count)
+
+print(profits_count , losses_count)
