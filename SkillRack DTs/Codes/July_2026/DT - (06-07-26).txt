@@ -1,0 +1,17 @@
+Problem Statement :-
+
+String Conversion in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+string_1 , string_2 = input().strip().split()
+
+for character in string_1:
+    
+    if((character.isupper()) and (character not in string_2)):
+        
+        print("NO")
+        
+        quit()
+
+print("YES")
