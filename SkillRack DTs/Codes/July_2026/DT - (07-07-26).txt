@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Count Of String S2 In String S1 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda string_1 , string_2 : print(string_1.count(string_2))) (*input().strip().split())
