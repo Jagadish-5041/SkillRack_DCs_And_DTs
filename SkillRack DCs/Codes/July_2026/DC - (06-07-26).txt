@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Consecutive 1's Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_bit_1(bit_value):
+    
+    return (bit_value == 1)
+
+def is_bit_0(bit_value):
+    
+    return (bit_value == 0)
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+total_consecutive_1_bits_count = 0
+
+for j in range(0 , C):
+    
+    i = 0
+    
+    while(is_within_bounds(i , R)):
+        
+        consecutive_1_bits_count = 0
+        
+        while((is_within_bounds(i , R)) and (is_bit_1(matrix[i][j]))):
+            
+            consecutive_1_bits_count = (consecutive_1_bits_count + 1)
+            
+            i = (i + 1)
+        
+        while((is_within_bounds(i , R)) and (is_bit_0(matrix[i][j]))):
+            
+            i = (i + 1)
+        
+        total_consecutive_1_bits_count = (total_consecutive_1_bits_count + 1) if(consecutive_1_bits_count > 1) else (total_consecutive_1_bits_count)
+
+print(total_consecutive_1_bits_count)
