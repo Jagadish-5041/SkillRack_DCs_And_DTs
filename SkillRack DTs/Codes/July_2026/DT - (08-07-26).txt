@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Street Numbers With Most Houses in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+row_wise_hyphens_count_list = [input().strip().count('-') for i in range(0 , N)]
+
+maximum_hyphens_count = max(row_wise_hyphens_count_list)
+
+print(*[(index + 1) for index , hyphens_count in enumerate(row_wise_hyphens_count_list) if(hyphens_count == maximum_hyphens_count)])
