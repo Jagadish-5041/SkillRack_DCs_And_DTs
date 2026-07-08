@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Amount Of Waiters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+W , N = map(int , input().strip().split())
+
+waiter_s_amount_sums_list = [0 for i in range(0 , W)]
+
+[waiter_s_amount_sums_list.__setitem__((index % W) , (waiter_s_amount_sums_list[(index % W)] + amount_value)) for index , amount_value in enumerate(list(map(int , input().strip().split())))]
+
+print(*waiter_s_amount_sums_list)
