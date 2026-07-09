@@ -1,0 +1,39 @@
+Problem Statement :-
+
+Count Of Longest Consecutive 1's in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = get_binary_string(int(input().strip()))
+
+S_i = 0
+
+S_N = len(S)
+
+maximum_consecutive_1_bits_count = 0
+
+while(is_within_bounds(S_i , S_N)):
+    
+    consecutive_1_bits_count = 0
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i] == '1')):
+        
+        consecutive_1_bits_count = (consecutive_1_bits_count + 1)
+        
+        S_i = (S_i + 1)
+    
+    while((is_within_bounds(S_i , S_N)) and (S[S_i] == '0')):
+        
+        S_i = (S_i + 1)
+    
+    maximum_consecutive_1_bits_count = max(maximum_consecutive_1_bits_count , consecutive_1_bits_count)
+
+print(maximum_consecutive_1_bits_count)
