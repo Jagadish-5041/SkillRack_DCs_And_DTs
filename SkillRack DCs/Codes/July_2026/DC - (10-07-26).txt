@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Pattern Printing With Two Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , P = [(int(value)) if(index == 0) else (value) for index , value in enumerate(input().strip().split())]
+
+S = (P * (N * N))
+
+S_i = 0
+
+for row_index , column_length in zip(range(0 , N) , range(1 , ((N * N) + 1) , 2)):
+    
+    spaces_string = (" " * (N - row_index - 1))
+    
+    pattern_string = S[S_i : (S_i + column_length)]
+    
+    S_i = (S_i + column_length)
+    
+    row_string = (spaces_string + pattern_string)
+    
+    print(row_string)
