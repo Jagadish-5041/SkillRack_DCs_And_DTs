@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Anagram in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_frequency_map(string):
+    
+    frequency_map = {}
+    
+    [frequency_map.__setitem__(character , (frequency_map.get(character , 0) + 1)) for character in sorted(string)]
+    
+    return frequency_map
+
+(lambda string_1 , string_2 : print((("YES") if(get_frequency_map(string_1) == get_frequency_map(string_2)) else ("NO")))) (input().strip() , input().strip())
