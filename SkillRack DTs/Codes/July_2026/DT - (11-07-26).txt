@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Horizontal And Vertical Zig-Zag in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+matrix = [[None for j in range(0 , N)] for i in range(0 , N)]
+
+horizontal_pattern_value = 1
+
+for i in range(0 , N):
+    
+    starting_column_index = (i) if(is_odd((i + 1))) else ((N - 1))
+    
+    ending_column_index = (N) if(is_odd((i + 1))) else ((i - 1))
+    
+    offset_value = (1) if(is_odd((i + 1))) else (-1)
+    
+    for j in range(starting_column_index , ending_column_index , offset_value):
+        
+        matrix[i][j] = horizontal_pattern_value
+        
+        horizontal_pattern_value = (horizontal_pattern_value + 1)
+
+vertical_pattern_value = 1
+
+for j in range(0 , N):
+    
+    starting_row_index = (j) if(is_odd((j + 1))) else ((N - 1))
+    
+    ending_row_index = (N) if(is_odd((j + 1))) else ((j - 1))
+    
+    offset_value = (1) if(is_odd((j + 1))) else (-1)
+    
+    for i in range(starting_row_index , ending_row_index , offset_value):
+        
+        matrix[i][j] = vertical_pattern_value
+        
+        vertical_pattern_value = (vertical_pattern_value + 1)
+
+[print(*row_list) for row_list in matrix]
