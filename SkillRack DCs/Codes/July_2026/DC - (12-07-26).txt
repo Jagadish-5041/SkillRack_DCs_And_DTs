@@ -1,0 +1,67 @@
+Problem Statement :-
+
+Sum Of Any Two Integers in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include<stdio.h>
+#include<stdlib.h>
+#define jagadish_DC main
+
+void sort_array(int N , int *A){
+    
+    for(int i = 0 ; (i < N) ; i++){
+        
+        for(int j = (i + 1) ; (j < N) ; j++){
+            
+            if(A[i] > A[j]){
+                
+                int temp_value = A[i];
+                
+                A[i] = A[j];
+                
+                A[j] = temp_value;
+            }
+        }
+    }
+}
+
+int jagadish_DC(){
+    
+    int M;
+    
+    scanf("%d\n" , &M);
+    
+    int A[100008];
+    
+    int A_i = 0;
+    
+    int input_value;
+    
+    while(scanf("%d " , &input_value) >= 1){
+        
+        if(input_value <= M){
+            
+            A[A_i++] = input_value;
+        }
+    }
+    
+    sort_array(A_i , A);
+    
+    for(int i = 0 ; (i < A_i) ; i++){
+        
+        for(int j = (i + 1) ; (j < A_i) ; j++){
+            
+            if((A[i] != -999) && (A[j] != -999) && ((A[i] + A[j]) == M)){
+                
+                printf("%d %d\n" , A[i] , A[j]);
+                
+                A[i] = -999;
+                
+                A[j] = -999;
+            }
+        }
+    }
+    
+    return 0;
+}
