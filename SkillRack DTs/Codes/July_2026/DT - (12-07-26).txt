@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Odd One Out in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_parity_bit(N):
+    
+    return (N & 1)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+for index in range(0 , N):
+    
+    left_parity_bit = get_parity_bit(values_list[((index - 1) % N)])
+    
+    middle_parity_bit = get_parity_bit(values_list[index])
+    
+    right_parity_bit = get_parity_bit(values_list[((index + 1) % N)])
+    
+    if((left_parity_bit == right_parity_bit) and ((middle_parity_bit != left_parity_bit) or (middle_parity_bit != right_parity_bit))):
+        
+        print((index + 1))
+        
+        quit()
