@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Common Vowels In S1 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+(lambda A , B : print(*[X for X in A if((is_vowel(X)) and (X in B))] , sep = "")) (input().strip() , input().strip())
