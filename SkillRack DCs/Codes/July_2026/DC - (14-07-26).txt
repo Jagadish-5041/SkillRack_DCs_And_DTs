@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Maximum Sum Value in DC (Daily Challenge) in SkillRack - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_maximum_increasing_sum(A_i , A_N , A):
+    
+    maximum_increasing_sum = 0
+    
+    while(is_within_bounds(A_i , A_N)):
+        
+        flag = True
+        
+        current_increasing_sum = 0
+        
+        while((is_within_bounds(A_i , A_N)) and ((flag) or (A[(A_i - 1)] < A[A_i]))):
+            
+            flag = False
+            
+            current_increasing_sum = (current_increasing_sum + A[A_i])
+            
+            A_i = (A_i + 1)
+        
+        maximum_increasing_sum = max(maximum_increasing_sum , current_increasing_sum)
+    
+    return maximum_increasing_sum
+
+print(get_maximum_increasing_sum(0 , int(input().strip()) , list(map(int , input().strip().split()))))
