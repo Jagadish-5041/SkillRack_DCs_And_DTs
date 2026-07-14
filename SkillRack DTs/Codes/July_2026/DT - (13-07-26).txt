@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Sort Rows Based On Zeros in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+data_list = sorted([(value , (index + 1)) for index , value in enumerate([sum(1 for j in range(0 , C) if(matrix[i][j] == 0)) for i in range(0 , R)])] , key = lambda pair : (pair[0] , pair[1]))
+
+print(*[position for zeros_count , position in data_list])
