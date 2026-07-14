@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Count Of N's in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = input().strip()
+
+X , Y = map(int , input().strip().split())
+
+count = sum(str(number).count(N) for number in range((X + 1) , Y))
+
+print(count)
