@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Digits In Words in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda digits_and_words_map : print(*[digits_and_words_map[digit_string] for digit_string in input().strip()])) ({str(digit) : word_string for digit , word_string in zip(range(0 , 10) , "zero,one,two,three,four,five,six,seven,eight,nine".strip().split(","))})
