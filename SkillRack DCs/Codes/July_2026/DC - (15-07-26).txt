@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Forward And Reverse Order Of Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def print_numbers_within_range(starting_range_value , ending_range_value , offset_value):
+    
+    print(*[number for number in range(starting_range_value , (ending_range_value + offset_value) , offset_value)] , sep = " " , end = " ")
+
+A , B , C = sorted(list(map(int , input().strip().split())))
+
+print_numbers_within_range(A , B , 1)
+
+print_numbers_within_range(C , B , -1)
