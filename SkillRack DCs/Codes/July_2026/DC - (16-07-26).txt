@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Calculator With Shift in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include<stdio.h>
+#include<stdlib.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    int A;
+    
+    char operator;
+    
+    int B;
+    
+    int shift_value;
+    
+    scanf("%d%c%d\n%d" , &A , &operator , &B , &shift_value);
+    
+    operator = (shift_value == 1) ? ((operator == '+') ? ('-') : ((operator == '-') ? ('+') : ((operator == '*') ? ('/') : ('*')))) : (operator);
+    
+    printf("%d" , ((operator == '+') ? (A + B) : ((operator == '-') ? (A - B) : ((operator == '*') ? (A * B) : (A / B)))));
+    
+    return 0;
+}
