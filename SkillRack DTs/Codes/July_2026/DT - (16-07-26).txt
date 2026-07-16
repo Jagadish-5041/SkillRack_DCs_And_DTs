@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Toggle Vowel in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+def toggle_alphabet(alphabet):
+    
+    return ((alphabet.upper()) if(alphabet.islower()) else (alphabet.lower()))
+
+print(*[(toggle_alphabet(character)) if((is_odd((index + 1))) and (is_vowel(character))) else (character) for index , character in enumerate(input().strip())] , sep = "")
