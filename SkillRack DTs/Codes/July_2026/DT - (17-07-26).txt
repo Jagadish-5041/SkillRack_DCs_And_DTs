@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Planting The Trees in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+N , K = map(int , input().strip().split())
+
+plots_list = list(map(int , input().strip().split()))
+
+planted_flowers_count = 0
+
+for index in range(0 , N):
+    
+    if((index == 0) and (plots_list[index] == 0) and (is_within_bounds((index + 1) , N)) and (plots_list[(index + 1)] == 0)):
+        
+        plots_list[index] = 1
+        
+        planted_flowers_count = (planted_flowers_count + 1)
+    
+    elif((index == (N - 1)) and (plots_list[index] == 0) and (is_within_bounds((index - 1) , N)) and (plots_list[(index - 1)] == 0)):
+        
+        plots_list[index] = 1
+        
+        planted_flowers_count = (planted_flowers_count + 1)
+    
+    elif((plots_list[(index - 1)] == 0) and (plots_list[index] == 0) and (plots_list[(index + 1)] == 0)):
+        
+        plots_list[index] = 1
+        
+        planted_flowers_count = (planted_flowers_count + 1)
+
+print(("Yes") if(planted_flowers_count >= K) else ("No"))
