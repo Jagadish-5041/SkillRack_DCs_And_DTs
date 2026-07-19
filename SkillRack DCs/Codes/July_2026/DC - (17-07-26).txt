@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Transport Network Company in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda cab_company_and_sizes_map , character , number : print((cab_company_and_sizes_map[(character , number)]) if((character , number) in cab_company_and_sizes_map) else ("Invalid"))) ({('O' , '1') : "Ola Auto" , ('O' , '2') : "Ola Mini" , ('O' , '3') : "Ola Micro" , ('O' , '4') : "Ola Prime" , ('U' , '1') : "Uber Auto" , ('U' , '2') : "Uber Cab"} , *input().strip().split())
