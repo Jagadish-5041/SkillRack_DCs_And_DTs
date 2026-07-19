@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Flowchart Logic 012 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+M = int(input().strip())
+
+temp_M = M
+
+N = 0
+
+while(temp_M > 0):
+    
+    N = ((N * 10) + (temp_M % 10))
+    
+    temp_M = (temp_M // 10)
+
+while(M > 0):
+    
+    print((N % 10) , (M % 10) , sep = "" , end = "")
+    
+    M = (M // 10)
+    
+    N = (N // 10)
