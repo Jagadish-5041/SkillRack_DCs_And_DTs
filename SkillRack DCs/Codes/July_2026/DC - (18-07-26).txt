@@ -1,6 +1,6 @@
 Problem Statement :-
 
-Odd And Even Integers in DT (Daily Test) in SkillRack in Python - Programming
+Odd And Even Integers in DC (Daily Challenge) in SkillRack in Python - Programming
 
 Code :-
 
