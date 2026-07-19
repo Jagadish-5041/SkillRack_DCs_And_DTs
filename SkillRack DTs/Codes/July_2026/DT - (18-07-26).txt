@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Jumbled Program - 003 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , target_number : print(sum(1 for number in list(map(int , input().strip().split())) if(number != target_number)))) (*map(int , input().strip().split()))
