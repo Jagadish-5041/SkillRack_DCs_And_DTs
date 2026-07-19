@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Sort First And Second Half in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+M = (N // 2)
+
+left_half = sorted(values_list[ : M])
+
+right_half = sorted(values_list[M : ] , reverse = True)
+
+print(*(left_half + right_half))
