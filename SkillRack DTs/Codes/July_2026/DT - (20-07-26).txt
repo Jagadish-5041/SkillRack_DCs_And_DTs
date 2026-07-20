@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Jumbled Program - 008 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include<stdio.h>
+#include<stdlib.h>
+#define jagadish_DT main
+
+int jagadish_DT(){
+    
+    int N;
+    
+    int X;
+    
+    scanf("%d %d\n" , &N , &X);
+    
+    int XOR_sum_value = 0;
+    
+    for(int current_value = -999 , count = 1 ; (count <= N) ; count++){
+        
+        scanf("%d " , &current_value);
+        
+        XOR_sum_value = ((current_value % X) == 0) ? (XOR_sum_value | current_value) : (XOR_sum_value);
+    }
+    
+    printf("%d" , XOR_sum_value);
+    
+    return 0;
+}
