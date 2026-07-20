@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Discount On Book Price in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_discount_percentage(number_of_books):
+    
+    return ((10) if(2 <= number_of_books <= 4) else ((20) if(number_of_books == 5) else ((50) if(number_of_books > 5) else (0))))
+
+def get_discounted_price(discount_percentage , total_price):
+    
+    return (total_price - int((total_price * (discount_percentage / 100))))
+
+number_of_books , price_of_one_book = map(int , input().strip().split())
+
+discount_percentage = get_discount_percentage(number_of_books)
+
+total_price = (number_of_books * price_of_one_book)
+
+discounted_price = get_discounted_price(discount_percentage , total_price)
+
+print(discounted_price)
