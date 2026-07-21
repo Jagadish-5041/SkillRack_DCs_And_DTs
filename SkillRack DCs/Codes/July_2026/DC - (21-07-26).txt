@@ -1,0 +1,55 @@
+Problem Statement :-
+
+Replace Vowels By Consonants And Vice Versa in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_alphabet_position(alphabet):
+    
+    return ((ord(alphabet) - get_offset_value(alphabet)) + 1)
+
+def get_next_alphabet(alphabet):
+    
+    return chr(((((get_alphabet_position(alphabet) - 1) + 1) % 26) + get_offset_value(alphabet)))
+
+vowels_and_positions_list = [(alphabet , get_alphabet_position(alphabet)) for alphabet in "aeiou"]
+
+for character in input().strip().lower():
+    
+    if(is_vowel(character)):
+        
+        print(get_next_alphabet(character) , end = "")
+    
+    elif(is_consonant(character)):
+        
+        consonant_position = get_alphabet_position(character)
+        
+        if(consonant_position > vowels_and_positions_list[-1][1]):
+            
+            print('a' , end = "")
+        
+        else:
+            
+            for vowel , vowel_position in vowels_and_positions_list:
+                
+                if(consonant_position < vowel_position):
+                    
+                    print(vowel , end = "")
+                    
+                    break
+    
+    else:
+        
+        print(character , end = "")
