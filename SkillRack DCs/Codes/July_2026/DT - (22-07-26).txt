@@ -1,0 +1,30 @@
+Problem Statement :-
+
+JDBC - Sales Total Amount For Each Customer in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Hello{
+    
+    public static void execute(Connection conn,Scanner sc){
+        
+        try{
+            
+            String sql_query_string = "select distinct name , sum(amount) from sales group by name";
+            
+            PreparedStatement prepared_statement = conn.prepareStatement(sql_query_string);
+            
+            ResultSet result_set = prepared_statement.executeQuery();
+            
+            while(result_set.next()){
+                System.out.println(result_set.getString(1) + " " + result_set.getString(2));
+            }
+        }catch(Exception exception){}
+    } // end of execute method
+} // end of Hello class
