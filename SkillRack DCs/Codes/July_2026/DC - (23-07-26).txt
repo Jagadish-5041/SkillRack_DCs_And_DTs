@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Flowchart Logic 002 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def depth_first_search(N):
+    
+    print(N , end = "")
+    
+    (depth_first_search((N - 1))) if((N - 1) > 0) else ("")
+
+depth_first_search(int(input().strip()))
