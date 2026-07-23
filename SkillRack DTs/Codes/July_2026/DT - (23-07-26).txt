@@ -1,0 +1,54 @@
+Problem Statement :-
+
+Integers With Prime Digits (Error Identification) in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DT main
+
+int is_prime_digit(int digit){
+    
+    return ((digit == 2) || (digit == 3) || (digit == 5) || (digit == 7));
+}
+
+int get_length_of_N(int N){
+    
+    return ((N > 0) ? ((((int) log10(N)) + 1)) : (0));
+}
+
+int jagadish_DT(){
+    
+    int N;
+    
+    scanf("%d\n" , &N);
+    
+    int flag = 1;
+    
+    for(int number = -999 , i = 1 ; (i <= N) ; i++){
+        
+        scanf("%d " , &number);
+        
+        int temp_number = number;
+        
+        int prime_digits_count = 0;
+        
+        while(temp_number > 0){
+            
+            prime_digits_count = (is_prime_digit((temp_number % 10))) ? (prime_digits_count + 1) : (prime_digits_count);
+            
+            temp_number = (temp_number / 10);
+        }
+        
+        if(prime_digits_count == get_length_of_N(number)){
+            flag = 0;
+            printf("%d " , number);
+        }
+    }
+    
+    (flag) ? (printf("-1")) : (printf(""));
+    
+    return 0;
+}
