@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Flowchart Logic 015 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+M , N = [(float(string)) if(index == 0) else (int(string)) for index , string in enumerate(input().strip().split())]
+
+while(N > 0):
+    
+    M = (M / 10)
+    
+    N = (N - 1)
+
+print("{:.4f}".format(M))
