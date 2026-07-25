@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Flowchart Logic 014 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+answer_value = 0
+
+P = 1
+
+while(N > 0):
+    
+    unit_digit = (N % 10)
+    
+    answer_value = (answer_value + (unit_digit * P))
+    
+    P = (P * 2)
+    
+    N = (N // 10)
+
+print(answer_value)
