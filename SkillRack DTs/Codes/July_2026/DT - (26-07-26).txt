@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Matrix - Max L Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_L_shaped_sum(current_i , current_j , matrix):
+    
+    return (matrix[current_i][current_j] + matrix[(current_i + 1)][current_j] + matrix[(current_i + 1)][(current_j + 1)])
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+maximum_L_shaped_sum = max(get_L_shaped_sum(i , j , matrix) for i in range(0 , (R - 1)) for j in range(0 , (C - 1)))
+
+print(maximum_L_shaped_sum)
