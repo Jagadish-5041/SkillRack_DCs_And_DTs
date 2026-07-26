@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Star Pattern With String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_matrix(current_i , current_j , offset_i , offset_j , R , C , matrix , S_i , S_N , S):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        matrix[current_i][current_j] = S[S_i]
+        
+        current_i = (current_i + offset_i)
+        
+        current_j = (current_j + offset_j)
+        
+        S_i = (S_i + 1)
+
+S = input().strip()
+
+S_N = len(S)
+
+R = S_N
+
+C = S_N
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , C)]
+
+fill_matrix((R // 2) , 0 , 0 , 1 , R , C , matrix , 0 , S_N , S)
+
+fill_matrix(0 , (C // 2) , 1 , 0 , R , C , matrix , 0 , S_N , S)
+
+fill_matrix((R - 1) , 0 , -1 , 1 , R , C , matrix , 0 , S_N , S)
+
+fill_matrix((R - 1) , (C - 1) , -1 , -1 , R , C , matrix , 0 , S_N , S)
+
+[print(*row_list , sep = "") for row_list in matrix]
