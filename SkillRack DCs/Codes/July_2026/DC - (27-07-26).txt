@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Sum Of Top Left Elements in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_offset_value(N):
+    
+    return ((0) if(is_odd(N)) else (1))
+
+def get_sum(starting_i , ending_i , starting_j , ending_j , R , C , matrix):
+    
+    return sum(matrix[i][j] for i in range(starting_i , (ending_i + 1)) for j in range(starting_j , (ending_j + 1)))
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+print(get_sum(0 , ((R // 2) - get_offset_value(R)) , 0 , ((C // 2) - get_offset_value(C)) , R , C , matrix))
