@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Match Strings - Single Insert Or Delete in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+B = input().strip()
+
+N = len(A)
+
+for index in range(0 , N):
+    
+    if((A[0 : index] + A[(index + 1) : N]) == B):
+        
+        print("YES")
+        
+        quit()
+
+print("NO")
