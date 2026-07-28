@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Symmetrical Integer Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def fill_matrix(cell_value , current_i , current_j , offset_i , offset_j , R , C , matrix):
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        matrix[current_i][current_j] = cell_value
+        
+        current_i = (current_i + offset_i)
+        
+        current_j = (current_j + offset_j)
+
+N = int(input().strip())
+
+R = (N + 1)
+
+C = ((N * 2) + 1)
+
+matrix = [["" for j in range(0 , C)] for i in range(0 , R)]
+
+[fill_matrix(cell_value , row_index , 0 , 1 , 1 , R , C , matrix) for row_index , cell_value in zip(range(0 , R) , [0 , *range(N , -1 , -1)])]
+
+[fill_matrix(cell_value , row_index , column_index , 1 , 1 , R , C , matrix) for row_index , column_index , cell_value in zip(range(1 , R) , range(2 , C , 2) , range(N , 0 , -1))]
+
+[print(*row_list , sep = "") for row_list in matrix]
