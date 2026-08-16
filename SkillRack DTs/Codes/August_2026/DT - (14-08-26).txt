@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Jumbled Program - 017 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DT main
+
+int jagadish_DT(){
+    
+    int R;
+    
+    scanf("%d\n" , &R);
+    
+    char characters_matrix[R][1008];
+    
+    for(int i = 0 ; (i < R) ; i++){
+        scanf("%s" , characters_matrix[i]);
+    }
+    
+    int C = strlen(characters_matrix[0]);
+    
+    for(int j = 0 ; (j < C) ; j++){
+        
+        for(int i = 0 ; (i < R) ; i++){
+            
+            printf("%c" , characters_matrix[i][j]);
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
