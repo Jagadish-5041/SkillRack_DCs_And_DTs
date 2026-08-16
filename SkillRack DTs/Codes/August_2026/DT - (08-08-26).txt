@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Jumbled Program - 15 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DT main
+
+int jagadish_DT(){
+    
+    int starting_range_value;
+    
+    int ending_range_value;
+    
+    int divisor_value;
+    
+    scanf("%d %d %d" , &starting_range_value , &ending_range_value , &divisor_value);
+    
+    int count = 0;
+    
+    for(int counter_value = starting_range_value ; (counter_value <= ending_range_value) ; counter_value++){
+        
+        if((counter_value % divisor_value) == 0){
+            
+            count++;
+        }
+    }
+    
+    printf("%s" , ((count > 1) ? ("Yes") : ("No")));
+    
+    return 0;
+}
