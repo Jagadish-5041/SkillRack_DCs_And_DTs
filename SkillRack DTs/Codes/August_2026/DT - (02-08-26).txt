@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Odd / Even Frequency Alphabets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_parity_bit(N):
+    
+    return (N & 1)
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_printing_order_offset_value(N):
+    
+    return ((1) if(is_odd(N)) else (-1))
+
+def print_target_parity_bit_frequency_alphabets(target_parity_bit , frequency_map):
+    
+    print(*[alphabet for alphabet , frequency in frequency_map.items() if(get_parity_bit(frequency) == target_parity_bit)][::get_printing_order_offset_value(target_parity_bit)] , sep = "" , end = "")
+
+frequency_map = {}
+
+[frequency_map.__setitem__(alphabet , (frequency_map.get(alphabet , 0) + 1)) for alphabet in sorted(input().strip())]
+
+[print_target_parity_bit_frequency_alphabets(target_parity_bit , frequency_map) for target_parity_bit in (1 , 0)]
