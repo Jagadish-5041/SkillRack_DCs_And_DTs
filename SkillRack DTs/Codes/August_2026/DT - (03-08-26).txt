@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Count Of Common Words in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+words_set_1 = set(input().strip().split())
+
+words_set_2 = set(input().strip().split())
+
+common_words_count = sum(1 for word_string in (words_set_1 | words_set_2) if((word_string in words_set_1) and (word_string in words_set_2)))
+
+print(common_words_count)
