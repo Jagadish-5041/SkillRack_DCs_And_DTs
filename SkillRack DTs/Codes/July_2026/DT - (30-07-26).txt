@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Distinct Integers In Reverse Order in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+visited_values_set = set()
+
+for value in list(map(int , input().strip().split()))[::-1]:
+    
+    if(value not in visited_values_set):
+        
+        print(value , end = " ")
+        
+        visited_values_set.add(value)
