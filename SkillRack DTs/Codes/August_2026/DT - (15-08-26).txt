@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Two String Are Equal - UNDO Operations in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_UNDO_stack_logic(string):
+    
+    stack = []
+    
+    [((stack.pop()) if(stack) else ("")) if(character == '#') else (stack.append(character)) for character in string]
+    
+    return ("".join(stack))
+
+print(("YES") if(get_UNDO_stack_logic(input().strip()) == get_UNDO_stack_logic(input().strip())) else ("NO"))
