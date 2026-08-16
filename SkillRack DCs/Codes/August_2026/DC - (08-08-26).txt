@@ -1,0 +1,23 @@
+Problem Statement :-
+
+X In Rectangular Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_border(i , j , R , C):
+    
+    return ((i == 0) or (i == (R - 1)) or (j == 0) or (j == (C - 1)))
+
+def is_primary_diagonal(i , j , R , C):
+    
+    return (i == j)
+
+def is_secondary_diagonal(i , j , R , C):
+    
+    return ((i + j) == (C - 1))
+
+def get_cell_value(i , j , R , C):
+    
+    return (('*') if((is_border(i , j , R , C)) or (is_primary_diagonal(i , j , R , C)) or (is_secondary_diagonal(i , j , R , C))) else ('-'))
+
+(lambda N : [print(*row_list , sep = "") for row_list in [[get_cell_value(i , j , N , N) for j in range(0 , N)] for i in range(0 , N)]]) (int(input().strip()))
