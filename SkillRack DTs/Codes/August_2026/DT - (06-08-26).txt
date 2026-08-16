@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Jumbled Program - 010 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DT main
+
+int jagadish_DT(){
+    
+    char *string = ((char *) malloc((sizeof(char) * 10008)));
+    
+    scanf("%[^\n]" , string);
+    
+    const char *string_tokenizer = strtok(string , " ");
+    
+    int maximum_word_length = 0;
+    
+    while(string_tokenizer != NULL){
+        
+        int current_word_length = strlen(string_tokenizer);
+        
+        maximum_word_length = (maximum_word_length < current_word_length) ? (current_word_length) : (maximum_word_length);
+        
+        string_tokenizer = strtok(NULL , " ");
+    }
+    
+    printf("%d" , maximum_word_length);
+    
+    return 0;
+}
