@@ -1,0 +1,20 @@
+Problem Statement :-
+
+Flowchart Logic 011 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+sum_value = 0
+
+for number in list(map(int , input().strip().split())):
+    
+    sum_value = (sum_value + number) if(is_even(number)) else (sum_value)
+    
+    if(number == 10):
+        break
+
+print(sum_value)
