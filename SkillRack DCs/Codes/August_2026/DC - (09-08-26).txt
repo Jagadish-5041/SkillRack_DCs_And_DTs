@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Matrix Non-Border Elements Sum in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_border_element(i , j , R , C):
+    
+    return ((i == 0) or (i == (R - 1)) or (j == 0) or (j == (C - 1)))
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+non_border_elements_sum = sum(matrix[i][j] for i in range(0 , R) for j in range(0 , C) if(not is_border_element(i , j , R , C)))
+
+print(non_border_elements_sum)
