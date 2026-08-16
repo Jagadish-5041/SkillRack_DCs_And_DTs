@@ -1,0 +1,26 @@
+Problem Statement :-
+
+Remove Integers With Repeated Digits - X To Y in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def check(N):
+    
+    if(get_length_of_N(N) == 1):
+        return True
+    
+    unit_digit = (N % 10)
+    
+    while((N > 0) and ((N % 10) == unit_digit)):
+        
+        N = (N // 10)
+    
+    return (N != 0)
+
+(lambda X , Y : print(*[number for number in range(X , (Y + 1)) if(check(number))])) (*map(int , input().strip().split()))
