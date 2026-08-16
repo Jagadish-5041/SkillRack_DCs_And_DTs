@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Left Right Odd Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+odd_numbers_count_from_left_side_list = [None for i in range(0 , N)]
+
+odd_numbers_count_from_right_side_list = [None for i in range(0 , N)]
+
+odd_numbers_count_from_left_side = 0
+
+odd_numbers_count_from_right_side = 0
+
+for left_pointer , right_pointer in zip(range(0 , N) , range((N - 1) , -1 , -1)):
+    
+    odd_numbers_count_from_left_side_list[left_pointer] = odd_numbers_count_from_left_side
+    
+    odd_numbers_count_from_right_side_list[right_pointer] = odd_numbers_count_from_right_side
+    
+    odd_numbers_count_from_left_side = (odd_numbers_count_from_left_side + 1) if(is_odd(values_list[left_pointer])) else (odd_numbers_count_from_left_side)
+    
+    odd_numbers_count_from_right_side = (odd_numbers_count_from_right_side + 1) if(is_odd(values_list[right_pointer])) else (odd_numbers_count_from_right_side)
+
+answer_list = [(values_list[index]) if(odd_numbers_count_from_left_side_list[index] == odd_numbers_count_from_right_side_list[index]) else (-1) for index in range(0 , N)]
+
+print(*answer_list)
