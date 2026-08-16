@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Fibonacci Series In Reverse Order in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+first_value = 0
+
+second_value = 1
+
+fibonacci_series_list = [first_value , second_value]
+
+for i in range(3 , (N + 1)):
+    
+    third_value = (first_value + second_value)
+    
+    fibonacci_series_list.append(third_value)
+    
+    first_value = second_value
+    
+    second_value = third_value
+
+print(*fibonacci_series_list[::-1])
