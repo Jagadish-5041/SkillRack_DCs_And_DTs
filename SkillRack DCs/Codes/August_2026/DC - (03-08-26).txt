@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Vowels And Consonants in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return ((character.isalpha()) and (character in "aeiouAEIOU"))
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+S = input().strip()
+
+print(*[character for character in S if(is_vowel(character))] , sep = "" , end = "")
+
+print(*[character for character in S if(is_consonant(character))] , sep = "")
