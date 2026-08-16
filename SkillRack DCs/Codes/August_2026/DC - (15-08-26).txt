@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Jumbled Program - 005 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    int N;
+    
+    scanf("%d" , &N);
+    
+    int till_value = (N % 10);
+    
+    int counter_value = 0;
+    
+    if(till_value != 0){
+        counter_value++;
+    }
+    
+    while(counter_value <= till_value){
+        
+        printf("%d" , counter_value--);
+        
+        counter_value++;
+        
+        counter_value++;
+    }
+    
+    return 0;
+}
