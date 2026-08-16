@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Unit Matrix Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_2x2_unit_matrix(current_i , current_j , matrix):
+    
+    return ((matrix[current_i][current_j] == 1) and (matrix[current_i][(current_j + 1)] == 1) and (matrix[(current_i + 1)][current_j] == 1) and (matrix[(current_i + 1)][(current_j + 1)] == 1))
+
+N = int(input().strip())
+
+K = 2
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+count_of_2x2_unit_matrices = sum(1 for i in range(0 , (N - K + 1)) for j in range(0 , (N - K + 1)) if(is_2x2_unit_matrix(i , j , matrix)))
+
+print(count_of_2x2_unit_matrices)
