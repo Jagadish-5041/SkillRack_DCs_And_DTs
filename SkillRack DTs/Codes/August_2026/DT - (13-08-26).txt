@@ -1,0 +1,42 @@
+Problem Statement :-
+
+First Unique Character (Error Identification) in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DT main
+
+int get_ASCII_value(char character){
+    
+    return ((int) character);
+}
+
+int jagadish_DT(){
+    
+    char string[10008];
+    
+    scanf("%s" , string);
+    
+    int N = strlen(string);
+    
+    int frequency_array[256] = {0};
+    
+    for(int index = 0 ; (index < N) ; index++){
+        frequency_array[get_ASCII_value(string[index])]++;
+    }
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(frequency_array[get_ASCII_value(string[index])] == 1){
+            
+            printf("%c" , string[index]);
+            
+            return 0;
+        }
+    }
+    
+    return 0;
+}
