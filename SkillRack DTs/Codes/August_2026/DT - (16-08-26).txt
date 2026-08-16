@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Number V Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+R = ((N // 2) + (N % 2))
+
+C = N
+
+left_target_value = 1
+
+right_target_value = N
+
+left_target_column_index = 0
+
+right_target_column_index = (C - 1)
+
+for i in range(0 , R):
+    
+    print(*[(left_target_value) if(j == left_target_column_index) else ((right_target_value) if(j == right_target_column_index) else ('*')) for j in range(0 , C)] , sep = "")
+    
+    left_target_value = (left_target_value + 1)
+    
+    right_target_value = (right_target_value - 1)
+    
+    left_target_column_index = (left_target_column_index + 1)
+    
+    right_target_column_index = (right_target_column_index - 1)
