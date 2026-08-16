@@ -1,0 +1,46 @@
+Problem Statement :-
+
+First Element Occurring X Times (Error Identification) in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+// Program given in Query :-
+
+#include<stdio.h>
+int main(){
+    int N,X;
+    scanf("%d %d",&N,&X);
+    int arr[N],count[100] = {0};
+    for(int index=0;index<N;index++){
+        scanf("%d",&arr[index]);
+        count[arr[index]]++;
+    }
+    for(int index=0;index<N;index++){
+        if(count[arr[index]] > X){
+            printf("%d",count[arr[index]]);
+            return 0;
+        }
+    }
+    return 0;
+}
+
+// After Error Rectification 
+
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int N,X;
+    scanf("%d %d",&N,&X);
+    int arr[N],count[100] = {0};
+    for(int index=0;index<N;index++){
+        scanf("%d",&arr[index]);
+        count[arr[index]]++;
+    }
+    for(int index=0;index<N;index++){
+        if(count[arr[index]] == X){ // Error - 1 { (>) is changed to (==) }
+            printf("%d",arr[index]); // Error - 2 { (count[arr[index]]) is changed to (arr[index]) }
+            return 0;
+        }
+    }
+    return 0;
+}
