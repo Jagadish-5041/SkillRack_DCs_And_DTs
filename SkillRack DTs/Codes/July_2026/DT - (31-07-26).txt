@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Flowchart - 018 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_cube(N):
+    
+    return (N * N * N)
+
+N = int(input().strip())
+
+cubes_sum_value = 0
+
+counter_value = 1
+
+while(counter_value <= N):
+    
+    cubes_sum_value = (cubes_sum_value + get_cube(counter_value))
+    
+    counter_value = (counter_value + 1)
+
+print(cubes_sum_value)
