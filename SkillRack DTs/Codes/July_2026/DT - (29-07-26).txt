@@ -1,0 +1,47 @@
+Problem Statement :-
+
+Mirror Matrix - Top Left Bottom Right Diagonal in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def diagonal_traversal_function(fill_or_fetch_flag , current_i , current_j , offset_i , offset_j , R , C):
+    
+    global diagonally_traversed_elements_list
+    
+    global diagonally_traversed_elements_list_index
+    
+    global matrix
+    
+    while((is_within_bounds(current_i , R)) and (is_within_bounds(current_j , C))):
+        
+        if(fill_or_fetch_flag == 1):
+            diagonally_traversed_elements_list.append(matrix[current_i][current_j])
+        else:
+            matrix[current_i][current_j] = diagonally_traversed_elements_list[diagonally_traversed_elements_list_index]
+            diagonally_traversed_elements_list_index = (diagonally_traversed_elements_list_index + 1)
+        
+        current_i = (current_i + offset_i)
+        
+        current_j = (current_j + offset_j)
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+diagonally_traversed_elements_list = []
+
+diagonally_traversed_elements_list_index = 0
+
+[diagonal_traversal_function(1 , 0 , j , 1 , 1 , R , C) for j in range((C - 1) , -1 , -1)]
+
+[diagonal_traversal_function(1 , i , 0 , 1 , 1 , R , C) for i in range(1 , R)]
+
+[diagonal_traversal_function(2 , i , 0 , 1 , 1 , R , C) for i in range((R - 1) , 0 , -1)]
+
+[diagonal_traversal_function(2 , 0 , j , 1 , 1 , R , C) for j in range(0 , C)]
+
+[print(*row_list) for row_list in matrix]
