@@ -1,0 +1,38 @@
+Problem Statement :-
+
+Count Of Characters With Same Adjacent Neighbours (Error Identification) in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DT main
+
+int jagadish_DT(){
+    
+    char string[10008];
+    
+    int N;
+    
+    scanf("%s%n" , string , &N);
+    
+    if(N <= 2){
+        printf("%d" , N);
+        return 0;
+    }
+    
+    int count = N;
+    
+    for(int index = 1 ; (index <= (N - 2)) ; index++){
+        
+        if(string[(index - 1)] != string[(index + 1)]){
+            
+            count--;
+        }
+    }
+    
+    printf("%d" , count);
+    
+    return 0;
+}
