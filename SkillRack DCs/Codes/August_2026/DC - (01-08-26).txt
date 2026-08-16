@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Escape Speed in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+G , M , R = map(float , input().strip().split())
+
+escape_speed_value = (((2 * G * M) / R) ** 0.5)
+
+print("{:.3f}".format(escape_speed_value))
