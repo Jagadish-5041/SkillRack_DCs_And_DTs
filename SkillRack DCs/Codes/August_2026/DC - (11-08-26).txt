@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Sum Of Left Side Elements in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+running_sum_value = 0
+
+for value in values_list:
+    
+    print(running_sum_value , end = " ")
+    
+    running_sum_value = (running_sum_value + value)
