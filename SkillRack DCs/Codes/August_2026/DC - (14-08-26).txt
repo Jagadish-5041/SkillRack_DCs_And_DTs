@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Flowchart Logic 0010 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(len(input().strip()))
