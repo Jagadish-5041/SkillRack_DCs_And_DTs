@@ -1,0 +1,71 @@
+Problem Statement :-
+
+Structure Laptop With Minimum Cost in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+struct device{
+    
+    int X;
+    
+    int cost;
+    
+    union name{
+        
+        char brandName[101];
+        
+        int productNumber;
+    } nameOrNum;
+};
+
+int main(){
+    
+    int N;
+    
+    int X;
+    
+    scanf("%d" , &N);
+
+    struct device laptops[N];
+
+    for(int index = 0 ; (index < N) ; index++){
+        
+        scanf("%d", &X);
+        
+        if(X == 1){
+            
+            laptops[index].X = 1;
+            
+            scanf("%s %d" , laptops[index].nameOrNum.brandName , &laptops[index].cost);
+        }else if(X == 2){
+            
+            laptops[index].X = 2;
+            
+            scanf("%d %d" , &laptops[index].nameOrNum.productNumber , &laptops[index].cost);
+        }
+    }
+    
+    int minimum_cost = INT_MAX;
+    
+    struct device minimum_cost_laptop_details_structure;
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        int current_laptop_cost = laptops[index].cost;
+        
+        if(minimum_cost > current_laptop_cost){
+            
+            minimum_cost = current_laptop_cost;
+            
+            minimum_cost_laptop_details_structure = laptops[index];
+        }
+    }
+    
+    (minimum_cost_laptop_details_structure.X == 1) ? (printf("%s" , minimum_cost_laptop_details_structure.nameOrNum.brandName)) : (printf("%d" , minimum_cost_laptop_details_structure.nameOrNum.productNumber));
+    
+    return 0;
+}
