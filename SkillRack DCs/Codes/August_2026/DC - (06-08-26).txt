@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Reversed Words In Even Positions in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+print(*[((word_string[::-1]) if(is_even((index + 1))) else (word_string)) for index , word_string in enumerate(input().strip().split()[::-1])])
