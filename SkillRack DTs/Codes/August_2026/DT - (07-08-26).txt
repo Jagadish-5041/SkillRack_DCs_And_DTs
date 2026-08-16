@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Jumbled Program - 007 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DT main
+#define LASTALPHA 'z'
+
+int is_vowel(character){
+    
+    return ((character == 'a') || (character == 'e') || (character == 'i') || (character == 'o') || (character == 'u'));
+}
+
+int jagadish_DT(){
+    
+    char character;
+    
+    scanf("%c" , &character);
+    
+    character = tolower(character);
+    
+    do{
+        
+        printf("%c " , character);
+        
+        character++;
+        
+    }while((character <= LASTALPHA) && (!is_vowel(character)));
+    
+    return 0;
+}
