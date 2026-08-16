@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Flowchart Logic 007 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def print_within_range(A , B):
+    
+    print(*[value for value in range(A , (B - 1) , -1)] , sep = "" , end = "")
+
+X , Y , Z = map(int , input().strip().split())
+
+print_within_range(max(X , Y) , min(X , Y))
+
+print_within_range(max(Y , Z) , min(Y , Z))
