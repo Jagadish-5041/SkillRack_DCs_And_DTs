@@ -1,0 +1,28 @@
+Problem Statement :-
+
+Jumbled Program - 002 in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DT main
+
+int get_length_of_N(int N){
+    
+    return ((N == 0) ? (1) : (((int) log10(abs(N))) + 1));
+}
+
+int jagadish_DT(){
+    
+    int N;
+    
+    scanf("%d" , &N);
+    
+    int count_of_digits_in_N = get_length_of_N(N);
+    
+    printf("%d" , count_of_digits_in_N);
+    
+    return 0;
+}
