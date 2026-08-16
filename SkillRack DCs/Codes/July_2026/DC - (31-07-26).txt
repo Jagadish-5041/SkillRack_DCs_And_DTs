@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Adjacent Even Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list(N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.append(digit)
+        
+        N = (N // 10)
+    
+    return digits_list[::-1]
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+digits_list = get_digits_list(int(input().strip()))
+
+N = len(digits_list)
+
+digits_surrounded_by_even_digits_list = [digits_list[index] for index in range(0 , N) if(((index == 0) and (is_even(digits_list[(index + 1)]))) or ((index == (N - 1)) and (is_even(digits_list[(index - 1)]))) or ((is_even(digits_list[(index - 1)])) and (is_even(digits_list[(index + 1)]))))]
+
+(print(*digits_surrounded_by_even_digits_list , sep = "")) if(digits_surrounded_by_even_digits_list) else (print(-1))
