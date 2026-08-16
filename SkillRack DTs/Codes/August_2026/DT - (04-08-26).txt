@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Concatenated Words in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+alphabets_and_words_map = {}
+
+[alphabets_and_words_map.setdefault(word_string[0].lower() , []).append(word_string) for word_string in input().strip().split()]
+
+[print(*alphabets_and_words_map[alphabet] , sep = "") for alphabet in sorted(alphabets_and_words_map.keys())]
