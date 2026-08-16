@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Count Of Possible Palindromes in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(S):
+    
+    return (S == (S[::-1]))
+
+def get_palindrome_value(S):
+    
+    return ((1) if(is_palindrome(S)) else (0))
+
+words_list = input().strip().split()
+
+N = len(words_list)
+
+count = (sum((get_palindrome_value((words_list[i] + words_list[j])) + get_palindrome_value((words_list[j] + words_list[i]))) for i in range(0 , N) for j in range(0 , N) if(i != j)) // 2)
+
+print(count)
