@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Next Prime Number in DC (Daily Challenge) in SkillRack in Java - Programming
+
+Code :-
+
+import java.util.*;
+
+public class Hello {
+    
+    public static boolean is_prime(long N){
+        
+        if(N <= 1){
+            return false;
+        }
+        
+        for(long square_root_value = (((long) Math.sqrt(N)) + 1) , number = 2 ; (number <= square_root_value) ; number++){
+            
+            if((N % number) == 0){
+                
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args){
+        
+        for(long N = (new Scanner(System.in)).nextLong() , maximum_long_value = Long.MAX_VALUE , number = (N + 1) ; (number <= maximum_long_value) ; number++){
+            
+            if(is_prime(number)){
+                
+                System.out.println(number);
+                
+                System.exit(0);
+            }
+        }
+    }
+}
