@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Flowchart - 022 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def build_frequency_map(string):
+    
+    global frequency_list
+    
+    [frequency_list.__setitem__(ord(alphabet) , (frequency_list[ord(alphabet)] + 1)) for alphabet in string]
+
+def print_unique_alphabets(string):
+    
+    global frequency_list
+    
+    [print(alphabet , end = "") for alphabet in string if(frequency_list[ord(alphabet)] == 1)]
+
+frequency_list = [0 for i in range(0 , 129)]
+
+string_1 = input().strip()
+
+string_2 = input().strip()
+
+build_frequency_map(string_1)
+
+build_frequency_map(string_2)
+
+print_unique_alphabets(string_1)
+
+print_unique_alphabets(string_2)
