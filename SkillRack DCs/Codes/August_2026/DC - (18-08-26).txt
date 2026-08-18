@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Integers With Digit X in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check(N , target_digit):
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        if(digit == target_digit):
+            return True
+        
+        N = (N // 10)
+    
+    return False
+
+N , X = map(int , input().strip().split())
+
+answer_list = [number for number in range(1 , (N + 1)) if(check(number , X))]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
