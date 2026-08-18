@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Decimal Equivalent Of Reversed Binary in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_reversed_binary_string(N):
+    
+    reversed_binary_string = ""
+    
+    while(N > 0):
+        
+        bit = (N & 1)
+        
+        reversed_binary_string = (reversed_binary_string + str(bit))
+        
+        N = (N >> 1)
+    
+    return reversed_binary_string
+
+def get_decimal_number_from_binary_string(binary_string):
+    
+    return int(binary_string , 2)
+
+print(get_decimal_number_from_binary_string(get_reversed_binary_string(int(input().strip()))))
