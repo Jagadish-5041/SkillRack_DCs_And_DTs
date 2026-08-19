@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Swapping The Unit Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def print_swapped_unit_digits_of_2_numbers(A , B):
+    
+    unit_digit_1 = (A % 10)
+    
+    A = (A // 10)
+    
+    unit_digit_2 = (B % 10)
+    
+    B = (B // 10)
+    
+    A = ((A * 10) + unit_digit_2)
+    
+    B = ((B * 10) + unit_digit_1)
+    
+    print(A , B)
+
+print_swapped_unit_digits_of_2_numbers(*map(int , input().strip().split()))
