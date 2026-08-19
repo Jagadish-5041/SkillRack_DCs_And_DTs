@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Flowchart Logic 013 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+digits_frequency_list = [0 for digit in range(0 , 10)]
+
+while(N > 0):
+    
+    digit = (N % 10)
+    
+    digits_frequency_list[digit] = (digits_frequency_list[digit] + 1)
+    
+    N = (N // 10)
+
+print(*digits_frequency_list , sep = "")
