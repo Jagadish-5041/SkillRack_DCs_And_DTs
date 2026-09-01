@@ -1,0 +1,33 @@
+Problem Statement :-
+
+Square Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_squared_value(N):
+    
+    return (N * N)
+
+N = int(input().strip())
+
+R = N
+
+C = ((N * 2) - 1)
+
+pattern_value = 1
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if((j >= (N - i - 1)) and (j < (C - (N - i - 1)))):
+            
+            print(get_squared_value(pattern_value) , end = " ")
+            
+            pattern_value = (pattern_value + 1)
+        
+        else:
+            
+            print("*" , end = " ")
+    
+    print()
