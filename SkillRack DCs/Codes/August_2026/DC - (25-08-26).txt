@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Repeated Integers Count in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+values_set = set(values_list)
+
+repeated_values_count = (N - len(values_set))
+
+print(repeated_values_count)
