@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Reverse S From Xth Position in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+X = int(input().strip())
+
+new_S =  (S[ : (X - 1)] + S[(X - 1) : ][::-1])
+
+print(new_S)
