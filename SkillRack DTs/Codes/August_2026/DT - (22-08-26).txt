@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Binary Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+one_bits_string = ("1" * N)
+
+zero_bits_string = ("0" * N)
+
+print(*[(one_bits_string[0 : row_position]) if(is_odd(row_position)) else (zero_bits_string[0 : row_position]) for row_position in range(N , 0 , -1)] , sep = "\n")
