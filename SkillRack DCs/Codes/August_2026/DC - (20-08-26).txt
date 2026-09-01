@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Jumbled Program - 011 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DC main
+
+int is_vowel(char character){
+    
+    return ((character == 'a') || (character == 'e') || (character == 'i') || (character == 'o') || (character == 'u'));
+}
+
+int jagadish_DC(){
+    
+    char string[1008];
+    
+    int N;
+    
+    scanf("%s%n" , string , &N);
+    
+    int flag = 1;
+    
+    for(int index = (N - 1) ; (index >= 0) ; index--){
+        
+        if(is_vowel(tolower(string[index]))){
+            
+            printf("%c" , string[index]);
+            
+            flag = 0;
+        }
+    }
+    
+    (flag) ? (printf("-1")) : (printf(""));
+    
+    return 0;
+}
