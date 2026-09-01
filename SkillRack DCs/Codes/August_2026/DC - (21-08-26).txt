@@ -1,0 +1,46 @@
+Problem Statement :-
+
+Odd Frequency Characters In String (Error Identification) in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DC main
+
+int get_ASCII_value(char character){
+    
+    return ((int) character);
+}
+
+int is_odd(int N){
+    
+    return ((N & 1) == 1);
+}
+
+char get_character(int ASCII_value){
+    
+    return ((char) ASCII_value);
+}
+
+int jagadish_DC(){
+    
+    char character;
+    
+    int frequency_array[128] = {0};
+    
+    while(scanf("%c" , &character) > 0){
+        frequency_array[get_ASCII_value(character)]++;
+    }
+    
+    for(int ASCII_value = 97 ; (ASCII_value <= 122) ; ASCII_value++){
+        
+        if(is_odd(frequency_array[ASCII_value])){
+            
+            printf("%c" , get_character(ASCII_value));
+        }
+    }
+    
+    return 0;
+}
