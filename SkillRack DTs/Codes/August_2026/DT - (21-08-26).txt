@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Find Smallest Word in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(min(input().strip().split() , key = len))
