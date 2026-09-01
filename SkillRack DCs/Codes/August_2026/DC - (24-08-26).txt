@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Largest Number in String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+data_string = input().strip()
+
+index = 0
+
+N = len(data_string)
+
+maximum_number = 0
+
+while(is_within_bounds(index , N)):
+    
+    current_number = 0
+    
+    while((is_within_bounds(index , N)) and (data_string[index].isdigit())):
+        
+        current_number = ((current_number * 10) + int(data_string[index]))
+        
+        index = (index + 1)
+    
+    maximum_number = max(maximum_number , current_number)
+    
+    while((is_within_bounds(index , N)) and (not data_string[index].isdigit())):
+        
+        index = (index + 1)
+
+print(maximum_number)
