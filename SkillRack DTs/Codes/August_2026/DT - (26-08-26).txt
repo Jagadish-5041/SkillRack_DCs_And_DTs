@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Multiple Of Each Digit In N in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list(N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.insert(0 , digit)
+        
+        N = (N // 10)
+    
+    return digits_list
+
+def get_modulo_remainder(dividend , divisor):
+    
+    return (dividend % divisor)
+
+def get_value_greater_than_N_which_is_a_multiple_of_target_digit(N , target_digit):
+    
+    return ((N - get_modulo_remainder(N , target_digit) + target_digit) if(target_digit != 0) else (N - get_modulo_remainder(N , 10) + 10))
+
+(lambda N : print(*[get_value_greater_than_N_which_is_a_multiple_of_target_digit(N , digit) for digit in get_digits_list(N)])) (int(input().strip()))
