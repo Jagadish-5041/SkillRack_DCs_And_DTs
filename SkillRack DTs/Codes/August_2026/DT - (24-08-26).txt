@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Odd Integers And Even Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_parity_bit(N):
+    
+    return (N & 1)
+
+def print_target_parity_bit_values(target_parity_bit , values_list):
+    
+    print(*[value for value in values_list if(get_parity_bit(value) == target_parity_bit)] , sep = " " , end = " ")
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+print_target_parity_bit_values(1 , values_list)
+
+print_target_parity_bit_values(0 , values_list)
