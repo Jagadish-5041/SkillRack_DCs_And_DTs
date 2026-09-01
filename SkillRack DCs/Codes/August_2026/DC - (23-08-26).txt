@@ -1,0 +1,41 @@
+Problem Statement :-
+
+Jumbled Program - 013 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    int N;
+    
+    int K;
+    
+    scanf("%d %d\n" , &N , &K);
+    
+    int array[N];
+    
+    int frequency_array[100008] = {0};
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        scanf("%d " , &array[index]);
+        
+        frequency_array[array[index]]++;
+    }
+    
+    for(int index = 0 ; (index < N) ; index++){
+        
+        if(frequency_array[array[index]] == K){
+            
+            printf("%d " , array[index]);
+            
+            frequency_array[array[index]]--;
+        }
+    }
+    
+    return 0;
+}
