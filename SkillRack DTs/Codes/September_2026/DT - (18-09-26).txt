@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Inverted U Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def inverted_u_pattern_printing(top,vertical_left_string,vertical_right_string):
+    print((*top),sep=" ")
+    for i in range(1,len(vertical_left_string)):
+        for j in range(0,len(top)):
+            print(vertical_left_string[i],end=" ") if(j==0) else (print(vertical_right_string[i],end=" ") if(j==(len(top) - 1)) else print("*",end=" "))
+        print()
+
+def find_top_left_and_right_string(a,b,c):
+    if((a[0] == b[0]) and (a[-1] == c[0])):
+        inverted_u_pattern_printing(a,b,c)
+    elif((a[0] == c[0]) and (a[-1] == b[0])):
+        inverted_u_pattern_printing(a,c,b)
+    elif((b[0] == a[0]) and (b[-1] == c[0])):
+        inverted_u_pattern_printing(b,a,c)
+    elif((b[0] == c[0]) and (b[-1] == a[0])):
+        inverted_u_pattern_printing(b,c,a)
+    elif((c[0] == a[0]) and (c[-1] == b[0])):
+        inverted_u_pattern_printing(c,a,b)
+    elif((c[0] == b[0]) and (c[-1] == a[0])):
+        inverted_u_pattern_printing(c,b,a)
+
+a,b,c=input().strip().split()
+find_top_left_and_right_string(a,b,c)
