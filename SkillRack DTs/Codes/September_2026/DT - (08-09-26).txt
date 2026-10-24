@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Interlace Columns - Matrices in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_interlaced_data_list(A_N , A , B_N , B):
+    
+    C = []
+    
+    [(C.append((X , 1)) , C.append((Y , 2))) for X , Y in zip(A , B)]
+    
+    ([C.append((X , 1)) for X in A[B_N : ]]) if(A_N > B_N) else ([C.append((Y , 2)) for Y in B[A_N : ]])
+    
+    return C
+
+R , C_1 , C_2 = map(int , input().strip().split())
+
+matrix_1 = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+matrix_2 = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+interlaced_data_list = get_interlaced_data_list(C_1 , range(0 , C_1) , C_2 , range(0 , C_2))
+
+[print(*[((matrix_1[i][j]) if(matrix_flag_value == 1) else (matrix_2[i][j])) for j , matrix_flag_value in interlaced_data_list]) for i in range(0 , R)]
