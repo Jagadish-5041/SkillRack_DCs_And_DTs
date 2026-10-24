@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Reverse Till A Character in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+target_character = input().strip()
+
+target_character_index = ((S.index(target_character)) if(target_character in S) else (-999))
+
+print((-1) if(target_character_index == -999) else (S[0 : (target_character_index + 1)][::-1]))
