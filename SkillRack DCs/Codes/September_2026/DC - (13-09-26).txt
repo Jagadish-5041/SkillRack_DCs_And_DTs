@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Next Decimal Equivalent Of Binary in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(bin((int(input().strip() , 2) + 1))[2 : ])
