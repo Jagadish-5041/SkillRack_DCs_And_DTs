@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Flowchat - 021 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check(character_1 , character_2 , character_1_index , character_2_index):
+    
+    return (abs((ord(character_1) - ord(character_2))) == abs((character_1_index - character_2_index)))
+
+S = input().strip()
+
+N = len(S)
+
+for i in range(0 , N):
+    
+    for j in range((i + 1) , N):
+        
+        if(check(S[i] , S[j] , i , j)):
+            
+            print(S[i] , S[j] , sep = "" , end = "")
