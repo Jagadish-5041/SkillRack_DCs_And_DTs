@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Flowchart Logic 027 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+data_list = input().strip().split()
+
+N = int(data_list[0])
+
+X = float(data_list[1])
+
+values_list = list(map(float , input().strip().split()))
+
+sum_value = sum(int(pow(X , values_list[index])) for index in range(0 , N))
+
+answer_value = int((sum_value // X))
+
+print(answer_value)
