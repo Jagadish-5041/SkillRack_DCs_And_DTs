@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Alternate Alphabets in DC (Daliy Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S : [print(character_1 , character_2 , sep = "" , end = "") for character_1 , character_2 in zip(S[(len(S) // 2) : ] , S[0 : (len(S) // 2)])]) (input().strip())
