@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Uppercase And Lowercase Vowels in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_lower_case_vowel(character):
+    
+    return ((character.isalpha()) and (character.islower()) and (character in "aeiou"))
+
+def is_upper_case_vowel(character):
+    
+    return ((character.isalpha()) and (character.isupper()) and (character in "AEIOU"))
+
+lower_case_vowels_count = 0
+
+upper_case_vowels_count = 0
+
+for character in input().strip():
+    
+    lower_case_vowels_count = (lower_case_vowels_count + 1) if(is_lower_case_vowel(character)) else (lower_case_vowels_count)
+    
+    upper_case_vowels_count = (upper_case_vowels_count + 1) if(is_upper_case_vowel(character)) else (upper_case_vowels_count)
+
+(print(-1)) if((lower_case_vowels_count == 0) or (upper_case_vowels_count == 0)) else (print(lower_case_vowels_count , upper_case_vowels_count))
