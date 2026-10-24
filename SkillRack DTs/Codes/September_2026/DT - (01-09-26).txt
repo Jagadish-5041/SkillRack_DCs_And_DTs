@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Row With Maximum Negative Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+maximum_negative_numbers_count = 0
+
+data_list = []
+
+for i in range(0 , R):
+    
+    current_negative_numbers_count = sum(1 for j in range(0 , C) if(matrix[i][j] < 0))
+    
+    maximum_negative_numbers_count = max(maximum_negative_numbers_count , current_negative_numbers_count)
+    
+    data_list.append((current_negative_numbers_count , matrix[i]))
+
+(print(-1)) if(maximum_negative_numbers_count == 0) else (print(*[data_tuple[1] for data_tuple in data_list if(data_tuple[0] == maximum_negative_numbers_count)][0]))
