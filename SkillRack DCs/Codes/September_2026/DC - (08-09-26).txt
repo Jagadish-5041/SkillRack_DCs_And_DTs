@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Flowchart - 026 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+digits_frequency_map = {digit : 0 for digit in range(0 , 10)}
+
+while(N > 0):
+    
+    digit = (N % 10)
+    
+    digits_frequency_map[digit] = (digits_frequency_map[digit] + 1)
+    
+    N = (N // 10)
+
+for digit in range(1 , 10):
+    
+    if(digits_frequency_map[digit] > digit):
+        
+        print("No")
+        
+        quit()
+
+print("Yes")
