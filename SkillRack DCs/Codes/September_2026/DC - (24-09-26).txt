@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Characters Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+data_list = input().strip().split()
+
+character_1 = data_list[0]
+
+character_2 = data_list[1]
+
+N = int(data_list[2])
+
+[print(*[(character_1) if(j <= i) else (character_2) for j in range(1 , (N + 1))]) for i in range(1 , (N + 1))]
