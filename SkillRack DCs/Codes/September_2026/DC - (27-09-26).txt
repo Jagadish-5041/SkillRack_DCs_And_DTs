@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sum Of Multiples Of X From M To N in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+M , N , X = map(int , input().strip().split())
+
+if(X > N):
+    print(-1)
+    quit()
+
+sum_value = sum(number for number in range(M , (N + 1)) if((number % X) == 0))
+
+print((0) if(sum_value == 0) else (sum_value))
