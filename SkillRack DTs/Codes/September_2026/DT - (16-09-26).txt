@@ -1,0 +1,16 @@
+Problem Statement :-
+
+Count Leading Zeros in DT (Daily Test) in SkillRack in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+
+fun main(vararg args : String){
+    var count_of_leading_zeros_in_binary_string = 0
+    var reversed_binary_reperesentation_of_number = ((Integer.toBinaryString(Scanner(System.`in`).nextInt())).reversed())
+    for(i in 0 until (reversed_binary_reperesentation_of_number.length)){
+        if(reversed_binary_reperesentation_of_number[i] == '0') (count_of_leading_zeros_in_binary_string++) else (break)
+    }
+    println(count_of_leading_zeros_in_binary_string)
+}
