@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sum Of Integers - Unit Digit D in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+N , D = map(int , input().strip().split())
+
+sum_value = sum(number for number in range(1 , (N + 1)) if(get_unit_digit(number) == D))
+
+print((-1) if(sum_value == 0) else (sum_value))
