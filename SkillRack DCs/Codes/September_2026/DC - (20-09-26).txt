@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Reverse Middle Words In S in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+words_list = input().strip().split()
+
+N = len(words_list)
+
+answer_list = [(word_string) if((index == 0) or (index == (N - 1))) else (word_string[::-1]) for index , word_string in enumerate(words_list)]
+
+print(*answer_list)
