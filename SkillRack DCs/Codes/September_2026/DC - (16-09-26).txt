@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Break String Values By Vowels in DC (Daily Challenge) in SkillRack in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+
+fun is_vowel(character : Char) : Boolean {
+    return ((character == 'a') || (character == 'e') || (character == 'i') || (character == 'o') || (character == 'u'))
+}
+
+fun main(vararg args: String) {
+    var first_vowel_to_be_skipped_for_new_line = true
+    (Scanner(System.`in`).next()).forEach{
+        if((first_vowel_to_be_skipped_for_new_line) && (is_vowel(Character.toLowerCase(it)))) (print(it)) else (if(is_vowel(Character.toLowerCase(it))) (print(("\n") + (it))) else (print(it)))
+        first_vowel_to_be_skipped_for_new_line = if((first_vowel_to_be_skipped_for_new_line) && (is_vowel(Character.toLowerCase(it)))) (false) else (first_vowel_to_be_skipped_for_new_line)
+    }
+}
