@@ -1,0 +1,12 @@
+Problem Statement :-
+
+Reverse Integer in DC (Daily Challenge) in SkillRack in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+
+fun main(vararg args: String) {
+    var s = ((Scanner(System.`in`)).next())
+    if(s.contains('-')) (println(Integer.parseInt("-" + (s.substring(1,(s.length))).reversed()))) else (println(Integer.parseInt(s.reversed())))
+}
