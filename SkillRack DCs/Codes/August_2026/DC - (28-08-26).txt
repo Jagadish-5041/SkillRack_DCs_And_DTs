@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Distinct Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+distinct_values_list = list(dict.fromkeys(values_list))
+
+print(*distinct_values_list)
