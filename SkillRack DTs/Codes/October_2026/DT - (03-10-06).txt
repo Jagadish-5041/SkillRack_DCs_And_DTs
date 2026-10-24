@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Average - Except Largest And Smallest in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+minimum_value = min(values_list)
+
+maximum_value = max(values_list)
+
+sum_value = sum(values_list)
+
+sum_value_except_minimum_and_maximum_value = (sum_value - minimum_value - maximum_value)
+
+average_value_except_minimum_and_maximum_value = (sum_value_except_minimum_and_maximum_value / (N - 2))
+
+print("{:.2f}".format(average_value_except_minimum_and_maximum_value))
