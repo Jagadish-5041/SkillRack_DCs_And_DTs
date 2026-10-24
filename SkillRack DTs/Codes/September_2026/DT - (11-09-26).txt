@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Smallest Numerator And Largest Denominator in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+numerator_values_list = []
+
+denominator_values_list = []
+
+[((lambda numerator_value , denominator_value : [numerator_values_list.append(numerator_value) , denominator_values_list.append(denominator_value)]) (*map(int , S.split("/")))) for S in input().strip().split()]
+
+smallest_numerator_value = min(numerator_values_list)
+
+largest_denominator_value = max(denominator_values_list)
+
+print(smallest_numerator_value , largest_denominator_value)
