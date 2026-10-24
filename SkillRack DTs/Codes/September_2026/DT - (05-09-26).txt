@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Replace Maximum And Minimum By Asterisk in DT (Daily Test) in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+minimum_value = 1000
+
+maximum_value = -1000
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        minimum_value = min(minimum_value , matrix[i][j])
+        
+        maximum_value = max(maximum_value , matrix[i][j])
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if((matrix[i][j] == minimum_value) or (matrix[i][j] == maximum_value)):
+            
+            matrix[i][j] = '*'
+
+[print(*row_list) for row_list in matrix]
