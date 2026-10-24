@@ -1,0 +1,45 @@
+Problem Statement :-
+
+Sum Of Digits Equal To Product Of Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_list(N):
+    
+    digits_list = []
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        digits_list.insert(0 , digit)
+        
+        N = (N // 10)
+    
+    return digits_list
+
+def get_sum_of_digits(digits_list):
+    
+    sum_of_digits = 0
+    
+    for digit in digits_list:
+        
+        sum_of_digits = (sum_of_digits + digit)
+    
+    return sum_of_digits
+
+def get_product_of_digits(digits_list):
+    
+    product_of_digits = 1
+    
+    for digit in digits_list:
+        
+        product_of_digits = (product_of_digits * digit)
+    
+    return product_of_digits
+
+starting_range_value , ending_range_value = map(int , input().strip().split())
+
+answer_list = [number for number in range(starting_range_value , (ending_range_value + 1)) if((lambda digits_list : (get_sum_of_digits(digits_list) == get_product_of_digits(digits_list))) (get_digits_list(number)))]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
