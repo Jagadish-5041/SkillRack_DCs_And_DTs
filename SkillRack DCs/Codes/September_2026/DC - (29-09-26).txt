@@ -1,0 +1,7 @@
+Problem Statement :-
+
+First Alphabet in DC (Daily challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(sorted(input().strip())[0])
