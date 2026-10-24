@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Substring Reverse Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+S = input().strip()
+
+N = len(S)
+
+for row_number in range(1 , ((N // 2) + (N % 2) + 1)):
+    
+    asterisks_string = ('*' * (row_number - 1))
+    
+    characters_string = ((S) if(is_odd(row_number)) else (S[::-1]))
+    
+    pattern_string = (asterisks_string + characters_string)
+    
+    print(pattern_string)
+    
+    S = (S[1 : -1])
