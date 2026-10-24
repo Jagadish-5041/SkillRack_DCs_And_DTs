@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Sum Of Duplicate Integers in DC (Daily Challenge) in SkillRack in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+
+fun main(vararg args: String) {
+    var sc = Scanner(System.`in`)
+    var n = Integer.parseInt(sc.nextLine())
+    var a : IntArray = IntArray((n+1)) {0}
+    var sum_of_duplicate_integers = 0L
+    var frequency_of_elements_array : LongArray = LongArray(10000000) {0L}
+    for(i in 0 until n){
+        a[i] = sc.nextInt()
+        frequency_of_elements_array[a[i]]++
+    }
+    for(i in 0 until n){
+        sum_of_duplicate_integers = if(frequency_of_elements_array[a[i]] > 1L) (sum_of_duplicate_integers + a[i]) else (sum_of_duplicate_integers)
+        frequency_of_elements_array[a[i]] = 0L
+    }
+    if(sum_of_duplicate_integers == 0L) (println(-1)) else (println(sum_of_duplicate_integers))
+}
