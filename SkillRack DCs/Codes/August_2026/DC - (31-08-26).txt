@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Alphabet Greater Than Left Alphabets (Error Identification) in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    char *string = ((char *) malloc((sizeof(char) * 10008)));
+    
+    char input_character;
+    
+    for(int index = 0 ; (scanf("%c" , &input_character) > 0) ; ){
+        
+        if((index == 0) || (input_character > string[(index - 1)])){
+            
+            strncat(string , &input_character , 1);
+            
+            index++;
+        }
+    }
+    
+    printf("%s" , string);
+    
+    return 0;
+}
