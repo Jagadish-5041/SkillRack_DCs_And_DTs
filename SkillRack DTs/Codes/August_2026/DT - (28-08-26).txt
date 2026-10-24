@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sum Of Words Length in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(sum(len(word_string) for word_string in input().strip().split()))
