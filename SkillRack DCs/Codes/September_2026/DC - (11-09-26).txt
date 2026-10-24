@@ -1,0 +1,40 @@
+Problem Statement :-
+
+Jumbled Program - 016 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int is_even(int N){
+    
+    return ((N & 1) == 0);
+}
+
+int jagadish_DC(){
+    
+    int N;
+    
+    scanf("%d" , &N);
+    
+    int product_value = 1;
+    
+    int sum_value = 0;
+    
+    for(int number = N ; (number > 0) ; number = (number / 10)){
+        
+        int digit = (number % 10);
+        
+        if(is_even(number)){
+            product_value = (product_value * digit);
+        }else{
+            sum_value = (sum_value + digit);
+        }
+    }
+    
+    printf("%s" , (((product_value % sum_value) == 0) ? ("Yes") : ("No")));
+    
+    return 0;
+}
