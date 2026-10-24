@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sum And Average in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+values_list = list(map(int , input().strip().split()))
+
+N = len(values_list)
+
+sum_value = sum(values_list)
+
+average_value = (sum_value / N)
+
+print("{} {:.3f}".format(sum_value , average_value))
