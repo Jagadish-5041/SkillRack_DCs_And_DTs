@@ -1,0 +1,37 @@
+Problem Statement :-
+
+Jumbled Program - 14 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int count_divisors_of_N_which_has_X_as_a_factor(int N , int X){
+    
+    int count = 0;
+    
+    for(int number = 1 ; (number <= N) ; number++){
+        
+        if(((N % number) == 0) && ((number % X) == 0)){
+            
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+int jagadish_DC(){
+    
+    int N;
+    
+    int X;
+    
+    scanf("%d %d" , &N , &X);
+    
+    printf("%d" , count_divisors_of_N_which_has_X_as_a_factor(N , X));
+    
+    return 0;
+}
