@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Flowchart - 023 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+A = input().strip()
+
+A_N = len(A)
+
+B = input().strip()
+
+B_N = len(B)
+
+A = (A[2 : ] + A[ : 2])
+
+count = sum(1 for i in range(0 , A_N) if(A[i] == B[i]))
+
+print(("Yes") if((count == A_N) and (A_N == B_N)) else ("No"))
