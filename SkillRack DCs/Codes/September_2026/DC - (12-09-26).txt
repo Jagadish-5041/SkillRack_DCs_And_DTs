@@ -1,0 +1,15 @@
+Problem Statement :-
+
+First And Last X Character in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+X = int(input().strip())
+
+new_S = (S[0 : X] + S[(N - X) : N])
+
+print(new_S)
