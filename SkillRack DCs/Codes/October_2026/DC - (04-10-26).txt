@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Concatenate Two Strings in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+s=input().strip()
+x=input().strip()
+n,m=map(int, input().split())
+print(s[:n] + x[len(x)-m:])
+print(x[:len(x)-m] + s[n:])
