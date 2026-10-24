@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sum Of Columns in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+R , C = map(int , input().strip().split())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+sum_value = 0
+
+for j in range(0 , C):
+    
+    if(is_odd(matrix[0][j])):
+        
+        for i in range(0 , R):
+            
+            sum_value = (sum_value + matrix[i][j])
+
+print((-1) if(sum_value == 0) else (sum_value))
