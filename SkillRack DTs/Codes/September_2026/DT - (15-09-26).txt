@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Replace Odd And Even Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+[(print(1,end="")) if((int(i)%2) != 0) else (print(0,end="")) for i in input().strip()]
