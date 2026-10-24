@@ -1,0 +1,13 @@
+Problem Statement :-
+
+First N Multiples Of X - Odd in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N , X = map(int , input().strip().split())
+
+(print(-1)) if(is_even(X)) else (print(*[number for number in range(X , (((N * X) * 2) + 1) , (X * 2))]))
