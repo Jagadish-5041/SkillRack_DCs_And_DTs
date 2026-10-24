@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Maximum Product in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+first_maximum_value = -999
+
+second_maximum_value = -999
+
+for value in values_list:
+    
+    if(first_maximum_value < value):
+        second_maximum_value = first_maximum_value
+        first_maximum_value = value
+    elif(second_maximum_value < value):
+        second_maximum_value = value
+
+maximum_product_value = (first_maximum_value * second_maximum_value)
+
+print(maximum_product_value)
