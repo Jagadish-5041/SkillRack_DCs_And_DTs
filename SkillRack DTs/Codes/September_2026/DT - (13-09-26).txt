@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Product Of N And Largest Odd Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_largest_odd_digit(N):
+    
+    largest_odd_digit = -999
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        largest_odd_digit = (max(largest_odd_digit , digit)) if(is_odd(digit)) else (largest_odd_digit)
+        
+        N = (N // 10)
+    
+    return largest_odd_digit
+
+N = int(input().strip())
+
+largest_odd_digit = get_largest_odd_digit(N)
+
+print((-1) if(largest_odd_digit == -999) else ((N * largest_odd_digit)))
