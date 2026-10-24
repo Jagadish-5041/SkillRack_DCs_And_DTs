@@ -1,0 +1,33 @@
+Problem Statement :-
+
+String To Matrix With C Columns in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+data_list = input().strip().split()
+
+S = data_list[0]
+
+N = len(S)
+
+C = int(data_list[1])
+
+R = math.ceil((N / C))
+
+matrix = [['*' for j in range(0 , C)] for i in range(0 , R)]
+
+S_i = 0
+
+for i in range(0 , R):
+    
+    for j in range(0 , C):
+        
+        if(S_i < N):
+            
+            matrix[i][j] = S[S_i]
+            
+            S_i = (S_i + 1)
+
+[print(*row_list , sep = "") for row_list in matrix]
