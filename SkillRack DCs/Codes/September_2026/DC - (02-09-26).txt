@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Sum Of Frequency Of Alphabets (Error Identification) in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    char *string = ((char *) malloc((sizeof(char) * 100008)));
+    
+    int X;
+    
+    scanf("%s %d" , string , &X);
+    
+    int frequency_array[128] = {0};
+    
+    for(int N = strlen(string) , index = 0 ; (index < N) ; index++){
+        frequency_array[string[index]]++;
+    }
+    
+    int sum_of_frequencies_raised_to_the_power_of_X = 0;
+    
+    for(int ASCII_value = 97 ; (ASCII_value <= 122) ; ASCII_value++){
+        sum_of_frequencies_raised_to_the_power_of_X = (sum_of_frequencies_raised_to_the_power_of_X + ((int) pow(frequency_array[ASCII_value] , X)));
+    }
+    
+    printf("%d" , sum_of_frequencies_raised_to_the_power_of_X);
+    
+    return 0;
+}
