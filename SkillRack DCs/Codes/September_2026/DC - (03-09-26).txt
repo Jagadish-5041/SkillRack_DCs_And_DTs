@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Jumbled Program - 004 in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    int R;
+    
+    int C;
+    
+    scanf("%d %d\n" , &R , &C);
+    
+    int matrix[R][C];
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            scanf("%d " , &matrix[i][j]);
+        }
+    }
+    
+    for(int i = 0 ; (i < R) ; i++){
+        
+        for(int j = 0 ; (j < C) ; j++){
+            
+            if(j <= i){
+                
+                printf("%d " , matrix[i][j]);
+            }
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
