@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sum Of Unique Digits - Two Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unique_digits_sum(N):
+    
+    digits_set = set()
+    
+    unique_digits_sum = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        unique_digits_sum = (unique_digits_sum + digit) if(digit not in digits_set) else (unique_digits_sum)
+        
+        digits_set.add(digit)
+        
+        N = (N // 10)
+    
+    return unique_digits_sum
+
+(lambda X , Y : print(("YES") if(get_unique_digits_sum(X) == get_unique_digits_sum(Y)) else ("NO"))) (*map(int , input().strip().split()))
