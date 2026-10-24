@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Smallest Integer - Two Arrays in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , A , B : print(*[min(X , Y) for X , Y in zip(A , B)])) (int(input().strip()) , list(map(int , input().strip().split())) , list(map(int , input().strip().split())))
