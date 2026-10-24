@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Sum Of Integers With X Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+N , X = map(int , input().strip().split())
+
+sum_value = sum(number for number in list(map(int , input().strip().split())) if(get_length_of_N(number) == X))
+
+print((sum_value) if(sum_value > 0) else (-1))
