@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Integers - Tenth Digit Odd Or Even in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_tenth_digit(N):
+    
+    return ((N % 100) // 10)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+A = []
+
+B = []
+
+[(A.append(value)) if(is_odd(get_tenth_digit(value))) else (B.append(value)) for value in values_list]
+
+A_N = len(A)
+
+B_N = len(B)
+
+(print(*A)) if(A_N > B_N) else ((print(*B)) if(B_N > A_N) else (print(-1)))
