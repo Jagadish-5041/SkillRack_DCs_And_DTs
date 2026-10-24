@@ -1,0 +1,30 @@
+Problem Statement :-
+
+Count Of X (Error Identification) in DC (Daily Challenge) in SkillRack in C - Programming
+
+Code :-
+
+#include <stdio.h>
+#include <stdlib.h>
+#define jagadish_DC main
+
+int jagadish_DC(){
+    
+    int N;
+    
+    scanf("%d" , &N);
+    
+    int count = 0;
+    
+    for(int X = 0 ; (X <= N) ; X++){
+        
+        if((N ^ X) == (N | X)){
+            
+            count++;
+        }
+    }
+    
+    printf("%d" , count);
+    
+    return 0;
+}
