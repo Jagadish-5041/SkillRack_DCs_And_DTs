@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Pattern - Left Upper Trianlge in DT (Daily Test) in SkillRack in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+
+fun main(vararg args : String){
+    var N = (Scanner(System.`in`)).nextInt()
+    for(i in 1..N){
+        for(j in i..N){
+            print((Integer.toString(j))+" ")
+        }
+        println()
+    }
+}
