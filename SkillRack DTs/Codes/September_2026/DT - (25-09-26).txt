@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Digits - Odd And Even Positions in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+odd_position_digits_list = []
+
+even_position_digits_list = []
+
+[(odd_position_digits_list.append(digit_string)) if(is_odd((index + 1))) else (even_position_digits_list.append(digit_string)) for index , digit_string in enumerate(input().strip())]
+
+print(*odd_position_digits_list)
+
+print(*even_position_digits_list)
