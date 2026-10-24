@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Last X Digits Multiplied By M in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_power_of_10(N):
+    
+    return (10 ** N)
+
+def get_last_X_digits(N , X):
+    
+    return (N % get_power_of_10(X))
+
+N = int(input().strip())
+
+X , M = map(int , input().strip().split())
+
+answer_value = (get_last_X_digits(N , X) * M)
+
+print(answer_value)
