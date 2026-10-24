@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Swapping Of Unit Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def swap_unit_digits(A , B):
+    
+    unit_digit_1 = (A % 10)
+    
+    A = (A // 10)
+    
+    unit_digit_2 = (B % 10)
+    
+    B = (B // 10)
+    
+    A = ((A * 10) + unit_digit_2)
+    
+    B = ((B * 10) + unit_digit_1)
+    
+    return (A , B)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+for index in range(0 , (N // 2)):
+    
+    values_list[index] , values_list[(N - index - 1)] = swap_unit_digits(values_list[index] , values_list[(N - index - 1)])
+
+print(*values_list)
