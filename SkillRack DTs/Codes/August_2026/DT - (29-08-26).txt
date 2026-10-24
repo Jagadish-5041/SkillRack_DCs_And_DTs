@@ -1,0 +1,7 @@
+Problem Statement :-
+
+String With Underscore in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(input().strip().replace(" " , "_"))
