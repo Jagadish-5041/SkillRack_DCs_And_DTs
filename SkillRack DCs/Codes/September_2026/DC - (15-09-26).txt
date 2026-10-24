@@ -1,0 +1,34 @@
+Problem Statement :-
+
+Prime Frequency in DC (Daily Challenge) in SkillRaclk in Kotlin - Programming
+
+Code :-
+
+import java.util.*
+import kotlin.system.exitProcess
+
+fun is_prime(x : Int) : Boolean {
+    for(i in 2..((Math.sqrt(x.toDouble())).toInt())){
+        if((x%i) == 0){
+            return false
+        }
+    }
+    return if(x>1) (true) else (false)
+}
+
+fun main(vararg args: String) {
+    var frequency_of_alphabets : IntArray = IntArray(128)
+    
+    ((Scanner(System.`in`)).next()).forEach{
+        frequency_of_alphabets[(it.toInt())]++
+    }
+    
+    for(i in (65)..(122)){
+        if((frequency_of_alphabets[i] > 0) && (!(is_prime(frequency_of_alphabets[i])))){
+            println("NO")
+            exitProcess(0)
+        }
+    }
+    
+    println("YES")
+}
