@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Concatenate And Check Perfect Square in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((1) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def concatenate_two_numbers(A , B):
+    
+    return ((A * (10 ** get_length_of_N(B))) + B)
+
+def is_perfect_square(N):
+    
+    return ((int((N ** 0.5)) ** 2) == N)
+
+(lambda X , Y : print(("Yes") if((is_perfect_square(concatenate_two_numbers(X , Y))) or (is_perfect_square(concatenate_two_numbers(Y , X)))) else ("No"))) (*map(int , input().strip().split()))
