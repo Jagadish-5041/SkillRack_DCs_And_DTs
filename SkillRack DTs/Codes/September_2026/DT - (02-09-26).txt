@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Lower Left Triangle - Reverse Diagonally in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+[print(*[(matrix[(N - j - 1)][(N - i - 1)]) if(j <= i) else (matrix[i][j]) for j in range(0 , N)]) for i in range(0 , N)]
