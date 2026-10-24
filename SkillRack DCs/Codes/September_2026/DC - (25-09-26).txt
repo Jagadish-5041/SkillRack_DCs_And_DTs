@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Expansion Of String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S : print(*[S[index : ] for index in range((len(S) - 1) , -1 , -1)] , sep = "")) (input().strip())
