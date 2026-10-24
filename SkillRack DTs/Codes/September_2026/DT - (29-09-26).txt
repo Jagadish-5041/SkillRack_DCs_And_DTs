@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sum Of Every X Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , values_list , X : print(*[sum(values_list[j] for j in range(i , (i + X))) for i in range(0 , (N - X + 1) , X)])) (int(input().strip()) , list(map(int , input().strip().split())) , int(input().strip()))
