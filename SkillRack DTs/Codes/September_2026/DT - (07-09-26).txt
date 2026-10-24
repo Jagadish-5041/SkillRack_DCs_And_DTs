@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Greater Or Smaller Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().strip().split())
+
+values_list = list(map(int , input().strip().split()))
+
+A = []
+
+B = []
+
+[(A.append(value)) if(value >= X) else (B.append(value)) for value in values_list]
+
+print(*((A) if(len(A) >= len(B)) else (B)))
