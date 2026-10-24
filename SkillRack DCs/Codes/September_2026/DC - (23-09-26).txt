@@ -1,0 +1,19 @@
+Problem Statement :-
+
+First X Vowels in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+data_list = input().strip().split()
+
+S = data_list[0]
+
+X = int(data_list[1])
+
+vowels_string = ("".join(character for character in S if(is_vowel(character))))
+
+print((-1) if(len(vowels_string) < X) else (vowels_string[ : X]))
