@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Lower Left Triangle Matrix - Maximum Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_lower_left_triangle_sum(R , C , matrix):
+    
+    return sum(matrix[i][j] for i in range(0 , R) for j in range(0 , (i + 1)))
+
+def print_lower_left_triangle(R , C , matrix):
+    
+    [print(*[matrix[i][j] for j in range(0 , (i + 1))]) for i in range(0 , R)]
+
+N = int(input().strip())
+
+R = N
+
+C = N
+
+matrix_A = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+matrix_B = [list(map(int , input().strip().split())) for i in range(0 , R)]
+
+print_lower_left_triangle(R , C , ((matrix_A) if(get_lower_left_triangle_sum(R , C , matrix_A) >= get_lower_left_triangle_sum(R , C , matrix_B)) else (matrix_B)))
