@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Flowchart Logic 009 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_offset_value(alphabet):
+    
+    return ((ord('a')) if(alphabet.islower()) else (ord('A')))
+
+def get_next_alphabet(alphabet):
+    
+    offset_value = get_offset_value(alphabet)
+    
+    return chr((((ord(alphabet) - offset_value + 1) % 26) + offset_value))
+
+data_list = input().strip().split()
+
+alphabet = data_list[0]
+
+N = int(data_list[1])
+
+while(N > 0):
+    
+    print(alphabet , end = "")
+    
+    alphabet = get_next_alphabet(alphabet)
+    
+    N = (N - 1)
