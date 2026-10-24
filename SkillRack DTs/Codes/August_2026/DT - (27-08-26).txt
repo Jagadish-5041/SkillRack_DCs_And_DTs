@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Largest To Smallest in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda X , Y : print(*[number for number in range(max(X , Y) , (min(X , Y) - 1) , -1)])) (*map(int , input().strip().split()))
