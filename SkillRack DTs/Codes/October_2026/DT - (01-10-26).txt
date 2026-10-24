@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Digits Of N - Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(*[(digit_string * int(digit_string)) for digit_string in input().strip() if(digit_string != '0')] , sep = "\n")
