@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Minimum And Maximum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+minimum_value = min(values_list)
+
+maximum_value = max(values_list)
+
+print(minimum_value , maximum_value)
