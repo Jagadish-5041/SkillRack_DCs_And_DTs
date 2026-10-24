@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Sum Of Non Repeated Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_frequency_map(values_list):
+    
+    frequency_map = {}
+    
+    [frequency_map.__setitem__(value , (frequency_map.get(value , 0) + 1)) for value in values_list]
+    
+    return frequency_map
+
+def get_unique_values_sum(values_list):
+    
+    sum_value = 0
+    
+    for key , frequency in get_frequency_map(values_list).items():
+        
+        if(frequency == 1):
+            
+            sum_value = (sum_value + key)
+    
+    return ((-1) if(sum_value == 0) else (sum_value))
+
+(lambda N , values_list : print(get_unique_values_sum(values_list))) (int(input().strip()) , list(map(int , input().strip().split())))
