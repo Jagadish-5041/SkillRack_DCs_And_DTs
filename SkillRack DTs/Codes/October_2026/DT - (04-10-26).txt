@@ -1,0 +1,9 @@
+Problem Statement :-
+
+Asterisk Integer Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+n=input().strip()
+for i in range(len(n)):
+    print("*"*i+n[:len(n) - i])
