@@ -1,0 +1,15 @@
+Probelm Statement :-
+
+Check The Alphabet in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_X_th_position_alphabet(X_th_position):
+    
+    return chr((ord('a') + X_th_position - 1))
+
+S = input().strip()
+
+X_th_lowercase_alphabet = get_X_th_position_alphabet(int(input().strip()))
+
+print(("yes") if(any((X_th_lowercase_alphabet == current_alphabet) for current_alphabet in S)) else ("no"))
