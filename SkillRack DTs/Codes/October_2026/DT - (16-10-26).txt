@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Sum - Smallest Digit Of The Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_smallest_digit(N):
+    
+    smallest_digit = 10
+    
+    while(N > 0):
+        
+        current_digit = (N % 10)
+        
+        smallest_digit = min(smallest_digit , current_digit)
+        
+        N = (N // 10)
+    
+    return smallest_digit
+
+(lambda N , values_list : print(sum(get_smallest_digit(number) for number in values_list))) (int(input().strip()) , list(map(int , input().strip().split())))
