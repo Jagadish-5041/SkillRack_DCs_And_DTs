@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Toggle Case - Words in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(*[(word_string.swapcase()) if((word_string.isupper()) or (word_string.islower())) else (word_string) for word_string in input().strip().split()])
