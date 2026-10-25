@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Step Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = int(input().strip())
+
+asterisk_strings_list = ([('*' * i) for i in range(0 , N)] + [('*' * i) for i in range((N - 2) , 0 , -1)])
+
+M = ((N * 2) - 2)
+
+[print((asterisk_strings_list[(index % M)] + S[index])) for index in range(0 , len(S))]
