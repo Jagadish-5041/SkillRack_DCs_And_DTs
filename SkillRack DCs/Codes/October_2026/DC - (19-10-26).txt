@@ -1,0 +1,21 @@
+Problem Statement :-
+
+First And Last Three Bits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+def get_decimal_equivalent_number(binary_string):
+    
+    return int(binary_string , 2)
+
+binary_string = get_binary_string(int(input().strip()))
+
+first_3_bits_number = get_decimal_equivalent_number(binary_string[ : 3])
+
+last_3_bits_number = get_decimal_equivalent_number(binary_string[(len(binary_string) - 3) : ])
+
+print(first_3_bits_number , last_3_bits_number)
