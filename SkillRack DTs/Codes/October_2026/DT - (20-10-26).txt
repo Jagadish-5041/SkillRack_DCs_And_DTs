@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Half Palindrome in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_palindrome(string):
+    
+    return (string == string[::-1])
+
+S = input().strip()
+
+N = len(S)
+
+left_half_string = S[ : ((N // 2) + (N % 2))]
+
+right_half_string = S[(N // 2) : ]
+
+print((left_half_string) if(is_palindrome(left_half_string)) else (right_half_string))
