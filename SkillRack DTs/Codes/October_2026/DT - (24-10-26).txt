@@ -1,0 +1,22 @@
+Problem Statement :-
+
+Start End Characters Till Equal in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+left_pointer = 0
+
+right_pointer = (len(S) - 1)
+
+while(left_pointer <= right_pointer):
+    
+    (print(S[left_pointer] , end = "")) if(left_pointer == right_pointer) else (print(S[left_pointer] , S[right_pointer] , sep = "" , end = ""))
+    
+    if(S[left_pointer] == S[right_pointer]):
+        break
+    
+    left_pointer = (left_pointer + 1)
+    
+    right_pointer = (right_pointer - 1)
