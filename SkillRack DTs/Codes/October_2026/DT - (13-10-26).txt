@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Maximum Substring Length - First And Half in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+S_N = len(S)
+
+half_S_N = (S_N // 2)
+
+S_i = 0
+
+palindromic_characters_matching_count = 0
+
+while((S_i < half_S_N) and (S_i != (S_N - S_i - 1)) and (S[S_i] == S[(S_N - S_i - 1)])):
+    
+    palindromic_characters_matching_count = (palindromic_characters_matching_count + 1)
+    
+    S_i = (S_i + 1)
+
+print((-1) if(palindromic_characters_matching_count == 0) else (palindromic_characters_matching_count))
