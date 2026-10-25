@@ -1,0 +1,7 @@
+Problem Statement :-
+
+First And Last N Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S , X : print(S[ : X] , S[(len(S) - X) : ] , sep = "")) (input().strip() , int(input().strip()))
