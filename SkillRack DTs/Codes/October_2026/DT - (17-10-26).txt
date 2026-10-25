@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Sum Of Lower Right Triangle in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+lower_right_triangle_sum = sum(matrix[i][j] for i in range(0 , N) for j in range((N - i - 1) , N))
+
+print(lower_right_triangle_sum)
