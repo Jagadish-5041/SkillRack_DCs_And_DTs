@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Reverse First Three Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def get_length_of_N(N):
+    
+    return ((0) if(N == 0) else (int(math.log10(abs(N))) + 1))
+
+def get_reversed_N(N):
+    
+    reversed_N = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        reversed_N = ((reversed_N * 10) + digit)
+        
+        N = (N // 10)
+    
+    return reversed_N
+
+def get_reversed_first_3_digit_number(N):
+    
+    return get_reversed_N((N // (10 ** (get_length_of_N(N) - 3))))
+
+print(get_reversed_first_3_digit_number(int(input().strip())))
