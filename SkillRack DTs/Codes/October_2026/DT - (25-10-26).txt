@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sum With Unit Digit X in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+N , digit_X = map(int , input().strip().split())
+
+sum_value = sum(value for value in list(map(int , input().strip().split())) if(get_unit_digit(value) == digit_X))
+
+print(sum_value)
