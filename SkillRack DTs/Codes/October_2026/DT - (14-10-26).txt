@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Maximum - First , Last And Middle in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+maximum_value = max(values_list[0] , values_list[(N // 2)] , values_list[(N - 1)])
+
+print(maximum_value)
