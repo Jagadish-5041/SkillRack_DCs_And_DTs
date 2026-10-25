@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Four Equal Substring in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+sub_string_length = (N // 4)
+
+sub_string = S[0 : sub_string_length]
+
+print(("yes") if((sub_string * 4) == S) else ("no"))
