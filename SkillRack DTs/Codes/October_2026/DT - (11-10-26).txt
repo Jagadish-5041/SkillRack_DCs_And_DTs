@@ -1,0 +1,25 @@
+Problem Statement :-
+
+X Number Of 1's In Binary Representation in DT (Daily TesT) in SkillRack in Python - Programming
+
+Code :-
+
+def get_set_bits_count(N):
+    
+    set_bits_count = 0
+    
+    while(N > 0):
+        
+        set_bits_count = (set_bits_count + 1)
+        
+        N = (N & (N - 1))
+    
+    return set_bits_count
+
+N , X = map(int , input().strip().split())
+
+values_list = list(map(int , input().strip().split()))
+
+answer_list = [value for value in values_list if(get_set_bits_count(value) == X)]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
