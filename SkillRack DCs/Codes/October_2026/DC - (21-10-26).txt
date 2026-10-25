@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Reverse Last X Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+digits_string = input().strip()
+
+N = len(digits_string)
+
+X = int(input().strip())
+
+new_digits_string = (digits_string[0 : (N - X)] + digits_string[(N - X) : N][::-1])
+
+print(new_digits_string)
