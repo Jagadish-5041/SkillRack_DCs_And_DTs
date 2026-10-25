@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Reverse The Even Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input().strip())
+
+even_digit_found_flag = False
+
+reversed_even_digits_number = 0
+
+while(N > 0):
+    
+    digit = (N % 10)
+    
+    even_digit_found_flag = (True) if((even_digit_found_flag == False) and (is_even(digit))) else (even_digit_found_flag)
+    
+    reversed_even_digits_number = ((reversed_even_digits_number * 10) + digit) if(is_even(digit)) else (reversed_even_digits_number)
+    
+    N = (N // 10)
+
+print((reversed_even_digits_number) if(even_digit_found_flag) else (-1))
