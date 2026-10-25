@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Reverse Last X Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+X = int(input().strip())
+
+new_S = (S[0 : (N - X)] + S[(N - X) : N][::-1])
+
+print(new_S)
