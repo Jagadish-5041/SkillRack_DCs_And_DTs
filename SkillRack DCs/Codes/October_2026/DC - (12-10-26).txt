@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Digit Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+[print(('|' + ('*' * int(digit_string)))) for digit_string in input().strip()]
