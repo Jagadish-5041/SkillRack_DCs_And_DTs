@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Triangle - Binary Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+(lambda binary_string : [print((('*' * i) + binary_string[i : ])) for i in range(0 , len(binary_string))]) (get_binary_string(int(input().strip())))
