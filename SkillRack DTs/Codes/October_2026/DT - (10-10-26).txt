@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Form A String in DT (Daily TesT) in  in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().strip().split())
+
+alphabets_string = "abcdefghijklmnopqrstuvwxyz"
+
+target_string = (alphabets_string[(X - 1)] + (alphabets_string[0 : X] * (((N - 1) // X) + X)))[0 : N]
+
+print(target_string)
