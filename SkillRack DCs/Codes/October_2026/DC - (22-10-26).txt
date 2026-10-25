@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Sum Of Middle Integers in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+middle_index = (N // 2)
+
+sum_value = (values_list[(middle_index - 1)] + values_list[middle_index] + values_list[(middle_index + 1)]) if(is_odd(N)) else (values_list[(middle_index - 2)] + values_list[(middle_index - 1)] + values_list[middle_index] + values_list[(middle_index + 1)])
+
+print(sum_value)
