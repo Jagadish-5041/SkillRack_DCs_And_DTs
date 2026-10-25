@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Sum Or Product Of Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def get_sum_or_product_of_digits(N):
+    
+    sum_of_digits = 0
+    
+    product_of_digits = 1
+    
+    is_even_flag = is_even(N)
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        sum_of_digits = (sum_of_digits + digit)
+        
+        product_of_digits = (product_of_digits * digit)
+        
+        N = (N // 10)
+    
+    return ((sum_of_digits) if(is_even_flag) else (product_of_digits))
+
+print(get_sum_or_product_of_digits(int(input().strip())))
