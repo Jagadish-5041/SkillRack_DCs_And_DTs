@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Vowels - Palindrome in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+def get_consonants_removed_string(string):
+    
+    return ("".join(character for character in string if(not is_consonant(character))))
+
+def is_palindrome(N , string):
+    
+    for index in range(0 , ((N // 2) + (N % 2))):
+        
+        if(string[index] != string[(N - index - 1)]):
+            
+            return False
+    
+    return True
+
+(lambda consonants_removed_string : print((("YES") if(is_palindrome(len(consonants_removed_string) , consonants_removed_string)) else ("NO")) if(consonants_removed_string) else (-1))) (get_consonants_removed_string(input().strip()))
