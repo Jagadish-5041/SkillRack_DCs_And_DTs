@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Average Of N Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+average_value = (sum(values_list) / N)
+
+print("{:.2f}".format(average_value))
