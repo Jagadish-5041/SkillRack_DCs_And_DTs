@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Frame Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+R , C = map(int , input().strip().split())
+
+matrix = [(['*'] + list(map(int , input().strip().split())) + ['*']) for i in range(0 , R)]
+
+asterisks_string = ('*' * (C + 2))
+
+print(*asterisks_string)
+
+[print(*row_list) for row_list in matrix]
+
+print(*asterisks_string)
