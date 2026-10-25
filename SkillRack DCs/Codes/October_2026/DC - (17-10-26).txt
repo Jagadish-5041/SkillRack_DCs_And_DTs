@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Product Of Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_product_of_digits(N):
+    
+    product_of_digits = 1
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        if(digit == 0):
+            return 0
+        
+        product_of_digits = (product_of_digits * digit)
+        
+        N = (N // 10)
+    
+    return product_of_digits
+
+(lambda N , values_list : print(*[get_product_of_digits(number) for number in values_list])) (int(input().strip()) , list(map(int , input().strip().split())))
