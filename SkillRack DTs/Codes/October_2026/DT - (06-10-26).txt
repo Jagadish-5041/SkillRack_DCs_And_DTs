@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Inverted Pyramid - Alphabet Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_X_th_uppercase_alphabet(X):
+    
+    return chr((ord('A') + (X - 1)))
+
+def get_N_th_odd_number(N):
+    
+    return ((N * 2) - 1)
+
+N = int(input().strip())
+
+for i in range(N , 0 , -1):
+    
+    asterisks_string = ('*' * (N - i))
+    
+    alphabets_string = (get_X_th_uppercase_alphabet(i) * get_N_th_odd_number(i))
+    
+    pattern_string = (asterisks_string + alphabets_string)
+    
+    print(*pattern_string)
