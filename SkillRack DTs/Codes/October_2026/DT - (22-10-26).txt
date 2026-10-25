@@ -1,0 +1,35 @@
+Problem Statement :-
+
+N Integers Formed Using Digits Of X in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_digits_set(N):
+    
+    digits_set = set()
+    
+    while(N):
+        
+        digit = (N % 10)
+        
+        digits_set.add(digit)
+        
+        N = (N // 10)
+    
+    return digits_set
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+digits_set = get_digits_set(int(input().strip()))
+
+for value in values_list:
+    
+    if(value not in digits_set):
+        
+        print("NO")
+        
+        quit()
+
+print("YES")
