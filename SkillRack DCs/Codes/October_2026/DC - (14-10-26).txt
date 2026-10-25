@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Remove Consecutive Alphabets in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+S = input().strip()
+
+S_N = len(S)
+
+S_i = 0
+
+while(is_within_bounds(S_i , S_N)):
+    
+    current_character = S[S_i]
+    
+    S_i = (S_i + 1)
+    
+    while((is_within_bounds(S_i , S_N)) and (((current_character.islower()) and (S[S_i].islower())) or ((current_character.isupper()) and (S[S_i].isupper())))):
+        
+        S_i = (S_i + 1)
+    
+    print(current_character , end = "")
