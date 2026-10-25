@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Minimum Positive Integer in DT (Daily Test) in SkillRack in C - Programming
+
+Code :-
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int a,b,c;
+    scanf("%d %d %d",&a,&b,&c);
+    if(a>c){
+        printf("%d",c);
+    }
+    else{
+        printf("%d",b+c -(b+c)%c);
+    }
+
+}
