@@ -1,0 +1,21 @@
+Problem Statement :-
+
+First Even Integer in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+print_flag = False
+
+for value in values_list:
+    
+    print_flag = (True) if(is_even(value)) else (print_flag)
+    
+    (print(value , end = " ")) if(print_flag) else ("")
