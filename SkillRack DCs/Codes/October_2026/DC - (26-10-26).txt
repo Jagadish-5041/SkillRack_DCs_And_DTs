@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Reverse Middle K Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+A = list(input().strip())
+
+N = len(A)
+
+K = int(input().strip())
+
+left_half = (K // 2)
+
+middle_index = (N // 2)
+
+right_half = (K // 2) if(is_odd(K)) else ((K // 2) - 1)
+
+A[(middle_index - left_half) : (middle_index + right_half + 1)] = A[(middle_index - left_half) : (middle_index + right_half + 1)][::-1]
+
+print(*A , sep = "")
