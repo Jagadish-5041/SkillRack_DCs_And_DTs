@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Toggle Case - Vowels in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+def get_consonants_count(S):
+    
+    return sum(1 for character in S if(is_consonant(character)))
+
+(lambda A , B : print(sorted([(A , get_consonants_count(A) , len(A)) , (B , get_consonants_count(B) , len(B))] , key = lambda tuple_data : ((tuple_data[1] * -1) , (tuple_data[2] * -1)))[0][0])) (input().strip() , input().strip())
