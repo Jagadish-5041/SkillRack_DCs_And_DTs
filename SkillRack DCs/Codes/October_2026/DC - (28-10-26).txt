@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Remove First K Rows And Columns in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+matrix = [list(map(int , input().strip().split())) for i in range(0 , N)]
+
+K = int(input().strip())
+
+[print(*[matrix[i][j] for j in range(K , N)]) for i in range(K , N)]
