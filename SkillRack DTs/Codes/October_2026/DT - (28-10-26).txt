@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Chocolate Bars in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+target_kilo_grams_of_chocolate_bar , small_chocolate_bars_count , big_chocolate_bars_count = map(int , input().strip().split())
+
+while((big_chocolate_bars_count > 0) and (target_kilo_grams_of_chocolate_bar >= 5)):
+    
+    target_kilo_grams_of_chocolate_bar = (target_kilo_grams_of_chocolate_bar - 5)
+    
+    big_chocolate_bars_count = (big_chocolate_bars_count - 1)
+
+small_chocolate_bars_needed_count = 0
+
+while((small_chocolate_bars_count > 0) and (target_kilo_grams_of_chocolate_bar >= 1)):
+    
+    target_kilo_grams_of_chocolate_bar = (target_kilo_grams_of_chocolate_bar - 1)
+    
+    small_chocolate_bars_count = (small_chocolate_bars_count - 1)
+    
+    small_chocolate_bars_needed_count = (small_chocolate_bars_needed_count + 1)
+
+print((-1) if(target_kilo_grams_of_chocolate_bar > 0) else (small_chocolate_bars_needed_count))
