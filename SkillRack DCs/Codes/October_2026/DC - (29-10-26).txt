@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Triangle Digit Pattern in DC (DAily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+print(*[(digit_string * (index + 1)) for index , digit_string in enumerate(input().strip())] , sep = "\n")
