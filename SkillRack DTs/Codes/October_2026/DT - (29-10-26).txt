@@ -1,0 +1,39 @@
+Problem Statement :-
+
+First Consecutive Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def get_parity_bit(N):
+    
+    return (N & 1)
+
+A = list(map(int , list(input().strip())))
+
+A_i = 0
+
+A_N = len(A)
+
+first_digit_parity_bit = get_parity_bit(A[0])
+
+parity_bits_values_map = {0 : [] , 1 : []}
+
+while(is_within_bounds(A_i , A_N)):
+    
+    current_parity_bit = get_parity_bit(A[A_i])
+    
+    current_digits_list = []
+    
+    while((is_within_bounds(A_i , A_N)) and (get_parity_bit(A[A_i]) == current_parity_bit)):
+        
+        current_digits_list.append(A[A_i])
+        
+        A_i = (A_i + 1)
+    
+    parity_bits_values_map[current_parity_bit].append(current_digits_list)
+
+print(*parity_bits_values_map[first_digit_parity_bit][0] , sep = "")
