@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Prime Or Even in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def is_prime(N):
+    
+    if(N <= 1):
+        return False
+    
+    for number in range(2 , (int((N ** 0.5)) + 1)):
+        
+        if((N % number) == 0):
+            
+            return False
+    
+    return True
+
+(lambda N : print(("valid") if((is_even(N)) or (is_prime(N))) else ("invalid"))) (int(input().strip()))
