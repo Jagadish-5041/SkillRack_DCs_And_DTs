@@ -1,0 +1,23 @@
+Problem Statement :-
+
+Positive Negative Series in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_first_N_odd_numbers(N):
+    
+    return (N * N)
+
+def get_sum_of_first_N_even_numbers(N):
+    
+    return (N * (N + 1))
+
+N = int(input().strip())
+
+odd_numbers_count = ((N // 2) + (N % 2))
+
+even_numbers_count = (N // 2)
+
+positive_negative_series_sum_value = (get_sum_of_first_N_odd_numbers(odd_numbers_count) - get_sum_of_first_N_even_numbers(even_numbers_count))
+
+print(positive_negative_series_sum_value)
