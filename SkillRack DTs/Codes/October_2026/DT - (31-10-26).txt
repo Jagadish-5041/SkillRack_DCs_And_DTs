@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Round Up Or Round Down in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def custom_round_function(N):
+    
+    return (((N + 10) - ((N + 10) % 10)) if((N % 10) >= 5) else (N - (N % 10)))
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+sum_value = sum(custom_round_function(value) for value in values_list)
+
+print(sum_value)
