@@ -1,0 +1,29 @@
+Problem Statement :-
+
+Tenth And Unit Digit Sum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+def get_tenth_digit(N):
+    
+    return ((N % 100) // 10)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+unit_digits_sum = 0
+
+tenth_digits_sum = 0
+
+for value in values_list:
+    
+    unit_digits_sum = (unit_digits_sum + get_unit_digit(value))
+    
+    tenth_digits_sum = (tenth_digits_sum + get_tenth_digit(value))
+
+print(tenth_digits_sum , unit_digits_sum)
