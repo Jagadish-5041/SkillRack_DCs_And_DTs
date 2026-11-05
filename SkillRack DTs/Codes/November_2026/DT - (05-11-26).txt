@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Sum - Current And Previous in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , values_list : print(*[(values_list[index] + values_list[((index - 1) % N)]) for index in range(0 , N)])) (int(input().strip()) , list(map(int , input().strip().split())))
