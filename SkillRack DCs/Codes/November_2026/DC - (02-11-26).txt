@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Reversed String Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+import math
+
+def find_smallest_N_whose_sum_of_N_natural_numbers_is_greater_than_or_equal_to_N(N):
+    
+    return math.ceil(((-1 + math.sqrt((1 + (8 * N)))) / 2))
+
+S = input().strip()
+
+N = len(S)
+
+S_i = 0
+
+R = find_smallest_N_whose_sum_of_N_natural_numbers_is_greater_than_or_equal_to_N(N)
+
+for row_index in range(1 , (R + 1)):
+    
+    characters_string = S[min(S_i , N) : min((S_i + row_index) , N)][::-1]
+    
+    asterisks_string = ("*" * (row_index - len(characters_string)))
+    
+    pattern_string = (asterisks_string + characters_string)
+    
+    print(*pattern_string)
+    
+    S_i = (S_i + row_index)
