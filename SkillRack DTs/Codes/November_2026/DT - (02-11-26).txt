@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Add Every Two Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N , values_list : print(*[(values_list[index] + values_list[(index + 1)]) for index in range(0 , (N - 1))])) (int(input().strip()) , list(map(int , input().strip().split())))
