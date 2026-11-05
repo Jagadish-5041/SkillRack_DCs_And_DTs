@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Odd Length String K Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+N = len(S)
+
+half_N = ((N // 2) + (N % 2))
+
+half_pattern_rows_list = [(S[i]) if(i == (half_N - 1)) else (S[i] + ("*" * ((half_N - i - 1) - 1)) + S[(N - i - 1)]) for i in range(0 , half_N)]
+
+pattern_rows_list = (half_pattern_rows_list + half_pattern_rows_list[ : -1][::-1])
+
+print(*pattern_rows_list , sep = "\n")
