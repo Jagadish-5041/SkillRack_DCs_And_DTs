@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Replace CH1 By CH2 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda S , character_1 , character_2 : print(*[(character_2) if(current_character == character_1) else (current_character) for current_character in S] , sep = "")) (input().strip() , *input().strip().split())
