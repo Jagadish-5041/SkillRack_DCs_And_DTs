@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Binary Pattern in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_binary_string(N):
+    
+    return bin(N)[2 : ]
+
+binary_string = get_binary_string(int(input().strip()))
+
+N = len(binary_string)
+
+matrix = [['*' for j in range(0 , N)] for i in range(0 , N)]
+
+[(matrix[i_1].__setitem__(0 , binary_string[i_1]) , matrix[0].__setitem__(j_1 , binary_string[j_1])) for i_1 , j_1 in zip(range(0 , N) , range(0 , N))]
+
+[(matrix[i_1].__setitem__((N - 1) , binary_string[(N - i_1 - 1)]) , matrix[(N - 1)].__setitem__(j_1 , binary_string[(N - j_1 - 1)])) for i_1 , j_1 in zip(range((N - 1) , -1 , -1) , range((N - 1) , -1 , -1))]
+
+[print(*row_list , sep = "") for row_list in matrix]
