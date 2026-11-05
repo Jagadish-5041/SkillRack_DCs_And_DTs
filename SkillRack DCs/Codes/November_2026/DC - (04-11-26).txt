@@ -1,0 +1,24 @@
+Problem Statement :-
+
+Bring Zeros To Front in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+sorted_bits_list = [None for index in range(0 , N)]
+
+left_pointer = 0
+
+right_pointer = (N - 1)
+
+for bit in list(map(int , input().strip().split())):
+    
+    if(bit == 0):
+        sorted_bits_list[left_pointer] = bit
+        left_pointer = (left_pointer + 1)
+    else:
+        sorted_bits_list[right_pointer] = bit
+        right_pointer = (right_pointer - 1)
+
+print(*sorted_bits_list)
