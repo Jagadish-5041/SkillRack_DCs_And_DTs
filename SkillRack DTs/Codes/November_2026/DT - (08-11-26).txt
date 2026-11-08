@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Print Up To Maximum in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+maximum_value = (sys.maxsize * -1)
+
+maximum_value_index = -999
+
+for index in range(0 , N):
+    
+    if(maximum_value < values_list[index]):
+        
+        maximum_value = values_list[index]
+        
+        maximum_value_index = index
+
+print(*[values_list[index] for index in range(0 , (maximum_value_index + 1))])
