@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Binary Representation Of Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_4_bit_binary_representation(digit_string):
+    
+    binary_string = bin(int(digit_string))[2 : ]
+    
+    padding_string = ("0" * (4 - len(binary_string)))
+    
+    four_bit_binary_string = (padding_string + binary_string)
+    
+    return four_bit_binary_string
+
+print(*[get_4_bit_binary_representation(digit_string) for digit_string in input().strip()] , sep = "\n")
