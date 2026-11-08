@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Make Odd/Even in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+def get_parity_bit(N):
+    
+    return (N & 1)
+
+def add_offset_value_based_on_parity_bit(values_list , target_parity_bit , offset_value_1 , offset_value_2):
+    
+    return [(value + offset_value_1) if(get_parity_bit(value) == target_parity_bit) else (value + offset_value_2) for value in values_list]
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+odd_numbers_count = 0
+
+even_numbers_count = 0
+
+for number in values_list:
+    
+    if(is_odd(number)):
+        odd_numbers_count = (odd_numbers_count + 1)
+    else:
+        even_numbers_count = (even_numbers_count + 1)
+
+answer_list = (add_offset_value_based_on_parity_bit(values_list , 1 , 1 , 0)) if(odd_numbers_count > even_numbers_count) else ((add_offset_value_based_on_parity_bit(values_list , 0 , -1 , 0)) if(even_numbers_count > odd_numbers_count) else ((add_offset_value_based_on_parity_bit(values_list , 0 , -1 , 1)) if(odd_numbers_count == even_numbers_count) else ([])))
+
+print(*answer_list)
