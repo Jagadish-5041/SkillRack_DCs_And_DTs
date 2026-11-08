@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Multiply By 2 - Not End With 2 in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def check(value):
+    
+    return (((value * 2) % 10) != 2)
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+answer_list = [(value * 2) for value in values_list if(check(value))]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
