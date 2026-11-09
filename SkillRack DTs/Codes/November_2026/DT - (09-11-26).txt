@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Rhombus With Numbers Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_border(current_i , current_j , R , C):
+    
+    return ((current_i == 0) or (current_i == (R - 1)) or (current_j == 0) or (current_j == (C - 1)))
+
+N = int(input().strip())
+
+cell_value = 1
+
+for i in range(0 , N):
+    
+    hyphens_string = ("-" * (N - i - 1))
+    
+    row_list = []
+    
+    for j in range(0 , N):
+        
+        if(is_border(i , j , N , N)):
+            
+            row_list.append('*')
+        
+        else:
+            
+            row_list.append(cell_value)
+            
+            cell_value = (cell_value + 1)
+    
+    print(*hyphens_string , end = " ")
+    
+    print(*row_list)
