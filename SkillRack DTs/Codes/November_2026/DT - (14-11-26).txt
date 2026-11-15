@@ -1,0 +1,36 @@
+Problem Statement :-
+
+Print Till Next Vowel in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_lowercase_alphabet_position(alphabet):
+    
+    return (ord(alphabet) - ord('a') + 1)
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_vowel(alphabet):
+    
+    return (alphabet in "aeiouAEIOU")
+
+S = "abcdefghijklmnopqrstuvwxyz"
+
+S_i = (get_lowercase_alphabet_position(input().strip()) - 1)
+
+S_N = 26
+
+do_while_flag = True
+
+while(is_within_bounds(S_i , S_N)):
+    
+    print(S[S_i] , end = "")
+    
+    if((not do_while_flag) and (is_vowel(S[S_i]))):
+        break
+    
+    do_while_flag = False
+    
+    S_i = (S_i + 1)
