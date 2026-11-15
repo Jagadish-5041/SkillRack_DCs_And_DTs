@@ -1,0 +1,43 @@
+Problem Statement :-
+
+Swap First Consonant And Last Vowel in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_vowel(character):
+    
+    return ((character.isalpha()) and (character in "aeiouAEIOU"))
+
+def is_consonant(character):
+    
+    return ((character.isalpha()) and (character not in "aeiouAEIOU"))
+
+def find_index(flag_value , N , characters_list):
+    
+    if(flag_value == 1):
+        
+        for index in range(0 , N):
+            
+            if(is_consonant(characters_list[index])):
+                
+                return index
+    
+    else:
+        
+        for index in range((N - 1) , -1 , -1):
+            
+            if(is_vowel(characters_list[index])):
+                
+                return index
+
+characters_list = list(input().strip())
+
+N = len(characters_list)
+
+first_consonant_index = find_index(1 , N , characters_list)
+
+last_vowel_index = find_index(2 , N , characters_list)
+
+characters_list[first_consonant_index] , characters_list[last_vowel_index] = characters_list[last_vowel_index] , characters_list[first_consonant_index]
+
+print(*characters_list , sep = "")
