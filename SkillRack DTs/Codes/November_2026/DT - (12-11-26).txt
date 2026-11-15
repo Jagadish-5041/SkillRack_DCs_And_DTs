@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Expand Number in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+print(*[(D * int(D)) for D in input().strip()] , sep = "")
