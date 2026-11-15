@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Same First And Last Digits in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+answer_list = [number_string for number_string in input().strip().split() if(number_string[0] == number_string[-1])]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
