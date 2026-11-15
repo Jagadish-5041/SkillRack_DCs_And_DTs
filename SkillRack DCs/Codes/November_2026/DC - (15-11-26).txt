@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Triangle Pattern - Multiples Of X in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().strip().split())
+
+pattern_value = 1
+
+for i in range(1 , (N + 1)):
+    
+    for j in range(1 , (i + 1)):
+        
+        print((('*') if((pattern_value % X) == 0) else (pattern_value)) , end = " ")
+        
+        pattern_value = (pattern_value + 1)
+    
+    print()
