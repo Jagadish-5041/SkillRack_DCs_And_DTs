@@ -1,0 +1,17 @@
+Problem Statement :-
+
+Not Ending With 5 Or 6 in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def check(N):
+    
+    return (((N % 10) != 5) and ((N % 10) != 6))
+
+N , X = map(int , input().strip().split())
+
+data_list = [((value ** 2) + X) for value in list(map(int , input().strip().split()))]
+
+answer_list = [value for value in data_list if(check(value))]
+
+(print(*answer_list)) if(answer_list) else (print(-1))
