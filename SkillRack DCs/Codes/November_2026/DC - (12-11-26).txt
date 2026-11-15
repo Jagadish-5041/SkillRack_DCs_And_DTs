@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Product Of X And Sum Of Digits in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_sum_of_digits(N):
+    
+    sum_of_digits = 0
+    
+    while(N > 0):
+        
+        digit = (N % 10)
+        
+        sum_of_digits = (sum_of_digits + digit)
+        
+        N = (N // 10)
+    
+    return sum_of_digits
+
+(lambda N , X : print((X * get_sum_of_digits(N)))) (int(input().strip()) , int(input().strip()))
