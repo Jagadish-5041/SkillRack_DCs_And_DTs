@@ -1,0 +1,15 @@
+Problem Statement :-
+
+X To Y Ascending And Descending in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def get_even_numbers_within_range(starting_range_value , ending_range_value , offset_value):
+    
+    return [number for number in range(starting_range_value , (ending_range_value + offset_value) , offset_value) if(is_even(number))]
+
+(lambda X , Y : print(*get_even_numbers_within_range(X , Y , ((1) if(X < Y) else (-1))))) (*map(int , input().strip().split()))
