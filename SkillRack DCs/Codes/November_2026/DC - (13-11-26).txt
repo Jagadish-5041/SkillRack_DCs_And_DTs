@@ -1,0 +1,27 @@
+Problem Statement :-
+
+Pattern - Asterisk With Alphabets in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_Nth_UpperCase_Alphabet(N):
+    
+    return chr((ord('A') + (N - 1)))
+
+N = int(input().strip())
+
+asterisks_string = ("*" * N)
+
+uppercase_alphabets_string = ("".join(get_Nth_UpperCase_Alphabet(i) for i in range(1 , (N + 1))))
+
+for i in range(1 , (N + 1)):
+    
+    pattern_asterisks_string = asterisks_string[0 : (N - i)]
+    
+    pattern_left_half_alphabets_string = uppercase_alphabets_string[0 : i]
+    
+    pattern_right_half_alphabets_string = pattern_left_half_alphabets_string[:-1][::-1]
+    
+    pattern_row_string = (pattern_asterisks_string + pattern_left_half_alphabets_string + pattern_right_half_alphabets_string)
+    
+    print(pattern_row_string)
