@@ -1,0 +1,35 @@
+Problem Statement :-
+
+Remove Last K Vowels in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_within_bounds(index , N):
+    
+    return (0 <= index < N)
+
+def is_vowel(character):
+    
+    return (character in "aeiouAEIOU")
+
+data_list = input().strip().split()
+
+A = list(data_list[0])
+
+A_N = len(A)
+
+A_i = (A_N - 1)
+
+K = int(data_list[1])
+
+while((K > 0) and (is_within_bounds(A_i , A_N))):
+    
+    if(is_vowel(A[A_i])):
+        
+        A[A_i] = None
+        
+        K = (K - 1)
+    
+    A_i = (A_i - 1)
+
+print(*[value for value in A if(value is not None)] , sep = "")
