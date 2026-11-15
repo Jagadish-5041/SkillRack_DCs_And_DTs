@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Odd And Even Position Characters in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def is_odd(N):
+    
+    return ((N & 1) == 1)
+
+odd_position_characters_list = []
+
+even_position_characters_list = []
+
+[(odd_position_characters_list.append(character)) if(is_odd((index + 1))) else (even_position_characters_list.append(character)) for index , character in enumerate(input().strip())]
+
+print(*odd_position_characters_list , sep = "")
+
+print(*even_position_characters_list , sep = "")
