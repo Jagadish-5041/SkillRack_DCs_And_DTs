@@ -1,0 +1,11 @@
+Problem Statement :-
+
+Square Root Of Each Digit in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+def get_square_root_of_N(N):
+    
+    return (N ** 0.5)
+
+print(*[("{:.2f}".format(get_square_root_of_N(int(digit_string)))) for digit_string in input().strip()])
