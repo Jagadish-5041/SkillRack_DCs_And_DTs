@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Sum - Divide By Unit Digit in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_unit_digit(N):
+    
+    return (N % 10)
+
+def get_divided_by_unit_digit_value(N):
+    
+    return ((lambda unit_digit : ((N / 10) if(unit_digit == 0) else (N / unit_digit))) (get_unit_digit(N)))
+
+(lambda N , values_list : print("{:.3f}".format(sum(get_divided_by_unit_digit_value(value) for value in values_list)))) (int(input().strip()) , list(map(int , input().strip().split())))
