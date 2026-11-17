@@ -1,0 +1,31 @@
+Problem Statement :-
+
+Closer To X in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+import sys
+
+N , X = map(int , input().strip().split())
+
+values_list = list(map(int , input().strip().split()))
+
+minimum_absolute_difference_value = sys.maxsize
+
+minimum_absolute_difference_values_list = []
+
+for value in values_list:
+    
+    absolute_difference_value = abs((X - value))
+    
+    if(minimum_absolute_difference_value > absolute_difference_value):
+        
+        minimum_absolute_difference_value = absolute_difference_value
+        
+        minimum_absolute_difference_values_list = [value]
+    
+    elif(absolute_difference_value == minimum_absolute_difference_value):
+        
+        minimum_absolute_difference_values_list.append(value)
+
+print(*minimum_absolute_difference_values_list)
