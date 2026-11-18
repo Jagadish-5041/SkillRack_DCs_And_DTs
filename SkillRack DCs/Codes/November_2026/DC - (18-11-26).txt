@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Middle Integers Within Range in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+frequency_map = {}
+
+[frequency_map.__setitem__(number , (frequency_map.get(number , 0) + 1)) for number in list(map(int , input().strip().split()))]
+
+X , Y = map(int , input().strip().split())
+
+print(("YES") if(frequency_map.get(X , 0) >= frequency_map.get(Y , 0)) else ("NO"))
