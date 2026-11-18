@@ -1,0 +1,13 @@
+Problem Statement :-
+
+Complimentary Sweets in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+N , X = map(int , input().strip().split())
+
+weights_list = list(map(int , input().strip().split()))
+
+total_weights_sum = sum((weight_value + 1) if(weight_value > X) else (weight_value) for weight_value in weights_list)
+
+print(total_weights_sum)
