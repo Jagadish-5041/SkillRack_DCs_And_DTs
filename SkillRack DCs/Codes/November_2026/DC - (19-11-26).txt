@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Equal First And Second Half String in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+S_N = len(S)
+
+second_half_string_starting_index = ((S_N // 2) + (S_N % 2))
+
+for left_half_string_current_index in range(0 , (S_N // 2)):
+    
+    if(S[left_half_string_current_index] != S[(second_half_string_starting_index + left_half_string_current_index)]):
+        
+        print("no")
+        
+        quit()
+
+print("yes")
