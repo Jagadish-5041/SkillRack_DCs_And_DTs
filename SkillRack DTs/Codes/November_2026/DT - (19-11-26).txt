@@ -1,0 +1,7 @@
+Problem Statement :-
+
+Number Multiples Pattern in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+(lambda N : [print(*[(row_number + (row_number * (column_number - 1))) for column_number in range(1 , (row_number + 1))]) for row_number in range(1 , (N + 1))]) (int(input().strip()))
