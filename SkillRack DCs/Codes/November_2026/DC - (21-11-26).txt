@@ -1,0 +1,15 @@
+Problem Statement :-
+
+Prepend And Append - Character in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+S = input().strip()
+
+character = input().strip()
+
+S = (character + S) if(S[0] != character) else (S)
+
+S = (S + character) if(S[-1] != character) else (S)
+
+print(S)
