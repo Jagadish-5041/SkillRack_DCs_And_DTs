@@ -1,0 +1,21 @@
+Problem Statement :-
+
+Replace Even Digit - Form Floating Point Value in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def is_even(N):
+    
+    return ((N & 1) == 0)
+
+def modify_data_list(data_list):
+    
+    for index in range((len(data_list) - 1) , -1 , -1):
+        
+        if(is_even(int(data_list[index]))):
+            
+            data_list[index] = "."
+            
+            return data_list
+
+print("{:.2f}".format(round(float(("".join(modify_data_list(list(input().strip()))))) , 2)))
