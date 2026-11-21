@@ -1,0 +1,25 @@
+Problem Statement :-
+
+Sum Of X-Digit Integers in DT (Daily Test) in SkillRack in Python - Programming
+
+Code :-
+
+def get_powers_of_10(N):
+    
+    return (10 ** N)
+
+N , X = map(int , input().strip().split())
+
+divisor = get_powers_of_10(X)
+
+sum_of_X_digit_numbers = 0
+
+while(N > 0):
+    
+    X_digit_number = (N % divisor)
+    
+    sum_of_X_digit_numbers = (sum_of_X_digit_numbers + X_digit_number)
+    
+    N = (N // divisor)
+
+print(sum_of_X_digit_numbers)
