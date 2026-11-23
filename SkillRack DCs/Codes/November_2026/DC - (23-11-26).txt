@@ -1,0 +1,19 @@
+Problem Statement :-
+
+Greater Than Previous in DC (Daily Challenge) in SkillRack in Python - Programming
+
+Code :-
+
+N = int(input().strip())
+
+values_list = list(map(int , input().strip().split()))
+
+first_value_default_print_flag = True
+
+for index in range(0 , N):
+    
+    if((first_value_default_print_flag) or (values_list[(index - 1)] < values_list[index])):
+        
+        print(values_list[index] , end = " ")
+        
+        first_value_default_print_flag = False
